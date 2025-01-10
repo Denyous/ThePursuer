@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        if (enemiesSpawned < enemySpawnLimit)
+        if (enemiesSpawned < enemySpawnLimit && target != null)
         {
             enemyPrefab = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
 
@@ -26,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
             enemiesSpawned++;
         }
     }
+    
 
     public int GetEnemiesSpawned()
     {

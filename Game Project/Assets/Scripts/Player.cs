@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 20f;
     [SerializeField] private float steer = 30f;
+    [SerializeField] private GameObject Explosion;
+
+    private Animator animator;
 
     Rigidbody2D rb;
     float input;
@@ -13,12 +16,22 @@ public class Player : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         input = Input.GetAxis("Horizontal");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Instantiate(Explosion, transform.position, Quaternion.identity);
+        }
+    }
+
 
     private void FixedUpdate()
     {
