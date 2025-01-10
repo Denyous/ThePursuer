@@ -127,6 +127,56 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Steer",
+            "id": "48027aac-35c6-4615-91a2-91c16a6a0715",
+            "actions": [
+                {
+                    "name": "Steer",
+                    "type": "Value",
+                    "id": "90fcce80-93b4-4fd2-b21f-442828a3fda4",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "LeftRight",
+                    "id": "3769f18d-19cc-4793-b1ce-f0f74d670322",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "50e889c8-2cda-41f8-ab48-74731f237b58",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "aeb781af-7d9a-4c48-b4b6-96cc256083bb",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
         }
     ],
     "controlSchemes": [

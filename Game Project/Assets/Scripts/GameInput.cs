@@ -10,12 +10,12 @@ public class GameInput : MonoBehaviour
     private void Awake()
     {
         inputActions = new GameInputActions();
-        inputActions.Move.Enable();
+        inputActions.Steer.Enable();
     }
 
     public Vector2 GetMovementVectorNormalized()
     {
-        Vector2 inputVector = inputActions.Move.Move.ReadValue<Vector2>();
+        Vector2 inputVector = inputActions.Steer.Steer.ReadValue<Vector2>();
 
         inputVector = inputVector.normalized;
 

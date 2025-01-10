@@ -149,6 +149,56 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Steer"",
+            ""id"": ""48027aac-35c6-4615-91a2-91c16a6a0715"",
+            ""actions"": [
+                {
+                    ""name"": ""Steer"",
+                    ""type"": ""Value"",
+                    ""id"": ""90fcce80-93b4-4fd2-b21f-442828a3fda4"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""LeftRight"",
+                    ""id"": ""3769f18d-19cc-4793-b1ce-f0f74d670322"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""50e889c8-2cda-41f8-ab48-74731f237b58"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""aeb781af-7d9a-4c48-b4b6-96cc256083bb"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -168,6 +218,9 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
         // Move
         m_Move = asset.FindActionMap("Move", throwIfNotFound: true);
         m_Move_Move = m_Move.FindAction("Move", throwIfNotFound: true);
+        // Steer
+        m_Steer = asset.FindActionMap("Steer", throwIfNotFound: true);
+        m_Steer_Steer = m_Steer.FindAction("Steer", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -271,6 +324,52 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
         }
     }
     public MoveActions @Move => new MoveActions(this);
+
+    // Steer
+    private readonly InputActionMap m_Steer;
+    private List<ISteerActions> m_SteerActionsCallbackInterfaces = new List<ISteerActions>();
+    private readonly InputAction m_Steer_Steer;
+    public struct SteerActions
+    {
+        private @GameInputActions m_Wrapper;
+        public SteerActions(@GameInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Steer => m_Wrapper.m_Steer_Steer;
+        public InputActionMap Get() { return m_Wrapper.m_Steer; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SteerActions set) { return set.Get(); }
+        public void AddCallbacks(ISteerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SteerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SteerActionsCallbackInterfaces.Add(instance);
+            @Steer.started += instance.OnSteer;
+            @Steer.performed += instance.OnSteer;
+            @Steer.canceled += instance.OnSteer;
+        }
+
+        private void UnregisterCallbacks(ISteerActions instance)
+        {
+            @Steer.started -= instance.OnSteer;
+            @Steer.performed -= instance.OnSteer;
+            @Steer.canceled -= instance.OnSteer;
+        }
+
+        public void RemoveCallbacks(ISteerActions instance)
+        {
+            if (m_Wrapper.m_SteerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ISteerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SteerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SteerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public SteerActions @Steer => new SteerActions(this);
     private int m_PlayerSchemeIndex = -1;
     public InputControlScheme PlayerScheme
     {
@@ -283,5 +382,9 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
     public interface IMoveActions
     {
         void OnMove(InputAction.CallbackContext context);
+    }
+    public interface ISteerActions
+    {
+        void OnSteer(InputAction.CallbackContext context);
     }
 }

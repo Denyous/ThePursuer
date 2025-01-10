@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private Player player;
-    [SerializeField] private GameInput gameInput;
+    [SerializeField] private float speed = 20f;
+    [SerializeField] private float steer = 30f;
 
-    private bool isWalking;
+    Rigidbody2D rb;
+    float input;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
-        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-
-        Vector3 moveDir = new Vector3(inputVector.x, inputVector.y, 0f);
-
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
-
-        isWalking = moveDir != Vector3.zero;
+        input = Input.GetAxis("Horizontal");
     }
 
-    public bool IsWalking()
+    private void FixedUpdate()
     {
-        return isWalking;
+        rb.velocity = transform.up * speed * Time.fixedDeltaTime * 10f;
+        rb.angularVelocity = -input * steer * 10f;
     }
+
 }
