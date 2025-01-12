@@ -33,10 +33,10 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Object.Destroy(target.gameObject);
-        }
+        //if (collision.gameObject.CompareTag("Player"))
+        //{
+        //    Object.Destroy(target.gameObject);
+        //}
     }
 
     private void FixedUpdate()
