@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    [SerializeField] private GameObject Star;
+
     private GameObject PrefabRef;
 
     [SerializeField] private GameObject target;
@@ -15,12 +17,21 @@ public class EnemySpawner : MonoBehaviour
 
     private List<GameObject> enemies = new List<GameObject>();
 
+    [SerializeField] private GameOver GameOverScreen;
+
+
     private void Start()
     {
         Enemy.OnEnemyDied += HandleEnemyKilled;
         InvokeRepeating("SpawnEnemy", 1.0f, 2.0f);
+        InvokeRepeating("SpawnStars", 1.0f, 5.0f);
     }
-    
+
+    private void SpawnStars()
+    {
+        Instantiate(Star, SelectSpawnPoint(), Quaternion.identity);
+    }
+
     private void SpawnEnemy()
     {
         if (enemies.Count < enemySpawnLimit && target != null)
@@ -29,7 +40,8 @@ public class EnemySpawner : MonoBehaviour
 
             Enemy enemyScript = PrefabRef.GetComponent<Enemy>();
 
-            enemyScript.SetTarget(target.transform);
+            enemyScript.SetTarget(target);
+            enemyScript.SetGameOverScreen(GameOverScreen);
 
             RegisterEnemy(PrefabRef);
         }

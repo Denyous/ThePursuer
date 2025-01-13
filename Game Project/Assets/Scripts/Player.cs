@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject Explosion;
 
     private Animator animator;
+    private int Score = 0;
 
     Rigidbody2D rb;
     float input;
@@ -30,6 +31,11 @@ public class Player : MonoBehaviour
         {
             Instantiate(Explosion, transform.position, Quaternion.identity);
         }
+        else if (collision.gameObject.CompareTag("Star"))
+        {
+            Object.Destroy(collision.gameObject);
+            Score++;
+        }
     }
 
 
@@ -39,4 +45,8 @@ public class Player : MonoBehaviour
         rb.angularVelocity = -input * steer * 10f;
     }
 
+    public int GetScore()
+    {
+        return Score;
+    }
 }

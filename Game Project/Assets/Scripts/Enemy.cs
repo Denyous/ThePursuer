@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -11,15 +12,27 @@ public class Enemy : MonoBehaviour
 
     public static event System.Action<GameObject> OnEnemyDied;
 
-    private Transform target;
+    private GameObject target;
     private Animator animator;
 
     Rigidbody2D rb;
     float input;
 
-    public void SetTarget(Transform newTarget)
+    private GameOver GameOverScreen;
+
+    public void GameOver(int score)
+    {
+        GameOverScreen.Setup(score);
+    }
+
+    public void SetTarget(GameObject newTarget)
     {
         target = newTarget;
+    }
+
+    public void SetGameOverScreen(GameOver gameOverScreen)
+    {
+        GameOverScreen = gameOverScreen;
     }
 
     private void Start()
@@ -42,8 +55,14 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Player player = target.gameObject.GetComponent<Player>();
+
+            int score = player.GetScore();
+
             Object.Destroy(target.gameObject);
             Object.Destroy(transform.gameObject);
+
+            GameOver(score);
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -56,7 +75,7 @@ public class Enemy : MonoBehaviour
         if (target != null)
         {
             rb.velocity = transform.up * speed * Time.fixedDeltaTime * 10f;
-            Vector2 direction = (target.position - transform.position).normalized;
+            Vector2 direction = (target.transform.position - transform.position).normalized;
             float rotationSteer = Vector3.Cross(transform.up, direction).z;
             rb.angularVelocity = rotationSteer * steer * 10f;
         }
