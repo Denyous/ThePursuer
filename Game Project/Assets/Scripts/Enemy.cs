@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed = 60f;
     [SerializeField] private float steer = 15f;
 
+    public static event System.Action<GameObject> OnEnemyDied;
+
     private Transform target;
     private Animator animator;
 
@@ -26,6 +28,11 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public void Die()
+    {
+        OnEnemyDied?.Invoke(this.gameObject);
+    }
+
     private void Update()
     {
         input = Input.GetAxis("Horizontal");
@@ -33,10 +40,15 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.gameObject.CompareTag("Player"))
-        //{
-        //    Object.Destroy(target.gameObject);
-        //}
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Object.Destroy(target.gameObject);
+            Object.Destroy(transform.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Die();
+        }
     }
 
     private void FixedUpdate()

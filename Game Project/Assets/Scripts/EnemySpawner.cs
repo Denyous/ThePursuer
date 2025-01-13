@@ -1,45 +1,65 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab; 
+    public GameObject enemyPrefab;
+    private GameObject PrefabRef;
+
     [SerializeField] private GameObject target;
     [SerializeField] private Transform minSpawn;
     [SerializeField] private Transform maxSpawn;
 
-    [SerializeField] private int enemySpawnLimit = 15; 
-    private int enemiesSpawned = 0; 
+    [SerializeField] private int enemySpawnLimit = 3; 
 
-    void Start()
+    private List<GameObject> enemies = new List<GameObject>();
+
+    private void Start()
     {
+        Enemy.OnEnemyDied += HandleEnemyKilled;
         InvokeRepeating("SpawnEnemy", 1.0f, 2.0f);
     }
     
-    void SpawnEnemy()
+    private void SpawnEnemy()
     {
-        if (enemiesSpawned < enemySpawnLimit && target != null)
+        if (enemies.Count < enemySpawnLimit && target != null)
         {
-            enemyPrefab = Instantiate(enemyPrefab, SelectSpawnPoint(), Quaternion.identity);
+            PrefabRef = Instantiate(enemyPrefab, SelectSpawnPoint(), Quaternion.identity);
 
-            Enemy enemyScript = enemyPrefab.GetComponent<Enemy>();
+            Enemy enemyScript = PrefabRef.GetComponent<Enemy>();
 
             enemyScript.SetTarget(target.transform);
 
-            enemiesSpawned++;
+            RegisterEnemy(PrefabRef);
         }
     }
-    
+
+    private void HandleEnemyKilled(GameObject enemy)
+    {
+        if (enemies.Contains(enemy))
+        {
+            enemies.Remove(enemy);
+            UnityEngine.Object.Destroy(enemy);
+        }
+    }
+
+    public void RegisterEnemy(GameObject enemy)
+    {
+        enemies.Add(enemy);
+    }
+
     private Vector3 SelectSpawnPoint()
     {
         Vector3 spawnPoint = Vector3.zero;
 
-        bool spawnVerticalEdge = Random.Range(0f, 1f) > 0.5f;
+        bool spawnVerticalEdge = UnityEngine.Random.Range(0f, 1f) > 0.5f;
 
         if (spawnVerticalEdge)
         {
-            spawnPoint.y = Random.Range(minSpawn.position.y, maxSpawn.position.y);
+            spawnPoint.y = UnityEngine.Random.Range(minSpawn.position.y, maxSpawn.position.y);
 
-            if (Random.Range(0f, 1f) > 0.5f)
+            if (UnityEngine.Random.Range(0f, 1f) > 0.5f)
             {
                 spawnPoint.x = maxSpawn.position.x;
             }
@@ -50,9 +70,9 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            spawnPoint.x = Random.Range(minSpawn.position.x, maxSpawn.position.x);
+            spawnPoint.x = UnityEngine.Random.Range(minSpawn.position.x, maxSpawn.position.x);
 
-            if (Random.Range(0f, 1f) > 0.5f)
+            if (UnityEngine.Random.Range(0f, 1f) > 0.5f)
             {
                 spawnPoint.y = maxSpawn.position.y;
             }
@@ -64,9 +84,8 @@ public class EnemySpawner : MonoBehaviour
 
         return spawnPoint;
     }
-    public int GetEnemiesSpawned()
-    {
-        return enemiesSpawned;
-    }
+
+
+
 }
 
