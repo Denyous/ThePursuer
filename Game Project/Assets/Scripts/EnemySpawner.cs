@@ -5,7 +5,10 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    [SerializeField] private GameObject Star;
+    [SerializeField] private GameObject StarPrefab;
+    private GameObject Star;
+    [SerializeField] private Camera MainCamera;
+
 
     private GameObject PrefabRef;
 
@@ -24,19 +27,22 @@ public class EnemySpawner : MonoBehaviour
     {
         Enemy.OnEnemyDied += HandleEnemyKilled;
         InvokeRepeating("SpawnEnemy", 1.0f, 2.0f);
-        InvokeRepeating("SpawnStars", 1.0f, 5.0f);
+        InvokeRepeating("SpawnStars", 1.0f, 2.0f);
     }
 
     private void SpawnStars()
     {
-        Instantiate(Star, SelectSpawnPoint(), Quaternion.identity);
+        Star = Instantiate(StarPrefab, SelectStarSpawnPoint(), Quaternion.identity);
+        CollectibleController controller = Star.GetComponent<CollectibleController>();
+
+        controller.SetPlayer(target);
     }
 
     private void SpawnEnemy()
     {
         if (enemies.Count < enemySpawnLimit && target != null)
         {
-            PrefabRef = Instantiate(enemyPrefab, SelectSpawnPoint(), Quaternion.identity);
+            PrefabRef = Instantiate(enemyPrefab, SelectEnemySpawnPoint(), Quaternion.identity);
 
             Enemy enemyScript = PrefabRef.GetComponent<Enemy>();
 
@@ -61,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
         enemies.Add(enemy);
     }
 
-    private Vector3 SelectSpawnPoint()
+    private Vector3 SelectEnemySpawnPoint()
     {
         Vector3 spawnPoint = Vector3.zero;
 
@@ -97,7 +103,14 @@ public class EnemySpawner : MonoBehaviour
         return spawnPoint;
     }
 
+    private Vector3 SelectStarSpawnPoint()
+    {
+        Vector3 spawnPoint = new Vector3();
 
+        spawnPoint.x = UnityEngine.Random.Range(minSpawn.position.x, maxSpawn.position.x);
+        spawnPoint.y = UnityEngine.Random.Range(minSpawn.position.y, maxSpawn.position.y);
+        return spawnPoint;
+    }
 
 }
 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1823798420714462499}
   - component: {fileID: 7076183565348250610}
   - component: {fileID: 4638566726849036657}
+  - component: {fileID: 7763959010156097137}
   m_Layer: 0
   m_Name: Star
   m_TagString: Star
@@ -136,3 +137,18 @@ PolygonCollider2D:
       - {x: 0.5, y: 0}
       - {x: 0.25, y: 0.43359375}
   m_UseDelaunayMesh: 0
+--- !u!114 &7763959010156097137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7820447434184616243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b284a7ed509c4f54f861c58742cce822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IconPrefab: {fileID: 2663483546575590200, guid: 572c2411afea9b44fbb47401254827ff, type: 3}
+  ScreenBorder: 25
+  VisibleDistance: 25

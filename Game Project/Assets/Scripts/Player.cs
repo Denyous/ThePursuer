@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 20f;
     [SerializeField] private float steer = 30f;
     [SerializeField] private GameObject Explosion;
+    [SerializeField] private GameObject StarPreFab;
+
 
     private Animator animator;
     private int Score = 0;
@@ -33,7 +35,8 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Star"))
         {
-            Object.Destroy(collision.gameObject);
+            CollectibleController controller = collision.gameObject.GetComponent<CollectibleController>();
+            controller.Kill();            
             Score++;
         }
     }
