@@ -20,10 +20,6 @@ public class CollectibleController : MonoBehaviour
         Camera = Camera.main;
     }
 
-    public void SetPlayer(GameObject player)
-    {
-        Player = player;
-    }
 
     private void Update()
     {
@@ -52,6 +48,10 @@ public class CollectibleController : MonoBehaviour
         }
     }
 
+    public void SetPlayer(GameObject player)
+    {
+        Player = player;
+    }
     private Vector3 GetIconPosition()
     {
         Vector3 starPosition = Camera.WorldToViewportPoint(transform.position);
@@ -121,7 +121,6 @@ public class CollectibleController : MonoBehaviour
         Vector3 iconPosition = camera.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 1));
         icon.transform.position = iconPosition;
     }
-
     private void OnBecameVisible()
     {
         if (icon != null)
@@ -142,8 +141,4 @@ public class CollectibleController : MonoBehaviour
             Object.Destroy(icon);
         }
     }
-
-
-    
-
 }

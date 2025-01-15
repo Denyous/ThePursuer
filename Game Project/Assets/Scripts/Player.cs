@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float steer = 30f;
     [SerializeField] private GameObject Explosion;
     [SerializeField] private GameObject StarPreFab;
+    [SerializeField] private TMP_Text ScoreText;
 
 
     private Animator animator;
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
             CollectibleController controller = collision.gameObject.GetComponent<CollectibleController>();
             controller.Kill();            
             Score++;
+            ScoreText.text = Score.ToString();
         }
     }
 

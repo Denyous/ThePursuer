@@ -151,4 +151,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IconPrefab: {fileID: 2663483546575590200, guid: 572c2411afea9b44fbb47401254827ff, type: 3}
   ScreenBorder: 25
-  VisibleDistance: 25
+  VisibleDistance: 40
