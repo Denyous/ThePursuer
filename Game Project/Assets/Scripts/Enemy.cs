@@ -20,6 +20,20 @@ public class Enemy : MonoBehaviour
 
     private GameOver GameOverScreen;
 
+    
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
+
+
+    private void Update()
+    {
+        input = Input.GetAxis("Horizontal");
+    }
+
     public void GameOver(int score)
     {
         GameOverScreen.Setup(score);
@@ -34,21 +48,9 @@ public class Enemy : MonoBehaviour
     {
         GameOverScreen = gameOverScreen;
     }
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-    }
-
     public void Die()
     {
         OnEnemyDied?.Invoke(this.gameObject);
-    }
-
-    private void Update()
-    {
-        input = Input.GetAxis("Horizontal");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

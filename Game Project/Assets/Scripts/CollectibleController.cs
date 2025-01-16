@@ -118,7 +118,8 @@ public class CollectibleController : MonoBehaviour
             screenPosition.y = viewportPosition.y * Screen.height;
         }
 
-        Vector3 iconPosition = camera.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 1));
+        Vector3 iconPosition = 
+            camera.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 1));
         icon.transform.position = iconPosition;
     }
     private void OnBecameVisible()
