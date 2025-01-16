@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 20f;
-    [SerializeField] private float steer = 30f;
+    [SerializeField] private float steer = 2.2f;
     [SerializeField] private GameObject Explosion;
     [SerializeField] private GameObject StarPreFab;
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private FixedJoystick Joystick;
-    [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 0.5f;
 
     private Animator animator;
     private int Score = 0;
 
     Rigidbody2D rb;
-    private Vector2 InputVector;
-    private float input;
+    private float targetAngle;
 
     private void Start()
     {
@@ -27,16 +28,11 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        input = Joystick.Horizontal;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Instantiate(Explosion, transform.position, Quaternion.identity);
+            Instantiate(Explosion, transform.position, UnityEngine.Quaternion.identity);
         }
         else if (collision.gameObject.CompareTag("Star"))
         {
@@ -50,12 +46,23 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = transform.up * speed * Time.deltaTime * 10f;
+        float x = Joystick.Horizontal;
+        float y = Joystick.Vertical;
 
-        float rotation = input * 30f;
+        if (Mathf.Abs(x) > 0.1f || Mathf.Abs(y) > 0.1f)
+        {
+            targetAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg - 90f; 
+        }
 
-        transform.rotation = Quaternion.Euler(0f, rotation, rotation);
-        Debug.Log($"{transform.rotation}");
+        UnityEngine.Quaternion currentRotation = transform.rotation;
+
+        UnityEngine.Quaternion targetRotation = UnityEngine.Quaternion.
+            Euler(0, 0, targetAngle);
+
+        transform.rotation = UnityEngine.Quaternion.Lerp
+            (currentRotation, targetRotation, rotationSpeed * Time.fixedDeltaTime / steer);
+
+        rb.velocity = transform.up * speed * Time.fixedDeltaTime * 10f;
     }
 
 

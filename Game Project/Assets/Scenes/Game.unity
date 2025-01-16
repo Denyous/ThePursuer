@@ -1994,12 +1994,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f48be943a07fa849bed517a0db736eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
-  steer: 30
+  speed: 35
+  steer: 2.2
   Explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   StarPreFab: {fileID: 7820447434184616243, guid: 0d12645392dd44343b3c9ed2321eb00e, type: 3}
   ScoreText: {fileID: 1182250688}
   Joystick: {fileID: 262381312}
+  rotationSpeed: 5
 --- !u!4 &1503693124
 Transform:
   m_ObjectHideFlags: 0
@@ -2296,6 +2297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9b680a376f6b54688932e4970b389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExplosionPrefab: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!1 &1786769222
 GameObject:
   m_ObjectHideFlags: 0

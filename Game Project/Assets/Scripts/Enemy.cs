@@ -19,13 +19,14 @@ public class Enemy : MonoBehaviour
     float input;
 
     private GameOver GameOverScreen;
+    private GameController GameController;
 
-    
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        GameController = FindObjectOfType<GameController>();
     }
 
 
@@ -51,6 +52,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         OnEnemyDied?.Invoke(this.gameObject);
+        GameController.HandleCollision(transform.position);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
