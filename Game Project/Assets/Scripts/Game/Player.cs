@@ -36,7 +36,9 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Star"))
         {
-            CollectibleController controller = collision.gameObject.GetComponent<CollectibleController>();
+            CollectibleController controller = 
+                collision.gameObject.GetComponent<CollectibleController>();
+
             controller.Kill();            
             Score++;
             ScoreText.text = Score.ToString();

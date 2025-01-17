@@ -1,0 +1,72 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MainMenuButtonController : MonoBehaviour
+{
+    [SerializeField] private UnityEngine.UI.Button StartButton;
+    [SerializeField] private UnityEngine.UI.Button SettingsButton;
+    [SerializeField] private UnityEngine.UI.Button ExitButton;
+    private RectTransform StartBtnRectTransform;
+    private RectTransform SettingsBtnRectTransform;
+    private RectTransform ExitBtnRectTransform;
+    private Vector3 StartBtnOriginalScale;
+    private Vector3 SettingsBtnOriginalScale;
+    private Vector3 ExitBtnOriginalScale;
+
+    private void Start()
+    {
+        StartBtnRectTransform = StartButton.GetComponent<RectTransform>();
+        SettingsBtnRectTransform = SettingsButton.GetComponent<RectTransform>();
+        ExitBtnRectTransform = ExitButton.GetComponent<RectTransform>();
+    }
+
+    public void StartButtonClick()
+    {
+        StartBtnOriginalScale = StartButton.GetComponent<RectTransform>().localScale;
+
+        LTSeq sequence = LeanTween.sequence();
+
+        sequence.append(LeanTween.scale(StartBtnRectTransform, StartBtnOriginalScale * 0.8f, 0.08f)
+    .setEase(LeanTweenType.easeInQuart));
+        sequence.append(LeanTween.scale(StartBtnRectTransform, StartBtnOriginalScale, 0.08f)
+            .setEase(LeanTweenType.easeOutBack).setOnComplete(OnStartBtnAnimationComplete));
+    }
+    private void OnStartBtnAnimationComplete()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    public void ExitButtonClick()
+    {
+        ExitBtnOriginalScale = ExitButton.GetComponent<RectTransform>().localScale;
+
+        LTSeq sequence = LeanTween.sequence();
+
+        sequence.append(LeanTween.scale(ExitBtnRectTransform, ExitBtnOriginalScale * 0.8f, 0.08f)
+    .setEase(LeanTweenType.easeInQuart));
+        sequence.append(LeanTween.scale(ExitBtnRectTransform, ExitBtnOriginalScale, 0.08f)
+            .setEase(LeanTweenType.easeOutBack).setOnComplete(ExitGame));
+    }
+    private void ExitGame()
+    {
+        EditorApplication.isPlaying = false;
+        Application.Quit();
+    }
+
+
+    public void SettingsButtonClick()
+    {
+        SettingsBtnOriginalScale = SettingsButton.GetComponent<RectTransform>().localScale;
+
+        LTSeq sequence = LeanTween.sequence();
+
+        sequence.append(LeanTween.scale(SettingsBtnRectTransform, SettingsBtnOriginalScale * 0.8f, 0.08f)
+    .setEase(LeanTweenType.easeInQuart));
+        sequence.append(LeanTween.scale(SettingsBtnRectTransform, SettingsBtnOriginalScale, 0.08f)
+            .setEase(LeanTweenType.easeOutBack));
+    }
+}

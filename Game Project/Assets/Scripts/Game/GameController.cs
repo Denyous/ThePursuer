@@ -13,7 +13,10 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void HandleCollision(Vector3 position)
     {
         if (!Exploded && ExplodeCount == 0)
