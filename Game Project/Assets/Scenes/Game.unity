@@ -290,7 +290,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1839958088}
+  - {fileID: 970410973}
   - {fileID: 1816019990}
+  - {fileID: 1792321159}
   m_Father: {fileID: 1503693124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &313549043
@@ -307,11 +309,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3498545004064179341, guid: fca12d505284d9846b351bc6528d85e9, type: 3}
   StarPrefab: {fileID: 7820447434184616243, guid: 0d12645392dd44343b3c9ed2321eb00e, type: 3}
+  SlowTimePrefab: {fileID: 8353853736538985782, guid: 31dae8b6b2c313d47acdd6b19111466d, type: 3}
+  ShieldPrefab: {fileID: 8661976596798936278, guid: 073d47421b294ee4393e8f0f12f255a6, type: 3}
   MainCamera: {fileID: 1582767127}
   target: {fileID: 1503693119}
   minSpawn: {fileID: 1839958088}
   maxSpawn: {fileID: 1816019990}
+  minSpawnStar: {fileID: 970410973}
+  maxSpawnStar: {fileID: 1792321159}
   enemySpawnLimit: 3
+  enemies: []
   GameOverScreen: {fileID: 1405075683}
 --- !u!1 &455849287
 GameObject:
@@ -1310,6 +1317,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945321628}
   m_CullTransparentMesh: 1
+--- !u!1 &970410972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 970410973}
+  m_Layer: 0
+  m_Name: minSpawnPointStar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &970410973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970410972}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -45, y: -45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 313549042}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1000925311
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,13 +2404,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f48be943a07fa849bed517a0db736eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 35
-  steer: 2.2
+  Speed: 35
+  Steer: 1.5
   Explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   StarPreFab: {fileID: 7820447434184616243, guid: 0d12645392dd44343b3c9ed2321eb00e, type: 3}
   ScoreText: {fileID: 1182250688}
   Joystick: {fileID: 262381312}
-  rotationSpeed: 5
+  RotationSpeed: 3
+  Shield: 0
 --- !u!4 &1503693124
 Transform:
   m_ObjectHideFlags: 0
@@ -3043,6 +3082,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786769222}
   m_CullTransparentMesh: 1
+--- !u!1 &1792321158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1792321159}
+  m_Layer: 0
+  m_Name: maxSpawnPointStar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1792321159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792321158}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 45, y: 45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 313549042}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1816019989
 GameObject:
   m_ObjectHideFlags: 0

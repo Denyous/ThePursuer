@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float speed = 60f;
+    [SerializeField] public float speed = 45f;
     [SerializeField] private float steer = 15f;
 
     public static event System.Action<GameObject> OnEnemyDied;
@@ -61,12 +61,19 @@ public class Enemy : MonoBehaviour
         {
             Player player = target.gameObject.GetComponent<Player>();
 
-            int score = player.GetScore();
+            if (player != null && player.Shield == false)
+            {
+                int score = player.GetScore();
 
-            Object.Destroy(target.gameObject);
-            Object.Destroy(transform.gameObject);
+                Object.Destroy(target.gameObject);
+                Object.Destroy(transform.gameObject);
 
-            GameOver(score);
+                GameOver(score);
+            }
+            else
+            {
+                player.Shield = false;
+            }
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {

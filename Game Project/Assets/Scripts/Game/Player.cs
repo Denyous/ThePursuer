@@ -8,31 +8,39 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float speed = 20f;
-    [SerializeField] private float steer = 2.2f;
+    [SerializeField] private float Speed = 35f;
+    [SerializeField] private float Steer = 1.5f;
     [SerializeField] private GameObject Explosion;
     [SerializeField] private GameObject StarPreFab;
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private FixedJoystick Joystick;
-    [SerializeField] private float rotationSpeed = 0.5f;
+    [SerializeField] private float RotationSpeed = 3f;
+    private EnemySpawner Spawner;
 
-    private Animator animator;
+    private Animator Animator;
     private int Score = 0;
+
 
     Rigidbody2D rb;
     private float targetAngle;
 
+    public bool Shield;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        Animator = GetComponent<Animator>();
+        Spawner = FindAnyObjectByType<EnemySpawner>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Instantiate(Explosion, transform.position, UnityEngine.Quaternion.identity);
+            if (Shield != true)
+            {
+                Instantiate(Explosion, transform.position, UnityEngine.Quaternion.identity);
+            }
         }
         else if (collision.gameObject.CompareTag("Star"))
         {
@@ -42,6 +50,16 @@ public class Player : MonoBehaviour
             controller.Kill();            
             Score++;
             ScoreText.text = Score.ToString();
+        }
+        else if (collision.gameObject.CompareTag("Shield"))
+        {
+            Object.Destroy(collision.gameObject);
+            Shield = true;
+        }
+        else if (collision.gameObject.CompareTag("SlowTime"))
+        {
+            Object.Destroy(collision.gameObject);
+            StartCoroutine(Spawner.SlowDown());
         }
     }
 
@@ -62,30 +80,12 @@ public class Player : MonoBehaviour
             Euler(0, 0, targetAngle);
 
         transform.rotation = UnityEngine.Quaternion.Lerp
-            (currentRotation, targetRotation, rotationSpeed * Time.fixedDeltaTime / steer);
+            (currentRotation, targetRotation, RotationSpeed * Time.fixedDeltaTime / Steer);
 
-        rb.velocity = transform.up * speed * Time.fixedDeltaTime * 10f;
+        rb.velocity = transform.up * Speed * Time.fixedDeltaTime * 10f;
     }
 
-
-
-    private void PlaceHolder()
-    {
-        //rb.velocity = 10f * speed * Time.fixedDeltaTime * transform.up;
-        //rb.velocity = transform.up * speed * Time.fixedDeltaTime * 10f;
-
-        //float rotation = 10f;
-
-        //float rotationNormalized = InputVector.x * rotation;
-
-        //rb.angularVelocity = InputVector.x * steer * 10f;
-        //Debug.Log($"{rotationNormalized}");
-
-        //transform.rotation = Quaternion.Euler(0, 0, -rotationNormalized);
-
-
-        //transform.Rotate(new Vector3(0, 0, -20) * Time.deltaTime * _speed, Space.World);
-    }
+    
     public int GetScore()
     {
         return Score;

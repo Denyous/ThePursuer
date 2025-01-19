@@ -46,11 +46,11 @@ public class GeneralAdvancedTechniques : MonoBehaviour {
 			LeanTween.moveY( movePts[i].gameObject, movePts[i].position.y + 1.5f, 1f).setDelay(((float)i)*0.2f).setLoopPingPong();
 
 
-		// move objects at a constant speed
+		// move objects at a constant Speed
 		for(int i = 0; i < avatarSpeed.Length; i++)
-			LeanTween.moveLocalZ( avatarSpeed[i], (i+1)*5f, 1f).setSpeed(6f).setEase(LeanTweenType.easeInOutExpo).setLoopPingPong(); // any time you set the speed it overrides the time value
+			LeanTween.moveLocalZ( avatarSpeed[i], (i+1)*5f, 1f).setSpeed(6f).setEase(LeanTweenType.easeInOutExpo).setLoopPingPong(); // any time you set the Speed it overrides the time value
 	
-		// move around a circle at a constant speed
+		// move around a circle at a constant Speed
 		for(int i = 0; i < avatarSpeed2.Length; i++){
 			LeanTween.moveLocal( avatarSpeed2[i], i == 0 ? circleSm : circleLrg, 1f).setSpeed(20f).setRepeat(-1);
 		}

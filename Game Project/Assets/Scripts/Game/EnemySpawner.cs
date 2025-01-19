@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,10 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     [SerializeField] private GameObject StarPrefab;
+    [SerializeField] private GameObject SlowTimePrefab;
+    [SerializeField] private GameObject ShieldPrefab;
     private GameObject Star;
+    private GameObject SlowTimePU;
     [SerializeField] private Camera MainCamera;
 
 
@@ -15,10 +19,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private Transform minSpawn;
     [SerializeField] private Transform maxSpawn;
+    [SerializeField] private Transform minSpawnStar;
+    [SerializeField] private Transform maxSpawnStar;
+
 
     [SerializeField] private int enemySpawnLimit = 3; 
 
-    private List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> enemies = new List<GameObject>();
 
     [SerializeField] private GameOver GameOverScreen;
 
@@ -27,12 +34,22 @@ public class EnemySpawner : MonoBehaviour
     {
         Enemy.OnEnemyDied += HandleEnemyKilled;
         InvokeRepeating("SpawnEnemy", 1.0f, 2.0f);
-        InvokeRepeating("SpawnStars", 1.0f, 2.0f);
+        InvokeRepeating("SpawnStars", 1.0f, 3.5f);
+        InvokeRepeating("SpawnSlowTimePowerUp", 1.0f, 15.0f);
+        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 15.0f);
     }
 
+    private void SpawnShieldPowerUp()
+    {
+        Instantiate(ShieldPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+    }
+    private void SpawnSlowTimePowerUp()
+    {
+        Instantiate(SlowTimePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+    }
     private void SpawnStars()
     {
-        Star = Instantiate(StarPrefab, SelectStarSpawnPoint(), Quaternion.identity);
+        Star = Instantiate(StarPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
         CollectibleController controller = Star.GetComponent<CollectibleController>();
 
         controller.SetPlayer(target);
@@ -103,14 +120,40 @@ public class EnemySpawner : MonoBehaviour
         return spawnPoint;
     }
 
-    private Vector3 SelectStarSpawnPoint()
+    private Vector3 SelectSpawnPointForPUandStars()
     {
         Vector3 spawnPoint = new Vector3();
 
-        spawnPoint.x = UnityEngine.Random.Range(minSpawn.position.x, maxSpawn.position.x);
-        spawnPoint.y = UnityEngine.Random.Range(minSpawn.position.y, maxSpawn.position.y);
+        spawnPoint.x = UnityEngine.Random.Range(minSpawnStar.position.x, maxSpawnStar.position.x);
+        spawnPoint.y = UnityEngine.Random.Range(minSpawnStar.position.y, maxSpawnStar.position.y);
         return spawnPoint;
     }
 
+    private void SlowDownEnemies(bool SlowDown)
+    {
+        foreach (GameObject enemy in enemies)
+        {
+            Enemy enemy1 = enemy.GetComponent<Enemy>();
+
+            if (enemy1 != null)
+            {
+                if (SlowDown != true)
+                {
+                    enemy1.speed = 45f;
+                }
+                else
+                {
+                    enemy1.speed = 30f;
+                }
+            }
+        }
+    }
+
+    public IEnumerator SlowDown()
+    {
+        SlowDownEnemies(true);
+        yield return new WaitForSeconds(10);
+        SlowDownEnemies(false);
+    }
 }
 
