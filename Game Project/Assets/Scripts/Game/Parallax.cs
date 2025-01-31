@@ -10,7 +10,7 @@ public class Parallax : MonoBehaviour
     public Transform player;  // Reference to the player
     public Transform middle;  // The center background tile
     public Transform top, bottom, left, right, topleft, topright, bottomleft, bottomright; // The surrounding tiles
-
+    
     private Vector2 bgSize;  // The size of each background tile
 
     void Start()
@@ -81,5 +81,4 @@ public class Parallax : MonoBehaviour
 
         return closest;
     }
-
 }

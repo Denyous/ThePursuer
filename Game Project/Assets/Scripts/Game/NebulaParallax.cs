@@ -1,38 +1,109 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NebulaParallax : MonoBehaviour
 {
-    public Transform player; // Reference to the player's transform
-    public Vector2 movementRatio = new Vector2(0.5f, 0.5f); // How much the nebula moves relative to the player
-    private Vector3 initialOffset;
-    public RectTransform canvasRect; // Reference to the canvas's RectTransform
+    public Transform player; // Reference to the player
+    public Camera mainCamera; // Reference to the main camera
+    public float followSpeed = 2f; // Speed of movement
+    public float movementFactor = 0.3f;
+
+    private float minX, maxX, minY, maxY; // Background bounds
+
+    private float camHeight, camWidth;
+    private float bgWidth, bgHeight;
+
+
 
     void Start()
     {
-        initialOffset = transform.position - player.position;
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
+        camHeight = 2f * mainCamera.orthographicSize;
+        camWidth = camHeight * mainCamera.aspect;
+
+        bgWidth = sr.bounds.size.x;
+        bgHeight = sr.bounds.size.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 newPosition = player.position + initialOffset;
-        newPosition.x *= movementRatio.x;
-        newPosition.y *= movementRatio.y;
+        Vector3 targetPos = new Vector3(0,0,transform.position.z);
 
-        Vector3[] canvasCorners = new Vector3[4];
-        canvasRect.GetWorldCorners(canvasCorners);
+        float cameraLeftSide = mainCamera.transform.position.x - camWidth / 2;
+        float cameraRightSide = mainCamera.transform.position.x + camWidth / 2;
 
-        float minX = canvasCorners[0].x; // Bottom-left corner X
-        float maxX = canvasCorners[2].x; // Top-right corner X
-        float minY = canvasCorners[0].y; // Bottom-left corner Y
-        float maxY = canvasCorners[2].y; // Top-right corner Y
+        float cameraTopSide = mainCamera.transform.position.y + camHeight / 2;
+        float cameraBotSide = mainCamera.transform.position.y - camHeight / 2;
 
-        // Clamp the position to stay within the canvas bounds
-        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
-        newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
+        float bgLeftSide = transform.position.x - bgWidth / 2;
+        float bgRightSide = transform.position.x + bgWidth / 2;
 
-        transform.position = newPosition;
+        float bgTopSide = transform.position.x + bgHeight / 2;
+        float bgBotSide = transform.position.x - bgHeight / 2;
+
+        float checkLeft = cameraLeftSide - bgLeftSide;
+        float checkRight = bgRightSide - cameraRightSide;
+
+        float checkTop = bgTopSide - cameraTopSide;
+        float checkBot = cameraBotSide - bgBotSide;
+
+        if (checkBot < 0.5)
+        {
+            minY = cameraBotSide;
+            maxY = cameraBotSide;
+            minX = bgLeftSide;
+            maxX = bgRightSide;
+
+            targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
+            targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
+
+            // Smoothly move the background toward the target position
+            transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
+        }
+        if (checkTop < 0.5)
+        {
+            minY = cameraTopSide;
+            maxY = cameraTopSide;
+            minX = bgLeftSide;
+            maxX = bgRightSide;
+
+            targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
+            targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
+
+            // Smoothly move the background toward the target position
+            transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
+        }
+        if (checkLeft < 0.5)
+        {
+            minX = cameraLeftSide;
+            maxX = cameraLeftSide;
+            minY = cameraBotSide;
+            maxY = cameraTopSide;
+
+            targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
+            targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
+
+            // Smoothly move the background toward the target position
+            transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
+        }
+        if (checkRight < 0.5)
+        {
+            minX = cameraRightSide;
+            maxX = cameraRightSide;
+            minY = cameraBotSide;
+            maxY = cameraTopSide;
+
+            targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
+            targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
+
+            // Smoothly move the background toward the target position
+            transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
+        }
     }
 }
