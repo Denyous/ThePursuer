@@ -29,7 +29,6 @@ public class Enemy : MonoBehaviour
         GameController = FindObjectOfType<GameController>();
     }
 
-
     private void Update()
     {
         input = Input.GetAxis("Horizontal");

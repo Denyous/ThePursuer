@@ -43,10 +43,12 @@ public class EnemySpawner : MonoBehaviour
     {
         Instantiate(ShieldPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
     }
+
     private void SpawnSlowTimePowerUp()
     {
         Instantiate(SlowTimePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
     }
+
     private void SpawnStars()
     {
         Star = Instantiate(StarPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);

@@ -11,6 +11,9 @@ public class ParallaxBackground : MonoBehaviour
     private float textureUnitSizeX;
     private float textureUnitSizeY;
 
+    private GameObject PrefabRef;
+
+
     private void Start()
     {
         cameraTransform = Camera.main.transform;
@@ -20,6 +23,7 @@ public class ParallaxBackground : MonoBehaviour
         textureUnitSizeX = texture.width / sprite.pixelsPerUnit;
         textureUnitSizeY = texture.height / sprite.pixelsPerUnit;
     }
+
 
     private void Update()   
     {
