@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public float speed = 45f;
+    [SerializeField] private float speed = 45f;
     [SerializeField] private float steer = 15f;
 
     public static event System.Action<GameObject> OnEnemyDied;
@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour
 
     private GameOver GameOverScreen;
     private GameController GameController;
-
 
     private void Start()
     {
@@ -44,17 +43,31 @@ public class Enemy : MonoBehaviour
         target = newTarget;
     }
 
+    public void SetSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+    public void SetSteer(float steer)
+    {
+        this.steer = steer;
+    }
+
     public void SetGameOverScreen(GameOver gameOverScreen)
     {
         GameOverScreen = gameOverScreen;
     }
-    public void Die()
+    public void Die(bool explodeBuff, bool kamikaze, bool Flare)
     {
         OnEnemyDied?.Invoke(this.gameObject);
-        GameController.HandleCollision(transform.position);
+        GameController.HandleCollision(transform.position, explodeBuff, kamikaze, Flare);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void ChangeColor()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -65,19 +78,29 @@ public class Enemy : MonoBehaviour
                 int score = player.GetScore();
 
                 Object.Destroy(target.gameObject);
-                Object.Destroy(transform.gameObject);
+                Object.Destroy(this.gameObject);
 
                 GameOver(score);
             }
             else
             {
                 player.Shield = false;
+                Object.Destroy(this.gameObject);
             }
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
-            Die();
+            Die(false, false, false);
         }
+        else if (collision.gameObject.CompareTag("Flare"))
+        {
+            Die(false, false, false);
+        }
+    }
+
+    void OnParticleCollision()
+    {
+        Die(false, false, true);
     }
 
     private void FixedUpdate()
@@ -90,6 +113,4 @@ public class Enemy : MonoBehaviour
             rb.angularVelocity = rotationSteer * steer * 10f;
         }
     }
-
-    
 }

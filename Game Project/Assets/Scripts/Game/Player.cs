@@ -4,7 +4,9 @@ using System.Numerics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Splines;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
+using Unity.Mathematics;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class Player : MonoBehaviour
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private FixedJoystick Joystick;
     [SerializeField] private float RotationSpeed = 3f;
+    [SerializeField] private GameObject flares;
+    [SerializeField] private Transform flareLocation;
+
     private EnemySpawner Spawner;
 
     private Animator Animator;
@@ -26,6 +31,8 @@ public class Player : MonoBehaviour
 
     public bool Shield;
 
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,7 +40,7 @@ public class Player : MonoBehaviour
         Spawner = FindAnyObjectByType<EnemySpawner>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -42,12 +49,16 @@ public class Player : MonoBehaviour
                 Instantiate(Explosion, transform.position, UnityEngine.Quaternion.identity);
             }
         }
-        else if (collision.gameObject.CompareTag("Star"))
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Star"))
         {
-            CollectibleController controller = 
+            CollectibleController controller =
                 collision.gameObject.GetComponent<CollectibleController>();
 
-            controller.Kill();            
+            controller.Kill();
             Score++;
             ScoreText.text = Score.ToString();
         }
@@ -61,8 +72,11 @@ public class Player : MonoBehaviour
             Object.Destroy(collision.gameObject);
             StartCoroutine(Spawner.SlowDown());
         }
+        else if (collision.gameObject.CompareTag("Kamikaze"))
+        {
+            Object.Destroy(collision.gameObject);
+        }
     }
-
 
     private void FixedUpdate()
     {
@@ -84,10 +98,16 @@ public class Player : MonoBehaviour
 
         rb.velocity = transform.up * Speed * Time.fixedDeltaTime * 10f;
     }
-
     
     public int GetScore()
     {
         return Score;
+    }
+    
+    public void CreateFlares()
+    {
+        UnityEngine.Quaternion currentRotation = transform.rotation;
+
+        Instantiate(flares, flareLocation.position, currentRotation);
     }
 }

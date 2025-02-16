@@ -13,22 +13,39 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-    public void HandleCollision(Vector3 position)
+
+    public void HandleCollision(Vector3 position, bool ExplodeBuff, bool Kamikaze, bool Flare)
     {
-        if (!Exploded && ExplodeCount == 0)
+        if (!ExplodeBuff && !Kamikaze && !Flare)
+        {
+            if (!Exploded && ExplodeCount == 0)
+            {
+                Instantiate(ExplosionPrefab, position, Quaternion.identity);
+                Exploded = true;
+                ExplodeCount++;
+            }
+            else
+            {
+                ExplodeCount = 0;
+                Exploded = false;
+            }
+        }
+        else if (Kamikaze)
         {
             Instantiate(ExplosionPrefab, position, Quaternion.identity);
-            Exploded = true;
-            ExplodeCount++;
         }
-        else
+        else if (ExplodeBuff)
         {
-            ExplodeCount = 0;
-            Exploded = false;
+            Instantiate(ExplosionPrefab, position, Quaternion.identity);
+        }
+        else if (Flare)
+        {
+            Instantiate(ExplosionPrefab, position, Quaternion.identity);
         }
     }
 }
