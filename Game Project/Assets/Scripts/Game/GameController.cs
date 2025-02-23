@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    //Creating explosion for enemies 
     public void HandleCollision(Vector3 position, bool ExplodeBuff, bool Kamikaze, bool Flare)
     {
         if (!ExplodeBuff && !Kamikaze && !Flare)

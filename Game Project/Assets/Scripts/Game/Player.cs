@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
 
     Rigidbody2D rb;
     private float targetAngle;
-
     public bool Shield;
 
 
@@ -39,6 +38,7 @@ public class Player : MonoBehaviour
         Animator = GetComponent<Animator>();
         Spawner = FindAnyObjectByType<EnemySpawner>();
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Star"))
@@ -78,6 +79,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Player movement
     private void FixedUpdate()
     {
         float x = Joystick.Horizontal;
@@ -99,15 +101,9 @@ public class Player : MonoBehaviour
         rb.velocity = transform.up * Speed * Time.fixedDeltaTime * 10f;
     }
     
+    //Getting score to show in game over screen
     public int GetScore()
     {
         return Score;
-    }
-    
-    public void CreateFlares()
-    {
-        UnityEngine.Quaternion currentRotation = transform.rotation;
-
-        Instantiate(flares, flareLocation.position, currentRotation);
     }
 }

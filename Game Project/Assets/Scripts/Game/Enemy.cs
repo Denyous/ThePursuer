@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour
         input = Input.GetAxis("Horizontal");
     }
 
+    //Showing game over screen
     public void GameOver(int score)
     {
         GameOverScreen.Setup(score);
@@ -47,6 +48,7 @@ public class Enemy : MonoBehaviour
     {
         this.speed = speed;
     }
+
     public void SetSteer(float steer)
     {
         this.steer = steer;
@@ -56,12 +58,15 @@ public class Enemy : MonoBehaviour
     {
         GameOverScreen = gameOverScreen;
     }
+
+    //Killing enemies
     public void Die(bool explodeBuff, bool kamikaze, bool Flare)
     {
         OnEnemyDied?.Invoke(this.gameObject);
         GameController.HandleCollision(transform.position, explodeBuff, kamikaze, Flare);
     }
 
+    //Change color for kamikaze buff
     public void ChangeColor()
     {
         gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
@@ -98,11 +103,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //Flare particle collision
     void OnParticleCollision()
     {
         Die(false, false, true);
     }
 
+    //Enemies follow player
     private void FixedUpdate()
     {
         if (target != null)
