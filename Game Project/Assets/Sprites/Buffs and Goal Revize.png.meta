@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a88e21ebce8dc8f43b1d59556327b3af
+guid: 3a45f007cf9d1584f95e05ace8383149
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,59 +81,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -162,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buffs and Goal_0
+      name: Buffs and Goal Revize_0
       rect:
         serializedVersion: 2
-        x: 22
+        x: 23
         y: 802
-        width: 203
+        width: 201
         height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -176,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16b8947c4dd0ac74eaef3e6d796256fc
-      internalID: 919685848
+      spriteID: 672dcd98990e94c4db8147d27315a64a
+      internalID: -1140935303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buffs and Goal_1
+      name: Buffs and Goal Revize_1
       rect:
         serializedVersion: 2
-        x: 272
-        y: 799
-        width: 202
-        height: 203
+        x: 273
+        y: 801
+        width: 201
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54a053839a166f549b88b4f2be14c4e3
-      internalID: -520646122
+      spriteID: 2adc1b408e39ba14c910e9f4c89aa35b
+      internalID: -1714038478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buffs and Goal_2
+      name: Buffs and Goal Revize_2
       rect:
         serializedVersion: 2
-        x: 527
+        x: 525
         y: 798
         width: 201
-        height: 202
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,104 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4a0c4a07664c5f4cb2085fd1642232c
-      internalID: -1992030196
+      spriteID: 2452b01c18905194cae6883838e6892d
+      internalID: 2069374100
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buffs and Goal_3
-      rect:
-        serializedVersion: 2
-        x: 772
-        y: 795
-        width: 203
-        height: 203
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9df8ba10131e6cf4d9efe4308e5cfa01
-      internalID: -1096649715
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Buffs and Goal_4
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 551
-        width: 202
-        height: 202
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 558dc9280e4850b47be40733cd5d8f3b
-      internalID: 1798928158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Buffs and Goal_5
-      rect:
-        serializedVersion: 2
-        x: 275
-        y: 549
-        width: 203
-        height: 203
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6bba0a7b09aaf9a41a977707c953ad22
-      internalID: 529593367
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Buffs and Goal_6
-      rect:
-        serializedVersion: 2
-        x: 522
-        y: 550
-        width: 202
-        height: 202
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6044b1245fc019b42b7cf33ef824f7ed
-      internalID: 84999910
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Buffs and Goal_7
+      name: Buffs and Goal Revize_3
       rect:
         serializedVersion: 2
         x: 773
-        y: 549
-        width: 202
-        height: 203
+        y: 797
+        width: 201
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,20 +187,104 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7b1bbbd014e1e44ab34be150a25bca8
-      internalID: 1992757664
+      spriteID: 93ab83ea0c199c74e9093e9439829c63
+      internalID: -336735648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buffs and Goal_8
+      name: Buffs and Goal Revize_4
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 550
+        width: 201
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc2c16e6b40d58d45939c71b0d32a16d
+      internalID: 241613302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffs and Goal Revize_5
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 552
+        width: 201
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e9a5cf47ab41ca41a1be615d6d0b3fa
+      internalID: -1286432178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffs and Goal Revize_6
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 551
+        width: 201
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e351361cb6da4a14ca3d91392a26df50
+      internalID: 1151664931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffs and Goal Revize_7
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 550
+        width: 201
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 476a5721fe5ef404ca107d0f29d4ceeb
+      internalID: -593855147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffs and Goal Revize_8
       rect:
         serializedVersion: 2
         x: 25
         y: 300
-        width: 202
-        height: 202
+        width: 201
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cfb7a5f1fa9ed748b24d594d2ab30aa
-      internalID: 1747557257
+      spriteID: 243608eb55b68af4aaa5aeff3bddbc39
+      internalID: 526139878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buffs and Goal_9
+      name: Buffs and Goal Revize_9
       rect:
         serializedVersion: 2
-        x: 23
-        y: 45
-        width: 204
-        height: 202
+        x: 25
+        y: 48
+        width: 201
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d950b608b0be8004da57097cd51a0381
-      internalID: -724419354
+      spriteID: 9a5e67b1b70389642b8f45108b8df730
+      internalID: 1960401004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buffs and Goal_10
+      name: Buffs and Goal Revize_10
       rect:
         serializedVersion: 2
-        x: 273
-        y: 46
-        width: 204
-        height: 202
+        x: 275
+        y: 47
+        width: 201
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,8 +334,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8d5b20647277e14cbec1638cb691e61
-      internalID: -1385126426
+      spriteID: 5936986b7a49c1146972c169ea97f47b
+      internalID: 451349030
       vertices: []
       indices: 
       edges: []
@@ -403,17 +351,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Buffs and Goal_0: 919685848
-      Buffs and Goal_1: -520646122
-      Buffs and Goal_10: -1385126426
-      Buffs and Goal_2: -1992030196
-      Buffs and Goal_3: -1096649715
-      Buffs and Goal_4: 1798928158
-      Buffs and Goal_5: 529593367
-      Buffs and Goal_6: 84999910
-      Buffs and Goal_7: 1992757664
-      Buffs and Goal_8: 1747557257
-      Buffs and Goal_9: -724419354
+      Buffs and Goal Revize_0: -1140935303
+      Buffs and Goal Revize_1: -1714038478
+      Buffs and Goal Revize_10: 451349030
+      Buffs and Goal Revize_2: 2069374100
+      Buffs and Goal Revize_3: -336735648
+      Buffs and Goal Revize_4: 241613302
+      Buffs and Goal Revize_5: -1286432178
+      Buffs and Goal Revize_6: 1151664931
+      Buffs and Goal Revize_7: -593855147
+      Buffs and Goal Revize_8: 526139878
+      Buffs and Goal Revize_9: 1960401004
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
