@@ -10,7 +10,6 @@ using Unity.Mathematics;
 
 public class Player : MonoBehaviour
 {
-
     [SerializeField] private float Speed = 35f;
     [SerializeField] private float Steer = 1.5f;
     [SerializeField] private GameObject Explosion;
@@ -48,11 +47,11 @@ public class Player : MonoBehaviour
             if (Shield != true)
             {
                 Instantiate(Explosion, transform.position, UnityEngine.Quaternion.identity);
-                
-               
             }
         }
     }
+
+
 
     //Handling collisions for Stars, Shield, Slow Time, Kamikaze
     private void OnTriggerEnter2D(Collider2D collision)
@@ -85,6 +84,8 @@ public class Player : MonoBehaviour
     }
 
 
+
+    //Change Shield Visual according to the Shield bool
     public void ChangeShieldState()
     {
         if (Shield == false)
@@ -96,6 +97,8 @@ public class Player : MonoBehaviour
             shieldVisual.SetActive(true);  // Kalkan görselini aç
         }
     }
+
+
 
     //Player movement
     private void FixedUpdate()
@@ -119,12 +122,17 @@ public class Player : MonoBehaviour
         rb.velocity = transform.up * Speed * Time.fixedDeltaTime * 10f;
     }
     
+
+
     //Getting score to show in game over screen
     public int GetScore()
     {
         return Score;
     }
 
+
+
+    //In UI when flare button pressed trigger this function
     public void CreateFlares()
     {
         UnityEngine.Quaternion currentRotation = transform.rotation;
