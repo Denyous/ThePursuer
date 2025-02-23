@@ -45,6 +45,7 @@ public class EnemySpawner : MonoBehaviour
         m_camera = FindObjectOfType<Camera>();
     }
 
+
     private void SpawnShieldPowerUp()
     {
         Instantiate(ShieldPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
@@ -207,10 +208,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-
+    //
     private IEnumerator SelfDestroy(float sec, GameObject enemy)
     {
-
         yield return new WaitForSeconds(sec);
         Enemy enemyScript = enemy.GetComponent<Enemy>();
         enemyScript.Die(false, true, false);
