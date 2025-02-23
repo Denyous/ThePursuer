@@ -101,7 +101,7 @@ public class Enemy : MonoBehaviour
 
                 player.Shield = false;
                 
-                player.ShielddeActive();
+                player.ChangeShieldState();
 
 
                 Object.Destroy(this.gameObject);

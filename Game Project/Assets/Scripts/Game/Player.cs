@@ -70,11 +70,8 @@ public class Player : MonoBehaviour
         {
             Object.Destroy(collision.gameObject);
             Shield = true;
-            
-            if (shieldVisual != null)
-            {
-                shieldVisual.SetActive(true);  // Kalkan görselini aç
-            }
+
+            ChangeShieldState();
         }
         else if (collision.gameObject.CompareTag("SlowTime"))
         {
@@ -88,18 +85,16 @@ public class Player : MonoBehaviour
     }
 
 
-    public void ShielddeActive()
+    public void ChangeShieldState()
     {
-
         if (Shield == false)
         {
-            if (shieldVisual != null)
-            {
-                shieldVisual.SetActive(false);  // Kalkan görselini aç
-            }
+            shieldVisual.SetActive(false);  // Kalkan görselini kapat
         }
-
-
+        else
+        {
+            shieldVisual.SetActive(true);  // Kalkan görselini aç
+        }
     }
 
     //Player movement
