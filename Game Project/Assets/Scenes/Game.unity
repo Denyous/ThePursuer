@@ -2331,7 +2331,7 @@ MonoBehaviour:
   Steer: 1.5
   Explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   StarPreFab: {fileID: 7820447434184616243, guid: 0d12645392dd44343b3c9ed2321eb00e, type: 3}
-  ScoreText: {fileID: 1413435082}
+  ScoreText: {fileID: 1182250688}
   Joystick: {fileID: 262381312}
   RotationSpeed: 3
   flares: {fileID: 4656275142420581941, guid: 6aba37fbe7ad8464f8fa32de17bcf670, type: 3}
