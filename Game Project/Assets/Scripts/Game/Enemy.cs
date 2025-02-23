@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GameController = FindObjectOfType<GameController>();
+
     }
 
 
@@ -97,7 +98,12 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+
                 player.Shield = false;
+                
+                player.ShielddeActive();
+
+
                 Object.Destroy(this.gameObject);
             }
         }

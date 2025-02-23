@@ -45,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
         InvokeRepeating("SpawnEnemy", 1.0f, 2.0f);
         InvokeRepeating("SpawnStars", 1.0f, 3.5f);
         InvokeRepeating("SpawnSlowTimePowerUp", 1.0f, 15.0f);
-        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 15.0f);
+        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 6.0f);
         m_camera = FindObjectOfType<Camera>();
     }
 

@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float RotationSpeed = 3f;
     [SerializeField] private GameObject flares;
     [SerializeField] private Transform flareLocation;
+    [SerializeField] GameObject shieldVisual;
 
     private EnemySpawner Spawner;
 
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour
             if (Shield != true)
             {
                 Instantiate(Explosion, transform.position, UnityEngine.Quaternion.identity);
+                
+               
             }
         }
     }
@@ -67,6 +70,11 @@ public class Player : MonoBehaviour
         {
             Object.Destroy(collision.gameObject);
             Shield = true;
+            
+            if (shieldVisual != null)
+            {
+                shieldVisual.SetActive(true);  // Kalkan görselini aç
+            }
         }
         else if (collision.gameObject.CompareTag("SlowTime"))
         {
@@ -77,6 +85,21 @@ public class Player : MonoBehaviour
         {
             Object.Destroy(collision.gameObject);
         }
+    }
+
+
+    public void ShielddeActive()
+    {
+
+        if (Shield == false)
+        {
+            if (shieldVisual != null)
+            {
+                shieldVisual.SetActive(false);  // Kalkan görselini aç
+            }
+        }
+
+
     }
 
     //Player movement
