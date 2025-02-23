@@ -106,4 +106,11 @@ public class Player : MonoBehaviour
     {
         return Score;
     }
+
+    public void CreateFlares()
+    {
+        UnityEngine.Quaternion currentRotation = transform.rotation;
+
+        Instantiate(flares, flareLocation.position, currentRotation);
+    }
 }
