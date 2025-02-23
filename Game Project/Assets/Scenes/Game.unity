@@ -448,7 +448,8 @@ MonoBehaviour:
   StarPrefab: {fileID: 7820447434184616243, guid: 0d12645392dd44343b3c9ed2321eb00e, type: 3}
   SlowTimePrefab: {fileID: 8353853736538985782, guid: 31dae8b6b2c313d47acdd6b19111466d, type: 3}
   ShieldPrefab: {fileID: 8661976596798936278, guid: 073d47421b294ee4393e8f0f12f255a6, type: 3}
-  enemySpawnLimit: 3
+  KamikazeEffect: {fileID: 9008445294550007333, guid: bd9f9379c9ac4f74f8d72ecc2bb63074, type: 3}
+  enemySpawnLimit: 6
   enemies: []
   GameOverScreen: {fileID: 1405075683}
 --- !u!1 &455849287

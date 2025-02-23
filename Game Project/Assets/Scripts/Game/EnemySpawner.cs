@@ -26,6 +26,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject SlowTimePrefab;
     [SerializeField] private GameObject ShieldPrefab;
 
+    //Kamikaze Effect Particle System
+    [SerializeField] private GameObject KamikazeEffect;
+
 
     //Enemy spawn logic variables
     [SerializeField] private int enemySpawnLimit = 10; 
@@ -79,6 +82,7 @@ public class EnemySpawner : MonoBehaviour
             enemyScript.SetGameOverScreen(GameOverScreen);
 
             RegisterEnemy(PrefabRef);
+            Debug.Log($"Enemy Count: {enemies.Count}");
         }
     }
     #endregion
@@ -100,7 +104,6 @@ public class EnemySpawner : MonoBehaviour
         enemies.Add(enemy);
     }
     //Get enemy spawn point according to the spawn point objects in the unity 
-    //References is in start of this file
     private Vector3 SelectEnemySpawnPoint()
     {
         Vector3 spawnPoint = Vector3.zero;
@@ -184,21 +187,33 @@ public class EnemySpawner : MonoBehaviour
 
 
 
+
     //2 power ups use this function (kamikaze and explode)
     public bool CheckVisibility(GameObject gameObject)
     {
-        Vector3 screenPos = m_camera.WorldToScreenPoint(gameObject.transform.position);
-        bool onScreen = screenPos.x > 0f && screenPos.x < UnityEngine.Screen.width && screenPos.y > 0f && screenPos.y < UnityEngine.Screen.height;
-
-        if (onScreen && gameObject.GetComponent<SpriteRenderer>().isVisible)
+        if (gameObject != null)
         {
-            return true;
+            Vector3 screenPos = m_camera.WorldToScreenPoint(gameObject.transform.position);
+            bool onScreen = screenPos.x > 0f && screenPos.x < UnityEngine.Screen.width && screenPos.y > 0f && screenPos.y < UnityEngine.Screen.height;
+
+            if (onScreen && gameObject.GetComponent<SpriteRenderer>().isVisible)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
             return false;
         }
     }
+
+
+
+    #region Kamikaze
     public void KamikazeEnemies()
     {
         float seconds = 3;
@@ -219,13 +234,18 @@ public class EnemySpawner : MonoBehaviour
                     enemyScript.SetSpeed(60f);
                     enemyScript.SetSteer(30f);
                     enemyScript.SetTarget(enemy1);
-                    enemyScript.ChangeColor();
+                    enemyScript.ChangeColor(KamikazeEffect);
                     Kamikaze = false;
                     StartCoroutine(SelfDestroy(seconds, enemy));
                 }
             }
         }
     }
+
+    #endregion
+
+
+   
 
     #region Explode buff functions
     public void ExplodeEnemies()
@@ -252,8 +272,11 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SelfDestroy(float sec, GameObject enemy)
     {
         yield return new WaitForSeconds(sec);
-        Enemy enemyScript = enemy.GetComponent<Enemy>();
-        enemyScript.Die(false, true, false);
+        if (enemy != null)
+        {
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            enemyScript.Die(false, true, false);
+        }
     }
     public GameObject GetClosestObjectInList(GameObject target, List<GameObject> findList)
     {

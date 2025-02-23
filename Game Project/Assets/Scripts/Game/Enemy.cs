@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     private GameController GameController;
 
 
+    private GameObject KamikazeEffect;
 
     private void Start()
     {
@@ -72,9 +73,10 @@ public class Enemy : MonoBehaviour
 
 
     //Change color for kamikaze buff
-    public void ChangeColor()
+    public void ChangeColor(GameObject ParticleSystem)
     {
-        gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+        GameObject newParticle = Instantiate(ParticleSystem, transform.position, Quaternion.identity);
+        newParticle.transform.SetParent(transform);
     }
 
 
@@ -100,9 +102,8 @@ public class Enemy : MonoBehaviour
             {
 
                 player.Shield = false;
-                
-                player.ChangeShieldState();
 
+                player.ChangeShieldState();
 
                 Object.Destroy(this.gameObject);
             }
