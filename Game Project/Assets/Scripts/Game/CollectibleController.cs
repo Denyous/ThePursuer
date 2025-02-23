@@ -48,6 +48,7 @@ public class CollectibleController : MonoBehaviour
         }
     }
 
+    #region Handling Icon Positions on the side of the screen
     public void SetPlayer(GameObject player)
     {
         Player = player;
@@ -118,7 +119,7 @@ public class CollectibleController : MonoBehaviour
             screenPosition.y = viewportPosition.y * Screen.height;
         }
 
-        Vector3 iconPosition = 
+        Vector3 iconPosition =
             camera.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 1));
         icon.transform.position = iconPosition;
     }
@@ -142,4 +143,5 @@ public class CollectibleController : MonoBehaviour
             Object.Destroy(icon);
         }
     }
+    #endregion
 }

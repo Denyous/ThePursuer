@@ -9,34 +9,38 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    private GameObject PrefabRef;
+    private GameObject Star;
+
+    //Player
+    [SerializeField] private GameObject target;
+    //Spawn points for enemies
+    [SerializeField] private Transform minSpawn;
+    [SerializeField] private Transform maxSpawn;
+    //Spawn points for collectibles
+    [SerializeField] private Transform minSpawnStar;
+    [SerializeField] private Transform maxSpawnStar;
+
+    //Collectible Prefabs
     [SerializeField] private GameObject StarPrefab;
     [SerializeField] private GameObject SlowTimePrefab;
     [SerializeField] private GameObject ShieldPrefab;
-    private GameObject Star;
-    private GameObject SlowTimePU;
-    [SerializeField] private Camera MainCamera;
 
 
-    private GameObject PrefabRef;
-
-    [SerializeField] private GameObject target;
-    [SerializeField] private Transform minSpawn;
-    [SerializeField] private Transform maxSpawn;
-    [SerializeField] private Transform minSpawnStar;
-    [SerializeField] private Transform maxSpawnStar;
-    
-
-
+    //Enemy spawn logic variables
     [SerializeField] private int enemySpawnLimit = 10; 
-
     public List<GameObject> enemies = new List<GameObject>();
 
+
+    //This is for setting game over screen for enemy script and game over screen logic handled there
     [SerializeField] private GameOver GameOverScreen;
 
+    //Camera is required for determining is there a more than one enemy on the screen
     private Camera m_camera;
 
     private void Start()
     {
+        //This is an event on enemy killed
         Enemy.OnEnemyDied += HandleEnemyKilled;
         InvokeRepeating("SpawnEnemy", 1.0f, 2.0f);
         InvokeRepeating("SpawnStars", 1.0f, 3.5f);
@@ -46,16 +50,16 @@ public class EnemySpawner : MonoBehaviour
     }
 
 
+    #region Spawners
+    //Spawn Shield Speed Up Stars and Enemies
     private void SpawnShieldPowerUp()
     {
         Instantiate(ShieldPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
     }
-
     private void SpawnSlowTimePowerUp()
     {
         Instantiate(SlowTimePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
     }
-
     private void SpawnStars()
     {
         Star = Instantiate(StarPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
@@ -63,7 +67,6 @@ public class EnemySpawner : MonoBehaviour
 
         controller.SetPlayer(target);
     }
-
     private void SpawnEnemy()
     {
         if (enemies.Count < enemySpawnLimit && target != null)
@@ -78,7 +81,11 @@ public class EnemySpawner : MonoBehaviour
             RegisterEnemy(PrefabRef);
         }
     }
+    #endregion
 
+
+    #region Enemy Functions
+    //Destroy enemy objects and removing them from the list
     private void HandleEnemyKilled(GameObject enemy)
     {
         if (enemies.Contains(enemy))
@@ -87,12 +94,13 @@ public class EnemySpawner : MonoBehaviour
             enemies.Remove(enemy);
         }
     }
-
+    //Add enemies to the list
     public void RegisterEnemy(GameObject enemy)
     {
         enemies.Add(enemy);
     }
-
+    //Get enemy spawn point according to the spawn point objects in the unity 
+    //References is in start of this file
     private Vector3 SelectEnemySpawnPoint()
     {
         Vector3 spawnPoint = Vector3.zero;
@@ -129,6 +137,10 @@ public class EnemySpawner : MonoBehaviour
         return spawnPoint;
     }
 
+    #endregion
+
+
+    //Get collectible spawn point according to the star spawn point objects in the unity
     private Vector3 SelectSpawnPointForPUandStars()
     {
         Vector3 spawnPoint = new Vector3();
@@ -138,6 +150,10 @@ public class EnemySpawner : MonoBehaviour
         return spawnPoint;
     }
 
+
+    #region PowerUp Effects
+
+    #region Slow Down Enemies
     private void SlowDownEnemies(bool SlowDown)
     {
         foreach (GameObject enemy in enemies)
@@ -157,29 +173,32 @@ public class EnemySpawner : MonoBehaviour
             }
         }
     }
-
-    public void ExplodeEnemies()
+    public IEnumerator SlowDown()
     {
-        List<GameObject> enemyRefList = new List<GameObject>();
+        SlowDownEnemies(true);
+        yield return new WaitForSeconds(10);
+        SlowDownEnemies(false);
+    }
+    #endregion
 
-        foreach (GameObject enemy in enemies)
+
+
+
+    //2 power ups use this function (kamikaze and explode)
+    public bool CheckVisibility(GameObject gameObject)
+    {
+        Vector3 screenPos = m_camera.WorldToScreenPoint(gameObject.transform.position);
+        bool onScreen = screenPos.x > 0f && screenPos.x < UnityEngine.Screen.width && screenPos.y > 0f && screenPos.y < UnityEngine.Screen.height;
+
+        if (onScreen && gameObject.GetComponent<SpriteRenderer>().isVisible)
         {
-            bool isVisible = CheckVisibility(enemy);
-
-            if (isVisible)
-            {
-                enemyRefList.Add(enemy);
-            }
+            return true;
         }
-
-        foreach (var enemy1 in enemyRefList)
+        else
         {
-            Enemy enemyScript = enemy1.GetComponent<Enemy>();
-            enemyScript.Die(true, false, false);
-            enemies.Remove(enemy1);
+            return false;
         }
     }
-
     public void KamikazeEnemies()
     {
         float seconds = 3;
@@ -208,15 +227,34 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    //
+    #region Explode buff functions
+    public void ExplodeEnemies()
+    {
+        List<GameObject> enemyRefList = new List<GameObject>();
+
+        foreach (GameObject enemy in enemies)
+        {
+            bool isVisible = CheckVisibility(enemy);
+
+            if (isVisible)
+            {
+                enemyRefList.Add(enemy);
+            }
+        }
+
+        foreach (var enemy1 in enemyRefList)
+        {
+            Enemy enemyScript = enemy1.GetComponent<Enemy>();
+            enemyScript.Die(true, false, false);
+            enemies.Remove(enemy1);
+        }
+    }
     private IEnumerator SelfDestroy(float sec, GameObject enemy)
     {
         yield return new WaitForSeconds(sec);
         Enemy enemyScript = enemy.GetComponent<Enemy>();
         enemyScript.Die(false, true, false);
     }
-
-
     public GameObject GetClosestObjectInList(GameObject target, List<GameObject> findList)
     {
         GameObject newFind = new GameObject();
@@ -237,7 +275,7 @@ public class EnemySpawner : MonoBehaviour
         }
         return newFind;
     }
-
+    //If there is more than one enemy in the screen when player press the button explode them all
     public bool CheckMoreThanOneEnemyVisible()
     {
         List<GameObject> VisibleEnemy = new List<GameObject>();
@@ -261,27 +299,9 @@ public class EnemySpawner : MonoBehaviour
             return false;
         }
     }
-    
-    public bool CheckVisibility(GameObject gameObject)
-    {
-        Vector3 screenPos = m_camera.WorldToScreenPoint(gameObject.transform.position);
-        bool onScreen = screenPos.x > 0f && screenPos.x < UnityEngine.Screen.width && screenPos.y > 0f && screenPos.y < UnityEngine.Screen.height;
+    #endregion
 
-        if (onScreen && gameObject.GetComponent<SpriteRenderer>().isVisible)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    #endregion
 
-    public IEnumerator SlowDown()
-    {
-        SlowDownEnemies(true);
-        yield return new WaitForSeconds(10);
-        SlowDownEnemies(false);
-    }
 }
 

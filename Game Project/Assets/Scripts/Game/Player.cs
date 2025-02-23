@@ -10,10 +10,10 @@ using Unity.Mathematics;
 
 public class Player : MonoBehaviour
 {
+
     [SerializeField] private float Speed = 35f;
     [SerializeField] private float Steer = 1.5f;
     [SerializeField] private GameObject Explosion;
-    [SerializeField] private GameObject StarPreFab;
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private FixedJoystick Joystick;
     [SerializeField] private float RotationSpeed = 3f;
@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
 
     private EnemySpawner Spawner;
 
-    private Animator Animator;
     private int Score = 0;
 
 
@@ -35,11 +34,12 @@ public class Player : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();
         Spawner = FindAnyObjectByType<EnemySpawner>();
     }
 
 
+
+    //Handling collision for Shield
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    
+    //Handling collisions for Stars, Shield, Slow Time, Kamikaze
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Star"))

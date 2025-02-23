@@ -10,28 +10,28 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed = 45f;
     [SerializeField] private float steer = 15f;
 
+    //This is an event to be handled in EnemySpawner script
     public static event System.Action<GameObject> OnEnemyDied;
 
+    //Player
     private GameObject target;
-    private Animator animator;
 
     Rigidbody2D rb;
-    float input;
 
     private GameOver GameOverScreen;
+
+    //Game Controller for creating explosion prefabs
     private GameController GameController;
+
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         GameController = FindObjectOfType<GameController>();
     }
 
-    private void Update()
-    {
-        input = Input.GetAxis("Horizontal");
-    }
+
 
     //Showing game over screen
     public void GameOver(int score)
@@ -39,25 +39,27 @@ public class Enemy : MonoBehaviour
         GameOverScreen.Setup(score);
     }
 
+
+    #region Setting Enemy Variables
     public void SetTarget(GameObject newTarget)
     {
         target = newTarget;
     }
-
     public void SetSpeed(float speed)
     {
         this.speed = speed;
     }
-
     public void SetSteer(float steer)
     {
         this.steer = steer;
     }
-
     public void SetGameOverScreen(GameOver gameOverScreen)
     {
         GameOverScreen = gameOverScreen;
     }
+    #endregion
+
+
 
     //Killing enemies
     public void Die(bool explodeBuff, bool kamikaze, bool Flare)
@@ -66,12 +68,18 @@ public class Enemy : MonoBehaviour
         GameController.HandleCollision(transform.position, explodeBuff, kamikaze, Flare);
     }
 
+
+
     //Change color for kamikaze buff
     public void ChangeColor()
     {
         gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
     }
 
+
+
+    #region Handling Collisions
+    //Handling enemy collisions with player, other enemies, and flares
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -109,6 +117,11 @@ public class Enemy : MonoBehaviour
         Die(false, false, true);
     }
 
+    #endregion
+
+
+
+    #region Follow Player Logic
     //Enemies follow player
     private void FixedUpdate()
     {
@@ -120,4 +133,5 @@ public class Enemy : MonoBehaviour
             rb.angularVelocity = rotationSteer * steer * 10f;
         }
     }
+    #endregion
 }
