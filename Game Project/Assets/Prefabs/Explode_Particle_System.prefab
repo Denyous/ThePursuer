@@ -3625,7 +3625,7 @@ ParticleSystem:
     collisionMode: 1
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
-    multiplyColliderForceByParticleSpeed: 0
+    multiplyColliderForceByParticleSpeed: 1
     multiplyColliderForceByCollisionAngle: 1
     m_Planes: []
     m_Dampen:

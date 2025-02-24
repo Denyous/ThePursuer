@@ -20,14 +20,21 @@ public class BlackHole : MonoBehaviour
             Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             spawnPosition.z = 0; // 2D olduğu için Z'yi sıfırla
 
-            Instantiate(blackHolePrefab, spawnPosition, Quaternion.identity); // Karadelik oluştur
+            GameObject blackHoleRef = Instantiate(blackHolePrefab, spawnPosition, Quaternion.identity); // Karadelik oluştur
 
             isPlacing = false;
             Time.timeScale = 1f; // Oyun devam etsin
+            StartCoroutine(destroyBlackHoleAfterXSeconds(blackHoleRef));
         }
     }
 
-   public void StartPlacement()
+    private IEnumerator destroyBlackHoleAfterXSeconds(GameObject blackHole)
+    {
+        yield return new WaitForSeconds(1);
+        Object.Destroy(blackHole);
+    }
+
+    public void StartPlacement()
     {
         isPlacing = true;
         Time.timeScale = 0f; // Oyun duraklatılır
