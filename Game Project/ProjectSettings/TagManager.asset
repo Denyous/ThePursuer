@@ -9,6 +9,7 @@ TagManager:
   - SlowTime
   - Shield
   - Flare
+  - Explode
   layers:
   - Default
   - TransparentFX

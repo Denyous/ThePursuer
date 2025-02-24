@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 7291838540196593265}
   - component: {fileID: 3189795047319824469}
   m_Layer: 0
-  m_Name: SF_Basic
+  m_Name: Flares
   m_TagString: Flare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,8 +7,10 @@ using UnityEngine.Rendering.Universal;
 
 public class Enemy : MonoBehaviour
 {
+    //Variables of the Enemy itself
     [SerializeField] private float speed = 45f;
     [SerializeField] private float steer = 15f;
+    Rigidbody2D rb;
 
     //This is an event to be handled in EnemySpawner script
     public static event System.Action<GameObject> OnEnemyDied;
@@ -16,21 +18,16 @@ public class Enemy : MonoBehaviour
     //Player
     private GameObject target;
 
-    Rigidbody2D rb;
 
     private GameOver GameOverScreen;
 
     //Game Controller for creating explosion prefabs
     private GameController GameController;
 
-
-    private GameObject KamikazeEffect;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         GameController = FindObjectOfType<GameController>();
-
     }
 
 
@@ -42,7 +39,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    #region Setting Enemy Variables
+    #region Setting Variables for Outside Use
     public void SetTarget(GameObject newTarget)
     {
         target = newTarget;
@@ -73,7 +70,7 @@ public class Enemy : MonoBehaviour
 
 
     //Change color for kamikaze buff
-    public void ChangeColor(GameObject ParticleSystem)
+    public void ActivateKamikaze(GameObject ParticleSystem)
     {
         GameObject newParticle = Instantiate(ParticleSystem, transform.position, Quaternion.identity);
         newParticle.transform.SetParent(transform);
@@ -87,26 +84,26 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Player player = target.gameObject.GetComponent<Player>();
+            //Player player = target.gameObject.GetComponent<Player>();
 
-            if (player != null && player.Shield == false)
-            {
-                int score = player.GetScore();
+            //if (player != null && player.Shield == false)
+            //{
+            //    int score = player.GetScore();
 
-                Object.Destroy(target.gameObject);
-                Object.Destroy(this.gameObject);
+            //    Object.Destroy(target.gameObject);
+            //    Object.Destroy(this.gameObject);
 
-                GameOver(score);
-            }
-            else
-            {
+            //    GameOver(score);
+            //}
+            //else
+            //{
 
-                player.Shield = false;
+            //    player.Shield = false;
 
-                player.ChangeShieldState();
+            //    player.ChangeShieldState();
 
-                Object.Destroy(this.gameObject);
-            }
+            //    Object.Destroy(this.gameObject);
+            //}
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {

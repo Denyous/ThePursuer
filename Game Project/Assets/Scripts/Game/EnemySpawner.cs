@@ -28,6 +28,7 @@ public class EnemySpawner : MonoBehaviour
 
     //Kamikaze Effect Particle System
     [SerializeField] private GameObject KamikazeEffect;
+    [SerializeField] private GameObject ExplodeEffect;
 
 
     //Enemy spawn logic variables
@@ -234,7 +235,7 @@ public class EnemySpawner : MonoBehaviour
                     enemyScript.SetSpeed(60f);
                     enemyScript.SetSteer(30f);
                     enemyScript.SetTarget(enemy1);
-                    enemyScript.ChangeColor(KamikazeEffect);
+                    enemyScript.ActivateKamikaze(KamikazeEffect);
                     Kamikaze = false;
                     StartCoroutine(SelfDestroy(seconds, enemy));
                 }
@@ -250,24 +251,8 @@ public class EnemySpawner : MonoBehaviour
     #region Explode buff functions
     public void ExplodeEnemies()
     {
-        List<GameObject> enemyRefList = new List<GameObject>();
-
-        foreach (GameObject enemy in enemies)
-        {
-            bool isVisible = CheckVisibility(enemy);
-
-            if (isVisible)
-            {
-                enemyRefList.Add(enemy);
-            }
-        }
-
-        foreach (var enemy1 in enemyRefList)
-        {
-            Enemy enemyScript = enemy1.GetComponent<Enemy>();
-            enemyScript.Die(true, false, false);
-            enemies.Remove(enemy1);
-        }
+        GameObject explode = Instantiate(ExplodeEffect, transform.position, Quaternion.identity);
+        explode.transform.SetParent(transform);
     }
     private IEnumerator SelfDestroy(float sec, GameObject enemy)
     {
@@ -286,14 +271,17 @@ public class EnemySpawner : MonoBehaviour
         float distance = 0;
         foreach (GameObject find in findList)
         {
-            Vector3 findLocation = find.transform.position;
-
-            float distanceNew = Vector3.Distance(targetLocation, findLocation);
-
-            if (distance == 0 || distance > distanceNew)
+            if (find != null)
             {
-                distance = distanceNew;
-                newFind = find;
+                Vector3 findLocation = find.transform.position;
+
+                float distanceNew = Vector3.Distance(targetLocation, findLocation);
+
+                if (distance == 0 || distance > distanceNew)
+                {
+                    distance = distanceNew;
+                    newFind = find;
+                }
             }
         }
         return newFind;
