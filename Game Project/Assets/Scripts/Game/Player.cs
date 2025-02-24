@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject flares;
     [SerializeField] private Transform flareLocation;
     [SerializeField] GameObject shieldVisual;
+    [SerializeField] GameObject blackHolePreFab;
 
     private EnemySpawner Spawner;
 
@@ -138,5 +139,54 @@ public class Player : MonoBehaviour
         UnityEngine.Quaternion currentRotation = transform.rotation;
 
         Instantiate(flares, flareLocation.position, currentRotation);
+    }
+
+
+    public void CreateBlackHole()
+    {
+        StartBlackHolePlacement();
+    }
+
+    public void StartBlackHolePlacement()
+    {
+        Time.timeScale = 0f;
+        StartCoroutine(WaitForTap());
+    }
+
+    private IEnumerator WaitForTap()
+    {
+        bool placed = false;
+
+        while (!placed)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                UnityEngine.Vector3 tapPosition = GetTapWorldPosition();
+
+                if (tapPosition != UnityEngine.Vector3.zero)
+                {
+                    Instantiate(blackHolePreFab, tapPosition, quaternion.identity);
+                    placed = true;
+                }
+            }
+            yield return null; 
+        }
+        Time.timeScale = 1f;
+    }
+
+    UnityEngine.Vector3 GetTapWorldPosition()
+    {
+        UnityEngine.Vector3 worldPosition = UnityEngine.Vector3.zero;
+        UnityEngine.Vector3 screenPosition = Input.mousePosition;
+
+        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            return hit.point;
+        }
+
+        return UnityEngine.Vector3.zero;
     }
 }
