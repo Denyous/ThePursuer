@@ -282,8 +282,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.171649, y: 1.8034506, z: 0.7142857}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.65, y: 0.28100228, z: 0.111295484}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1503693124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -328,7 +328,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac780c878d9802d40acdaee061b475e6, type: 3}
   m_Color: {r: 0.09638655, g: 0.8329864, b: 0.8962264, a: 0.36078432}
   m_FlipX: 0
   m_FlipY: 0
@@ -1069,7 +1069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &933571925
 Transform:
   m_ObjectHideFlags: 0
@@ -1783,7 +1783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649b5cc502216964f9fb65fccf17c19a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackHolePrefab: {fileID: 6167569797256912531, guid: 89b5338d3dfeb3b44a4c2ecaa21baae2, type: 3}
+  blackHolePrefab: {fileID: 6962132554446824486, guid: fa10009bf206a314aa65effebe0833eb, type: 3}
 --- !u!1 &1177485361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1986,6 +1986,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182250686}
   m_CullTransparentMesh: 1
+--- !u!4 &1186083005 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+  m_PrefabInstance: {fileID: 6688313344365817797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1278102035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2502,7 @@ Transform:
   - {fileID: 455849288}
   - {fileID: 2121099796}
   - {fileID: 261148760}
+  - {fileID: 1186083005}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1503693126
@@ -2513,14 +2519,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 35
   Steer: 1.5
-  Explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+  Explosion: {fileID: 4926920272706642467, guid: 832d28e388b64ad42a3a69d268f90d1a, type: 3}
   ScoreText: {fileID: 1182250688}
   Joystick: {fileID: 262381312}
   RotationSpeed: 3
   flares: {fileID: 4656275142420581941, guid: 6aba37fbe7ad8464f8fa32de17bcf670, type: 3}
   flareLocation: {fileID: 2121099796}
   shieldVisual: {fileID: 261148759}
-  blackHolePreFab: {fileID: 425292476891017831, guid: 76a8d467933469a42a438bb72b105d6e, type: 3}
+  blackHolePreFab: {fileID: 0}
   Shield: 0
 --- !u!60 &1503693127
 PolygonCollider2D:
@@ -3804,6 +3810,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &6688313344365817797
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1503693124}
+    m_Modifications:
+    - target: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.909
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.0157092
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113772032571823704, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+      propertyPath: m_Name
+      value: Spaceship rocket fire
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
