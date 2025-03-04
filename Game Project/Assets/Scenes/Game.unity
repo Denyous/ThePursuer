@@ -410,7 +410,7 @@ MonoBehaviour:
   minSpawnStar: {fileID: 970410973}
   maxSpawnStar: {fileID: 1792321159}
   StarPrefab: {fileID: 7820447434184616243, guid: 0d12645392dd44343b3c9ed2321eb00e, type: 3}
-  SlowTimePrefab: {fileID: 8353853736538985782, guid: 31dae8b6b2c313d47acdd6b19111466d, type: 3}
+  SpeedBoostPrefab: {fileID: 6504212629607031786, guid: 3ae3f246a2e7bb84bbd4241abcba7fe4, type: 3}
   ShieldPrefab: {fileID: 8661976596798936278, guid: 073d47421b294ee4393e8f0f12f255a6, type: 3}
   KamikazeEffect: {fileID: 9008445294550007333, guid: bd9f9379c9ac4f74f8d72ecc2bb63074, type: 3}
   ExplodeEffect: {fileID: 8657183636083783020, guid: 40890fc6f4238d7449a7b8cf60b0e466, type: 3}
@@ -2519,6 +2519,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 35
   Steer: 1.5
+  boostSpeed: 80
+  normalSpeed: 0
   Explosion: {fileID: 4926920272706642467, guid: 832d28e388b64ad42a3a69d268f90d1a, type: 3}
   ScoreText: {fileID: 1182250688}
   Joystick: {fileID: 262381312}
