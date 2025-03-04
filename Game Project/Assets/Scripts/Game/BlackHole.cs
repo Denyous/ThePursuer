@@ -5,12 +5,14 @@ using UnityEngine;
 public class BlackHole : MonoBehaviour
 {
     public GameObject blackHolePrefab; // Karadelik prefabı
-    
+
+    public GameObject tapMessageUI;
+
     private bool isPlacing = false;
 
     void Start()
     {
-       
+        tapMessageUI.SetActive(false);
     }
 
     void Update()
@@ -24,6 +26,7 @@ public class BlackHole : MonoBehaviour
 
             isPlacing = false;
             Time.timeScale = 1f; // Oyun devam etsin
+            tapMessageUI.SetActive(false);
             StartCoroutine(destroyBlackHoleAfterXSeconds(blackHoleRef));
         }
     }
@@ -38,6 +41,7 @@ public class BlackHole : MonoBehaviour
     {
         isPlacing = true;
         Time.timeScale = 0f; // Oyun duraklatılır
+        tapMessageUI.SetActive(true);
     }
 
 
@@ -45,7 +49,7 @@ public class BlackHole : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Object.DestroyObject(collision.gameObject, 1.2f);
+            Object.DestroyObject(collision.gameObject);
         }
     }
 }
