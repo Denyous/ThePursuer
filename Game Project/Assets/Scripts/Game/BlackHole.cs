@@ -39,4 +39,13 @@ public class BlackHole : MonoBehaviour
         isPlacing = true;
         Time.timeScale = 0f; // Oyun duraklatılır
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Object.DestroyObject(collision.gameObject, 1.2f);
+        }
+    }
 }
