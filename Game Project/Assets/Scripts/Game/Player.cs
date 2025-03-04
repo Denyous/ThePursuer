@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float Speed = 35f;
     [SerializeField] private float Steer = 1.5f;
+    [SerializeField] float boostSpeed = 80f;
+    [SerializeField] private float normalSpeed;
     [SerializeField] private GameObject Explosion;
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private FixedJoystick Joystick;
@@ -82,8 +84,32 @@ public class Player : MonoBehaviour
         {
             Object.Destroy(collision.gameObject);
         }
+
+        else if (collision.gameObject.CompareTag("SpeedBuff"))
+        {
+            Object.Destroy(collision.gameObject); // destroying the buff
+
+            
+            normalSpeed = Speed; // storing the normal speed for the backup
+
+            Speed = boostSpeed; // boost-speed
+
+            StartCoroutine(SpeedBuff());
+
+            
+        }
     }
 
+    IEnumerator SpeedBuff()
+    {
+        
+        
+        yield return new WaitForSeconds(5f);
+
+        Speed = normalSpeed; // return the speed normal
+
+        
+    }
 
 
     //Change Shield Visual according to the Shield bool
@@ -109,7 +135,7 @@ public class Player : MonoBehaviour
 
         if (Mathf.Abs(x) > 0.1f || Mathf.Abs(y) > 0.1f)
         {
-            targetAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg - 90f; 
+            targetAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg - 90f;
         }
 
         UnityEngine.Quaternion currentRotation = transform.rotation;
@@ -122,7 +148,7 @@ public class Player : MonoBehaviour
 
         rb.velocity = transform.up * Speed * Time.fixedDeltaTime * 10f;
     }
-    
+
 
 
     //Getting score to show in game over screen

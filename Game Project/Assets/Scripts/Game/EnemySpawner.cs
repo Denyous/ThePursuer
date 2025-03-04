@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
 
     //Collectible Prefabs
     [SerializeField] private GameObject StarPrefab;
-    [SerializeField] private GameObject SlowTimePrefab;
+    [SerializeField] private GameObject SpeedBoostPrefab;
     [SerializeField] private GameObject ShieldPrefab;
 
     //Kamikaze Effect Particle System
@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
         Enemy.OnEnemyDied += HandleEnemyKilled;
         InvokeRepeating("SpawnEnemy", 1.0f, 2.0f);
         InvokeRepeating("SpawnStars", 1.0f, 3.5f);
-        InvokeRepeating("SpawnSlowTimePowerUp", 1.0f, 15.0f);
+        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 3.0f);
         InvokeRepeating("SpawnShieldPowerUp", 1.0f, 6.0f);
         m_camera = FindObjectOfType<Camera>();
     }
@@ -60,9 +60,9 @@ public class EnemySpawner : MonoBehaviour
     {
         Instantiate(ShieldPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
     }
-    private void SpawnSlowTimePowerUp()
+    private void SpawnSpeedBuffPowerUp()
     {
-        Instantiate(SlowTimePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        Instantiate(SpeedBoostPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
     }
     private void SpawnStars()
     {
