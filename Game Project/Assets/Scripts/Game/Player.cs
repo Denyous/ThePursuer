@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Splines;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
 using Unity.Mathematics;
+using Vector3 = UnityEngine.Vector3;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float Steer = 1.5f;
     [SerializeField] float boostSpeed = 80f;
     [SerializeField] private float normalSpeed;
+    [SerializeField] Transform targetObject;
+    private Vector3 orginalScale;
     [SerializeField] private GameObject Explosion;
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private FixedJoystick Joystick;
@@ -38,6 +41,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Spawner = FindAnyObjectByType<EnemySpawner>();
+        orginalScale = targetObject.localScale;
     }
 
 
@@ -89,26 +93,29 @@ public class Player : MonoBehaviour
         {
             Object.Destroy(collision.gameObject); // destroying the buff
 
-            
+
             normalSpeed = Speed; // storing the normal speed for the backup
 
-            Speed = boostSpeed; // boost-speed
+           
 
             StartCoroutine(SpeedBuff());
 
-            
+
         }
     }
 
     IEnumerator SpeedBuff()
     {
-        
-        
+        Speed = boostSpeed; // boost-speed
+
+        targetObject.localScale = orginalScale * 2; // rocket-flare size by 2x
+
         yield return new WaitForSeconds(5f);
 
         Speed = normalSpeed; // return the speed normal
 
-        
+        targetObject.localScale = orginalScale; // rocket-flare return its orginal size
+
     }
 
 
