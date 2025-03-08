@@ -15,8 +15,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float Steer = 1.5f;
     [SerializeField] float boostSpeed = 50f;
     [SerializeField] private float normalSpeed;
-    [SerializeField] Transform targetObject;
-    private Vector3 orginalScale;
     [SerializeField] private GameObject Explosion;
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private FixedJoystick Joystick;
@@ -42,7 +40,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Spawner = FindAnyObjectByType<EnemySpawner>();
-        orginalScale = targetObject.localScale;
+        originalScale = targetObject.localScale;
     }
 
 
@@ -103,7 +101,7 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(5f);
 
-        Speed = normalSpeed; // return the speed normal
+        Speed = normalSpeed;
         animator.SetBool("Speed", false);
     }
 
