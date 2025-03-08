@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float Speed = 35f;
     [SerializeField] private float Steer = 1.5f;
-    [SerializeField] float boostSpeed = 80f;
+    [SerializeField] float boostSpeed = 50f;
     [SerializeField] private float normalSpeed;
     [SerializeField] Transform targetObject;
     private Vector3 orginalScale;
@@ -115,7 +115,6 @@ public class Player : MonoBehaviour
         Speed = normalSpeed; // return the speed normal
 
         targetObject.localScale = orginalScale; // rocket-flare return its orginal size
-
     }
 
 

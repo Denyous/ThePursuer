@@ -1784,6 +1784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackHolePrefab: {fileID: 6962132554446824486, guid: fa10009bf206a314aa65effebe0833eb, type: 3}
+  tapMessageUI: {fileID: 0}
 --- !u!1 &1177485361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,8 +2520,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 35
   Steer: 1.5
-  boostSpeed: 80
+  boostSpeed: 50
   normalSpeed: 0
+  targetObject: {fileID: 0}
   Explosion: {fileID: 4926920272706642467, guid: 832d28e388b64ad42a3a69d268f90d1a, type: 3}
   ScoreText: {fileID: 1182250688}
   Joystick: {fileID: 262381312}
