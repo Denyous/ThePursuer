@@ -49,7 +49,7 @@ public class BlackHole : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Object.DestroyObject(collision.gameObject);
+            Object.Destroy(collision.gameObject);
         }
     }
 }
