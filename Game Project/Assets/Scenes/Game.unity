@@ -1872,6 +1872,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2070841793207651382, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
   m_PrefabInstance: {fileID: 6688313344365817797}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1186083006 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1323835475779782232, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
+  m_PrefabInstance: {fileID: 6688313344365817797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1278102035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2411,6 +2416,7 @@ MonoBehaviour:
   flareLocation: {fileID: 2121099796}
   shieldVisual: {fileID: 261148759}
   blackHolePreFab: {fileID: 0}
+  animator: {fileID: 1186083006}
   Shield: 0
 --- !u!60 &1503693127
 PolygonCollider2D:

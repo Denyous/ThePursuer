@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform flareLocation;
     [SerializeField] GameObject shieldVisual;
     [SerializeField] GameObject blackHolePreFab;
+    [SerializeField] Animator animator;
 
     private EnemySpawner Spawner;
 
@@ -84,11 +85,6 @@ public class Player : MonoBehaviour
             Object.Destroy(collision.gameObject);
             StartCoroutine(Spawner.SlowDown());
         }
-        else if (collision.gameObject.CompareTag("Kamikaze"))
-        {
-            Object.Destroy(collision.gameObject);
-        }
-
         else if (collision.gameObject.CompareTag("SpeedBuff"))
         {
             Object.Destroy(collision.gameObject); // destroying the buff
@@ -96,25 +92,19 @@ public class Player : MonoBehaviour
 
             normalSpeed = Speed; // storing the normal speed for the backup
 
-           
-
             StartCoroutine(SpeedBuff());
-
-
         }
     }
 
     IEnumerator SpeedBuff()
     {
         Speed = boostSpeed; // boost-speed
-
-        targetObject.localScale = orginalScale * 2; // rocket-flare size by 2x
+        animator.SetBool("Speed", true);
 
         yield return new WaitForSeconds(5f);
 
         Speed = normalSpeed; // return the speed normal
-
-        targetObject.localScale = orginalScale; // rocket-flare return its orginal size
+        animator.SetBool("Speed", false);
     }
 
 
