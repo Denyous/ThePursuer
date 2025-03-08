@@ -25,7 +25,8 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject shieldVisual;
     [SerializeField] GameObject blackHolePreFab;
     [SerializeField] Animator animator;
-
+    private bool isfinish;
+    private bool isactive;
     private EnemySpawner Spawner;
 
     private int Score = 0;
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Spawner = FindAnyObjectByType<EnemySpawner>();
-        originalScale = targetObject.localScale;
+       
     }
 
 
@@ -87,16 +88,26 @@ public class Player : MonoBehaviour
         else if (collision.gameObject.CompareTag("SpeedBuff"))
         {
             Object.Destroy(collision.gameObject); // destroying the buff
-
-
+            
+            
+            isactive = true;
+           
             normalSpeed = Speed; // storing the normal speed for the backup
 
-            StartCoroutine(SpeedBuff());
+            if (isactive && !isfinish)
+            {
+                StartCoroutine(SpeedBuff());
+            }
+
+            
+
         }
     }
 
     IEnumerator SpeedBuff()
     {
+        isfinish = true;
+
         Speed = boostSpeed; // boost-speed
         animator.SetBool("Speed", true);
 
@@ -104,6 +115,8 @@ public class Player : MonoBehaviour
 
         Speed = normalSpeed;
         animator.SetBool("Speed", false);
+
+        isfinish = false; 
     }
 
 
