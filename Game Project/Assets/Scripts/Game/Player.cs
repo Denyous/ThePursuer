@@ -9,6 +9,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 using Unity.Mathematics;
 using Vector3 = UnityEngine.Vector3;
 
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private float Speed = 35f;
