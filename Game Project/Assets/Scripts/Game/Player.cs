@@ -9,6 +9,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 using Unity.Mathematics;
 using Vector3 = UnityEngine.Vector3;
 
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private float Speed = 35f;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject blackHolePreFab;
     [SerializeField] Animator animator;
 
+    private bool isBoost;
     private EnemySpawner Spawner;
 
     private int Score = 0;
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Spawner = FindAnyObjectByType<EnemySpawner>();
+       
     }
 
 
@@ -95,13 +98,16 @@ public class Player : MonoBehaviour
 
     IEnumerator SpeedBuff()
     {
+        
         Speed = boostSpeed; // boost-speed
-        animator.SetBool("Speed", true);
+        //animator.SetBool("Speed", true);
+        isBoost = true;
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
 
         Speed = normalSpeed;
-        animator.SetBool("Speed", false);
+        //animator.SetBool("Speed", false);
+        isBoost = false;    
     }
 
 

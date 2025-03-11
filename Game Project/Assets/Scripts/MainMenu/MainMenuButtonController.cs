@@ -7,9 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtonController : MonoBehaviour
 {
+    public GameObject settingsPanel;
+    public GameObject creditsPanel;
+
     [SerializeField] private UnityEngine.UI.Button StartButton;
     [SerializeField] private UnityEngine.UI.Button SettingsButton;
     [SerializeField] private UnityEngine.UI.Button ExitButton;
+    [SerializeField] private UnityEngine.UI.Button CreditsButton;
+
     private RectTransform StartBtnRectTransform;
     private RectTransform SettingsBtnRectTransform;
     private RectTransform ExitBtnRectTransform;
@@ -60,13 +65,21 @@ public class MainMenuButtonController : MonoBehaviour
 
     public void SettingsButtonClick()
     {
-        SettingsBtnOriginalScale = SettingsButton.GetComponent<RectTransform>().localScale;
-
-        LTSeq sequence = LeanTween.sequence();
-
-        sequence.append(LeanTween.scale(SettingsBtnRectTransform, SettingsBtnOriginalScale * 0.8f, 0.08f)
-    .setEase(LeanTweenType.easeInQuart));
-        sequence.append(LeanTween.scale(SettingsBtnRectTransform, SettingsBtnOriginalScale, 0.08f)
-            .setEase(LeanTweenType.easeOutBack));
+        settingsPanel.SetActive(true);
     }
+
+    public void CreditsButtonClick()
+    {
+        creditsPanel.SetActive(true);
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+
+   
+
+    
 }
