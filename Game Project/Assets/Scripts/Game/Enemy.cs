@@ -84,26 +84,26 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Player player = target.gameObject.GetComponent<Player>();
+            Player player = target.gameObject.GetComponent<Player>();
 
-            //if (player != null && player.Shield == false)
-            //{
-            //    int score = player.GetScore();
+            if (player != null && player.Shield == false)
+            {
+                int score = player.GetScore();
 
-            //    Object.Destroy(target.gameObject);
-            //    Object.Destroy(this.gameObject);
+                Object.Destroy(target.gameObject);
+                Object.Destroy(this.gameObject);
 
-            //    GameOver(score);
-            //}
-            //else
-            //{
+                GameOver(score);
+            }
+            else
+            {
 
-            //    player.Shield = false;
+                player.Shield = false;
 
-            //    player.ChangeShieldState();
+                player.ChangeShieldState();
 
-            //    Object.Destroy(this.gameObject);
-            //}
+                Object.Destroy(this.gameObject);
+            }
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
