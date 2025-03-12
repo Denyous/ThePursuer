@@ -8,11 +8,16 @@ public class BlackHole : MonoBehaviour
 
     public GameObject tapMessageUI;
 
+    public GamePanelSetting pauseIcon;
+
+    public GameObject UI;
+
     private bool isPlacing = false;
 
     void Start()
     {
         tapMessageUI.SetActive(false);
+        pauseIcon = GetComponent<GamePanelSetting>();
     }
 
     void Update()
@@ -27,6 +32,8 @@ public class BlackHole : MonoBehaviour
             isPlacing = false;
             Time.timeScale = 1f; // Oyun devam etsin
             tapMessageUI.SetActive(false);
+            pauseIcon.pauseIcon.SetActive(true);
+            UI.SetActive(true);
             StartCoroutine(destroyBlackHoleAfterXSeconds(blackHoleRef));
         }
     }
@@ -42,6 +49,8 @@ public class BlackHole : MonoBehaviour
         isPlacing = true;
         Time.timeScale = 0f; // Oyun duraklatılır
         tapMessageUI.SetActive(true);
+        pauseIcon.pauseIcon.SetActive(false);
+        UI.SetActive(false);
     }
 
 
