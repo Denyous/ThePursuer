@@ -9,6 +9,9 @@ public class MainMenuButtonController : MonoBehaviour
 {
     public GameObject settingsPanel;
     public GameObject creditsPanel;
+    public GameObject languagePanel;
+    public GameObject tutorialPanel;
+    public GameObject audioPanel;
 
     [SerializeField] private UnityEngine.UI.Button StartButton;
     [SerializeField] private UnityEngine.UI.Button SettingsButton;
@@ -73,13 +76,46 @@ public class MainMenuButtonController : MonoBehaviour
         creditsPanel.SetActive(true);
     }
 
+    public void LanguageButtonClick()
+    {
+        languagePanel.SetActive(true);
+    }
+
+    public void TutorialButtonClick()
+    {
+        tutorialPanel.SetActive(true);
+    }
+
+    public void AudioButtonClick()
+    {
+        audioPanel.SetActive(true);
+    }
+
+
+    public void LanguageBackButton()
+    {
+        languagePanel.SetActive(false);
+    }
+
+    public void TutorialBackButton()
+    {
+        tutorialPanel.SetActive(false);
+    }
+
+    public void AudioBackButton()
+    {
+        audioPanel.SetActive(false);
+    }
+
     public void BackToMainMenu()
     {
         SceneManager.LoadScene(0);
     }
 
 
-   
 
-    
+
+
+
+
 }
