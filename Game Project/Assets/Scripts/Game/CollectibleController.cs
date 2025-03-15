@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class CollectibleController : MonoBehaviour
 {
-    [SerializeField] private GameObject IconPrefab;
+    [SerializeField] private GameObject topIcon;
+    [SerializeField] private GameObject botIcon;
+    [SerializeField] private GameObject leftIcon;
+    [SerializeField] private GameObject rightIcon;
+
     private Camera Camera;
 
     private GameObject icon;
@@ -20,7 +24,6 @@ public class CollectibleController : MonoBehaviour
         Camera = Camera.main;
     }
 
-
     private void Update()
     {
         if (Player != null)
@@ -33,7 +36,7 @@ public class CollectibleController : MonoBehaviour
             {
                 if (!isVisible)
                 {
-                    icon = Instantiate(IconPrefab, GetIconPosition(), Quaternion.identity);
+                    icon = Instantiate(topIcon, GetIconPosition(), Quaternion.identity);
                 }
             }
             else if(distance > VisibleDistance && icon != null)
@@ -122,6 +125,15 @@ public class CollectibleController : MonoBehaviour
         Vector3 iconPosition =
             camera.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 1));
         icon.transform.position = iconPosition;
+
+        Vector3 directionToCollectible = transform.position - icon.transform.position;
+
+        directionToCollectible.z = 0; 
+        directionToCollectible.Normalize();
+
+        float angle = Mathf.Atan2(directionToCollectible.y, directionToCollectible.x) * Mathf.Rad2Deg;
+
+        icon.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
     private void OnBecameVisible()
     {
