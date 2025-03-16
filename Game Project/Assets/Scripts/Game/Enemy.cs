@@ -4,12 +4,15 @@ using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SocialPlatforms;
 
 public class Enemy : MonoBehaviour
 {
     //Variables of the Enemy itself
     [SerializeField] private float speed = 45f;
     [SerializeField] private float steer = 15f;
+    [SerializeField] private GameObject rocketFire;
+    private GameObject fire;
     Rigidbody2D rb;
 
     //This is an event to be handled in EnemySpawner script
@@ -28,6 +31,8 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GameController = FindObjectOfType<GameController>();
+        fire = Instantiate(rocketFire, transform, false);
+        fire.transform.localPosition = new Vector3(0f, -2f, 1f);
     }
 
 

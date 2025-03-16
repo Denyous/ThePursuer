@@ -149,6 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b284a7ed509c4f54f861c58742cce822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IconPrefab: {fileID: 2663483546575590200, guid: 572c2411afea9b44fbb47401254827ff, type: 3}
+  topIcon: {fileID: 2663483546575590200, guid: 572c2411afea9b44fbb47401254827ff, type: 3}
+  botIcon: {fileID: 0}
+  leftIcon: {fileID: 0}
+  rightIcon: {fileID: 0}
   ScreenBorder: 40
   VisibleDistance: 30
