@@ -11,6 +11,8 @@ TagManager:
   - Flare
   - Explode
   - SpeedBuff
+  - BlackHole
+  - Kamikaze
   layers:
   - Default
   - TransparentFX
