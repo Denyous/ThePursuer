@@ -109,6 +109,7 @@ public class Enemy : MonoBehaviour
                 Object.Destroy(this.gameObject);
             }
         }
+
         else if (collision.gameObject.CompareTag("Enemy"))
         {
             Die(false, false, false);

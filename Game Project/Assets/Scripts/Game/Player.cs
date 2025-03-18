@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject SpeedBuffAnimation;
     [SerializeField] GameObject Animation;
 
+    AudioManager audioManager;
+
     public Button flareButton;
     public Button kamikazeButton;
     public Button blackHoleButton;
@@ -56,6 +58,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        
         rb = GetComponent<Rigidbody2D>();
         Spawner = FindAnyObjectByType<EnemySpawner>();
         MakeButtonTransparent(flareButton);
@@ -72,6 +76,7 @@ public class Player : MonoBehaviour
         {
             if (Shield != true)
             {
+                
                 Instantiate(Explosion, transform.position, UnityEngine.Quaternion.identity);
             }
         }
@@ -93,9 +98,12 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Shield"))
         {
+            
             Object.Destroy(collision.gameObject);
             Shield = true;
-
+            
+            audioManager.SFXPlay(audioManager.shield);
+            
             ChangeShieldState();
         }
         else if (collision.gameObject.CompareTag("SlowTime"))
@@ -106,7 +114,7 @@ public class Player : MonoBehaviour
         else if (collision.gameObject.CompareTag("SpeedBuff"))
         {
             Object.Destroy(collision.gameObject); // destroying the buff
-
+            
             normalSpeed = Speed; // storing the normal speed for the backup
 
             isBoost = true;
@@ -151,7 +159,9 @@ public class Player : MonoBehaviour
     IEnumerator SpeedBuff()
     {
         isBoost = false;
-
+        
+        audioManager.SFXPlay(audioManager.speedUp);
+        
         Animation.gameObject.SetActive(false);
         SpeedBuffAnimation.gameObject.SetActive(true);
 
@@ -172,6 +182,7 @@ public class Player : MonoBehaviour
     {
         if (Shield == false)
         {
+            
             shieldVisual.SetActive(false);  // Kalkan görselini kapat
         }
         else
@@ -224,6 +235,8 @@ public class Player : MonoBehaviour
     {
         if (flareCount > 0)
         {
+            audioManager.SFXPlay(audioManager.flare);
+
             UnityEngine.Quaternion currentRotation = transform.rotation;
 
             Instantiate(flares, flareLocation.position, currentRotation);

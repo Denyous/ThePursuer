@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
     public static bool Exploded = false;
     private int ExplodeCount = 0;
+      
 
     [SerializeField] private GameObject ExplosionPrefab;
     public void ResetTheGame()
@@ -26,6 +27,7 @@ public class GameController : MonoBehaviour
         {
             if (!Exploded && ExplodeCount == 0)
             {
+               
                 Instantiate(ExplosionPrefab, position, Quaternion.identity);
                 Exploded = true;
                 ExplodeCount++;

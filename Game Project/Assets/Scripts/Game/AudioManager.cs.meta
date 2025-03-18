@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 5e23631ecbcee884491237a8146ecf8d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - musicSource: {instanceID: 0}
+  - SFX: {instanceID: 0}
+  - background: {instanceID: 0}
+  - death: {instanceID: 0}
+  - explosion: {instanceID: 0}
+  - shield: {instanceID: 0}
+  - shieldOff: {fileID: 8300000, guid: 75adfe9a619833445a701305b983e548, type: 3}
+  - flare: {instanceID: 0}
+  - laser: {instanceID: 0}
+  - blackHole: {instanceID: 0}
+  - kamizkaze: {instanceID: 0}
+  - speedUp: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
