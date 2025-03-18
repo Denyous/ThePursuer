@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Device;
+using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class EnemySpawner : MonoBehaviour
@@ -25,6 +26,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject StarPrefab;
     [SerializeField] private GameObject SpeedBoostPrefab;
     [SerializeField] private GameObject ShieldPrefab;
+    [SerializeField] private GameObject KamikazePrefab;
+    [SerializeField] private GameObject BlackHolePrefab;
+    [SerializeField] private GameObject FlarePrefab;
+
 
     //Kamikaze Effect Particle System
     [SerializeField] private GameObject KamikazeEffect;
@@ -38,6 +43,9 @@ public class EnemySpawner : MonoBehaviour
 
     //This is for setting game over screen for enemy script and game over screen logic handled there
     [SerializeField] private GameOver GameOverScreen;
+    [SerializeField] private Button kamikazeButton;
+
+    private Player playerScript;
 
     //Camera is required for determining is there a more than one enemy on the screen
     private Camera m_camera;
@@ -48,9 +56,14 @@ public class EnemySpawner : MonoBehaviour
         Enemy.OnEnemyDied += HandleEnemyKilled;
         InvokeRepeating("SpawnEnemy", 1.0f, 2.0f);
         InvokeRepeating("SpawnStars", 1.0f, 3.5f);
-        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 3.0f);
-        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 6.0f);
+        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 15f);
+        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 1f);
+        InvokeRepeating("SpawnKamikazeBuff", 1.0f, 1f);
+        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 1f);
+        InvokeRepeating("SpawnFlareBuff", 1.0f, 1f);
+
         m_camera = FindObjectOfType<Camera>();
+        playerScript = target.GetComponent<Player>();
     }
 
 
@@ -64,6 +77,19 @@ public class EnemySpawner : MonoBehaviour
     {
         Instantiate(SpeedBoostPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
     }
+    private void SpawnKamikazeBuff()
+    {
+        Instantiate(KamikazePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+    }
+    private void SpawnBlackHoleBuff()
+    {
+        Instantiate(BlackHolePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+    }
+    private void SpawnFlareBuff()
+    {
+        Instantiate(FlarePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+    }
+
     private void SpawnStars()
     {
         Star = Instantiate(StarPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
@@ -217,29 +243,34 @@ public class EnemySpawner : MonoBehaviour
     #region Kamikaze
     public void KamikazeEnemies()
     {
-        float seconds = 3;
-        bool Kamikaze = true;
-        bool MoreThanOneEnemy = CheckMoreThanOneEnemyVisible();
-        GameObject enemy1 = GetClosestObjectInList(target, enemies);
-
-
-        foreach (GameObject enemy in enemies)
+        if (playerScript.getKamikazeCount() > 0)
         {
-            bool isVisible = CheckVisibility(enemy);
+            float seconds = 3;
+            bool Kamikaze = true;
+            bool MoreThanOneEnemy = CheckMoreThanOneEnemyVisible();
+            GameObject enemy1 = GetClosestObjectInList(target, enemies);
 
-            if (isVisible && Kamikaze && MoreThanOneEnemy)
+            foreach (GameObject enemy in enemies)
             {
-                if (enemy != enemy1)
+                bool isVisible = CheckVisibility(enemy);
+
+                if (isVisible && Kamikaze && MoreThanOneEnemy)
                 {
-                    Enemy enemyScript = enemy.GetComponent<Enemy>();
-                    enemyScript.SetSpeed(60f);
-                    enemyScript.SetSteer(30f);
-                    enemyScript.SetTarget(enemy1);
-                    enemyScript.ActivateKamikaze(KamikazeEffect);
-                    Kamikaze = false;
-                    StartCoroutine(SelfDestroy(seconds, enemy));
+                    if (enemy != enemy1)
+                    {
+                        Enemy enemyScript = enemy.GetComponent<Enemy>();
+                        enemyScript.SetSpeed(60f);
+                        enemyScript.SetSteer(30f);
+                        enemyScript.SetTarget(enemy1);
+                        enemyScript.ActivateKamikaze(KamikazeEffect);
+                        Kamikaze = false;
+                        StartCoroutine(SelfDestroy(seconds, enemy));
+                    }
                 }
             }
+
+            playerScript.decreaseKamikazeCount();
+            playerScript.adjustBuffUiText(playerScript.kamikazeText, playerScript.kamikazeCount);
         }
     }
 

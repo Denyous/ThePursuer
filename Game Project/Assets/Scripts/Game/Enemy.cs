@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
     //Player
     private GameObject target;
 
-
     private GameOver GameOverScreen;
 
     //Game Controller for creating explosion prefabs
@@ -32,7 +31,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         GameController = FindObjectOfType<GameController>();
         fire = Instantiate(rocketFire, transform, false);
-        fire.transform.localPosition = new Vector3(0f, -2f, 1f);
+        fire.transform.localPosition = new Vector3(0f, -2.1f, 1f);
     }
 
 

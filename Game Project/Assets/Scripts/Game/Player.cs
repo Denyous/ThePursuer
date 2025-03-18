@@ -8,6 +8,10 @@ using UnityEngine.Splines;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
 using Unity.Mathematics;
 using Vector3 = UnityEngine.Vector3;
+using UnityEngine.Rendering.UI;
+using UnityEngine.UI;
+using UnityEngine.Experimental.XR.Interaction;
+using Unity.VisualScripting;
 
 
 public class Player : MonoBehaviour
@@ -25,6 +29,20 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject shieldVisual;
     [SerializeField] GameObject blackHolePreFab;
     [SerializeField] Animator animator;
+    [SerializeField] GameObject SpeedBuffAnimation;
+    [SerializeField] GameObject Animation;
+
+    public Button flareButton;
+    public Button kamikazeButton;
+    public Button blackHoleButton;
+
+    public GameObject flareText;
+    public GameObject blackHoleText;
+    public GameObject kamikazeText;
+
+    public int blackHoleCount = 0;
+    public int flareCount = 0;
+    public int kamikazeCount = 0;
 
     private bool isBoost;
     private EnemySpawner Spawner;
@@ -36,13 +54,13 @@ public class Player : MonoBehaviour
     private float targetAngle;
     public bool Shield;
 
-
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Spawner = FindAnyObjectByType<EnemySpawner>();
-       
+        MakeButtonTransparent(flareButton);
+        MakeButtonTransparent(kamikazeButton);
+        MakeButtonTransparent(blackHoleButton);
     }
 
 
@@ -89,26 +107,64 @@ public class Player : MonoBehaviour
         {
             Object.Destroy(collision.gameObject); // destroying the buff
 
-
             normalSpeed = Speed; // storing the normal speed for the backup
 
-            StartCoroutine(SpeedBuff());
+            isBoost = true;
+        }
+        else if (collision.gameObject.CompareTag("Kamikaze"))
+        {
+            Object.Destroy(collision.gameObject);
+
+            if (kamikazeCount < 3)
+            {
+                kamikazeCount++;
+                adjustBuffUiText(kamikazeText, kamikazeCount);
+                MakeButtonNonTransparent(kamikazeButton);
+            }
+        }
+        else if (collision.gameObject.CompareTag("Flare"))
+        {
+            Object.Destroy(collision.gameObject);
+
+            if (flareCount < 3)
+            {
+                flareCount++;
+                adjustBuffUiText(flareText, flareCount);
+                MakeButtonNonTransparent(flareButton);
+            }
+        }
+        else if (collision.gameObject.CompareTag("BlackHole"))
+        {
+            Object.Destroy(collision.gameObject);
+
+            if (blackHoleCount < 1)
+            {
+                blackHoleCount++;
+                adjustBuffUiText(blackHoleText, blackHoleCount);
+                MakeButtonNonTransparent(blackHoleButton);
+            }
         }
     }
 
+
+
     IEnumerator SpeedBuff()
     {
-        
-        Speed = boostSpeed; // boost-speed
-        //animator.SetBool("Speed", true);
-        isBoost = true;
+        isBoost = false;
 
-        yield return new WaitForSeconds(3f);
+        Animation.gameObject.SetActive(false);
+        SpeedBuffAnimation.gameObject.SetActive(true);
+
+        Speed = boostSpeed;
+
+        yield return new WaitForSeconds(4f);
 
         Speed = normalSpeed;
-        //animator.SetBool("Speed", false);
-        isBoost = false;    
+
+        Animation.SetActive(true);
+        SpeedBuffAnimation.SetActive(false);
     }
+
 
 
     //Change Shield Visual according to the Shield bool
@@ -146,6 +202,11 @@ public class Player : MonoBehaviour
             (currentRotation, targetRotation, RotationSpeed * Time.fixedDeltaTime / Steer);
 
         rb.velocity = transform.up * Speed * Time.fixedDeltaTime * 10f;
+
+        if (isBoost)
+        {
+            StartCoroutine(SpeedBuff());
+        }
     }
 
 
@@ -161,8 +222,94 @@ public class Player : MonoBehaviour
     //In UI when flare button pressed trigger this function
     public void CreateFlares()
     {
-        UnityEngine.Quaternion currentRotation = transform.rotation;
+        if (flareCount > 0)
+        {
+            UnityEngine.Quaternion currentRotation = transform.rotation;
 
-        Instantiate(flares, flareLocation.position, currentRotation);
+            Instantiate(flares, flareLocation.position, currentRotation);
+
+            decreaseFlareCount();
+
+            adjustBuffUiText(flareText, flareCount);
+        }
+    }
+
+
+
+    public int getBlackHoleCount()
+    {
+        return blackHoleCount;
+    }
+
+    public int getKamikazeCount()
+    {
+        return kamikazeCount;
+    }
+
+    public int getFlareCount()
+    {
+        return flareCount;
+    }
+
+    public void decreaseKamikazeCount()
+    {
+        if (kamikazeCount > 0)
+        {
+            kamikazeCount--;
+        }
+
+        if (kamikazeCount == 0)
+        {
+            MakeButtonTransparent(kamikazeButton);
+        }
+    }
+
+    public void decreaseBlackHoleCount()
+    {
+        if (blackHoleCount > 0)
+        {
+            blackHoleCount--;
+        }
+
+        if (blackHoleCount == 0)
+        {
+            MakeButtonTransparent(blackHoleButton);
+        }
+    }
+
+    public void decreaseFlareCount()
+    {
+        if (flareCount > 0)
+        {
+            flareCount--;
+        }
+
+        if (flareCount == 0)
+        {
+            MakeButtonTransparent(flareButton);
+        }
+    }
+
+    public void MakeButtonTransparent(Button myButton)
+    {
+        ColorBlock cb = myButton.colors;
+        cb.disabledColor = new Color(cb.disabledColor.r, cb.disabledColor.g, cb.disabledColor.b, 0.3f); // Adjust transparency (0 = invisible, 1 = fully visible)
+        myButton.colors = cb;
+        myButton.interactable = false;
+    }
+
+    public void MakeButtonNonTransparent(Button myButton)
+    {
+        ColorBlock cb = myButton.colors;
+
+        cb.disabledColor = new Color(cb.disabledColor.r, cb.disabledColor.g, cb.disabledColor.b, 1f); 
+        myButton.colors = cb;
+        myButton.interactable = true;
+    }
+
+    public void adjustBuffUiText(GameObject UIText, int value)
+    {
+        TMP_Text text = UIText.GetComponent<TMP_Text>();
+        text.text = $"{value}";
     }
 }

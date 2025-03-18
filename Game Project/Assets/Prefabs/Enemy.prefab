@@ -240,4 +240,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 45
   steer: 15
-  rocketFire: {fileID: 5282218245715950028, guid: 63d7b5dc7a6b36f4dae71790994bbb9d, type: 3}
+  rocketFire: {fileID: 8113772032571823704, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}

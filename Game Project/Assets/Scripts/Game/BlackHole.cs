@@ -12,12 +12,17 @@ public class BlackHole : MonoBehaviour
 
     public GameObject UI;
 
+    [SerializeField] GameObject player;
+
+    private Player playerScript;
+
     private bool isPlacing = false;
 
     void Start()
     {
         tapMessageUI.SetActive(false);
         pauseIcon = GetComponent<GamePanelSetting>();
+        playerScript = player.GetComponent<Player>();
     }
 
     void Update()
@@ -46,11 +51,17 @@ public class BlackHole : MonoBehaviour
 
     public void StartPlacement()
     {
-        isPlacing = true;
-        Time.timeScale = 0f; // Oyun duraklatılır
-        tapMessageUI.SetActive(true);
-        pauseIcon.pauseIcon.SetActive(false);
-        UI.SetActive(false);
+        if (playerScript.getBlackHoleCount() > 0)
+        {
+            isPlacing = true;
+            Time.timeScale = 0f; // Oyun duraklatılır
+            tapMessageUI.SetActive(true);
+            pauseIcon.pauseIcon.SetActive(false);
+            UI.SetActive(false);
+
+            playerScript.decreaseBlackHoleCount();
+            playerScript.adjustBuffUiText(playerScript.blackHoleText, playerScript.blackHoleCount);
+        }
     }
 
 
