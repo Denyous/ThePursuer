@@ -683,6 +683,7 @@ MonoBehaviour:
   KamikazePrefab: {fileID: 5753006620260486618, guid: 46bac8c2a99665e45b154b30b1bf7449, type: 3}
   BlackHolePrefab: {fileID: 7038371340064349472, guid: 2225503b4e49c4748948debbb93f6360, type: 3}
   FlarePrefab: {fileID: 5727472222842294389, guid: cc69ad745633e8d4395c0f0ec5063543, type: 3}
+  ExplodePrefab: {fileID: 7038371340064349472, guid: 786a981f8c9e2344bb35160adb71b4b2, type: 3}
   KamikazeEffect: {fileID: 9008445294550007333, guid: bd9f9379c9ac4f74f8d72ecc2bb63074, type: 3}
   ExplodeEffect: {fileID: 8657183636083783020, guid: 40890fc6f4238d7449a7b8cf60b0e466, type: 3}
   enemySpawnLimit: 6
@@ -1423,19 +1424,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1444182600981758118, guid: 63d7b5dc7a6b36f4dae71790994bbb9d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.09660631
+      value: 0.05816132
       objectReference: {fileID: 0}
     - target: {fileID: 1444182600981758118, guid: 63d7b5dc7a6b36f4dae71790994bbb9d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.14210536
+      value: 0.17211801
       objectReference: {fileID: 0}
     - target: {fileID: 1444182600981758118, guid: 63d7b5dc7a6b36f4dae71790994bbb9d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: 1444182600981758118, guid: 63d7b5dc7a6b36f4dae71790994bbb9d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3865
+      value: -1.5253
       objectReference: {fileID: 0}
     - target: {fileID: 1444182600981758118, guid: 63d7b5dc7a6b36f4dae71790994bbb9d, type: 3}
       propertyPath: m_LocalPosition.z

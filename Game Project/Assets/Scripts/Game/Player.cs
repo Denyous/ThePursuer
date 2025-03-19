@@ -16,21 +16,24 @@ using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float Speed = 35f;
-    [SerializeField] private float Steer = 1.5f;
-    [SerializeField] float boostSpeed = 50f;
-    [SerializeField] private float normalSpeed;
     [SerializeField] private GameObject Explosion;
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private FixedJoystick Joystick;
-    [SerializeField] private float RotationSpeed = 3f;
     [SerializeField] private GameObject flares;
     [SerializeField] private Transform flareLocation;
-    [SerializeField] GameObject shieldVisual;
-    [SerializeField] GameObject blackHolePreFab;
-    [SerializeField] Animator animator;
-    [SerializeField] GameObject SpeedBuffAnimation;
-    [SerializeField] GameObject Animation;
+    [SerializeField] private GameObject shieldVisual;
+    [SerializeField] private GameObject blackHolePreFab;
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject SpeedBuffAnimation;
+    [SerializeField] private GameObject Animation;
+
+
+    [SerializeField] private float Steer = 1.5f;
+    [SerializeField] private float Speed = 35f;
+    [SerializeField] private float normalSpeed;
+    [SerializeField] private float boostSpeed = 50f;
+    [SerializeField] private float notBoostSpeed = 35f;
+    [SerializeField] private float RotationSpeed = 3f;
 
     AudioManager audioManager;
 
@@ -114,10 +117,14 @@ public class Player : MonoBehaviour
         else if (collision.gameObject.CompareTag("SpeedBuff"))
         {
             Object.Destroy(collision.gameObject); // destroying the buff
-            
-            normalSpeed = Speed; // storing the normal speed for the backup
 
-            isBoost = true;
+            if (Speed == notBoostSpeed)
+            {
+                normalSpeed = Speed; // storing the normal speed for the backup
+
+                isBoost = true;
+            }
+
         }
         else if (collision.gameObject.CompareTag("Kamikaze"))
         {
@@ -152,6 +159,12 @@ public class Player : MonoBehaviour
                 MakeButtonNonTransparent(blackHoleButton);
             }
         }
+        else if (collision.gameObject.CompareTag("Explode"))
+        {
+            Object.Destroy(collision.gameObject);
+
+            Spawner.ExplodeEnemies();
+        }
     }
 
 
@@ -168,7 +181,7 @@ public class Player : MonoBehaviour
         Speed = boostSpeed;
 
         yield return new WaitForSeconds(4f);
-
+        
         Speed = normalSpeed;
 
         Animation.SetActive(true);

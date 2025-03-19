@@ -29,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject KamikazePrefab;
     [SerializeField] private GameObject BlackHolePrefab;
     [SerializeField] private GameObject FlarePrefab;
+    [SerializeField] private GameObject ExplodePrefab;
 
 
     //Kamikaze Effect Particle System
@@ -54,13 +55,14 @@ public class EnemySpawner : MonoBehaviour
     {
         //This is an event on enemy killed
         Enemy.OnEnemyDied += HandleEnemyKilled;
-        InvokeRepeating("SpawnEnemy", 1.0f, 2.0f);
-        InvokeRepeating("SpawnStars", 1.0f, 3.5f);
-        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 3f);
-        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 3f);
-        InvokeRepeating("SpawnKamikazeBuff", 1.0f, 3f);
-        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 3f);
-        InvokeRepeating("SpawnFlareBuff", 1.0f, 3f);
+        //InvokeRepeating("SpawnEnemy", 1.0f, 2.0f);
+        //InvokeRepeating("SpawnStars", 1.0f, 3.5f);
+        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 1f);
+        //InvokeRepeating("SpawnShieldPowerUp", 1.0f, 3f);
+        //InvokeRepeating("SpawnKamikazeBuff", 1.0f, 3f);
+        //InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 3f);
+        //InvokeRepeating("SpawnFlareBuff", 1.0f, 3f);
+        //InvokeRepeating("SpawnExplodeBuff", 1.0f, 3f);
 
         m_camera = FindObjectOfType<Camera>();
         playerScript = target.GetComponent<Player>();
@@ -88,6 +90,11 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnFlareBuff()
     {
         Instantiate(FlarePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+    }
+
+    private void SpawnExplodeBuff()
+    {
+        Instantiate(ExplodePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
     }
 
     private void SpawnStars()
