@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [Header("---AudioSource----")]
-    
+
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFX;
 
@@ -19,8 +19,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip flare;
     public AudioClip laser;
     public AudioClip blackHole;
+    public AudioClip blackholePauseScreen;
     public AudioClip kamizkaze;
     public AudioClip speedUp;
+    public AudioClip collect;
 
     public void SFXPlay(AudioClip clip)
     {

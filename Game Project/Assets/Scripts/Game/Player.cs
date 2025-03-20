@@ -92,6 +92,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Star"))
         {
+            audioManager.SFXPlay(audioManager.collect);
             CollectibleController controller =
                 collision.gameObject.GetComponent<CollectibleController>();
 

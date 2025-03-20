@@ -18,8 +18,11 @@ public class BlackHole : MonoBehaviour
 
     private bool isPlacing = false;
 
+    public AudioManager audioManager;
+
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         tapMessageUI.SetActive(false);
         pauseIcon = GetComponent<GamePanelSetting>();
         playerScript = player.GetComponent<Player>();
@@ -33,6 +36,8 @@ public class BlackHole : MonoBehaviour
             spawnPosition.z = 0; // 2D olduğu için Z'yi sıfırla
 
             GameObject blackHoleRef = Instantiate(blackHolePrefab, spawnPosition, Quaternion.identity); // Karadelik oluştur
+
+            audioManager.SFXPlay(audioManager.blackHole); // blackhole yerleştirme sfx
 
             isPlacing = false;
             Time.timeScale = 1f; // Oyun devam etsin
@@ -54,6 +59,7 @@ public class BlackHole : MonoBehaviour
         if (playerScript.getBlackHoleCount() > 0)
         {
             isPlacing = true;
+            audioManager.SFXPlay(audioManager.blackholePauseScreen); // duraklama SFX oynatır.
             Time.timeScale = 0f; // Oyun duraklatılır
             tapMessageUI.SetActive(true);
             pauseIcon.pauseIcon.SetActive(false);

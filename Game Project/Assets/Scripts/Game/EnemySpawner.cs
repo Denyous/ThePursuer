@@ -12,6 +12,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     private GameObject PrefabRef;
     private GameObject Star;
+    public AudioManager audioManager;
+
 
     //Player
     [SerializeField] private GameObject target;
@@ -53,12 +55,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         //This is an event on enemy killed
         Enemy.OnEnemyDied += HandleEnemyKilled;
-        //InvokeRepeating("SpawnEnemy", 1.0f, 2.0f);
+        InvokeRepeating("SpawnEnemy", 1.0f, 4.0f);
         //InvokeRepeating("SpawnStars", 1.0f, 3.5f);
-        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 1f);
-        //InvokeRepeating("SpawnShieldPowerUp", 1.0f, 3f);
+        //InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 1f);
+        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 1f);
         //InvokeRepeating("SpawnKamikazeBuff", 1.0f, 3f);
         //InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 3f);
         //InvokeRepeating("SpawnFlareBuff", 1.0f, 3f);
@@ -265,6 +268,8 @@ public class EnemySpawner : MonoBehaviour
                 {
                     if (enemy != enemy1)
                     {
+                        audioManager.SFXPlay(audioManager.kamizkaze);
+                        
                         Enemy enemyScript = enemy.GetComponent<Enemy>();
                         enemyScript.SetSpeed(60f);
                         enemyScript.SetSteer(30f);
@@ -289,6 +294,7 @@ public class EnemySpawner : MonoBehaviour
     #region Explode buff functions
     public void ExplodeEnemies()
     {
+        audioManager.SFXPlay(audioManager.laser);
         GameObject explode = Instantiate(ExplodeEffect, transform.position, Quaternion.identity);
         explode.transform.SetParent(transform);
     }
