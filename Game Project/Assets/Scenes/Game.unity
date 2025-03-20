@@ -536,11 +536,11 @@ GameObject:
   - component: {fileID: 261148763}
   m_Layer: 6
   m_Name: ShieldSprite
-  m_TagString: Shield
+  m_TagString: kalkan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &261148760
 Transform:
   m_ObjectHideFlags: 0
@@ -637,7 +637,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.052143753, y: 0}
@@ -3647,10 +3647,10 @@ MonoBehaviour:
   SFX: {fileID: 1691734659}
   background: {fileID: 0}
   death: {fileID: 0}
-  explosion: {fileID: 8300000, guid: 986d6b30567e30e428f3f21373fe45ca, type: 3}
-  shield: {fileID: 8300000, guid: a37f44cbf8c2a7443a3c361efa2f233a, type: 3}
-  shieldOff: {fileID: 0}
-  flare: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
+  explosion: {fileID: 8300000, guid: 5039414d94a6e4e70a5ab9e8833e992a, type: 3}
+  shield: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
+  shieldOff: {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}
+  flare: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
   laser: {fileID: 8300000, guid: e88084c6f293c324db2b4dcf575d60dc, type: 3}
   blackHole: {fileID: 8300000, guid: 4b4dd7245f6104c8c8eb07ccf6b386ed, type: 3}
   blackholePauseScreen: {fileID: 8300000, guid: 881e3f52c86c94f26a60718d35627cd8, type: 3}
