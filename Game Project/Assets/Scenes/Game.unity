@@ -640,9 +640,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.052143753, y: 0}
+  m_Offset: {x: 0.0021984945, y: 0}
   serializedVersion: 2
-  m_Radius: 3.3221335
+  m_Radius: 3.521915
 --- !u!224 &262381311 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
@@ -3647,7 +3647,7 @@ MonoBehaviour:
   SFX: {fileID: 1691734659}
   background: {fileID: 0}
   death: {fileID: 0}
-  explosion: {fileID: 8300000, guid: 5039414d94a6e4e70a5ab9e8833e992a, type: 3}
+  explosion: {fileID: 8300000, guid: 986d6b30567e30e428f3f21373fe45ca, type: 3}
   shield: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
   shieldOff: {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}
   flare: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
