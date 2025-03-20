@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
         {
             if (Shield != true)
             {
-                
+                audioManager.SFXPlay(audioManager.explosion);
                 Instantiate(Explosion, transform.position, UnityEngine.Quaternion.identity);
             }
         }

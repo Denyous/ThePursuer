@@ -533,13 +533,14 @@ GameObject:
   m_Component:
   - component: {fileID: 261148760}
   - component: {fileID: 261148762}
+  - component: {fileID: 261148763}
   m_Layer: 6
   m_Name: ShieldSprite
   m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &261148760
 Transform:
   m_ObjectHideFlags: 0
@@ -607,6 +608,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &261148763
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261148759}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.052143753, y: 0}
+  serializedVersion: 2
+  m_Radius: 3.3221335
 --- !u!224 &262381311 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
@@ -672,6 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3498545004064179341, guid: fca12d505284d9846b351bc6528d85e9, type: 3}
+  audioManager: {fileID: 0}
   target: {fileID: 1503693119}
   minSpawn: {fileID: 1839958088}
   maxSpawn: {fileID: 1816019990}
@@ -3194,6 +3231,7 @@ MonoBehaviour:
   pauseIcon: {fileID: 0}
   UI: {fileID: 525662074}
   player: {fileID: 1503693119}
+  audioManager: {fileID: 0}
 --- !u!114 &1165175680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3614,9 +3652,11 @@ MonoBehaviour:
   shieldOff: {fileID: 0}
   flare: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
   laser: {fileID: 8300000, guid: e88084c6f293c324db2b4dcf575d60dc, type: 3}
-  blackHole: {fileID: 0}
-  kamizkaze: {fileID: 0}
-  speedUp: {fileID: 8300000, guid: 7784e7ab59ab376458c07be56b1a8d6f, type: 3}
+  blackHole: {fileID: 8300000, guid: 4b4dd7245f6104c8c8eb07ccf6b386ed, type: 3}
+  blackholePauseScreen: {fileID: 8300000, guid: 881e3f52c86c94f26a60718d35627cd8, type: 3}
+  kamizkaze: {fileID: 8300000, guid: 4144ed0d6abcc42479fe873c54bbe0fa, type: 3}
+  speedUp: {fileID: 8300000, guid: 35fbad8cdde724f11ba6481f1e64af71, type: 3}
+  collect: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
 --- !u!1 &1278102035
 GameObject:
   m_ObjectHideFlags: 0
@@ -4146,14 +4186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f48be943a07fa849bed517a0db736eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 35
-  Steer: 1.5
-  boostSpeed: 80
-  normalSpeed: 0
   Explosion: {fileID: 4926920272706642467, guid: 832d28e388b64ad42a3a69d268f90d1a, type: 3}
   ScoreText: {fileID: 1182250688}
   Joystick: {fileID: 262381312}
-  RotationSpeed: 3
   flares: {fileID: 4656275142420581941, guid: 6aba37fbe7ad8464f8fa32de17bcf670, type: 3}
   flareLocation: {fileID: 2121099796}
   shieldVisual: {fileID: 261148759}
@@ -4161,6 +4196,12 @@ MonoBehaviour:
   animator: {fileID: 1186083006}
   SpeedBuffAnimation: {fileID: 846265753}
   Animation: {fileID: 2026975378}
+  Steer: 1.5
+  Speed: 35
+  normalSpeed: 0
+  boostSpeed: 80
+  notBoostSpeed: 35
+  RotationSpeed: 3
   flareButton: {fileID: 834734828}
   kamikazeButton: {fileID: 205769885}
   blackHoleButton: {fileID: 1558244167}
@@ -4786,7 +4827,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.244
+  m_Volume: 0.552
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5505,7 +5546,7 @@ GameObject:
   - component: {fileID: 1906331924}
   - component: {fileID: 1906331923}
   m_Layer: 5
-  m_Name: FireStormButton
+  m_Name: LaserButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

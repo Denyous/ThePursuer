@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject rocketFire;
     private GameObject fire;
     Rigidbody2D rb;
+    public AudioManager audioManager;
 
     //This is an event to be handled in EnemySpawner script
     public static event System.Action<GameObject> OnEnemyDied;
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         rb = GetComponent<Rigidbody2D>();
         GameController = FindObjectOfType<GameController>();
         fire = Instantiate(rocketFire, transform, false);
@@ -79,13 +81,33 @@ public class Enemy : MonoBehaviour
         GameObject newParticle = Instantiate(ParticleSystem, transform.position, Quaternion.identity);
         newParticle.transform.SetParent(transform);
     }
+    #region Handling Triggers
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("kalkan"))
+        {
+            
+            
+            Player player = target.gameObject.GetComponent<Player>();
+            
+            player.Shield = false;
 
+            audioManager.SFXPlay(audioManager.shieldOff);
+            
+            player.ChangeShieldState();
 
-
+            Object.Destroy(this.gameObject);
+            
+        }
+    }
+    #endregion
     #region Handling Collisions
     //Handling enemy collisions with player, other enemies, and flares
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+
+
         if (collision.gameObject.CompareTag("Player"))
         {
             Player player = target.gameObject.GetComponent<Player>();
@@ -99,16 +121,10 @@ public class Enemy : MonoBehaviour
 
                 GameOver(score);
             }
-            else
-            {
-
-                player.Shield = false;
-
-                player.ChangeShieldState();
-
-                Object.Destroy(this.gameObject);
-            }
+            
         }
+
+
 
         else if (collision.gameObject.CompareTag("Enemy"))
         {
