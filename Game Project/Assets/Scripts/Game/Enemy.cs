@@ -128,10 +128,12 @@ public class Enemy : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("Enemy"))
         {
+            audioManager.SFXPlay(audioManager.explosion);
             Die(false, false, false);
         }
         else if (collision.gameObject.CompareTag("Flare"))
         {
+            audioManager.SFXPlay(audioManager.explosion);
             Die(false, false, false);
         }
     }

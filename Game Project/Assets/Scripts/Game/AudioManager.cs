@@ -23,6 +23,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip kamizkaze;
     public AudioClip speedUp;
     public AudioClip collect;
+    public AudioClip gameoverScreen;
+    public AudioClip clickSound;
 
     public void SFXPlay(AudioClip clip)
     {

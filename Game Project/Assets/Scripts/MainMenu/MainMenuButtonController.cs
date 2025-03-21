@@ -12,6 +12,7 @@ public class MainMenuButtonController : MonoBehaviour
     public GameObject languagePanel;
     public GameObject tutorialPanel;
     public GameObject audioPanel;
+    
 
     [SerializeField] private UnityEngine.UI.Button StartButton;
     [SerializeField] private UnityEngine.UI.Button SettingsButton;
@@ -30,6 +31,7 @@ public class MainMenuButtonController : MonoBehaviour
         StartBtnRectTransform = StartButton.GetComponent<RectTransform>();
         SettingsBtnRectTransform = SettingsButton.GetComponent<RectTransform>();
         ExitBtnRectTransform = ExitButton.GetComponent<RectTransform>();
+       
     }
 
     public void StartButtonClick()
@@ -68,6 +70,7 @@ public class MainMenuButtonController : MonoBehaviour
 
     public void SettingsButtonClick()
     {
+        
         settingsPanel.SetActive(true);
     }
 
@@ -112,7 +115,7 @@ public class MainMenuButtonController : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-
+   
 
 
 

@@ -3647,8 +3647,8 @@ MonoBehaviour:
   SFX: {fileID: 1691734659}
   background: {fileID: 0}
   death: {fileID: 0}
-  explosion: {fileID: 8300000, guid: 986d6b30567e30e428f3f21373fe45ca, type: 3}
-  shield: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
+  explosion: {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}
+  shield: {fileID: 8300000, guid: d94e78f4110184548bb749ae38c3c285, type: 3}
   shieldOff: {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}
   flare: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
   laser: {fileID: 8300000, guid: e88084c6f293c324db2b4dcf575d60dc, type: 3}
@@ -3656,7 +3656,8 @@ MonoBehaviour:
   blackholePauseScreen: {fileID: 8300000, guid: 881e3f52c86c94f26a60718d35627cd8, type: 3}
   kamizkaze: {fileID: 8300000, guid: 4144ed0d6abcc42479fe873c54bbe0fa, type: 3}
   speedUp: {fileID: 8300000, guid: 35fbad8cdde724f11ba6481f1e64af71, type: 3}
-  collect: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
+  collect: {fileID: 8300000, guid: 56db68ea816daa64f9407d4c97472bf1, type: 3}
+  gameoverScreen: {fileID: 8300000, guid: 9066493003e7a9e4cbeb5c8c4cd144ba, type: 3}
 --- !u!1 &1278102035
 GameObject:
   m_ObjectHideFlags: 0
