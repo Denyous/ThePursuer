@@ -12,7 +12,7 @@ public class MainMenuButtonController : MonoBehaviour
     public GameObject languagePanel;
     public GameObject tutorialPanel;
     public GameObject audioPanel;
-    
+    public AudioManager audio;
 
     [SerializeField] private UnityEngine.UI.Button StartButton;
     [SerializeField] private UnityEngine.UI.Button SettingsButton;
@@ -31,11 +31,13 @@ public class MainMenuButtonController : MonoBehaviour
         StartBtnRectTransform = StartButton.GetComponent<RectTransform>();
         SettingsBtnRectTransform = SettingsButton.GetComponent<RectTransform>();
         ExitBtnRectTransform = ExitButton.GetComponent<RectTransform>();
-       
+        audio = GameObject.FindGameObjectWithTag("MainAudio").GetComponent<AudioManager>();
+
     }
 
     public void StartButtonClick()
     {
+        
         StartBtnOriginalScale = StartButton.GetComponent<RectTransform>().localScale;
 
         LTSeq sequence = LeanTween.sequence();
@@ -44,6 +46,8 @@ public class MainMenuButtonController : MonoBehaviour
     .setEase(LeanTweenType.easeInQuart));
         sequence.append(LeanTween.scale(StartBtnRectTransform, StartBtnOriginalScale, 0.08f)
             .setEase(LeanTweenType.easeOutBack).setOnComplete(OnStartBtnAnimationComplete));
+        ClickSound();
+       
     }
     private void OnStartBtnAnimationComplete()
     {
@@ -60,6 +64,7 @@ public class MainMenuButtonController : MonoBehaviour
     .setEase(LeanTweenType.easeInQuart));
         sequence.append(LeanTween.scale(ExitBtnRectTransform, ExitBtnOriginalScale, 0.08f)
             .setEase(LeanTweenType.easeOutBack).setOnComplete(ExitGame));
+        ClickSound();
     }
     private void ExitGame()
     {
@@ -72,49 +77,69 @@ public class MainMenuButtonController : MonoBehaviour
     {
         
         settingsPanel.SetActive(true);
+        ClickSound();
+
     }
 
     public void CreditsButtonClick()
     {
         creditsPanel.SetActive(true);
+        ClickSound();
     }
 
     public void LanguageButtonClick()
     {
         languagePanel.SetActive(true);
+        ClickSound();
     }
 
     public void TutorialButtonClick()
     {
         tutorialPanel.SetActive(true);
+        ClickSound();
     }
 
     public void AudioButtonClick()
     {
         audioPanel.SetActive(true);
+        ClickSound();
     }
 
 
     public void LanguageBackButton()
     {
         languagePanel.SetActive(false);
+        ClickSound();
     }
 
     public void TutorialBackButton()
     {
         tutorialPanel.SetActive(false);
+        ClickSound();
     }
 
     public void AudioBackButton()
     {
         audioPanel.SetActive(false);
+        ClickSound();
     }
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(0);
+        ClickSound();
+        Invoke("Waitforseconds", 0.2f);
+                       
     }
 
+    public void ClickSound()
+    {
+        audio.SFXPlay(audio.clickSound);
+    }
+
+    void Waitforseconds()
+    {
+        SceneManager.LoadScene(0);
+    }
    
 
 
