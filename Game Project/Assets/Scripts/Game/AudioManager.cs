@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip collect;
     public AudioClip gameoverScreen;
     public AudioClip clickSound;
+    public AudioClip clockTick;
 
     public void SFXPlay(AudioClip clip)
     {

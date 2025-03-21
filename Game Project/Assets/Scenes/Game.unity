@@ -3251,6 +3251,7 @@ MonoBehaviour:
   resumeButton: {fileID: 2040399886}
   restartButton: {fileID: 697102741}
   mainButton: {fileID: 359887506}
+  audioManager: {fileID: 0}
 --- !u!1 &1177485361
 GameObject:
   m_ObjectHideFlags: 0
@@ -3658,6 +3659,8 @@ MonoBehaviour:
   speedUp: {fileID: 8300000, guid: 35fbad8cdde724f11ba6481f1e64af71, type: 3}
   collect: {fileID: 8300000, guid: 56db68ea816daa64f9407d4c97472bf1, type: 3}
   gameoverScreen: {fileID: 8300000, guid: 9066493003e7a9e4cbeb5c8c4cd144ba, type: 3}
+  clickSound: {fileID: 8300000, guid: 130a177e727814a2ea78a886ab72213d, type: 3}
+  clockTick: {fileID: 8300000, guid: b43d102aac6b145468dcaa94a5cccae1, type: 3}
 --- !u!1 &1278102035
 GameObject:
   m_ObjectHideFlags: 0
