@@ -48,16 +48,19 @@ public class Player : MonoBehaviour
     public int blackHoleCount = 0;
     public int flareCount = 0;
     public int kamikazeCount = 0;
+    
 
     private bool isBoost;
     private EnemySpawner Spawner;
 
     private int Score = 0;
 
-
     Rigidbody2D rb;
     private float targetAngle;
     public bool Shield;
+
+    private float speedUpDuration = 0f;
+    private bool isSpeedUp = false;
 
     private void Start()
     {
@@ -126,6 +129,8 @@ public class Player : MonoBehaviour
                 isBoost = true;
             }
 
+            speedUpDuration += 4f;
+            Debug.Log(speedUpDuration);
         }
         else if (collision.gameObject.CompareTag("Kamikaze"))
         {
@@ -170,27 +175,7 @@ public class Player : MonoBehaviour
 
 
 
-    IEnumerator SpeedBuff()
-    {
-        isBoost = false;
-        
-        audioManager.SFXPlay(audioManager.speedUp);
-        
-        Animation.gameObject.SetActive(false);
-        SpeedBuffAnimation.gameObject.SetActive(true);
-
-        Speed = boostSpeed;
-
-        yield return new WaitForSeconds(4f);
-        
-        Speed = normalSpeed;
-
-        Animation.SetActive(true);
-        SpeedBuffAnimation.SetActive(false);
-    }
-
-
-
+ 
     //Change Shield Visual according to the Shield bool
     public void ChangeShieldState()
     {
@@ -230,7 +215,31 @@ public class Player : MonoBehaviour
 
         if (isBoost)
         {
-            StartCoroutine(SpeedBuff());
+            if (speedUpDuration > 0)
+            {
+                speedUpDuration -= Time.deltaTime;
+
+                if (!isSpeedUp)
+                {
+                    isSpeedUp = true;
+
+                    audioManager.SFXPlay(audioManager.speedUp);
+                    Animation.gameObject.SetActive(false);
+                    SpeedBuffAnimation.gameObject.SetActive(true);
+
+                    Speed = boostSpeed;
+                }
+
+                if (speedUpDuration < 0)
+                {
+                    isSpeedUp = false;
+                    isBoost = false;
+
+                    Speed = normalSpeed;
+                    Animation.SetActive(true);
+                    SpeedBuffAnimation.SetActive(false);
+                }
+            }
         }
     }
 

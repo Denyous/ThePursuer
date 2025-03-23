@@ -86,8 +86,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("kalkan"))
         {
-            
-            
             Player player = target.gameObject.GetComponent<Player>();
             
             player.Shield = false;
@@ -96,8 +94,7 @@ public class Enemy : MonoBehaviour
             
             player.ChangeShieldState();
 
-            Object.Destroy(this.gameObject);
-            
+            Die(false, false, false);
         }
     }
     #endregion

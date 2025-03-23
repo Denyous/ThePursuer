@@ -23,32 +23,23 @@ public class GameController : MonoBehaviour
     //Creating explosion for enemies 
     public void HandleCollision(Vector3 position, bool ExplodeBuff, bool Kamikaze, bool Flare)
     {
-        if (!ExplodeBuff && !Kamikaze && !Flare)
-        {
-            if (!Exploded && ExplodeCount == 0)
-            {
-               
-                Instantiate(ExplosionPrefab, position, Quaternion.identity);
-                Exploded = true;
-                ExplodeCount++;
-            }
-            else
-            {
-                ExplodeCount = 0;
-                Exploded = false;
-            }
-        }
-        else if (Kamikaze)
-        {
-            Instantiate(ExplosionPrefab, position, Quaternion.identity);
-        }
-        else if (ExplodeBuff)
-        {
-            Instantiate(ExplosionPrefab, position, Quaternion.identity);
-        }
-        else if (Flare)
-        {
-            Instantiate(ExplosionPrefab, position, Quaternion.identity);
-        }
+        //if (!ExplodeBuff && !Kamikaze && !Flare)
+        //{
+        //    Instantiate(ExplosionPrefab, position, Quaternion.identity);
+        //}
+        //else if (Kamikaze)
+        //{
+        //    Instantiate(ExplosionPrefab, position, Quaternion.identity);
+        //}
+        //else if (ExplodeBuff)
+        //{
+        //    Instantiate(ExplosionPrefab, position, Quaternion.identity);
+        //}
+        //else if (Flare)
+        //{
+        //    Instantiate(ExplosionPrefab, position, Quaternion.identity);
+        //}
+
+        Instantiate(ExplosionPrefab, position, Quaternion.identity);
     }
 }
