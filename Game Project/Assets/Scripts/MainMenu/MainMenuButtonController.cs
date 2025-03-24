@@ -124,6 +124,18 @@ public class MainMenuButtonController : MonoBehaviour
         ClickSound();
     }
 
+    public void BackToMenuFromSettings()
+    {
+        settingsPanel.SetActive(false);
+        ClickSound();
+    }
+
+    public void BackToMenuFromCredits()
+    {
+        creditsPanel.SetActive(false);
+        ClickSound();
+    }
+
     public void BackToMainMenu()
     {
         ClickSound();

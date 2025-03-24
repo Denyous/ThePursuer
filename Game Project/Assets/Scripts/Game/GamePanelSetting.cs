@@ -81,7 +81,7 @@ public class GamePanelSetting : MonoBehaviour
 
         countdownText.gameObject.SetActive(true); // Geri sayımı göster
 
-        for (int i = 3; i > 0; i--)
+        for (int i = 2; i > 0; i--)
         {
             audioManager.SFXPlay(audioManager.clockTick);
             countdownText.text = i.ToString(); // Geri sayım metnini güncelle
