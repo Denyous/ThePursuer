@@ -13,7 +13,7 @@ public class MainMenuButtonController : MonoBehaviour
     public GameObject tutorialPanel;
     public GameObject audioPanel;
     public AudioManager audio;
-    public AnimationClip animationClip;
+    
 
     [SerializeField] private UnityEngine.UI.Button StartButton;
     [SerializeField] private UnityEngine.UI.Button SettingsButton;
@@ -85,7 +85,7 @@ public class MainMenuButtonController : MonoBehaviour
 
     public void TestButtonClick()
     {
-        
+       
 
     }
     public void CreditsButtonClick()
