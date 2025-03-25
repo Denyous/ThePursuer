@@ -13,6 +13,7 @@ public class MainMenuButtonController : MonoBehaviour
     public GameObject tutorialPanel;
     public GameObject audioPanel;
     public AudioManager audio;
+    public AnimationClip animationClip;
 
     [SerializeField] private UnityEngine.UI.Button StartButton;
     [SerializeField] private UnityEngine.UI.Button SettingsButton;
@@ -32,6 +33,7 @@ public class MainMenuButtonController : MonoBehaviour
         SettingsBtnRectTransform = SettingsButton.GetComponent<RectTransform>();
         ExitBtnRectTransform = ExitButton.GetComponent<RectTransform>();
         audio = GameObject.FindGameObjectWithTag("MainAudio").GetComponent<AudioManager>();
+       
 
     }
 
@@ -81,6 +83,11 @@ public class MainMenuButtonController : MonoBehaviour
 
     }
 
+    public void TestButtonClick()
+    {
+        
+
+    }
     public void CreditsButtonClick()
     {
         creditsPanel.SetActive(true);
@@ -153,7 +160,7 @@ public class MainMenuButtonController : MonoBehaviour
         SceneManager.LoadScene(0);
     }
    
-
+    
 
 
 

@@ -63,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
         //InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 1f);
         InvokeRepeating("SpawnShieldPowerUp", 1.0f, 1f);
         //InvokeRepeating("SpawnKamikazeBuff", 1.0f, 3f);
-        //InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 3f);
+        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 3f);
         //InvokeRepeating("SpawnFlareBuff", 1.0f, 3f);
         //InvokeRepeating("SpawnExplodeBuff", 1.0f, 3f);
 

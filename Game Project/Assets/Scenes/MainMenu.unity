@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 24758591}
   - component: {fileID: 24758590}
   - component: {fileID: 24758589}
+  - component: {fileID: 24758592}
   m_Layer: 5
   m_Name: Audio
   m_TagString: Untagged
@@ -181,7 +182,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -256,6 +257,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24758587}
   m_CullTransparentMesh: 1
+--- !u!95 &24758592
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24758587}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 171247ae3c2374c4998a23f6489b47ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &116436892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,6 +1961,7 @@ GameObject:
   - component: {fileID: 640878319}
   - component: {fileID: 640878318}
   - component: {fileID: 640878317}
+  - component: {fileID: 640878320}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -2060,6 +2083,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640878315}
   m_CullTransparentMesh: 1
+--- !u!95 &640878320
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640878315}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3da12f84b093990489036f8646793e2b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &667901960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2985,6 +3029,7 @@ GameObject:
   - component: {fileID: 934108639}
   - component: {fileID: 934108638}
   - component: {fileID: 934108637}
+  - component: {fileID: 934108640}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -3031,7 +3076,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3106,6 +3151,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934108635}
   m_CullTransparentMesh: 1
+--- !u!95 &934108640
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934108635}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fb501c1703d26ee449c15852a9183b86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &961303758
 GameObject:
   m_ObjectHideFlags: 0
@@ -3650,6 +3716,7 @@ GameObject:
   - component: {fileID: 1160234454}
   - component: {fileID: 1160234453}
   - component: {fileID: 1160234452}
+  - component: {fileID: 1160234455}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -3696,7 +3763,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3771,6 +3838,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160234450}
   m_CullTransparentMesh: 1
+--- !u!95 &1160234455
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160234450}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cbc5bf78a073e9844b5e55d36dc8038f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1164521680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4484,6 +4572,7 @@ GameObject:
   - component: {fileID: 1560537966}
   - component: {fileID: 1560537965}
   - component: {fileID: 1560537964}
+  - component: {fileID: 1560537967}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -4530,7 +4619,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4605,6 +4694,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560537962}
   m_CullTransparentMesh: 1
+--- !u!95 &1560537967
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560537962}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4212faf4eef70dd42bea32104975ee66, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1615491045
 GameObject:
   m_ObjectHideFlags: 0
@@ -4826,7 +4936,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1788427262}
         m_TargetAssemblyTypeName: MainMenuButtonController, Assembly-CSharp
-        m_MethodName: ClickSound
+        m_MethodName: TestButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4963,6 +5073,7 @@ GameObject:
   - component: {fileID: 1755406880}
   - component: {fileID: 1755406879}
   - component: {fileID: 1755406878}
+  - component: {fileID: 1755406881}
   m_Layer: 5
   m_Name: Language
   m_TagString: Untagged
@@ -4987,7 +5098,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 229.93, y: -49.035004}
+  m_AnchoredPosition: {x: 229.93, y: -49.035}
   m_SizeDelta: {x: 459.86, y: 98.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1755406878
@@ -5009,7 +5120,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -5084,6 +5195,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755406876}
   m_CullTransparentMesh: 1
+--- !u!95 &1755406881
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755406876}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b2619d51e43d9b147a464467092e5859, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1788427257
 GameObject:
   m_ObjectHideFlags: 0
@@ -5211,6 +5343,7 @@ MonoBehaviour:
   tutorialPanel: {fileID: 273142651}
   audioPanel: {fileID: 806761156}
   audio: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: cfd1d0b5981c5a644bee1ea52e055c5d, type: 2}
   StartButton: {fileID: 640878317}
   SettingsButton: {fileID: 1175526244}
   ExitButton: {fileID: 934108637}
