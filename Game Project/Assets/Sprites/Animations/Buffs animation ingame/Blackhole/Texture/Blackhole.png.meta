@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 67ad4b6b9be846b44bb3a1cd5363f4ac
+guid: dd6894d8b1886ce459735de19a265cf4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -37,9 +37,9 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,58 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -165,19 +113,19 @@ TextureImporter:
       name: Blackhole_0
       rect:
         serializedVersion: 2
-        x: 77
-        y: 2488
-        width: 651
-        height: 621
+        x: 122
+        y: 3121
+        width: 754
+        height: 757
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa342135d4430ee4d875fba1ea8a4a51
-      internalID: -161097992
+      spriteID: b72e66263fe55e842b9867b09a7d07a6
+      internalID: -85910721
       vertices: []
       indices: 
       edges: []
@@ -186,19 +134,19 @@ TextureImporter:
       name: Blackhole_1
       rect:
         serializedVersion: 2
-        x: 877
-        y: 2488
-        width: 651
-        height: 621
+        x: 1123
+        y: 3121
+        width: 752
+        height: 757
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5dbeef146cf3f6c478c7c788e6e0dfd7
-      internalID: 867037394
+      spriteID: 4b48a87b6ea554744b6c9035784cf573
+      internalID: -325752559
       vertices: []
       indices: 
       edges: []
@@ -207,19 +155,19 @@ TextureImporter:
       name: Blackhole_2
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 2478
-        width: 642
-        height: 642
+        x: 2124
+        y: 3121
+        width: 752
+        height: 757
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 721b55ed830520e43bf3b60da0ee3487
-      internalID: 1093093198
+      spriteID: 3a22648de9d381040b11ca78c7105c41
+      internalID: -1570143795
       vertices: []
       indices: 
       edges: []
@@ -228,19 +176,19 @@ TextureImporter:
       name: Blackhole_3
       rect:
         serializedVersion: 2
-        x: 2480
-        y: 2478
-        width: 642
-        height: 642
+        x: 3123
+        y: 3121
+        width: 754
+        height: 757
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f19921a3e5174f419c5f6dd27ed09a0
-      internalID: -709634591
+      spriteID: 80a9469beb718f441a500cc7b61a9d93
+      internalID: -563207016
       vertices: []
       indices: 
       edges: []
@@ -249,19 +197,19 @@ TextureImporter:
       name: Blackhole_4
       rect:
         serializedVersion: 2
-        x: 88
-        y: 1672
-        width: 623
-        height: 651
+        x: 4124
+        y: 3121
+        width: 751
+        height: 757
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97b8b8bbda34f614ea892ac78b47db19
-      internalID: -1240527690
+      spriteID: 0def8e24d8382ad4a99ee88f8c6f7c49
+      internalID: 544953679
       vertices: []
       indices: 
       edges: []
@@ -270,19 +218,19 @@ TextureImporter:
       name: Blackhole_5
       rect:
         serializedVersion: 2
-        x: 888
-        y: 1672
-        width: 623
-        height: 651
+        x: 122
+        y: 2122
+        width: 754
+        height: 755
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 137bb146ca479784b8924da8f4d16596
-      internalID: -697698991
+      spriteID: 25cd0d10c5381e14589cf0e7f006fd24
+      internalID: 2035100080
       vertices: []
       indices: 
       edges: []
@@ -291,19 +239,19 @@ TextureImporter:
       name: Blackhole_6
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 1678
-        width: 642
-        height: 642
+        x: 1123
+        y: 2122
+        width: 752
+        height: 755
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: faaf3b40da29a254ca9a0bd93a0721a7
-      internalID: -1457990223
+      spriteID: 315395119f4ee504283eb7a064558ccd
+      internalID: -1425357470
       vertices: []
       indices: 
       edges: []
@@ -312,19 +260,19 @@ TextureImporter:
       name: Blackhole_7
       rect:
         serializedVersion: 2
-        x: 2480
-        y: 1678
-        width: 642
-        height: 642
+        x: 2124
+        y: 2122
+        width: 752
+        height: 755
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cb57acf715f8774f9e6c6be5bbb307f
-      internalID: -168534903
+      spriteID: 4339b32f0f5349f43a018e2ddc79f114
+      internalID: -1848932874
       vertices: []
       indices: 
       edges: []
@@ -333,19 +281,19 @@ TextureImporter:
       name: Blackhole_8
       rect:
         serializedVersion: 2
-        x: 72
-        y: 888
-        width: 651
-        height: 621
+        x: 3123
+        y: 2122
+        width: 754
+        height: 755
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0dca20ebc3bd0464ab664d884e9b6648
-      internalID: 1664191402
+      spriteID: 2dd2eb513867f7c438a6e26ffed71b32
+      internalID: -263076111
       vertices: []
       indices: 
       edges: []
@@ -354,19 +302,19 @@ TextureImporter:
       name: Blackhole_9
       rect:
         serializedVersion: 2
-        x: 872
-        y: 888
-        width: 651
-        height: 621
+        x: 4124
+        y: 2122
+        width: 751
+        height: 755
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77afa3598c2dcba43ab9e7f14efb660a
-      internalID: -570195312
+      spriteID: 378b3bfbd509c464e9cb7147ddf12cc0
+      internalID: 470186929
       vertices: []
       indices: 
       edges: []
@@ -375,19 +323,19 @@ TextureImporter:
       name: Blackhole_10
       rect:
         serializedVersion: 2
-        x: 1678
-        y: 877
-        width: 642
-        height: 643
+        x: 122
+        y: 1121
+        width: 754
+        height: 757
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dec1f57739c9f3b4bae72a6f9c7380a2
-      internalID: -957076244
+      spriteID: 78bccd474c44a3f46a922d338ae67340
+      internalID: 1795520409
       vertices: []
       indices: 
       edges: []
@@ -396,19 +344,19 @@ TextureImporter:
       name: Blackhole_11
       rect:
         serializedVersion: 2
-        x: 2478
-        y: 877
-        width: 642
-        height: 643
+        x: 1123
+        y: 1121
+        width: 752
+        height: 757
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ffa6bb9f2d97b04db4ea7f9bcd942a7
-      internalID: -1546996320
+      spriteID: ea299574efcd73d4d9ea34743e72f421
+      internalID: -1970443790
       vertices: []
       indices: 
       edges: []
@@ -417,19 +365,19 @@ TextureImporter:
       name: Blackhole_12
       rect:
         serializedVersion: 2
-        x: 88
-        y: 75
-        width: 623
-        height: 652
+        x: 2124
+        y: 1121
+        width: 752
+        height: 757
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d6141f312200054b9917a82a8c6c39b
-      internalID: -326854364
+      spriteID: 536dda196eca91c44960cc559e9e6a90
+      internalID: 778885018
       vertices: []
       indices: 
       edges: []
@@ -438,19 +386,19 @@ TextureImporter:
       name: Blackhole_13
       rect:
         serializedVersion: 2
-        x: 888
-        y: 75
-        width: 623
-        height: 652
+        x: 3123
+        y: 1121
+        width: 754
+        height: 757
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b8a09cdbed715345b013dc7a0ec3458
-      internalID: -2141461584
+      spriteID: 8978213a7355b36489854059ddf8ea1d
+      internalID: -314399038
       vertices: []
       indices: 
       edges: []
@@ -459,19 +407,82 @@ TextureImporter:
       name: Blackhole_14
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 80
-        width: 642
-        height: 642
+        x: 4124
+        y: 1121
+        width: 751
+        height: 757
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89fc76a10cc7e734ea207294bb821110
-      internalID: 1088364677
+      spriteID: 7cac5ae350d2ed24780335178e9da534
+      internalID: -1950464539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blackhole_15
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 122
+        width: 754
+        height: 755
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e39b74ab62724846bd276651b57646b
+      internalID: -1622086827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blackhole_16
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 122
+        width: 752
+        height: 755
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7427ace69430624b958505fa0114498
+      internalID: -1267413377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blackhole_17
+      rect:
+        serializedVersion: 2
+        x: 2124
+        y: 122
+        width: 752
+        height: 755
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 130871b2afa501441892d8e43556662b
+      internalID: -177838911
       vertices: []
       indices: 
       edges: []
@@ -487,21 +498,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Blackhole_0: -161097992
-      Blackhole_1: 867037394
-      Blackhole_10: -957076244
-      Blackhole_11: -1546996320
-      Blackhole_12: -326854364
-      Blackhole_13: -2141461584
-      Blackhole_14: 1088364677
-      Blackhole_2: 1093093198
-      Blackhole_3: -709634591
-      Blackhole_4: -1240527690
-      Blackhole_5: -697698991
-      Blackhole_6: -1457990223
-      Blackhole_7: -168534903
-      Blackhole_8: 1664191402
-      Blackhole_9: -570195312
+      Blackhole_0: -85910721
+      Blackhole_1: -325752559
+      Blackhole_10: 1795520409
+      Blackhole_11: -1970443790
+      Blackhole_12: 778885018
+      Blackhole_13: -314399038
+      Blackhole_14: -1950464539
+      Blackhole_15: -1622086827
+      Blackhole_16: -1267413377
+      Blackhole_17: -177838911
+      Blackhole_2: -1570143795
+      Blackhole_3: -563207016
+      Blackhole_4: 544953679
+      Blackhole_5: 2035100080
+      Blackhole_6: -1425357470
+      Blackhole_7: -1848932874
+      Blackhole_8: -263076111
+      Blackhole_9: 470186929
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
