@@ -82,6 +82,8 @@ public class Player : MonoBehaviour
         {
             if (Shield != true)
             {
+                AudioListener listener = Camera.main.GetComponent<AudioListener>();
+                listener.enabled = true;
                 audioManager.SFXPlay(audioManager.explosion);
                 Instantiate(Explosion, transform.position, UnityEngine.Quaternion.identity);
             }

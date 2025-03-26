@@ -6,8 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     [Header("----AudioSource----")]
 
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFX;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource SFX;
 
     [Header("----SFX----")]
 
@@ -26,6 +26,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameoverScreen;
     public AudioClip clickSound;
     public AudioClip clockTick;
+    public AudioSource enemyShip;
+    public AudioClip enemyShipClip;
 
     public void SFXPlay(AudioClip clip)
     {

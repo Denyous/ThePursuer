@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
 
 
     #region Setting Variables for Outside Use
+
     public void SetTarget(GameObject newTarget)
     {
         target = newTarget;
@@ -82,6 +83,7 @@ public class Enemy : MonoBehaviour
         newParticle.transform.SetParent(transform);
     }
     #region Handling Triggers
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("kalkan"))
@@ -102,9 +104,6 @@ public class Enemy : MonoBehaviour
     //Handling enemy collisions with player, other enemies, and flares
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-
-
         if (collision.gameObject.CompareTag("Player"))
         {
             Player player = target.gameObject.GetComponent<Player>();
@@ -120,9 +119,6 @@ public class Enemy : MonoBehaviour
             }
             
         }
-
-
-
         else if (collision.gameObject.CompareTag("Enemy"))
         {
             audioManager.SFXPlay(audioManager.explosion);

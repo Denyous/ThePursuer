@@ -3661,6 +3661,8 @@ MonoBehaviour:
   gameoverScreen: {fileID: 8300000, guid: 9066493003e7a9e4cbeb5c8c4cd144ba, type: 3}
   clickSound: {fileID: 8300000, guid: 130a177e727814a2ea78a886ab72213d, type: 3}
   clockTick: {fileID: 8300000, guid: b43d102aac6b145468dcaa94a5cccae1, type: 3}
+  enemyShip: {fileID: 8300000, guid: bd9cb0c89e60ad14a95fad08991e0e49, type: 3}
+  enemyShipClip: {fileID: 8300000, guid: bd9cb0c89e60ad14a95fad08991e0e49, type: 3}
 --- !u!1 &1278102035
 GameObject:
   m_ObjectHideFlags: 0
@@ -4120,6 +4122,7 @@ GameObject:
   - component: {fileID: 1503693120}
   - component: {fileID: 1503693126}
   - component: {fileID: 1503693127}
+  - component: {fileID: 1503693128}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4292,6 +4295,14 @@ PolygonCollider2D:
       - {x: 0.5198901, y: 0.020341143}
       - {x: 0.52398735, y: 0.1514356}
   m_UseDelaunayMesh: 0
+--- !u!81 &1503693128
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503693119}
+  m_Enabled: 1
 --- !u!1 &1504385648
 GameObject:
   m_ObjectHideFlags: 0
@@ -4692,7 +4703,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582767124}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1582767127
 Camera:
   m_ObjectHideFlags: 0

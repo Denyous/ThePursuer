@@ -119,7 +119,6 @@ public class EnemySpawner : MonoBehaviour
             enemyScript.SetGameOverScreen(GameOverScreen);
 
             RegisterEnemy(PrefabRef);
-            Debug.Log($"Enemy Count: {enemies.Count}");
         }
     }
     #endregion
