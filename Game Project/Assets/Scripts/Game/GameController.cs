@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static bool Exploded = false;
-    private int ExplodeCount = 0;
-      
 
     [SerializeField] private GameObject ExplosionPrefab;
     public void ResetTheGame()
