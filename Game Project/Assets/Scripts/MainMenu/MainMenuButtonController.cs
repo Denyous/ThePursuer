@@ -12,7 +12,7 @@ public class MainMenuButtonController : MonoBehaviour
     public GameObject languagePanel;
     public GameObject tutorialPanel;
     public GameObject audioPanel;
-    public AudioManager audio;
+    public new AudioManager audio;
     
 
     [SerializeField] private UnityEngine.UI.Button StartButton;
@@ -33,8 +33,6 @@ public class MainMenuButtonController : MonoBehaviour
         SettingsBtnRectTransform = SettingsButton.GetComponent<RectTransform>();
         ExitBtnRectTransform = ExitButton.GetComponent<RectTransform>();
         audio = GameObject.FindGameObjectWithTag("MainAudio").GetComponent<AudioManager>();
-       
-
     }
 
     public void StartButtonClick()
@@ -70,7 +68,6 @@ public class MainMenuButtonController : MonoBehaviour
     }
     private void ExitGame()
     {
-        EditorApplication.isPlaying = false;
         Application.Quit();
     }
 
@@ -159,10 +156,4 @@ public class MainMenuButtonController : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-   
-    
-
-
-
-
 }

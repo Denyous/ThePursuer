@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 using Unity.Mathematics;
 using Vector3 = UnityEngine.Vector3;
 using UnityEngine.Rendering.UI;
