@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] GameObject thingtofollow;
-    void Update()
+    void LateUpdate()
     {
         if (thingtofollow != null)
         {
