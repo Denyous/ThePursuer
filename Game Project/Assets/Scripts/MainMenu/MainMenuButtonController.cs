@@ -29,6 +29,7 @@ public class MainMenuButtonController : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         StartBtnRectTransform = StartButton.GetComponent<RectTransform>();
         SettingsBtnRectTransform = SettingsButton.GetComponent<RectTransform>();
         ExitBtnRectTransform = ExitButton.GetComponent<RectTransform>();

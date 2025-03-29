@@ -32,7 +32,7 @@ public class ParallaxBackground : MonoBehaviour
         spriteHeight = spriteRenderer.sprite.texture.height / spriteRenderer.sprite.pixelsPerUnit;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         Vector3 deltaMovement = cameraTransform.position - lastCameraPosition;
         transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier.x,
