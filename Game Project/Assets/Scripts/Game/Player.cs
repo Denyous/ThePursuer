@@ -61,6 +61,9 @@ public class Player : MonoBehaviour
     private float speedUpDuration = 0f;
     private bool isSpeedUp = false;
 
+    private float inputX;
+    private float inputY;
+
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -70,6 +73,9 @@ public class Player : MonoBehaviour
         MakeButtonTransparent(flareButton);
         MakeButtonTransparent(kamikazeButton);
         MakeButtonTransparent(blackHoleButton);
+
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
 
 
@@ -131,7 +137,6 @@ public class Player : MonoBehaviour
             }
 
             speedUpDuration += 4f;
-            Debug.Log(speedUpDuration);
         }
         else if (collision.gameObject.CompareTag("Kamikaze"))
         {
@@ -191,28 +196,21 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
-    //Player movement
-    private void FixedUpdate()
+    private void Update()
     {
-        float x = Joystick.Horizontal;
-        float y = Joystick.Vertical;
+        float newX = Joystick.Horizontal;
+        float newY = Joystick.Vertical;
 
-        if (Mathf.Abs(x) > 0.1f || Mathf.Abs(y) > 0.1f)
+        if (Mathf.Abs(newX) > 0.05f || Mathf.Abs(newY) > 0.05f)
         {
-            targetAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg - 90f;
+            inputX = newX;
+            inputY = newY;
         }
 
-        UnityEngine.Quaternion currentRotation = transform.rotation;
-
-        UnityEngine.Quaternion targetRotation = UnityEngine.Quaternion.
-            Euler(0, 0, targetAngle);
-
-        transform.rotation = UnityEngine.Quaternion.Lerp
-            (currentRotation, targetRotation, RotationSpeed * Time.fixedDeltaTime / Steer);
-
-        rb.velocity = transform.up * Speed * Time.fixedDeltaTime * 10f;
+        if (Mathf.Abs(inputX) > 0.1f || Mathf.Abs(inputY) > 0.1f)
+        {
+            targetAngle = Mathf.Atan2(inputY, inputX) * Mathf.Rad2Deg - 90f;
+        }
 
         if (isBoost)
         {
@@ -242,6 +240,33 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+
+    //Player movement
+    private void FixedUpdate()
+    {
+        //float x = Joystick.Horizontal;
+        //float y = Joystick.Vertical;
+
+        //if (Mathf.Abs(x) > 0.1f || Mathf.Abs(y) > 0.1f)
+        //{
+        //    targetAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg - 90f;
+        //}
+
+        //UnityEngine.Quaternion currentRotation = transform.rotation;
+
+        //UnityEngine.Quaternion targetRotation = UnityEngine.Quaternion.
+        //    Euler(0, 0, targetAngle);
+
+        //transform.rotation = UnityEngine.Quaternion.Lerp
+        //    (currentRotation, targetRotation, RotationSpeed * Time.fixedDeltaTime / Steer);
+        //rb.velocity = transform.up * Speed * Time.fixedDeltaTime * 10f;
+
+        UnityEngine.Quaternion currentRotation = transform.rotation;
+        UnityEngine.Quaternion targetRotation = UnityEngine.Quaternion.Euler(0, 0, targetAngle);
+        transform.rotation = UnityEngine.Quaternion.Lerp(currentRotation, targetRotation, RotationSpeed * Time.deltaTime / Steer);
+
+        rb.MovePosition(rb.position + (UnityEngine.Vector2)(transform.up * Speed * Time.deltaTime));
     }
 
 

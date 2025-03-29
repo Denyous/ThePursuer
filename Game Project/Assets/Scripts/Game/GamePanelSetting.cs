@@ -21,7 +21,6 @@ public class GamePanelSetting : MonoBehaviour
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-
     }
 
     public void OpenPausePanel()
