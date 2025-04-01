@@ -1852,14 +1852,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.85490197}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cf3fe9f1b43e9d74d8f9361d6a0ed364, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5345,13 +5345,13 @@ MonoBehaviour:
   m_text: "Herhangi bir yere t\u0131kla!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19090c9b75fd6cb4096b0397e9e5b8ae, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 3009120453568006070, guid: 19090c9b75fd6cb4096b0397e9e5b8ae, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279242956
+    rgba: 4278225151
   m_fontColor: {r: 1, g: 0.53382975, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
