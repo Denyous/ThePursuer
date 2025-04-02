@@ -15,7 +15,8 @@ public class AudioManager : MonoBehaviour
     [Header("-----AudioSettings----")]
 
     public AudioMixer audioMixer;  // Audio Mixer bağlayacağız
-    public Slider volumeSlider;    // Ses seviyesi Slider'ı
+    public Slider MusicvolumeSlider;    // Ses seviyesi Slider'ı
+    public Slider SFXvolumeSlider;
 
 
     [Header("----SFX----")]
@@ -41,27 +42,36 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("MusicVolume"))
+        if (PlayerPrefs.HasKey("MusicVolume")&& PlayerPrefs.HasKey("SFXVolume"))
         {
             LoadVolume();
         }
         else
         {
             SetMusicVolume();
+            SetSFXVolume();
         }
 
 
     }
     public void SetMusicVolume()
     {
-        float volume = volumeSlider.value;
+        float volume = MusicvolumeSlider.value;
         audioMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 
+    public void SetSFXVolume()
+    {
+        float volume = SFXvolumeSlider.value;
+        audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+    }
+
     private void LoadVolume()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        MusicvolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        SFXvolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
     }
 
     public void SFXPlay(AudioClip clip)

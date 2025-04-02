@@ -32,6 +32,8 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: c79b2d2f990c6804fb48ff5fa614a6f7
     name: Music
+  - guid: 79665e0d636019242866decd2dce0a60
+    name: SFX
   m_AudioMixerGroupViews:
   - guids:
     - a17b6c7f63248ba4893c6f873d1ab2ea
@@ -86,7 +88,8 @@ AudioMixerSnapshotController:
   m_SnapshotID: 1416648b6d831b34ba922c6ea724c668
   m_FloatValues:
     af32d491114b036499419e07b511cc10: 0
-    c79b2d2f990c6804fb48ff5fa614a6f7: -80
+    79665e0d636019242866decd2dce0a60: -80
+    c79b2d2f990c6804fb48ff5fa614a6f7: -78.80283
   m_TransitionOverrides: {}
 --- !u!243 &161804794746222114
 AudioMixerGroupController:
@@ -94,7 +97,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Group
+  m_Name: Music
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: e0199dcd37432204a8c5dce3c2aca6c1
   m_Children: []
@@ -113,7 +116,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Group
+  m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 8af38066b88e5904e87d2ae281b61a9a
   m_Children: []
