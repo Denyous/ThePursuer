@@ -388,7 +388,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -162, y: 553.1}
+  m_AnchoredPosition: {x: -187, y: 82.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53740222
@@ -1702,7 +1702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 575}
+  m_AnchoredPosition: {x: 0, y: 672}
   m_SizeDelta: {x: 1012.63, y: 146.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415057121
@@ -2321,7 +2321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -459, y: -932}
+  m_AnchoredPosition: {x: -378.5, y: -864.1}
   m_SizeDelta: {x: 100, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &480943788
@@ -2613,7 +2613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 86, y: 31}
+  m_AnchoredPosition: {x: 158.20001, y: 92.79999}
   m_SizeDelta: {x: 100, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &523803235
@@ -3424,6 +3424,7 @@ RectTransform:
   m_Children:
   - {fileID: 1638786024}
   - {fileID: 1757619878}
+  - {fileID: 1836064964}
   m_Father: {fileID: 1788427261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3872,7 +3873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 82, y: 32}
+  m_AnchoredPosition: {x: 158.9, y: 94}
   m_SizeDelta: {x: 100, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &757227223
@@ -5138,7 +5139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 71}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 640.1, y: 578.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1136936066
@@ -5202,7 +5203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -180, y: 382.7}
+  m_AnchoredPosition: {x: -205, y: -87.89996}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1143064755
@@ -6188,11 +6189,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.8301887, g: 0.47633782, b: 0.12061229, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.3688248, g: 0.7924528, b: 0.32445708, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.9490197, g: 0.40784317, b: 0.13725491, a: 1}
+    m_HighlightedColor: {r: 0.509434, g: 0.20859179, b: 0.060074754, a: 1}
+    m_PressedColor: {r: 0.9960785, g: 0.7843138, b: 0.054901965, a: 1}
+    m_SelectedColor: {r: 0.9490197, g: 0.40784317, b: 0.13725491, a: 1}
+    m_DisabledColor: {r: 0.9490197, g: 0.40784317, b: 0.13725491, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6562,7 +6563,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 8
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -7293,12 +7294,11 @@ RectTransform:
   - {fileID: 938873903}
   - {fileID: 1307962949}
   - {fileID: 150477505}
-  - {fileID: 1836064964}
   m_Father: {fileID: 672498101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21.735, y: -146.15}
+  m_AnchoredPosition: {x: -21.735, y: -312}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1767051468
@@ -7564,7 +7564,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 366}
+  m_AnchoredPosition: {x: 0, y: -3}
   m_SizeDelta: {x: 459.86, y: 401.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798221021
@@ -7668,7 +7668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80, y: 38}
+  m_AnchoredPosition: {x: 159.20001, y: 94.29999}
   m_SizeDelta: {x: 100, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1824135909
@@ -7815,15 +7815,15 @@ RectTransform:
   m_GameObject: {fileID: 1836064963}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2976027, y: 1.2976027, z: 1.2976027}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 719857101}
-  m_Father: {fileID: 1757619878}
+  m_Father: {fileID: 672498101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -358, y: -672}
+  m_AnchoredPosition: {x: 161.29999, y: 95.900024}
   m_SizeDelta: {x: 100, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1836064965
@@ -8001,11 +8001,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.8301887, g: 0.47633782, b: 0.12061229, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.9490197, g: 0.40784317, b: 0.13725491, a: 1}
+    m_HighlightedColor: {r: 0.50980395, g: 0.21176471, b: 0.0627451, a: 1}
     m_PressedColor: {r: 0.9960785, g: 0.7843138, b: 0.054901965, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_SelectedColor: {r: 0.9490197, g: 0.40784317, b: 0.13725491, a: 1}
+    m_DisabledColor: {r: 0.9490197, g: 0.40784317, b: 0.13725491, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
