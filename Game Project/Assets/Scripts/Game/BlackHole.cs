@@ -54,7 +54,7 @@ public class BlackHole : MonoBehaviour
 
     private IEnumerator destroyBlackHoleAfterXSeconds(GameObject blackHole)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(15);
         Object.Destroy(blackHole);
     }
 
