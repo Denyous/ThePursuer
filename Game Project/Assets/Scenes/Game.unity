@@ -3305,6 +3305,7 @@ MonoBehaviour:
   UI: {fileID: 525662074}
   player: {fileID: 1503693119}
   audioManager: {fileID: 0}
+  musicSource: {fileID: 1853756936}
 --- !u!114 &1165175680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3324,6 +3325,7 @@ MonoBehaviour:
   resumeButton: {fileID: 2040399886}
   restartButton: {fileID: 697102741}
   mainButton: {fileID: 359887506}
+  musicSource: {fileID: 1853756936}
   audioManager: {fileID: 0}
 --- !u!1 &1177485361
 GameObject:
@@ -3987,6 +3989,7 @@ MonoBehaviour:
   PointText: {fileID: 1413435082}
   UI: {fileID: 525662074}
   pauseIcon: {fileID: 1946800980}
+  musicSource: {fileID: 1853756936}
 --- !u!1 &1413435080
 GameObject:
   m_ObjectHideFlags: 0

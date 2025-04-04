@@ -17,8 +17,9 @@ public class GamePanelSetting : MonoBehaviour
     public Button resumeButton;
     public Button restartButton;
     public Button mainButton;
+    public AudioSource musicSource;
     public AudioManager audioManager;
-    
+
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class GamePanelSetting : MonoBehaviour
         ClickSound();
         pauseIconFalse();
         Time.timeScale = 0f;
+        musicSource.Pause();
         pauseScreen.SetActive(true);
         UI.SetActive(false);
     }
@@ -44,22 +46,22 @@ public class GamePanelSetting : MonoBehaviour
     public void Replay()
     {
         ClickSound();
-               
+
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
 
-    
+
 
     public void MainMenu()
     {
         ClickSound();
-        
+
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
-    
+
 
     void pauseIconFalse()
     {
@@ -95,6 +97,8 @@ public class GamePanelSetting : MonoBehaviour
                                                    // Pause menüsünü kapat
         Time.timeScale = 1f; // Oyunu devam ettir
 
+        musicSource.UnPause();
+
         pauseIconTrue();
 
 
@@ -109,5 +113,5 @@ public class GamePanelSetting : MonoBehaviour
     {
         audioManager.SFXPlay(audioManager.clickSound);
     }
-   
+
 }
