@@ -11,18 +11,20 @@ public class GameOver : MonoBehaviour
     public GameObject pauseIcon;
     private int score_;
     AudioManager audioManager;
+    public AudioSource musicSource;
 
     
     public void Setup(int score)
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         
         UI.SetActive(false);
         pauseIcon.SetActive(false);
 
         score_ = score;
-        
 
+        musicSource.Pause();
         Invoke("Wait1Second", 1f);
         
     }
@@ -30,6 +32,7 @@ public class GameOver : MonoBehaviour
     void Wait1Second()
     {
         audioManager.SFXPlay(audioManager.gameoverScreen);
+        
         gameObject.SetActive(true);
         PointText.text = score_.ToString() + " Stars";
 
