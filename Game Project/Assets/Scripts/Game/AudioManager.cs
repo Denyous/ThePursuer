@@ -42,7 +42,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("MusicVolume")&& PlayerPrefs.HasKey("SFXVolume"))
+        if (PlayerPrefs.HasKey("MusicVolume") && PlayerPrefs.HasKey("SFXVolume"))
         {
             LoadVolume();
         }
@@ -59,6 +59,7 @@ public class AudioManager : MonoBehaviour
         float volume = MusicvolumeSlider.value;
         audioMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("MusicVolume", volume);
+        PlayerPrefs.Save();
     }
 
     public void SetSFXVolume()
@@ -66,6 +67,7 @@ public class AudioManager : MonoBehaviour
         float volume = SFXvolumeSlider.value;
         audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("SFXVolume", volume);
+        PlayerPrefs.Save();
     }
 
     private void LoadVolume()

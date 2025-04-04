@@ -3681,6 +3681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1253070763}
   - component: {fileID: 1253070764}
+  - component: {fileID: 1253070765}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Audio
@@ -3739,6 +3740,19 @@ MonoBehaviour:
   clockTick: {fileID: 8300000, guid: b43d102aac6b145468dcaa94a5cccae1, type: 3}
   enemyShip: {fileID: 8300000, guid: bd9cb0c89e60ad14a95fad08991e0e49, type: 3}
   enemyShipClip: {fileID: 8300000, guid: bd9cb0c89e60ad14a95fad08991e0e49, type: 3}
+--- !u!114 &1253070765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253070762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a498a00bd8a73a4299fcc06acdbed5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 1005739dba854b54399bbb7dfa09e971, type: 2}
 --- !u!1 &1278102035
 GameObject:
   m_ObjectHideFlags: 0
@@ -4920,10 +4934,10 @@ AudioSource:
   m_GameObject: {fileID: 1691734657}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 396785537042453105, guid: 1005739dba854b54399bbb7dfa09e971, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.061
+  m_Volume: 0.249
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5542,10 +5556,10 @@ AudioSource:
   m_GameObject: {fileID: 1853756934}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 161804794746222114, guid: 1005739dba854b54399bbb7dfa09e971, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 33700a7a6b5de034193bcf3bfde278ef, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.037
+  m_Volume: 0.242
   m_Pitch: 1
   Loop: 0
   Mute: 0

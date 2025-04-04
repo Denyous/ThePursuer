@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 53740223}
   - component: {fileID: 53740222}
   m_Layer: 5
-  m_Name: Sound_Txt
+  m_Name: Music_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,7 +383,7 @@ RectTransform:
   m_LocalScale: {x: 2.0518, y: 2.0518, z: 2.0518}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1344756852}
+  - {fileID: 1913698627}
   m_Father: {fileID: 268239129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Deniz \xD6L\xC7E\n\nO\u011Fuz \u015EEVSEL \n"
+  m_text: "\n\nO\u011Fuz \u015EEVSEL\n\nDeniz \xD6L\xC7E \n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1584,7 +1584,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 161804794746222114, guid: 1005739dba854b54399bbb7dfa09e971, type: 2}
   m_audioClip: {fileID: 8300000, guid: 33700a7a6b5de034193bcf3bfde278ef, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.49
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5180,7 +5180,7 @@ GameObject:
   - component: {fileID: 1143064756}
   - component: {fileID: 1143064755}
   m_Layer: 5
-  m_Name: SFX_Txt
+  m_Name: Sounds_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5198,7 +5198,7 @@ RectTransform:
   m_LocalScale: {x: 1.8574, y: 1.8574, z: 1.8574}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1913698627}
+  - {fileID: 1344756852}
   m_Father: {fileID: 268239129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5226,7 +5226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SFX :'
+  m_text: 'Sound :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19090c9b75fd6cb4096b0397e9e5b8ae, type: 2}
   m_sharedMaterial: {fileID: 3009120453568006070, guid: 19090c9b75fd6cb4096b0397e9e5b8ae, type: 2}
@@ -6155,17 +6155,17 @@ RectTransform:
   m_GameObject: {fileID: 1344756851}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4634608, y: 1.4634608, z: 1.4634608}
+  m_LocalScale: {x: 1.6166304, y: 1.6166304, z: 1.6166304}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 121023201}
   - {fileID: 264769089}
   - {fileID: 1996757062}
-  m_Father: {fileID: 53740221}
+  m_Father: {fileID: 1143064754}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 168.72989, y: -86.31439}
+  m_AnchoredPosition: {x: 196.08054, y: -3.6071472}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1344756853
@@ -7967,17 +7967,17 @@ RectTransform:
   m_GameObject: {fileID: 1913698626}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6166304, y: 1.6166304, z: 1.6166304}
+  m_LocalScale: {x: 1.4634608, y: 1.4634608, z: 1.4634608}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 797796838}
   - {fileID: 1114167217}
   - {fileID: 153787732}
-  m_Father: {fileID: 1143064754}
+  m_Father: {fileID: 53740221}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 196.3222, y: 97.51697}
+  m_AnchoredPosition: {x: 168.94865, y: 5.2285995}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913698628

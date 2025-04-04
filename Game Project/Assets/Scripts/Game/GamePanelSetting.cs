@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class GamePanelSetting : MonoBehaviour
     public Button restartButton;
     public Button mainButton;
     public AudioManager audioManager;
+    
 
     private void Start()
     {
@@ -107,4 +109,5 @@ public class GamePanelSetting : MonoBehaviour
     {
         audioManager.SFXPlay(audioManager.clickSound);
     }
+   
 }
