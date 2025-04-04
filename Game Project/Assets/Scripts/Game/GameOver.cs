@@ -34,8 +34,6 @@ public class GameOver : MonoBehaviour
         audioManager.SFXPlay(audioManager.gameoverScreen);
         
         gameObject.SetActive(true);
-        PointText.text = score_.ToString() + " Stars";
-
+        PointText.text = score_.ToString() + " Points";
     }
-   
 }

@@ -58,14 +58,14 @@ public class EnemySpawner : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         //This is an event on enemy killed
         Enemy.OnEnemyDied += HandleEnemyKilled;
-        InvokeRepeating("SpawnEnemy", 1.0f, 1f);
-        //InvokeRepeating("SpawnStars", 1.0f, 4f);
-        //InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 4f);
-        //InvokeRepeating("SpawnShieldPowerUp", 1.0f, 4f);
-        //InvokeRepeating("SpawnKamikazeBuff", 1.0f, 4f);
-        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 1f);
-        //InvokeRepeating("SpawnFlareBuff", 1.0f, 4f);
-        //InvokeRepeating("SpawnExplodeBuff", 1.0f, 4f);
+        InvokeRepeating("SpawnEnemy", 1.0f, 5f);
+        InvokeRepeating("SpawnStars", 1.0f, 4f);
+        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 4f);
+        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 4f);
+        InvokeRepeating("SpawnKamikazeBuff", 1.0f, 4f);
+        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 4f);
+        InvokeRepeating("SpawnFlareBuff", 1.0f, 4f);
+        InvokeRepeating("SpawnExplodeBuff", 1.0f, 4f);
 
         m_camera = FindObjectOfType<Camera>();
         playerScript = target.GetComponent<Player>();
