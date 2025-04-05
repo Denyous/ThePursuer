@@ -68,10 +68,24 @@ public class Enemy : MonoBehaviour
 
 
     //Killing enemies
-    public void Die(bool explodeBuff, bool kamikaze, bool Flare)
+    public void Die(bool explodeBuff, bool kamikaze, bool Flare, bool BlackHole, bool Shield)
     {
         OnEnemyDied?.Invoke(this.gameObject);
-        GameController.HandleCollision(transform.position, explodeBuff, kamikaze, Flare);
+        if (!kamikaze && !explodeBuff && !Flare && !BlackHole && !Shield)
+        {
+            GameController.HandleCollision(transform.position, true, false);
+        }
+        else
+        {
+            if (BlackHole)
+            {
+                GameController.HandleCollision(transform.position, false, true);
+            }
+            else
+            {
+                GameController.HandleCollision(transform.position, false, false);   
+            }
+        }
     }
 
 
@@ -96,7 +110,7 @@ public class Enemy : MonoBehaviour
             
             player.ChangeShieldState();
 
-            Die(false, false, false);
+            Die(false, false, false, false, true);
         }
     }
     #endregion
@@ -122,19 +136,20 @@ public class Enemy : MonoBehaviour
         else if (collision.gameObject.CompareTag("Enemy"))
         {
             audioManager.SFXPlay(audioManager.explosion);
-            Die(false, false, false);
+            Die(false, false, false, false, false);
         }
-        else if (collision.gameObject.CompareTag("Flare"))
-        {
-            audioManager.SFXPlay(audioManager.explosion);
-            Die(false, false, false);
-        }
+        //else if (collision.gameObject.CompareTag("Flare"))
+        //{
+        //    audioManager.SFXPlay(audioManager.explosion);
+        //    Die(false, false, true, false, false);
+        //}
     }
 
     //Flare particle collision
     void OnParticleCollision()
     {
-        Die(false, false, true);
+        audioManager.SFXPlay(audioManager.explosion);
+        Die(false, false, true, false, false);
     }
 
     #endregion

@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019f502fe3cd88b44b55a0fa97d5a194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLoops: 3
+  maxLoops: 1

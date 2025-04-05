@@ -48,14 +48,7 @@ public class BlackHole : MonoBehaviour
             tapMessageUI.SetActive(false);
             pauseIcon.pauseIcon.SetActive(true);
             UI.SetActive(true);
-            StartCoroutine(destroyBlackHoleAfterXSeconds(blackHoleRef));
         }
-    }
-
-    private IEnumerator destroyBlackHoleAfterXSeconds(GameObject blackHole)
-    {
-        yield return new WaitForSeconds(15);
-        Object.Destroy(blackHole);
     }
 
     public void StartPlacement()
@@ -74,15 +67,6 @@ public class BlackHole : MonoBehaviour
 
             playerScript.decreaseBlackHoleCount();
             playerScript.adjustBuffUiText(playerScript.blackHoleText, playerScript.blackHoleCount);
-        }
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Object.Destroy(collision.gameObject);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public static bool Exploded = false;
+    public int Exploded = 0;
 
     [SerializeField] private GameObject ExplosionPrefab;
     public void ResetTheGame()
@@ -19,25 +19,28 @@ public class GameController : MonoBehaviour
     }
 
     //Creating explosion for enemies 
-    public void HandleCollision(Vector3 position, bool ExplodeBuff, bool Kamikaze, bool Flare)
+    public void HandleCollision(Vector3 position, bool enemiesCollideWithEachOther, bool BlackHole)
     {
-        //if (!ExplodeBuff && !Kamikaze && !Flare)
-        //{
-        //    Instantiate(ExplosionPrefab, position, Quaternion.identity);
-        //}
-        //else if (Kamikaze)
-        //{
-        //    Instantiate(ExplosionPrefab, position, Quaternion.identity);
-        //}
-        //else if (ExplodeBuff)
-        //{
-        //    Instantiate(ExplosionPrefab, position, Quaternion.identity);
-        //}
-        //else if (Flare)
-        //{
-        //    Instantiate(ExplosionPrefab, position, Quaternion.identity);
-        //}
-
-        Instantiate(ExplosionPrefab, position, Quaternion.identity);
+        if (enemiesCollideWithEachOther)
+        {
+            if (Exploded % 2 != 0)
+            {
+                Instantiate(ExplosionPrefab, position, Quaternion.identity);
+                Exploded++;
+            }
+            else
+            {
+                Exploded++;
+            }
+        }
+        else if (BlackHole)
+        {
+            Exploded = 0;
+        }
+        else
+        {
+            Exploded = 0;
+            Instantiate(ExplosionPrefab, position, Quaternion.identity);
+        }
     }
 }

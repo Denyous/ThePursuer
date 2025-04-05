@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class BlackHoleFunctionality : MonoBehaviour
 {
-    public float pullStrength = 5f;       
-    public float orbitStrength = 3f;     
-    public float duration = 3f;
-    public float destroyRadius = 0.5f;
+    [SerializeField] private float pullStrength = 5f;
+    [SerializeField] private float orbitStrength = 3f;     
+    [SerializeField] private float duration = 10f;
+    [SerializeField] private float destroyRadius = 0.5f;
 
     private List<Rigidbody2D> enemiesInRange = new List<Rigidbody2D>();
+    private List<Rigidbody2D> enemiesToRemove = new List<Rigidbody2D>();
 
     private void Start()
     {
@@ -27,9 +28,9 @@ public class BlackHoleFunctionality : MonoBehaviour
 
             if (distance < destroyRadius)
             {
-                Destroy(enemyRb.gameObject);
+                enemiesToRemove.Add(enemyRb);
                 Enemy enemyScript = enemyRb.gameObject.GetComponent<Enemy>();
-                enemyScript.Die(false, false, false);
+                enemyScript.Die(false, false, false, true, false);
                 continue;
             }
 
@@ -41,6 +42,8 @@ public class BlackHoleFunctionality : MonoBehaviour
 
             enemyRb.velocity = force;
         }
+
+        enemiesInRange.RemoveAll(enemy => enemiesToRemove.Contains(enemy));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -55,21 +58,9 @@ public class BlackHoleFunctionality : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            Rigidbody2D enemyRb = other.GetComponent<Rigidbody2D>();
-            if (enemyRb != null)
-            {
-                enemiesInRange.Remove(enemyRb);
-            }
-        }
-    }
-
     private IEnumerator DestroyAfterTime()
     {
         yield return new WaitForSeconds(duration);
-        Destroy(gameObject);
+        Object.Destroy(gameObject);
     }
 }

@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullStrength: 3
-  orbitStrength: 5
-  duration: 15
+  orbitStrength: 7
+  duration: 10
   destroyRadius: 0.5
 --- !u!95 &7773087299356742563
 Animator:

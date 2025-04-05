@@ -58,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         //This is an event on enemy killed
         Enemy.OnEnemyDied += HandleEnemyKilled;
-        InvokeRepeating("SpawnEnemy", 1.0f, 5f);
+        InvokeRepeating("SpawnEnemy", 1.0f, 1f);
         InvokeRepeating("SpawnStars", 1.0f, 4f);
         InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 4f);
         InvokeRepeating("SpawnShieldPowerUp", 1.0f, 4f);
@@ -303,7 +303,7 @@ public class EnemySpawner : MonoBehaviour
         if (enemy != null)
         {
             Enemy enemyScript = enemy.GetComponent<Enemy>();
-            enemyScript.Die(false, true, false);
+            enemyScript.Die(false, true, false, false, false);
         }
     }
     public GameObject GetClosestObjectInList(GameObject target, List<GameObject> findList)
