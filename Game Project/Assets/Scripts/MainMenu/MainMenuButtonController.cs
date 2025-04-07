@@ -15,10 +15,12 @@ public class MainMenuButtonController : MonoBehaviour
     public new AudioManager audio;
     
 
+
     [SerializeField] private UnityEngine.UI.Button StartButton;
     [SerializeField] private UnityEngine.UI.Button SettingsButton;
     [SerializeField] private UnityEngine.UI.Button ExitButton;
     [SerializeField] private UnityEngine.UI.Button CreditsButton;
+    
 
     private RectTransform StartBtnRectTransform;
     private RectTransform SettingsBtnRectTransform;
@@ -26,9 +28,13 @@ public class MainMenuButtonController : MonoBehaviour
     private Vector3 StartBtnOriginalScale;
     private Vector3 SettingsBtnOriginalScale;
     private Vector3 ExitBtnOriginalScale;
+    
+    
 
     private void Start()
     {
+        
+
         Application.targetFrameRate = 60;
         StartBtnRectTransform = StartButton.GetComponent<RectTransform>();
         SettingsBtnRectTransform = SettingsButton.GetComponent<RectTransform>();
