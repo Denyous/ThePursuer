@@ -19,6 +19,9 @@ public class GamePanelSetting : MonoBehaviour
     public Button mainButton;
     public AudioSource musicSource;
     public AudioManager audioManager;
+    
+    public Image fadeImage;
+    public float fadeDuration = 1.5f;
 
 
     private void Start()
@@ -48,8 +51,31 @@ public class GamePanelSetting : MonoBehaviour
         ClickSound();
 
         Time.timeScale = 1f;
+
+        StartCoroutine(FadeOut());
+    }
+
+    IEnumerator FadeOut()
+    {
+        
+        
+        float timer = 0f;
+        Color color = fadeImage.color;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.unscaledDeltaTime;
+            color.a = Mathf.Lerp(0f, 1f, timer / fadeDuration);
+            fadeImage.color = color;
+            yield return null;
+        }
+
+        // Tamamen siyah oldu
+        color.a = 1f;
+        fadeImage.color = color;
         SceneManager.LoadScene(1);
     }
+
 
 
 
