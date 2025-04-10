@@ -59,13 +59,13 @@ public class EnemySpawner : MonoBehaviour
         //This is an event on enemy killed
         Enemy.OnEnemyDied += HandleEnemyKilled;
         InvokeRepeating("SpawnEnemy", 1.0f, 1f);
-        InvokeRepeating("SpawnStars", 1.0f, 4f);
-        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 4f);
-        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 4f);
-        InvokeRepeating("SpawnKamikazeBuff", 1.0f, 4f);
-        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 4f);
-        InvokeRepeating("SpawnFlareBuff", 1.0f, 4f);
-        InvokeRepeating("SpawnExplodeBuff", 1.0f, 4f);
+        InvokeRepeating("SpawnStars", 1.0f, 10f);
+        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 15f);
+        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 15f);
+        InvokeRepeating("SpawnKamikazeBuff", 1.0f, 15f);
+        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 25f);
+        InvokeRepeating("SpawnFlareBuff", 1.0f, 20f);
+        InvokeRepeating("SpawnExplodeBuff", 1.0f, 30f);
 
         m_camera = FindObjectOfType<Camera>();
         playerScript = target.GetComponent<Player>();

@@ -36,7 +36,19 @@ public class Enemy : MonoBehaviour
         fire.transform.localPosition = new Vector3(0f, -2.1f, 1f);
     }
 
-
+    #region Follow Player Logic
+    //Enemies follow player
+    private void FixedUpdate()
+    {
+        if (target != null)
+        {
+            rb.velocity = speed * Time.fixedDeltaTime * 15f * transform.up;
+            Vector2 direction = (target.transform.position - transform.position).normalized;
+            float rotationSteer = Vector3.Cross(transform.up, direction).z;
+            rb.angularVelocity = rotationSteer * steer * 10f;
+        }
+    }
+    #endregion
 
     //Showing game over screen
     public void GameOver(int score)
@@ -138,11 +150,6 @@ public class Enemy : MonoBehaviour
             audioManager.SFXPlay(audioManager.explosion);
             Die(false, false, false, false, false);
         }
-        //else if (collision.gameObject.CompareTag("Flare"))
-        //{
-        //    audioManager.SFXPlay(audioManager.explosion);
-        //    Die(false, false, true, false, false);
-        //}
     }
 
     //Flare particle collision
@@ -152,21 +159,5 @@ public class Enemy : MonoBehaviour
         Die(false, false, true, false, false);
     }
 
-    #endregion
-
-
-
-    #region Follow Player Logic
-    //Enemies follow player
-    private void FixedUpdate()
-    {
-        if (target != null)
-        {
-            rb.velocity = transform.up * speed * Time.fixedDeltaTime * 10f;
-            Vector2 direction = (target.transform.position - transform.position).normalized;
-            float rotationSteer = Vector3.Cross(transform.up, direction).z;
-            rb.angularVelocity = rotationSteer * steer * 10f;
-        }
-    }
     #endregion
 }
