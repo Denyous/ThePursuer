@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 60
-  steer: 15
+  steer: 25
   rocketFire: {fileID: 8113772032571823704, guid: c348e0bd694033c4eb0758f5264ce12a, type: 3}
   audioManager: {fileID: 0}
 --- !u!82 &-1144615553210183020
