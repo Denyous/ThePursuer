@@ -16,37 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 948684a6d1b09cf42a864f3fe2109fd6
-  m_SerializeEntries:
-  - m_GUID: bbefec69e5e802745944942af22b320d
-    m_Address: MainMenu_ru-RU
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru-RU
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 98ff783e19572ec47bab47e29d5e7fa3
-    m_Address: SettingsMenu_ru-RU
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru-RU
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d0ef565e9a06f4440bd2f1665c7b47b9
-    m_Address: Credits_ru-RU
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru-RU
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: caee74b4e2efbc247b835b6d1cc3fedc
-    m_Address: Audio_ru-RU
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru-RU
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 18b7c1e5c4f56bf4c933a570599b9dc3
-    m_Address: Language_ru-RU
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru-RU
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: b1bef92b4d6d33446abc1b2068e5a162, type: 2}
   m_SchemaSet:

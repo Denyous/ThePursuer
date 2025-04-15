@@ -10,16 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: Language_ru-RU
+  m_Name: Audio_ru
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: ru-RU
-  m_SharedData: {fileID: 11400000, guid: 769d96eee57bf874db53e0c31a0f11c7, type: 2}
+    m_Code: ru
+  m_SharedData: {fileID: 11400000, guid: 6c84c2633dca57a4d89e236681c98c11, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 8286425088
-    m_Localized: "\u042F\u0417\u042B\u041A\u0418"
+  - m_Id: 7472730112
+    m_Localized: "\u041C\u0443\u0437\u044B\u043A\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10614263808
+    m_Localized: "\u0417\u0432\u0443\u043A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5758299721728
+    m_Localized: AUDIO
     m_Metadata:
       m_Items: []
   references:

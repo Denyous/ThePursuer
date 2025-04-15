@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: SettingsMenu_ru-RU
+  m_Name: SettingsMenu_ru
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: ru-RU
+    m_Code: ru
   m_SharedData: {fileID: 11400000, guid: ca6032111d8f10349a135fe2250520d7, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 2103496462336
-    m_Localized: "\u0410\u0443\u0434\u0438\u043E"
-    m_Metadata:
-      m_Items: []
   - m_Id: 134241374208
     m_Localized: "\u042F\u0437\u044B\u043A"
     m_Metadata:
       m_Items: []
   - m_Id: 169096040448
     m_Localized: "\u0423\u0447\u0435\u0431\u043D\u043E\u0435 \u043F\u043E\u0441\u043E\u0431\u0438\u0435"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2103496462336
+    m_Localized: "\u0410\u0443\u0434\u0438\u043E"
     m_Metadata:
       m_Items: []
   - m_Id: 13617007742976
