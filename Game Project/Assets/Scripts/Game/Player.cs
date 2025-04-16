@@ -39,15 +39,25 @@ public class Player : MonoBehaviour
     public Button flareButton;
     public Button kamikazeButton;
     public Button blackHoleButton;
+    public Button explodeButton;
 
-    public GameObject flareText;
-    public GameObject blackHoleText;
-    public GameObject kamikazeText;
+    [SerializeField] private SpriteRenderer kamikazeSprite;
+    public SpriteRenderer flareSprite;
+    public SpriteRenderer explodeSprite;
+    public SpriteRenderer blackholeSprite;
+
+    public Sprite zeroBlackHoleUIBuffSprite;
+    public Sprite oneBlackHoleUIBuffSprite;
+    public Sprite zeroUIBuffSprite;
+    public Sprite oneUIBuffSprite;
+    public Sprite twoUIBuffSprite;
+    public Sprite threeUIBuffSprite;
 
     public int blackHoleCount = 0;
     public int flareCount = 0;
     public int kamikazeCount = 0;
-    
+    public int explodeCount = 0;
+
 
     private bool isBoost;
     private EnemySpawner Spawner;
@@ -70,9 +80,17 @@ public class Player : MonoBehaviour
         
         rb = GetComponent<Rigidbody2D>();
         Spawner = FindAnyObjectByType<EnemySpawner>();
-        MakeButtonTransparent(flareButton);
+
+        adjustBuffUiText(blackholeSprite, blackHoleCount, true);
+        adjustBuffUiText(flareSprite, flareCount, false);
+        adjustBuffUiText(kamikazeSprite, kamikazeCount, false);
+        adjustBuffUiText(explodeSprite, explodeCount, false);
+
         MakeButtonTransparent(kamikazeButton);
+        MakeButtonTransparent(explodeButton);
         MakeButtonTransparent(blackHoleButton);
+        MakeButtonTransparent(flareButton);
+
 
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
@@ -215,7 +233,7 @@ public class Player : MonoBehaviour
             if (kamikazeCount < 3)
             {
                 kamikazeCount++;
-                adjustBuffUiText(kamikazeText, kamikazeCount);
+                adjustBuffUiText(kamikazeSprite, kamikazeCount, false);
                 MakeButtonNonTransparent(kamikazeButton);
             }
         }
@@ -226,7 +244,7 @@ public class Player : MonoBehaviour
             if (flareCount < 3)
             {
                 flareCount++;
-                adjustBuffUiText(flareText, flareCount);
+                adjustBuffUiText(flareSprite, flareCount, false);
                 MakeButtonNonTransparent(flareButton);
             }
         }
@@ -237,7 +255,7 @@ public class Player : MonoBehaviour
             if (blackHoleCount < 1)
             {
                 blackHoleCount++;
-                adjustBuffUiText(blackHoleText, blackHoleCount);
+                adjustBuffUiText(blackholeSprite, blackHoleCount, true);
                 MakeButtonNonTransparent(blackHoleButton);
             }
         }
@@ -245,7 +263,14 @@ public class Player : MonoBehaviour
         {
             Object.Destroy(collision.gameObject);
 
-            Spawner.ExplodeEnemies();
+            if (explodeCount < 3)
+            {
+                explodeCount++;
+                adjustBuffUiText(explodeSprite, explodeCount, false);
+                MakeButtonNonTransparent(explodeButton);
+            }
+
+            //Spawner.ExplodeEnemies();
         }
     }
 
@@ -291,7 +316,7 @@ public class Player : MonoBehaviour
 
             decreaseFlareCount();
 
-            adjustBuffUiText(flareText, flareCount);
+            adjustBuffUiText(flareSprite, flareCount, false);
         }
     }
 
@@ -351,6 +376,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void decreaseExplodeCount()
+    {
+        if (explodeCount > 0)
+        {
+            explodeCount--;
+        }
+
+        if (explodeCount == 0)
+        {
+            MakeButtonTransparent(explodeButton);
+        }
+    }
+
+
     public void MakeButtonTransparent(Button myButton)
     {
         ColorBlock cb = myButton.colors;
@@ -368,9 +407,44 @@ public class Player : MonoBehaviour
         myButton.interactable = true;
     }
 
-    public void adjustBuffUiText(GameObject UIText, int value)
+    public void adjustBuffUiText(SpriteRenderer UI, int value, bool isBlackHole)
     {
-        TMP_Text text = UIText.GetComponent<TMP_Text>();
-        text.text = $"{value}";
+        switch (value)
+        {
+            case 0:
+                if (isBlackHole)
+                {
+                    UI.sprite = zeroBlackHoleUIBuffSprite;
+                }
+                else
+                {
+                    UI.sprite = zeroUIBuffSprite;
+                }
+                break;
+            case 1:
+                if (isBlackHole)
+                {
+                    UI.sprite = oneBlackHoleUIBuffSprite;
+                }
+                else
+                {
+                    UI.sprite = oneUIBuffSprite;
+                }
+                break;
+            case 2:
+                if (!isBlackHole)
+                {
+                    UI.sprite = twoUIBuffSprite;
+                }
+                break;
+            case 3:
+                if (!isBlackHole)
+                {
+                    UI.sprite = threeUIBuffSprite;
+                }
+                break;
+            default:
+                break;
+        }
     }
 }

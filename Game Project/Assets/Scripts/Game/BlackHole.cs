@@ -22,6 +22,8 @@ public class BlackHole : MonoBehaviour
 
     public AudioSource musicSource;
 
+    public SpriteRenderer blackholeSprite;
+
 
     void Start()
     {
@@ -66,7 +68,7 @@ public class BlackHole : MonoBehaviour
             UI.SetActive(false);
 
             playerScript.decreaseBlackHoleCount();
-            playerScript.adjustBuffUiText(playerScript.blackHoleText, playerScript.blackHoleCount);
+            playerScript.adjustBuffUiText(blackholeSprite, playerScript.blackHoleCount, true);
         }
     }
 }

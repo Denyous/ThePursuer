@@ -38,6 +38,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject KamikazeEffect;
     [SerializeField] private GameObject ExplodeEffect;
 
+    [SerializeField] private SpriteRenderer kamikazeSprite;
+    [SerializeField] private SpriteRenderer explodeSprite;
 
     //Enemy spawn logic variables
     [SerializeField] private int enemySpawnLimit = 10; 
@@ -58,14 +60,14 @@ public class EnemySpawner : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         //This is an event on enemy killed
         Enemy.OnEnemyDied += HandleEnemyKilled;
-        InvokeRepeating("SpawnEnemy", 1.0f, 1f);
-        InvokeRepeating("SpawnStars", 1.0f, 10f);
-        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 15f);
-        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 15f);
-        InvokeRepeating("SpawnKamikazeBuff", 1.0f, 15f);
-        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 25f);
-        InvokeRepeating("SpawnFlareBuff", 1.0f, 20f);
-        InvokeRepeating("SpawnExplodeBuff", 1.0f, 30f);
+        //InvokeRepeating("SpawnEnemy", 1.0f, 1f);
+        InvokeRepeating("SpawnStars", 1.0f, 1f);
+        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 1f);
+        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 1f);
+        InvokeRepeating("SpawnKamikazeBuff", 1.0f, 1f);
+        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 1f);
+        InvokeRepeating("SpawnFlareBuff", 1.0f, 1f);
+        InvokeRepeating("SpawnExplodeBuff", 1.0f, 1f);
 
         m_camera = FindObjectOfType<Camera>();
         playerScript = target.GetComponent<Player>();
@@ -281,7 +283,7 @@ public class EnemySpawner : MonoBehaviour
             }
 
             playerScript.decreaseKamikazeCount();
-            playerScript.adjustBuffUiText(playerScript.kamikazeText, playerScript.kamikazeCount);
+            playerScript.adjustBuffUiText(kamikazeSprite, playerScript.kamikazeCount, false);
         }
     }
 
@@ -296,6 +298,9 @@ public class EnemySpawner : MonoBehaviour
         audioManager.SFXPlay(audioManager.laser);
         GameObject explode = Instantiate(ExplodeEffect, transform.position, Quaternion.identity);
         explode.transform.SetParent(transform);
+
+        playerScript.decreaseExplodeCount();
+        playerScript.adjustBuffUiText(explodeSprite, playerScript.explodeCount, false);
     }
     private IEnumerator SelfDestroy(float sec, GameObject enemy)
     {
