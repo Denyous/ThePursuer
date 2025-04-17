@@ -39,7 +39,6 @@ public class AudioManager : MonoBehaviour
     public AudioSource enemyShip;
     public AudioClip enemyShipClip;
 
-
     private void Start()
     {
         if (PlayerPrefs.HasKey("MusicVolume") && PlayerPrefs.HasKey("SFXVolume"))
@@ -51,8 +50,6 @@ public class AudioManager : MonoBehaviour
             SetMusicVolume();
             SetSFXVolume();
         }
-
-
     }
     public void SetMusicVolume()
     {
