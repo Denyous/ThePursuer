@@ -11,6 +11,7 @@ using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 using UnityEngine.Experimental.XR.Interaction;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 
 public class Player : MonoBehaviour
@@ -21,65 +22,55 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject flares;
     [SerializeField] private Transform flareLocation;
     [SerializeField] private GameObject shieldVisual;
-    [SerializeField] private GameObject blackHolePreFab;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject SpeedBuffAnimation;
     [SerializeField] private GameObject Animation;
-
-
+    [SerializeField] private GameObject controllerGameObject;
+    [SerializeField] private GameObject spawnerGameObject;
+    [SerializeField] private SpriteRenderer kamikazeSprite;
+    [SerializeField] private UnityEngine.UI.Button flareButton;
+    [SerializeField] private UnityEngine.UI.Button kamikazeButton;
+    [SerializeField] private UnityEngine.UI.Button blackHoleButton;
+    [SerializeField] private UnityEngine.UI.Button explodeButton;
+    [SerializeField] private SpriteRenderer flareSprite;
+    [SerializeField] private SpriteRenderer explodeSprite;
+    [SerializeField] private SpriteRenderer blackholeSprite;
+    [SerializeField] private Sprite zeroBlackHoleUIBuffSprite;
+    [SerializeField] private Sprite oneBlackHoleUIBuffSprite;
+    [SerializeField] private Sprite zeroUIBuffSprite;
+    [SerializeField] private Sprite oneUIBuffSprite;
+    [SerializeField] private Sprite twoUIBuffSprite;
+    [SerializeField] private Sprite threeUIBuffSprite;
     [SerializeField] private float Steer = 1.5f;
     [SerializeField] private float Speed = 35f;
     [SerializeField] private float normalSpeed;
     [SerializeField] private float boostSpeed = 50f;
     [SerializeField] private float notBoostSpeed = 35f;
     [SerializeField] private float RotationSpeed = 3f;
-
-    AudioManager audioManager;
-
-    public Button flareButton;
-    public Button kamikazeButton;
-    public Button blackHoleButton;
-    public Button explodeButton;
-
-    [SerializeField] private SpriteRenderer kamikazeSprite;
-    public SpriteRenderer flareSprite;
-    public SpriteRenderer explodeSprite;
-    public SpriteRenderer blackholeSprite;
-
-    public Sprite zeroBlackHoleUIBuffSprite;
-    public Sprite oneBlackHoleUIBuffSprite;
-    public Sprite zeroUIBuffSprite;
-    public Sprite oneUIBuffSprite;
-    public Sprite twoUIBuffSprite;
-    public Sprite threeUIBuffSprite;
-
     public int blackHoleCount = 0;
     public int flareCount = 0;
     public int kamikazeCount = 0;
     public int explodeCount = 0;
 
 
-    private bool isBoost;
+
+    private AudioManager audioManager;
     private EnemySpawner Spawner;
-
+    private CollectibleController controller;
     private int Score = 0;
-
-    Rigidbody2D rb;
     private float targetAngle;
     public bool Shield;
-
     private float speedUpDuration = 0f;
     private bool isSpeedUp = false;
-
     private float inputX;
     private float inputY;
+    private bool isBoost;
 
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        
-        rb = GetComponent<Rigidbody2D>();
-        Spawner = FindAnyObjectByType<EnemySpawner>();
+        Spawner = spawnerGameObject.GetComponent<EnemySpawner>();
+        controller = controllerGameObject.GetComponent<CollectibleController>();
 
         adjustBuffUiText(blackholeSprite, blackHoleCount, true);
         adjustBuffUiText(flareSprite, flareCount, false);
@@ -90,10 +81,6 @@ public class Player : MonoBehaviour
         MakeButtonTransparent(explodeButton);
         MakeButtonTransparent(blackHoleButton);
         MakeButtonTransparent(flareButton);
-
-
-        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
 
     private void Update()
@@ -140,32 +127,12 @@ public class Player : MonoBehaviour
                 }
             }
         }
-    }
-    //Player movement
-    private void FixedUpdate()
-    {
-        //float x = Joystick.Horizontal;
-        //float y = Joystick.Vertical;
-
-        //if (Mathf.Abs(x) > 0.1f || Mathf.Abs(y) > 0.1f)
-        //{
-        //    targetAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg - 90f;
-        //}
-
-        //UnityEngine.Quaternion currentRotation = transform.rotation;
-
-        //UnityEngine.Quaternion targetRotation = UnityEngine.Quaternion.
-        //    Euler(0, 0, targetAngle);
-
-        //transform.rotation = UnityEngine.Quaternion.Lerp
-        //    (currentRotation, targetRotation, RotationSpeed * Time.fixedDeltaTime / Steer);
-        //rb.velocity = transform.up * Speed * Time.fixedDeltaTime * 10f;
 
         UnityEngine.Quaternion currentRotation = transform.rotation;
         UnityEngine.Quaternion targetRotation = UnityEngine.Quaternion.Euler(0, 0, targetAngle);
         transform.rotation = UnityEngine.Quaternion.Lerp(currentRotation, targetRotation, RotationSpeed * Time.deltaTime / Steer);
 
-        rb.MovePosition(rb.position + (UnityEngine.Vector2)(transform.up * Speed * Time.deltaTime));
+        transform.position += Speed * Time.deltaTime * transform.up;
     }
 
     //Handling collision for Shield
@@ -178,12 +145,14 @@ public class Player : MonoBehaviour
                 AudioListener listener = Camera.main.GetComponent<AudioListener>();
                 listener.enabled = true;
                 audioManager.SFXPlay(audioManager.explosion);
-                Instantiate(Explosion, transform.position, UnityEngine.Quaternion.identity);
             }
         }
     }
 
-
+    public void CreateExplosion()
+    {
+        Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y, 3), UnityEngine.Quaternion.identity);
+    }
 
     //Handling collisions for Stars, Shield, Slow Time, Kamikaze
     private void OnTriggerEnter2D(Collider2D collision)
@@ -191,10 +160,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Star"))
         {
             audioManager.SFXPlay(audioManager.collect);
-            CollectibleController controller =
-                collision.gameObject.GetComponent<CollectibleController>();
-
-            controller.Kill();
+            controller.Kill(collision.gameObject);
             Score++;
             ScoreText.text = Score.ToString();
         }
@@ -269,8 +235,6 @@ public class Player : MonoBehaviour
                 adjustBuffUiText(explodeSprite, explodeCount, false);
                 MakeButtonNonTransparent(explodeButton);
             }
-
-            //Spawner.ExplodeEnemies();
         }
     }
 
@@ -390,7 +354,7 @@ public class Player : MonoBehaviour
     }
 
 
-    public void MakeButtonTransparent(Button myButton)
+    public void MakeButtonTransparent(UnityEngine.UI.Button myButton)
     {
         ColorBlock cb = myButton.colors;
         cb.disabledColor = new Color(cb.disabledColor.r, cb.disabledColor.g, cb.disabledColor.b, 0.3f); // Adjust transparency (0 = invisible, 1 = fully visible)
@@ -398,7 +362,7 @@ public class Player : MonoBehaviour
         myButton.interactable = false;
     }
 
-    public void MakeButtonNonTransparent(Button myButton)
+    public void MakeButtonNonTransparent(UnityEngine.UI.Button myButton)
     {
         ColorBlock cb = myButton.colors;
 

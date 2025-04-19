@@ -61,15 +61,15 @@ public class EnemySpawner : MonoBehaviour
         //This is an event on enemy killed
         Enemy.OnEnemyDied += HandleEnemyKilled;
         //InvokeRepeating("SpawnEnemy", 1.0f, 1f);
-        InvokeRepeating("SpawnStars", 1.0f, 1f);
-        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 1f);
-        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 1f);
-        InvokeRepeating("SpawnKamikazeBuff", 1.0f, 1f);
-        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 1f);
-        InvokeRepeating("SpawnFlareBuff", 1.0f, 1f);
-        InvokeRepeating("SpawnExplodeBuff", 1.0f, 1f);
+        InvokeRepeating("SpawnStars", 1.0f, 5f);
+        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 10f);
+        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 10f);
+        InvokeRepeating("SpawnKamikazeBuff", 1.0f, 10f);
+        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 15f);
+        InvokeRepeating("SpawnFlareBuff", 1.0f, 15f);
+        InvokeRepeating("SpawnExplodeBuff", 1.0f, 20f);
 
-        m_camera = FindObjectOfType<Camera>();
+        m_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         playerScript = target.GetComponent<Player>();
     }
 
@@ -105,9 +105,9 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnStars()
     {
         Star = Instantiate(StarPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
-        CollectibleController controller = Star.GetComponent<CollectibleController>();
+        CollectibleController controller = FindAnyObjectByType<CollectibleController>();
 
-        controller.SetPlayer(target);
+        controller.AddToStars(Star);
     }
     private void SpawnEnemy()
     {

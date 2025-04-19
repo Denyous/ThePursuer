@@ -11,8 +11,6 @@ public class ParallaxBackground : MonoBehaviour
     private float textureUnitSizeX;
     private float textureUnitSizeY;
 
-    private GameObject PrefabRef;
-
     private float spriteWidth;
     private float spriteHeight;
 

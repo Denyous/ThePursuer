@@ -5,16 +5,14 @@ using UnityEngine;
 
 public class CollectibleController : MonoBehaviour
 {
-    [SerializeField] private GameObject topIcon;
-    [SerializeField] private GameObject botIcon;
-    [SerializeField] private GameObject leftIcon;
-    [SerializeField] private GameObject rightIcon;
+    [SerializeField] private GameObject iconPrefab;
 
     private Camera Camera;
 
     private GameObject icon;
     private GameObject Player;
-    private bool isVisible = false;
+    private GameObject nearestStar;
+    private List<GameObject> stars = new List<GameObject>();
 
     [SerializeField] private float ScreenBorder;
     [SerializeField] private float VisibleDistance;
@@ -22,55 +20,55 @@ public class CollectibleController : MonoBehaviour
     private void Awake()
     {
         Camera = Camera.main;
+        Player = transform.parent.gameObject;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (Player != null)
+        float distance = GetDistanceToNearestStar(Player.transform, stars);
+
+        if (Player != null && nearestStar != null)
         {
-            float distance = GetDistanceToPlayer(Player.transform);
+            Vector3 viewportPos = Camera.WorldToViewportPoint(nearestStar.transform.position);
+            bool isVisible = viewportPos.z > 0 && viewportPos.x > 0.05f && viewportPos.x < 1.05f && viewportPos.y > 0.05f && viewportPos.y < 1.05f;
 
-            Vector3 viewportPosition = Camera.WorldToViewportPoint(transform.position);
-
-            if (distance < VisibleDistance && icon == null)
+            if (distance < VisibleDistance && icon == null && !isVisible)
             {
-                if (!isVisible)
-                {
-                    icon = Instantiate(topIcon, GetIconPosition(), Quaternion.identity);
-                }
+                icon = Instantiate(iconPrefab, GetIconPosition(), Quaternion.identity);
             }
-            else if(distance > VisibleDistance && icon != null)
+
+            if(isVisible && icon != null)
             {
-               Object.Destroy(icon);
+                Object.Destroy(icon);
+                icon = null;
             }
 
             if (icon != null)
             {
-                UpdateIconPosition(icon, viewportPosition, Camera);
+                UpdateIconPosition(icon, viewportPos, Camera);
             }
         }
     }
 
     #region Handling Icon Positions on the side of the screen
-    public void SetPlayer(GameObject player)
+    public void AddToStars(GameObject star)
     {
-        Player = player;
+        stars.Add(star);
     }
     private Vector3 GetIconPosition()
     {
-        Vector3 starPosition = Camera.WorldToViewportPoint(transform.position);
-
+        Vector3 starPosition = Camera.WorldToViewportPoint(nearestStar.transform.position);
         Vector3 iconPosition = new Vector3();
 
         if (starPosition.x < 0f || starPosition.y < 0f)
         {
             if (starPosition.x < 0f)
             {
-                iconPosition = new Vector3(0f, transform.position.y);
+                iconPosition = new Vector3(0f, nearestStar.transform.position.y);
             }
             else
             {
-                iconPosition = new Vector3(transform.position.x, 0f);
+                iconPosition = new Vector3(nearestStar.transform.position.x, 0f);
             }
         }
 
@@ -78,20 +76,44 @@ public class CollectibleController : MonoBehaviour
         {
             if (starPosition.x > 1f)
             {
-                iconPosition = new Vector3(1f, transform.position.y);
+                iconPosition = new Vector3(1f, nearestStar.transform.position.y);
             }
             else
             {
-                iconPosition = new Vector3(transform.position.x, 1f);
+                iconPosition = new Vector3(nearestStar.transform.position.x, 1f);
             }
         }
 
         return iconPosition;
     }
-    public float GetDistanceToPlayer(Transform playerTransform)
+
+    public float GetDistanceToNearestStar(Transform playerTransform, List<GameObject> stars)
     {
-        return Vector3.Distance(playerTransform.position, transform.position);
+        float minDistance = 0f;
+
+        foreach (GameObject star in stars)
+        {
+
+            Vector3 viewportPos = Camera.WorldToViewportPoint(star.transform.position);
+            bool isVisible = viewportPos.z > 0 && viewportPos.x > 0 && viewportPos.x < 1 && viewportPos.y > 0 && viewportPos.y < 1;
+
+            if (star != null)
+            {
+                float distance = Vector3.Distance(playerTransform.position, star.transform.position);
+                if (distance < minDistance || minDistance == 0f)
+                {
+                    if (!isVisible)
+                    {
+                        minDistance = distance;
+                        nearestStar = star;
+                    }
+                }
+            }
+        }
+
+        return minDistance;
     }
+
     void UpdateIconPosition(GameObject icon, Vector3 viewportPosition, Camera camera)
     {
         Vector3 screenPosition = new Vector3();
@@ -126,7 +148,7 @@ public class CollectibleController : MonoBehaviour
             camera.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 1));
         icon.transform.position = iconPosition;
 
-        Vector3 directionToCollectible = transform.position - icon.transform.position;
+        Vector3 directionToCollectible = nearestStar.transform.position - icon.transform.position;
 
         directionToCollectible.z = 0; 
         directionToCollectible.Normalize();
@@ -135,21 +157,13 @@ public class CollectibleController : MonoBehaviour
 
         icon.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
-    private void OnBecameVisible()
+    public void Kill(GameObject star)
     {
-        if (icon != null)
+        if (stars.Contains(star))
         {
-            Object.Destroy(icon);
+            stars.Remove(star);
+            Object.Destroy(star);
         }
-        isVisible = true;
-    }
-    private void OnBecameInvisible()
-    {
-        isVisible = false;
-    }
-    public void Kill()
-    {
-        Object.Destroy(gameObject);
         if (icon != null)
         {
             Object.Destroy(icon);

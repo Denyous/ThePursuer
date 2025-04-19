@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController instance = null;
     public int Exploded = 0;
 
     [SerializeField] private GameObject ExplosionPrefab;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void ResetTheGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject rocketFire;
     private GameObject fire;
     Rigidbody2D rb;
-    public AudioManager audioManager;
+    private AudioManager audioManager;
 
     //This is an event to be handled in EnemySpawner script
     public static event System.Action<GameObject> OnEnemyDied;
@@ -24,14 +24,10 @@ public class Enemy : MonoBehaviour
 
     private GameOver GameOverScreen;
 
-    //Game Controller for creating explosion prefabs
-    private GameController GameController;
-
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         rb = GetComponent<Rigidbody2D>();
-        GameController = FindObjectOfType<GameController>();
         fire = Instantiate(rocketFire, transform, false);
         fire.transform.localPosition = new Vector3(0f, -2.1f, 1f);
     }
@@ -85,17 +81,17 @@ public class Enemy : MonoBehaviour
         OnEnemyDied?.Invoke(this.gameObject);
         if (!kamikaze && !explodeBuff && !Flare && !BlackHole && !Shield)
         {
-            GameController.HandleCollision(transform.position, true, false);
+            GameController.instance.HandleCollision(transform.position, true, false);
         }
         else
         {
             if (BlackHole)
             {
-                GameController.HandleCollision(transform.position, false, true);
+                GameController.instance.HandleCollision(transform.position, false, true);
             }
             else
             {
-                GameController.HandleCollision(transform.position, false, false);   
+                GameController.instance.HandleCollision(transform.position, false, false);   
             }
         }
     }
@@ -132,18 +128,18 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Player player = target.gameObject.GetComponent<Player>();
-
-            if (player != null && player.Shield == false)
+            if (collision.gameObject.TryGetComponent<Player>(out Player player))
             {
-                int score = player.GetScore();
+                if (player != null && player.Shield == false)
+                {
+                    int score = player.GetScore();
+                    player.CreateExplosion();
+                    Object.Destroy(target.gameObject);
+                    Object.Destroy(gameObject);
 
-                Object.Destroy(target.gameObject);
-                Object.Destroy(this.gameObject);
-
-                GameOver(score);
+                    GameOver(score);
+                }
             }
-            
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
