@@ -167,7 +167,7 @@ public class Player : MonoBehaviour
         else if (collision.gameObject.CompareTag("Shield"))
         {
             
-            Object.Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
             Shield = true;
             
             audioManager.SFXPlay(audioManager.shield);
@@ -176,12 +176,12 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("SlowTime"))
         {
-            Object.Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
             StartCoroutine(Spawner.SlowDown());
         }
         else if (collision.gameObject.CompareTag("SpeedBuff"))
         {
-            Object.Destroy(collision.gameObject); // destroying the buff
+            collision.gameObject.SetActive(false);
 
             if (Speed == notBoostSpeed)
             {
@@ -194,7 +194,7 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Kamikaze"))
         {
-            Object.Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
 
             if (kamikazeCount < 3)
             {
@@ -205,7 +205,7 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Flare"))
         {
-            Object.Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
 
             if (flareCount < 3)
             {
@@ -216,7 +216,7 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("BlackHole"))
         {
-            Object.Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
 
             if (blackHoleCount < 1)
             {
@@ -227,7 +227,7 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Explode"))
         {
-            Object.Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
 
             if (explodeCount < 3)
             {

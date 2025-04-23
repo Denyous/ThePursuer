@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float steer = 15f;
     [SerializeField] private GameObject rocketFire;
     private GameObject fire;
+    private GameObject kamikazeEffect;
     Rigidbody2D rb;
     private AudioManager audioManager;
 
@@ -75,7 +76,7 @@ public class Enemy : MonoBehaviour
 
 
 
-    //Killing enemies
+    //Killing pooledEnemies
     public void Die(bool explodeBuff, bool kamikaze, bool Flare, bool BlackHole, bool Shield)
     {
         OnEnemyDied?.Invoke(this.gameObject);
@@ -101,8 +102,17 @@ public class Enemy : MonoBehaviour
     //Change color for kamikaze buff
     public void ActivateKamikaze(GameObject ParticleSystem)
     {
-        GameObject newParticle = Instantiate(ParticleSystem, transform.position, Quaternion.identity);
-        newParticle.transform.SetParent(transform);
+        kamikazeEffect = Instantiate(ParticleSystem, transform.position, Quaternion.identity);
+        kamikazeEffect.transform.SetParent(transform);
+        kamikazeEffect.SetActive(true);
+    }
+
+    public void DeActivateKamikaze()
+    {
+        if (kamikazeEffect != null)
+        {
+            kamikazeEffect.SetActive(false);
+        }
     }
     #region Handling Triggers
 
@@ -123,7 +133,7 @@ public class Enemy : MonoBehaviour
     }
     #endregion
     #region Handling Collisions
-    //Handling enemy collisions with player, other enemies, and flares
+    //Handling enemy collisions with player, other pooledEnemies, and flares
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -132,12 +142,12 @@ public class Enemy : MonoBehaviour
             {
                 if (player != null && player.Shield == false)
                 {
-                    int score = player.GetScore();
-                    player.CreateExplosion();
-                    Object.Destroy(target.gameObject);
-                    Object.Destroy(gameObject);
+                    //int score = player.GetScore();
+                    //player.CreateExplosion();
+                    //Object.Destroy(target.gameObject);
+                    //Object.Destroy(gameObject);
 
-                    GameOver(score);
+                    //GameOver(score);
                 }
             }
         }

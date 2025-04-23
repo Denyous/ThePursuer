@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     //Player
     [SerializeField] private GameObject target;
-    //Spawn points for enemies
+    //Spawn points for pooledEnemies
     [SerializeField] private Transform minSpawn;
     [SerializeField] private Transform maxSpawn;
     //Spawn points for collectibles
@@ -42,8 +42,16 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private SpriteRenderer explodeSprite;
 
     //Enemy spawn logic variables
-    [SerializeField] private int enemySpawnLimit = 10; 
-    public List<GameObject> enemies = new List<GameObject>();
+    [SerializeField] private int pooledObjectLimit = 10; 
+    private List<GameObject> pooledEnemies = new List<GameObject>();
+    private List<GameObject> pooledStars = new List<GameObject>();
+    private List<GameObject> pooledShields = new List<GameObject>();
+    private List<GameObject> pooledKamikazes = new List<GameObject>();
+    private List<GameObject> pooledBlackHoles = new List<GameObject>();
+    private List<GameObject> pooledFlares = new List<GameObject>();
+    private List<GameObject> pooledExplodes = new List<GameObject>();
+    private List<GameObject> pooledSpeedBuffs = new List<GameObject>();
+
 
 
     //This is for setting game over screen for enemy script and game over screen logic handled there
@@ -60,86 +68,204 @@ public class EnemySpawner : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         //This is an event on enemy killed
         Enemy.OnEnemyDied += HandleEnemyKilled;
-        //InvokeRepeating("SpawnEnemy", 1.0f, 1f);
-        InvokeRepeating("SpawnStars", 1.0f, 5f);
-        InvokeRepeating("SpawnSpeedBuffPowerUp", 1.0f, 10f);
-        InvokeRepeating("SpawnShieldPowerUp", 1.0f, 10f);
-        InvokeRepeating("SpawnKamikazeBuff", 1.0f, 10f);
-        InvokeRepeating("SpawnBlackHoleBuff", 1.0f, 15f);
-        InvokeRepeating("SpawnFlareBuff", 1.0f, 15f);
-        InvokeRepeating("SpawnExplodeBuff", 1.0f, 20f);
+
+        for (int i = 0; i < pooledObjectLimit; i++)
+        {
+            SpawnBlackHoleBuff();
+            SpawnEnemy();
+            SpawnFlareBuff();
+            SpawnExplodeBuff();
+            SpawnKamikazeBuff();
+            SpawnSpeedBuffPowerUp();
+            SpawnStars();
+            SpawnShieldPowerUp();
+        }
+
+        InvokeRepeating("SpawnPooledStars", 5f, 5f);
+        InvokeRepeating("SpawnPooledBlackHoles", 5f, 1f);
+        InvokeRepeating("SpawnPooledKamikazes", 5f, 5f);
+        InvokeRepeating("SpawnPooledShields", 5f, 3f);
+        InvokeRepeating("SpawnPooledSpeedBuffs", 5f, 3f);
+        InvokeRepeating("SpawnPooledExplodes", 5f, 15f);
+        InvokeRepeating("SpawnPooledFlares", 5f, 10f);
+        InvokeRepeating("SpawnPooledEnemies", 5f, 1f);
 
         m_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         playerScript = target.GetComponent<Player>();
     }
 
-
     #region Spawners
     //Spawn Shield Speed Up Stars and Enemies
     private void SpawnShieldPowerUp()
     {
-        Instantiate(ShieldPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        GameObject obj = Instantiate(ShieldPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        obj.SetActive(false);
+        pooledShields.Add(obj);
     }
     private void SpawnSpeedBuffPowerUp()
     {
-        Instantiate(SpeedBoostPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        GameObject obj = Instantiate(SpeedBoostPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        obj.SetActive(false);
+        pooledSpeedBuffs.Add(obj);
     }
     private void SpawnKamikazeBuff()
     {
-        Instantiate(KamikazePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        GameObject obj = Instantiate(KamikazePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        obj.SetActive(false);
+        pooledKamikazes.Add(obj);
     }
     private void SpawnBlackHoleBuff()
     {
-        Instantiate(BlackHolePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        GameObject obj = Instantiate(BlackHolePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        obj.SetActive(false);
+        pooledBlackHoles.Add(obj);
     }
     private void SpawnFlareBuff()
     {
-        Instantiate(FlarePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        GameObject obj = Instantiate(FlarePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        obj.SetActive(false);
+        pooledFlares.Add(obj);
     }
-
     private void SpawnExplodeBuff()
     {
-        Instantiate(ExplodePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        GameObject obj = Instantiate(ExplodePrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
+        obj.SetActive(false);
+        pooledExplodes.Add(obj);
     }
-
     private void SpawnStars()
     {
         Star = Instantiate(StarPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
         CollectibleController controller = FindAnyObjectByType<CollectibleController>();
-
+        Star.SetActive(false);
+        pooledStars.Add(Star);
         controller.AddToStars(Star);
     }
     private void SpawnEnemy()
     {
-        if (enemies.Count < enemySpawnLimit && target != null)
-        {
-            PrefabRef = Instantiate(enemyPrefab, SelectEnemySpawnPoint(), Quaternion.identity);
+        PrefabRef = Instantiate(enemyPrefab, SelectEnemySpawnPoint(), Quaternion.identity);
 
-            Enemy enemyScript = PrefabRef.GetComponent<Enemy>();
+        Enemy enemyScript = PrefabRef.GetComponent<Enemy>();
 
-            enemyScript.SetTarget(target);
-            enemyScript.SetGameOverScreen(GameOverScreen);
+        enemyScript.SetTarget(target);
+        enemyScript.SetGameOverScreen(GameOverScreen);
+        PrefabRef.SetActive(false);
 
-            RegisterEnemy(PrefabRef);
-        }
+        RegisterEnemy(PrefabRef);
     }
     #endregion
 
+    #region SpawnPooledObjects
+
+    private void SpawnPooledStars()
+    {
+        GameObject star = GetPooledObject(pooledStars);
+
+        if (star != null)
+        {
+            star.transform.position = SelectSpawnPointForPUandStars();
+            star.SetActive(true);
+        }
+    }
+    private void SpawnPooledShields()
+    {
+        GameObject shield = GetPooledObject(pooledShields);
+
+        if (shield != null)
+        {
+            shield.transform.position = SelectSpawnPointForPUandStars();
+            shield.SetActive(true);
+        }
+    }
+    private void SpawnPooledSpeedBuffs()
+    {
+        GameObject speedBuff = GetPooledObject(pooledSpeedBuffs);
+
+        if (speedBuff != null)
+        {
+            speedBuff.transform.position = SelectSpawnPointForPUandStars();
+            speedBuff.SetActive(true);
+        }
+    }
+    private void SpawnPooledKamikazes()
+    {
+        GameObject kamikaze = GetPooledObject(pooledKamikazes);
+
+        if (kamikaze != null)
+        {
+            kamikaze.transform.position = SelectSpawnPointForPUandStars();
+            kamikaze.SetActive(true);
+        }
+    }
+    private void SpawnPooledFlares()
+    {
+        GameObject flare = GetPooledObject(pooledFlares);
+
+        if (flare != null)
+        {
+            flare.transform.position = SelectSpawnPointForPUandStars();
+            flare.SetActive(true);
+        }
+    }
+    private void SpawnPooledBlackHoles()
+    {
+        GameObject blackHole = GetPooledObject(pooledBlackHoles);
+
+        if (blackHole != null)
+        {
+            blackHole.transform.position = SelectSpawnPointForPUandStars();
+            blackHole.SetActive(true);
+        }
+    }
+    private void SpawnPooledExplodes()
+    {
+        GameObject explode = GetPooledObject(pooledExplodes);
+
+        if (explode != null)
+        {
+            explode.transform.position = SelectSpawnPointForPUandStars();
+            explode.SetActive(true);
+        }
+    }
+    private void SpawnPooledEnemies()
+    {
+        GameObject enemy = GetPooledObject(pooledEnemies);
+
+        if (enemy != null)
+        {
+            enemy.transform.position = SelectEnemySpawnPoint();
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            enemyScript.SetTarget(target);
+            enemyScript.enabled = true;
+            enemyScript.DeActivateKamikaze();
+            enemy.SetActive(true);
+        }
+    }
+
+    private GameObject GetPooledObject(List<GameObject> pooledObjects)
+    {
+        foreach (var pooledObject in pooledObjects)
+        {
+            if (!pooledObject.activeInHierarchy)
+            {
+                return pooledObject;
+            }
+        }
+        return null;
+    }
+
+    #endregion
 
     #region Enemy Functions
     //Destroy enemy objects and removing them from the list
     private void HandleEnemyKilled(GameObject enemy)
     {
-        if (enemies.Contains(enemy))
-        {
-            UnityEngine.Object.Destroy(enemy);
-            enemies.Remove(enemy);
-        }
+        enemy.SetActive(false);
     }
-    //Add enemies to the list
+    //Add pooledEnemies to the list
     public void RegisterEnemy(GameObject enemy)
     {
-        enemies.Add(enemy);
+        pooledEnemies.Add(enemy);
+        pooledEnemies.Add(enemy);
     }
     //Get enemy spawn point according to the spawn point objects in the unity 
     private Vector3 SelectEnemySpawnPoint()
@@ -181,7 +307,7 @@ public class EnemySpawner : MonoBehaviour
     #endregion
 
 
-    //Get collectible spawn point according to the star spawn point objects in the unity
+    //Get collectible spawn point according to the enemy spawn point objects in the unity
     private Vector3 SelectSpawnPointForPUandStars()
     {
         Vector3 spawnPoint = new Vector3();
@@ -197,7 +323,7 @@ public class EnemySpawner : MonoBehaviour
     #region Slow Down Enemies
     private void SlowDownEnemies(bool SlowDown)
     {
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemy in pooledEnemies)
         {
             Enemy enemy1 = enemy.GetComponent<Enemy>();
 
@@ -259,9 +385,9 @@ public class EnemySpawner : MonoBehaviour
             float seconds = 3;
             bool Kamikaze = true;
             bool MoreThanOneEnemy = CheckMoreThanOneEnemyVisible();
-            GameObject enemy1 = GetClosestObjectInList(target, enemies);
+            GameObject enemy1 = GetClosestObjectInList(target, pooledEnemies);
 
-            foreach (GameObject enemy in enemies)
+            foreach (GameObject enemy in pooledEnemies)
             {
                 bool isVisible = CheckVisibility(enemy);
 
@@ -270,7 +396,6 @@ public class EnemySpawner : MonoBehaviour
                     if (enemy != enemy1)
                     {
                         audioManager.SFXPlay(audioManager.kamizkaze);
-                        
                         Enemy enemyScript = enemy.GetComponent<Enemy>();
                         enemyScript.SetSpeed(60f);
                         enemyScript.SetSteer(30f);
@@ -309,6 +434,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Enemy enemyScript = enemy.GetComponent<Enemy>();
             enemyScript.Die(false, true, false, false, false);
+
         }
     }
     public GameObject GetClosestObjectInList(GameObject target, List<GameObject> findList)
@@ -339,7 +465,7 @@ public class EnemySpawner : MonoBehaviour
     {
         List<GameObject> VisibleEnemy = new List<GameObject>();
 
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemy in pooledEnemies)
         {
             bool isVisible = CheckVisibility(enemy);
 
@@ -361,6 +487,5 @@ public class EnemySpawner : MonoBehaviour
     #endregion
 
     #endregion
-
 }
 

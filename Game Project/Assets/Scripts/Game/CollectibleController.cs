@@ -27,7 +27,7 @@ public class CollectibleController : MonoBehaviour
     {
         float distance = GetDistanceToNearestStar(Player.transform, stars);
 
-        if (Player != null && nearestStar != null)
+        if (Player != null && nearestStar != null && nearestStar.activeInHierarchy)
         {
             Vector3 viewportPos = Camera.WorldToViewportPoint(nearestStar.transform.position);
             bool isVisible = viewportPos.z > 0 && viewportPos.x > 0.05f && viewportPos.x < 1.05f && viewportPos.y > 0.05f && viewportPos.y < 1.05f;
@@ -97,7 +97,7 @@ public class CollectibleController : MonoBehaviour
             Vector3 viewportPos = Camera.WorldToViewportPoint(star.transform.position);
             bool isVisible = viewportPos.z > 0 && viewportPos.x > 0 && viewportPos.x < 1 && viewportPos.y > 0 && viewportPos.y < 1;
 
-            if (star != null)
+            if (star != null && star.activeInHierarchy)
             {
                 float distance = Vector3.Distance(playerTransform.position, star.transform.position);
                 if (distance < minDistance || minDistance == 0f)
@@ -161,8 +161,7 @@ public class CollectibleController : MonoBehaviour
     {
         if (stars.Contains(star))
         {
-            stars.Remove(star);
-            Object.Destroy(star);
+            star.SetActive(false);
         }
         if (icon != null)
         {

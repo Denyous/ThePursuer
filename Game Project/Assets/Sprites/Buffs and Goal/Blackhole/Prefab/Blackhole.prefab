@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8741556358479364199}
   - component: {fileID: 7773087299356742563}
   - component: {fileID: 3035341457855183053}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Blackhole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -158,4 +158,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4.47
+  m_Radius: 5.01

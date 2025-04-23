@@ -28,9 +28,9 @@ public class BlackHoleFunctionality : MonoBehaviour
 
             if (distance < destroyRadius)
             {
-                enemiesToRemove.Add(enemyRb);
                 Enemy enemyScript = enemyRb.gameObject.GetComponent<Enemy>();
                 enemyScript.Die(false, false, false, true, false);
+                enemiesToRemove.Add(enemyRb);
                 continue;
             }
 
@@ -43,24 +43,57 @@ public class BlackHoleFunctionality : MonoBehaviour
             enemyRb.velocity = force;
         }
 
-        enemiesInRange.RemoveAll(enemy => enemiesToRemove.Contains(enemy));
+        foreach (var enemy in enemiesToRemove)
+        {
+            if (enemiesInRange.Contains(enemy))
+            {
+                enemiesInRange.Remove(enemy);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             Rigidbody2D enemyRb = other.GetComponent<Rigidbody2D>();
             if (enemyRb != null && !enemiesInRange.Contains(enemyRb))
             {
                 enemiesInRange.Add(enemyRb);
+                enemyRb.GetComponent<Enemy>().enabled = false;
             }
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Rigidbody2D enemyRb = other.GetComponent<Rigidbody2D>();
+            if (enemyRb != null && !enemiesInRange.Contains(enemyRb))
+            {
+                enemiesInRange.Add(enemyRb);
+                enemyRb.GetComponent<Enemy>().enabled = false;
+            }
+        }
+    }
+
+
     private IEnumerator DestroyAfterTime()
     {
         yield return new WaitForSeconds(duration);
+        foreach (var enemyRb in enemiesInRange)
+        {
+            if (enemyRb == null) continue;
+
+            Enemy enemyScript = enemyRb.GetComponent<Enemy>();
+            if (enemyScript != null)
+            {
+                enemyScript.enabled = true;
+                enemyScript.Die(false, false, false, true, false);
+            }
+        }
+
         Object.Destroy(gameObject);
     }
 }

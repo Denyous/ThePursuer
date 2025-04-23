@@ -591,8 +591,7 @@ MonoBehaviour:
   ExplodeEffect: {fileID: 8657183636083783020, guid: 40890fc6f4238d7449a7b8cf60b0e466, type: 3}
   kamikazeSprite: {fileID: 463294507}
   explodeSprite: {fileID: 1919512038}
-  enemySpawnLimit: 10
-  enemies: []
+  pooledObjectLimit: 10
   GameOverScreen: {fileID: 1405075683}
   kamikazeButton: {fileID: 0}
 --- !u!1 &359887504
@@ -2373,7 +2372,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1165175681}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
