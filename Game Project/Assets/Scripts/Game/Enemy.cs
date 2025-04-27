@@ -79,6 +79,10 @@ public class Enemy : MonoBehaviour
     //Killing pooledEnemies
     public void Die(bool explodeBuff, bool kamikaze, bool Flare, bool BlackHole, bool Shield)
     {
+        if (kamikazeEffect != null)
+        {
+            kamikazeEffect.SetActive(false);
+        }
         OnEnemyDied?.Invoke(this.gameObject);
         if (!kamikaze && !explodeBuff && !Flare && !BlackHole && !Shield)
         {
@@ -99,7 +103,6 @@ public class Enemy : MonoBehaviour
 
 
 
-    //Change color for kamikaze buff
     public void ActivateKamikaze(GameObject ParticleSystem)
     {
         kamikazeEffect = Instantiate(ParticleSystem, transform.position, Quaternion.identity);
@@ -142,12 +145,11 @@ public class Enemy : MonoBehaviour
             {
                 if (player != null && player.Shield == false)
                 {
-                    //int score = player.GetScore();
-                    //player.CreateExplosion();
-                    //Object.Destroy(target.gameObject);
-                    //Object.Destroy(gameObject);
-
-                    //GameOver(score);
+                    int score = player.GetScore();
+                    player.CreateExplosion();
+                    Object.Destroy(target.gameObject);
+                    Object.Destroy(gameObject);
+                    GameOver(score);
                 }
             }
         }

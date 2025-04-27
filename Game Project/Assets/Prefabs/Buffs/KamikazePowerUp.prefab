@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8716785222830651409}
   - component: {fileID: 9211830759352015737}
   - component: {fileID: 831130149846854125}
+  - component: {fileID: -1008275819912945320}
   m_Layer: 0
   m_Name: KamikazePowerUp
   m_TagString: Kamikaze
@@ -120,3 +121,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.232919
+--- !u!114 &-1008275819912945320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5753006620260486618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d468dd464caa915468acc591afce1711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

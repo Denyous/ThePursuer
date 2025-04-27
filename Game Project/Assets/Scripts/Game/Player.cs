@@ -284,8 +284,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
     public int getBlackHoleCount()
     {
         return blackHoleCount;
@@ -352,7 +350,6 @@ public class Player : MonoBehaviour
             MakeButtonTransparent(explodeButton);
         }
     }
-
 
     public void MakeButtonTransparent(UnityEngine.UI.Button myButton)
     {

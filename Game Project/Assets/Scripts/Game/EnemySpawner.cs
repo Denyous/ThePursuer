@@ -52,8 +52,6 @@ public class EnemySpawner : MonoBehaviour
     private List<GameObject> pooledExplodes = new List<GameObject>();
     private List<GameObject> pooledSpeedBuffs = new List<GameObject>();
 
-
-
     //This is for setting game over screen for enemy script and game over screen logic handled there
     [SerializeField] private GameOver GameOverScreen;
     [SerializeField] private Button kamikazeButton;
@@ -81,18 +79,24 @@ public class EnemySpawner : MonoBehaviour
             SpawnShieldPowerUp();
         }
 
+        InvokeRepeating("SpawnPooledEnemies", 1f, 10f);
         InvokeRepeating("SpawnPooledStars", 5f, 5f);
-        InvokeRepeating("SpawnPooledBlackHoles", 5f, 1f);
-        InvokeRepeating("SpawnPooledKamikazes", 5f, 5f);
-        InvokeRepeating("SpawnPooledShields", 5f, 3f);
-        InvokeRepeating("SpawnPooledSpeedBuffs", 5f, 3f);
-        InvokeRepeating("SpawnPooledExplodes", 5f, 15f);
-        InvokeRepeating("SpawnPooledFlares", 5f, 10f);
-        InvokeRepeating("SpawnPooledEnemies", 5f, 1f);
+
+        InvokeRepeating("SpawnPooledShields", 5f, 10f);
+        InvokeRepeating("SpawnPooledSpeedBuffs", 5f, 10f);
+
+        InvokeRepeating("SpawnPooledKamikazes", 1f, 1f);
+        InvokeRepeating("SpawnPooledFlares", 10f, 20f);
+
+        InvokeRepeating("SpawnPooledExplodes", 20f, 30f);
+        InvokeRepeating("SpawnPooledBlackHoles", 20f, 30f);
+
 
         m_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         playerScript = target.GetComponent<Player>();
     }
+
+    
 
     #region Spawners
     //Spawn Shield Speed Up Stars and Enemies
@@ -240,7 +244,6 @@ public class EnemySpawner : MonoBehaviour
             enemy.SetActive(true);
         }
     }
-
     private GameObject GetPooledObject(List<GameObject> pooledObjects)
     {
         foreach (var pooledObject in pooledObjects)
@@ -357,10 +360,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (gameObject != null)
         {
-            Vector3 screenPos = m_camera.WorldToScreenPoint(gameObject.transform.position);
-            bool onScreen = screenPos.x > 0f && screenPos.x < UnityEngine.Screen.width && screenPos.y > 0f && screenPos.y < UnityEngine.Screen.height;
-
-            if (onScreen && gameObject.GetComponent<SpriteRenderer>().isVisible)
+            if (gameObject.GetComponent<SpriteRenderer>().isVisible)
             {
                 return true;
             }
@@ -384,25 +384,35 @@ public class EnemySpawner : MonoBehaviour
         {
             float seconds = 3;
             bool Kamikaze = true;
-            bool MoreThanOneEnemy = CheckMoreThanOneEnemyVisible();
             GameObject enemy1 = GetClosestObjectInList(target, pooledEnemies);
+            bool moreThanOne = CheckIfMoreThanOneEnemyVisible(pooledEnemies);
 
             foreach (GameObject enemy in pooledEnemies)
             {
-                bool isVisible = CheckVisibility(enemy);
+                bool isVisible = enemy.GetComponent<SpriteRenderer>().isVisible;
 
-                if (isVisible && Kamikaze && MoreThanOneEnemy)
+                if (isVisible && Kamikaze)
                 {
-                    if (enemy != enemy1)
+                    if (enemy != enemy1 && moreThanOne)
                     {
                         audioManager.SFXPlay(audioManager.kamizkaze);
                         Enemy enemyScript = enemy.GetComponent<Enemy>();
-                        enemyScript.SetSpeed(60f);
+                        enemyScript.SetSpeed(90f);
                         enemyScript.SetSteer(30f);
                         enemyScript.SetTarget(enemy1);
                         enemyScript.ActivateKamikaze(KamikazeEffect);
                         Kamikaze = false;
                         StartCoroutine(SelfDestroy(seconds, enemy));
+                    }
+                    else if (enemy == enemy1 && !moreThanOne)
+                    {
+                        audioManager.SFXPlay(audioManager.kamizkaze);
+                        Enemy enemyScript = enemy.GetComponent<Enemy>();
+                        enemyScript.SetTarget(target);
+                        enemyScript.SetSpeed(60f);
+                        enemyScript.SetSteer(25f);
+                        Kamikaze = false;
+                        enemyScript.Die(false, true, false, false, false);
                     }
                 }
             }
@@ -415,7 +425,28 @@ public class EnemySpawner : MonoBehaviour
     #endregion
 
 
-   
+    private bool CheckIfMoreThanOneEnemyVisible(List<GameObject> enemies)
+    {
+        int counter = -1;
+
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null && enemy.activeInHierarchy)
+            {
+                Vector3 viewPos = Camera.main.WorldToViewportPoint(enemy.transform.position);
+
+                if (viewPos.x >= 0 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1)
+                {
+                    counter++;
+                    if (counter > 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
     #region Explode buff functions
     public void ExplodeEnemies()
@@ -433,8 +464,10 @@ public class EnemySpawner : MonoBehaviour
         if (enemy != null)
         {
             Enemy enemyScript = enemy.GetComponent<Enemy>();
+            enemyScript.SetTarget(target);
+            enemyScript.SetSpeed(60f);
+            enemyScript.SetSteer(25f);
             enemyScript.Die(false, true, false, false, false);
-
         }
     }
     public GameObject GetClosestObjectInList(GameObject target, List<GameObject> findList)
@@ -445,7 +478,7 @@ public class EnemySpawner : MonoBehaviour
         float distance = 0;
         foreach (GameObject find in findList)
         {
-            if (find != null)
+            if (find != null && find.activeInHierarchy)
             {
                 Vector3 findLocation = find.transform.position;
 
@@ -459,30 +492,6 @@ public class EnemySpawner : MonoBehaviour
             }
         }
         return newFind;
-    }
-    //If there is more than one enemy in the screen when player press the button explode them all
-    public bool CheckMoreThanOneEnemyVisible()
-    {
-        List<GameObject> VisibleEnemy = new List<GameObject>();
-
-        foreach (GameObject enemy in pooledEnemies)
-        {
-            bool isVisible = CheckVisibility(enemy);
-
-            if (isVisible)
-            {
-                VisibleEnemy.Add(enemy);
-            }
-        }
-
-        if (VisibleEnemy.Count > 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
     #endregion
 
