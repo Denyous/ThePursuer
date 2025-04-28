@@ -4,16 +4,20 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MainMenuButtonController : MonoBehaviour
 {
+    public TutorialSceheme tutorial;
+
     public GameObject settingsPanel;
     public GameObject creditsPanel;
     public GameObject languagePanel;
     public GameObject tutorialPanel;
     public GameObject audioPanel;
     public new AudioManager audio;
-    
+
+   
 
 
     [SerializeField] private UnityEngine.UI.Button StartButton;
@@ -40,6 +44,13 @@ public class MainMenuButtonController : MonoBehaviour
         SettingsBtnRectTransform = SettingsButton.GetComponent<RectTransform>();
         ExitBtnRectTransform = ExitButton.GetComponent<RectTransform>();
         audio = GameObject.FindGameObjectWithTag("MainAudio").GetComponent<AudioManager>();
+        
+
+        
+        
+        
+
+
     }
 
     public void StartButtonClick()
@@ -106,8 +117,13 @@ public class MainMenuButtonController : MonoBehaviour
 
     public void TutorialButtonClick()
     {
+        
         tutorialPanel.SetActive(true);
         ClickSound();
+
+        
+
+
     }
 
     public void AudioButtonClick()
@@ -126,7 +142,10 @@ public class MainMenuButtonController : MonoBehaviour
     public void TutorialBackButton()
     {
         tutorialPanel.SetActive(false);
+        tutorial.ShowImage(0);
         ClickSound();
+
+        
     }
 
     public void AudioBackButton()
@@ -162,5 +181,10 @@ public class MainMenuButtonController : MonoBehaviour
     void Waitforseconds()
     {
         SceneManager.LoadScene(0);
+    }
+
+    void TutorialImagePlacer()
+    {
+       
     }
 }
