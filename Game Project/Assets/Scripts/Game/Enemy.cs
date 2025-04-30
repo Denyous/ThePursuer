@@ -48,9 +48,9 @@ public class Enemy : MonoBehaviour
     #endregion
 
     //Showing game over screen
-    public void GameOver(int score)
+    public void GameOver(int score, int highscore)
     {
-        GameOverScreen.Setup(score);
+        GameOverScreen.Setup(score, highscore);
     }
 
 
@@ -146,10 +146,18 @@ public class Enemy : MonoBehaviour
                 if (player != null && player.Shield == false)
                 {
                     int score = player.GetScore();
+                    int highscore = PlayerPrefs.GetInt("HighScore", 0);
+                    
+                    if (highscore < score)
+                    {
+                        highscore = score;
+                        PlayerPrefs.SetInt("HighScore", highscore);
+                    }
+
                     player.CreateExplosion();
                     Object.Destroy(target.gameObject);
                     Object.Destroy(gameObject);
-                    GameOver(score);
+                    GameOver(score, highscore);
                 }
             }
         }

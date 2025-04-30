@@ -7,14 +7,16 @@ using UnityEngine.SocialPlatforms.Impl;
 public class GameOver : MonoBehaviour
 {
     public TMP_Text PointText;
+    public TMP_Text HighScoreText;
     public GameObject UI;
     public GameObject pauseIcon;
-    private int score_;
+    private int _score;
+    private int _highScore;
     AudioManager audioManager;
     public AudioSource musicSource;
 
     
-    public void Setup(int score)
+    public void Setup(int score, int highscore)
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
@@ -22,11 +24,11 @@ public class GameOver : MonoBehaviour
         UI.SetActive(false);
         pauseIcon.SetActive(false);
 
-        score_ = score;
-
+        _score = score;
+        _highScore = highscore;
+        
         musicSource.Pause();
         Invoke("Wait1Second", 1f);
-        
     }
 
     void Wait1Second()
@@ -34,6 +36,7 @@ public class GameOver : MonoBehaviour
         audioManager.SFXPlay(audioManager.gameoverScreen);
         
         gameObject.SetActive(true);
-        PointText.text = score_.ToString() + " Points";
+        PointText.text = _score.ToString() + " Points";
+        HighScoreText.text = "High Score: " + _highScore.ToString() + " Points";
     }
 }

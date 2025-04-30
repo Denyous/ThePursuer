@@ -9,7 +9,7 @@ public class CollectibleTimer : MonoBehaviour
     private void Start()
     {
         Renderer = GetComponent<SpriteRenderer>();
-        InvokeRepeating("MakeInactiveIfNotVisible", 5f, 30f);
+        InvokeRepeating("MakeInactiveIfNotVisible", 45f, 45f);
     }
     
     private void MakeInactiveIfNotVisible()
