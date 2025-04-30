@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class CollectibleController : MonoBehaviour
 {
-    [SerializeField] private GameObject iconPrefab;
-
     private Camera Camera;
+
+    [SerializeField] private GameObject collectiblePrefab;
 
     private GameObject icon;
     private GameObject Player;
@@ -17,7 +17,7 @@ public class CollectibleController : MonoBehaviour
     [SerializeField] private float ScreenBorder;
     [SerializeField] private float VisibleDistance;
 
-    private void Awake()
+    private void Start()
     {
         Camera = Camera.main;
         Player = transform.parent.gameObject;
@@ -30,22 +30,20 @@ public class CollectibleController : MonoBehaviour
         if (Player != null && nearestStar != null && nearestStar.activeInHierarchy)
         {
             Vector3 viewportPos = Camera.WorldToViewportPoint(nearestStar.transform.position);
-            bool isVisible = viewportPos.z > 0 && viewportPos.x > 0.05f && viewportPos.x < 1.05f && viewportPos.y > 0.05f && viewportPos.y < 1.05f;
+            bool isStarVisible = viewportPos.x > 0.05f && viewportPos.x < 1.05f && viewportPos.y > 0.05f && viewportPos.y < 1.05f;
 
-            if (distance < VisibleDistance && icon == null && !isVisible)
+            if (!isStarVisible)
             {
-                icon = Instantiate(iconPrefab, GetIconPosition(), Quaternion.identity);
-            }
-
-            if(isVisible && icon != null)
-            {
-                Object.Destroy(icon);
-                icon = null;
-            }
-
-            if (icon != null)
-            {
+                if (icon == null)
+                {
+                    icon = Instantiate(collectiblePrefab, GetIconPosition(), Quaternion.identity);
+                }
+                icon.SetActive(true);
                 UpdateIconPosition(icon, viewportPos, Camera);
+            }
+            else
+            {
+                icon.SetActive(false);
             }
         }
     }
@@ -163,9 +161,9 @@ public class CollectibleController : MonoBehaviour
         {
             star.SetActive(false);
         }
-        if (icon != null)
+        if (icon.activeInHierarchy)
         {
-            Object.Destroy(icon);
+            icon.SetActive(false);
         }
     }
     #endregion
