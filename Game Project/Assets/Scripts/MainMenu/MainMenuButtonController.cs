@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.AddressableAssets.Build;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,7 +15,8 @@ public class MainMenuButtonController : MonoBehaviour
     public GameObject tutorialPanel;
     public GameObject audioPanel;
     public new AudioManager audio;
-    
+    public TMP_Text highScoreText;
+
 
 
     [SerializeField] private UnityEngine.UI.Button StartButton;
@@ -33,9 +36,9 @@ public class MainMenuButtonController : MonoBehaviour
 
     private void Start()
     {
-        
-
         Application.targetFrameRate = 60;
+        int highscore = PlayerPrefs.GetInt("HighScore");
+        highScoreText.text = "HIGH SCORE: " + highscore.ToString() + " POINTS";
         StartBtnRectTransform = StartButton.GetComponent<RectTransform>();
         SettingsBtnRectTransform = SettingsButton.GetComponent<RectTransform>();
         ExitBtnRectTransform = ExitButton.GetComponent<RectTransform>();
@@ -44,7 +47,6 @@ public class MainMenuButtonController : MonoBehaviour
 
     public void StartButtonClick()
     {
-        
         StartBtnOriginalScale = StartButton.GetComponent<RectTransform>().localScale;
 
         LTSeq sequence = LeanTween.sequence();
@@ -54,7 +56,6 @@ public class MainMenuButtonController : MonoBehaviour
         sequence.append(LeanTween.scale(StartBtnRectTransform, StartBtnOriginalScale, 0.08f)
             .setEase(LeanTweenType.easeOutBack).setOnComplete(OnStartBtnAnimationComplete));
         ClickSound();
-       
     }
     private void OnStartBtnAnimationComplete()
     {
