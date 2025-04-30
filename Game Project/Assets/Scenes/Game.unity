@@ -594,7 +594,6 @@ MonoBehaviour:
   pooledObjectLimit: 10
   GameOverScreen: {fileID: 1405075683}
   kamikazeButton: {fileID: 0}
-  timeLimit: 30
 --- !u!1 &359887504
 GameObject:
   m_ObjectHideFlags: 0

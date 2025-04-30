@@ -79,17 +79,17 @@ public class EnemySpawner : MonoBehaviour
             SpawnShieldPowerUp();
         }
 
-        InvokeRepeating("SpawnPooledEnemies", 1f, 10f);
+        InvokeRepeating("SpawnPooledEnemies", 1f, 5f);
         InvokeRepeating("SpawnPooledStars", 5f, 5f);
 
-        InvokeRepeating("SpawnPooledShields", 5f, 10f);
-        InvokeRepeating("SpawnPooledSpeedBuffs", 5f, 10f);
+        InvokeRepeating("SpawnPooledShields", 5f, 5f);
+        InvokeRepeating("SpawnPooledSpeedBuffs", 5f, 5f);
 
-        InvokeRepeating("SpawnPooledKamikazes", 1f, 1f);
-        InvokeRepeating("SpawnPooledFlares", 10f, 20f);
+        InvokeRepeating("SpawnPooledKamikazes", 10f, 5f);
+        InvokeRepeating("SpawnPooledFlares", 10f, 5f);
 
-        InvokeRepeating("SpawnPooledExplodes", 20f, 30f);
-        InvokeRepeating("SpawnPooledBlackHoles", 20f, 30f);
+        InvokeRepeating("SpawnPooledExplodes", 20f, 5f);
+        InvokeRepeating("SpawnPooledBlackHoles", 20f, 5f);
 
 
         m_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
