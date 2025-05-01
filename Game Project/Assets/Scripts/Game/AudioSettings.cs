@@ -16,8 +16,5 @@ public class AudioSettings : MonoBehaviour
 
         float soundVolume = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(soundVolume) * 20);
-
     }
-
-    
 }
