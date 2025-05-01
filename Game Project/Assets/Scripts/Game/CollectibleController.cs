@@ -41,7 +41,7 @@ public class CollectibleController : MonoBehaviour
                 icon.SetActive(true);
                 UpdateIconPosition(icon, viewportPos, Camera);
             }
-            else
+            else if (icon != null)
             {
                 icon.SetActive(false);
             }

@@ -79,7 +79,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnShieldPowerUp();
         }
 
-        //InvokeRepeating("SpawnPooledEnemies", 1f, 5f);
+        InvokeRepeating("SpawnPooledEnemies", 1f, 5f);
         InvokeRepeating("SpawnPooledStars", 1f, 1f);
 
         InvokeRepeating("SpawnPooledShields", 5f, 5f);
