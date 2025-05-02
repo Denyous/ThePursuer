@@ -69,8 +69,11 @@ public class AudioManager : MonoBehaviour
 
     private void LoadVolume()
     {
-        MusicvolumeSlider.value = PlayerPrefs.GetFloat("Music");
-        SFXvolumeSlider.value = PlayerPrefs.GetFloat("SFX");
+        if (MusicvolumeSlider != null && SFXvolumeSlider != null)
+        {
+            MusicvolumeSlider.value = PlayerPrefs.GetFloat("Music");
+            SFXvolumeSlider.value = PlayerPrefs.GetFloat("SFX");
+        }
     }
 
     public void SFXPlay(AudioClip clip)
