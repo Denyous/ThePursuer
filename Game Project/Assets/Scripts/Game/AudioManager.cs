@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip laser;
     public AudioClip blackHole;
     public AudioClip blackholePauseScreen;
-    public AudioClip kamizkaze;
+    public AudioClip kamikaze;
     public AudioClip speedUp;
     public AudioClip collect;
     public AudioClip gameoverScreen;
@@ -79,5 +79,13 @@ public class AudioManager : MonoBehaviour
     public void SFXPlay(AudioClip clip)
     {
         SFX.PlayOneShot(clip);
+    }
+
+    public void SFXStop(AudioSource source)
+    {
+        if (SFX.name == source.name)
+        {
+            SFX.Stop();
+        }
     }
 }

@@ -128,7 +128,8 @@ public class Enemy : MonoBehaviour
             player.Shield = false;
 
             audioManager.SFXPlay(audioManager.shieldOff);
-            
+            audioManager.SFXPlay(audioManager.explosion);
+
             player.ChangeShieldState();
 
             Die(false, false, false, false, true);
@@ -145,19 +146,19 @@ public class Enemy : MonoBehaviour
             {
                 if (player != null && player.Shield == false)
                 {
-                    int score = player.GetScore();
-                    int highscore = PlayerPrefs.GetInt("HighScore", 0);
+                    //int score = player.GetScore();
+                    //int highscore = PlayerPrefs.GetInt("HighScore", 0);
                     
-                    if (highscore < score)
-                    {
-                        highscore = score;
-                        PlayerPrefs.SetInt("HighScore", highscore);
-                    }
+                    //if (highscore < score)
+                    //{
+                    //    highscore = score;
+                    //    PlayerPrefs.SetInt("HighScore", highscore);
+                    //}
 
-                    player.CreateExplosion();
-                    Object.Destroy(target.gameObject);
-                    Object.Destroy(gameObject);
-                    GameOver(score, highscore);
+                    //player.CreateExplosion();
+                    //Object.Destroy(target.gameObject);
+                    //Object.Destroy(gameObject);
+                    //GameOver(score, highscore);
                 }
             }
         }

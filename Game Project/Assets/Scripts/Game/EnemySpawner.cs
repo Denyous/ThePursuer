@@ -79,17 +79,17 @@ public class EnemySpawner : MonoBehaviour
             SpawnShieldPowerUp();
         }
 
-        //InvokeRepeating("SpawnPooledEnemies", 1f, 5f);
-        //InvokeRepeating("SpawnPooledStars", 1f, 1f);
+        InvokeRepeating("SpawnPooledEnemies", 1f, 5f);
+        InvokeRepeating("SpawnPooledStars", 1f, 1f);
 
-        //InvokeRepeating("SpawnPooledShields", 5f, 5f);
-        //InvokeRepeating("SpawnPooledSpeedBuffs", 5f, 5f);
+        InvokeRepeating("SpawnPooledShields", 5f, 5f);
+        InvokeRepeating("SpawnPooledSpeedBuffs", 5f, 5f);
 
-        //InvokeRepeating("SpawnPooledKamikazes", 10f, 5f);
+        InvokeRepeating("SpawnPooledKamikazes", 10f, 5f);
         InvokeRepeating("SpawnPooledFlares", 1f, 1f);
 
-        //InvokeRepeating("SpawnPooledExplodes", 20f, 5f);
-        //InvokeRepeating("SpawnPooledBlackHoles", 20f, 5f);
+        InvokeRepeating("SpawnPooledExplodes", 20f, 5f);
+        InvokeRepeating("SpawnPooledBlackHoles", 20f, 5f);
 
 
         m_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -395,7 +395,7 @@ public class EnemySpawner : MonoBehaviour
                 {
                     if (enemy != enemy1 && moreThanOne)
                     {
-                        audioManager.SFXPlay(audioManager.kamizkaze);
+                        audioManager.SFXPlay(audioManager.kamikaze);
                         Enemy enemyScript = enemy.GetComponent<Enemy>();
                         enemyScript.SetSpeed(90f);
                         enemyScript.SetSteer(30f);
@@ -406,7 +406,7 @@ public class EnemySpawner : MonoBehaviour
                     }
                     else if (enemy == enemy1 && !moreThanOne)
                     {
-                        audioManager.SFXPlay(audioManager.kamizkaze);
+                        audioManager.SFXPlay(audioManager.kamikaze);
                         Enemy enemyScript = enemy.GetComponent<Enemy>();
                         enemyScript.SetTarget(target);
                         enemyScript.SetSpeed(60f);
