@@ -3843,7 +3843,7 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}
   shield: {fileID: 8300000, guid: d94e78f4110184548bb749ae38c3c285, type: 3}
   shieldOff: {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}
-  flare: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
+  flare: {fileID: 8300000, guid: 814d281b81aa6c4439f8dc2558a99fda, type: 3}
   laser: {fileID: 8300000, guid: e88084c6f293c324db2b4dcf575d60dc, type: 3}
   blackHole: {fileID: 8300000, guid: 4b4dd7245f6104c8c8eb07ccf6b386ed, type: 3}
   blackholePauseScreen: {fileID: 8300000, guid: 881e3f52c86c94f26a60718d35627cd8, type: 3}
