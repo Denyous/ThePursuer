@@ -1848,7 +1848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.85490197}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.74509805}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3852,7 +3852,7 @@ MonoBehaviour:
   collectBuffSFX: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
   gameOverScreenSFX: {fileID: 8300000, guid: 9066493003e7a9e4cbeb5c8c4cd144ba, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: 302a7ee850fea20439e8ac128f7ba6e7, type: 3}
-  pauseScreenClockTickSFX: {fileID: 8300000, guid: fa3ef48f28f8f1441a68f27e4e11d61d, type: 3}
+  pauseScreenClockTickSFX: {fileID: 8300000, guid: 302a7ee850fea20439e8ac128f7ba6e7, type: 3}
 --- !u!114 &1253070765
 MonoBehaviour:
   m_ObjectHideFlags: 0
