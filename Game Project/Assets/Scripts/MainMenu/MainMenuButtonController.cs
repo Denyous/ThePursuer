@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.AddressableAssets.Build;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +15,6 @@ public class MainMenuButtonController : MonoBehaviour
     public GameObject audioPanel;
     public new AudioManager audio;
     public TMP_Text highScoreText;
-
 
 
     [SerializeField] private UnityEngine.UI.Button StartButton;
@@ -157,7 +155,7 @@ public class MainMenuButtonController : MonoBehaviour
 
     public void ClickSound()
     {
-        audio.SFXPlay(audio.clickSound);
+        audio.SFXPlayOneShot(audio.buttonClickSFX);
     }
 
     void Waitforseconds()

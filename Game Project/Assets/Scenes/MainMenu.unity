@@ -3785,25 +3785,23 @@ MonoBehaviour:
   musicSource: {fileID: 350210884}
   SFX: {fileID: 961303760}
   audioMixer: {fileID: 24100000, guid: 1005739dba854b54399bbb7dfa09e971, type: 2}
-  MusicvolumeSlider: {fileID: 1913698628}
-  SFXvolumeSlider: {fileID: 1344756853}
-  background: {fileID: 0}
-  death: {fileID: 0}
-  explosion: {fileID: 0}
-  shield: {fileID: 0}
-  shieldOff: {fileID: 8300000, guid: 75adfe9a619833445a701305b983e548, type: 3}
-  flare: {fileID: 0}
-  laser: {fileID: 0}
-  blackHole: {fileID: 0}
-  blackholePauseScreen: {fileID: 0}
-  kamizkaze: {fileID: 0}
-  speedUp: {fileID: 0}
-  collect: {fileID: 0}
-  gameoverScreen: {fileID: 0}
-  clickSound: {fileID: 8300000, guid: 0994c12e202f342459a4212e7287f7e8, type: 3}
-  clockTick: {fileID: 0}
-  enemyShip: {fileID: 0}
-  enemyShipClip: {fileID: 0}
+  musicVolumeSlider: {fileID: 1913698628}
+  sfxVolumeSlider: {fileID: 1344756853}
+  playerShipAudioSource: {fileID: 0}
+  explosionSFX: {fileID: 0}
+  shieldUpSFX: {fileID: 0}
+  shieldImpactSFX: {fileID: 0}
+  flareSFX: {fileID: 0}
+  laserSFX: {fileID: 0}
+  blackHoleInstantiationSFX: {fileID: 0}
+  enemiesSwallowedByBlackHoleSFX: {fileID: 0}
+  speedUpSFX: {fileID: 0}
+  speedDownSFX: {fileID: 0}
+  collectStarSFX: {fileID: 0}
+  collectBuffSFX: {fileID: 0}
+  gameOverScreenSFX: {fileID: 0}
+  buttonClickSFX: {fileID: 8300000, guid: 302a7ee850fea20439e8ac128f7ba6e7, type: 3}
+  pauseScreenClockTickSFX: {fileID: 8300000, guid: fa3ef48f28f8f1441a68f27e4e11d61d, type: 3}
 --- !u!1 &551510224
 GameObject:
   m_ObjectHideFlags: 0
@@ -11440,7 +11438,7 @@ MonoBehaviour:
   languagePanel: {fileID: 667901960}
   tutorialPanel: {fileID: 273142651}
   audioPanel: {fileID: 806761156}
-  audio: {fileID: 0}
+  audio: {fileID: 549514747}
   highScoreText: {fileID: 402250969}
   StartButton: {fileID: 640878317}
   SettingsButton: {fileID: 1175526244}
@@ -12946,10 +12944,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1817016433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035, y: -0.000045776}
-  m_SizeDelta: {x: 1440, y: 1920}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.000015259156}
+  m_SizeDelta: {x: 0, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2133809927
 MonoBehaviour:

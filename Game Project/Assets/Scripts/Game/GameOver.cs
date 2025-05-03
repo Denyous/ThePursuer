@@ -33,7 +33,7 @@ public class GameOver : MonoBehaviour
 
     void Wait1Second()
     {
-        audioManager.SFXPlay(audioManager.gameoverScreen);
+        audioManager.SFXPlayOneShot(audioManager.gameOverScreenSFX);
         
         gameObject.SetActive(true);
         PointText.text = _score.ToString() + " Points";
