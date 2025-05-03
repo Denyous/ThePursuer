@@ -47,12 +47,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float boostSpeed = 50f;
     [SerializeField] private float notBoostSpeed = 35f;
     [SerializeField] private float RotationSpeed = 3f;
+    private AudioSource playerShipSFX;
     public int blackHoleCount = 0;
     public int flareCount = 0;
     public int kamikazeCount = 0;
     public int explodeCount = 0;
-
-
+    private float originalVolume;
+    private float originalPitch;
 
     private AudioManager audioManager;
     private EnemySpawner Spawner;
@@ -71,11 +72,13 @@ public class Player : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         Spawner = spawnerGameObject.GetComponent<EnemySpawner>();
         controller = controllerGameObject.GetComponent<CollectibleController>();
-
+        playerShipSFX = GetComponent<AudioSource>();
         adjustBuffUiText(blackholeSprite, blackHoleCount, true);
         adjustBuffUiText(flareSprite, flareCount, false);
         adjustBuffUiText(kamikazeSprite, kamikazeCount, false);
         adjustBuffUiText(explodeSprite, explodeCount, false);
+        originalVolume = playerShipSFX.volume;
+        originalPitch = playerShipSFX.pitch;
 
         MakeButtonTransparent(kamikazeButton);
         MakeButtonTransparent(explodeButton);
@@ -109,7 +112,7 @@ public class Player : MonoBehaviour
                 {
                     isSpeedUp = true;
 
-                    audioManager.SFXPlay(audioManager.speedUp);
+                    audioManager.SFXPlayOneShot(audioManager.speedUpSFX);
                     Animation.gameObject.SetActive(false);
                     SpeedBuffAnimation.gameObject.SetActive(true);
 
@@ -124,6 +127,9 @@ public class Player : MonoBehaviour
                     Speed = normalSpeed;
                     Animation.SetActive(true);
                     SpeedBuffAnimation.SetActive(false);
+                    audioManager.SFXPlayOneShot(audioManager.speedDownSFX);
+                    playerShipSFX.pitch = originalPitch;
+                    playerShipSFX.volume = originalVolume;
                 }
             }
         }
@@ -144,7 +150,7 @@ public class Player : MonoBehaviour
             {
                 AudioListener listener = Camera.main.GetComponent<AudioListener>();
                 listener.enabled = true;
-                audioManager.SFXPlay(audioManager.explosion);
+                audioManager.SFXPlayOneShot(audioManager.explosionSFX);
             }
         }
     }
@@ -159,7 +165,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Star"))
         {
-            audioManager.SFXPlay(audioManager.collect);
+            audioManager.SFXPlayOneShot(audioManager.collectStarSFX);
             controller.Kill(collision.gameObject);
             Score++;
             ScoreText.text = Score.ToString();
@@ -170,7 +176,7 @@ public class Player : MonoBehaviour
             collision.gameObject.SetActive(false);
             Shield = true;
             
-            audioManager.SFXPlay(audioManager.shield);
+            audioManager.SFXPlayOneShot(audioManager.shieldUpSFX);
             
             ChangeShieldState();
         }
@@ -189,7 +195,11 @@ public class Player : MonoBehaviour
 
                 isBoost = true;
             }
-
+            if (playerShipSFX.volume == originalVolume && playerShipSFX.pitch == originalPitch)
+            {
+                playerShipSFX.volume = 1f;
+                playerShipSFX.pitch = originalPitch * 1.2f;
+            }
             speedUpDuration += 4f;
         }
         else if (collision.gameObject.CompareTag("Kamikaze"))
@@ -201,6 +211,7 @@ public class Player : MonoBehaviour
                 kamikazeCount++;
                 adjustBuffUiText(kamikazeSprite, kamikazeCount, false);
                 MakeButtonNonTransparent(kamikazeButton);
+                audioManager.SFXPlayOneShot(audioManager.collectBuffSFX);
             }
         }
         else if (collision.gameObject.CompareTag("Flare"))
@@ -212,6 +223,7 @@ public class Player : MonoBehaviour
                 flareCount++;
                 adjustBuffUiText(flareSprite, flareCount, false);
                 MakeButtonNonTransparent(flareButton);
+                audioManager.SFXPlayOneShot(audioManager.collectBuffSFX);
             }
         }
         else if (collision.gameObject.CompareTag("BlackHole"))
@@ -223,6 +235,7 @@ public class Player : MonoBehaviour
                 blackHoleCount++;
                 adjustBuffUiText(blackholeSprite, blackHoleCount, true);
                 MakeButtonNonTransparent(blackHoleButton);
+                audioManager.SFXPlayOneShot(audioManager.collectBuffSFX);
             }
         }
         else if (collision.gameObject.CompareTag("Explode"))
@@ -234,6 +247,7 @@ public class Player : MonoBehaviour
                 explodeCount++;
                 adjustBuffUiText(explodeSprite, explodeCount, false);
                 MakeButtonNonTransparent(explodeButton);
+                audioManager.SFXPlayOneShot(audioManager.collectBuffSFX);
             }
         }
     }
@@ -272,7 +286,7 @@ public class Player : MonoBehaviour
     {
         if (flareCount > 0)
         {
-            audioManager.SFXPlay(audioManager.flare);
+            audioManager.SFXPlayOneShot(audioManager.flareSFX);
 
             UnityEngine.Quaternion currentRotation = transform.rotation;
 

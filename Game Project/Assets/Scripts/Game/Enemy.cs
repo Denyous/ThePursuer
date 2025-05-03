@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed = 45f;
     [SerializeField] private float steer = 15f;
     [SerializeField] private GameObject rocketFire;
+    [SerializeField] private AudioSource kamikazeSFX;
     private GameObject fire;
     private GameObject kamikazeEffect;
     Rigidbody2D rb;
@@ -108,6 +109,8 @@ public class Enemy : MonoBehaviour
         kamikazeEffect = Instantiate(ParticleSystem, transform.position, Quaternion.identity);
         kamikazeEffect.transform.SetParent(transform);
         kamikazeEffect.SetActive(true);
+        kamikazeSFX.Play();
+        kamikazeSFX.loop = true;
     }
 
     public void DeActivateKamikaze()
@@ -115,6 +118,7 @@ public class Enemy : MonoBehaviour
         if (kamikazeEffect != null)
         {
             kamikazeEffect.SetActive(false);
+            kamikazeSFX.Stop();
         }
     }
     #region Handling Triggers
@@ -127,8 +131,8 @@ public class Enemy : MonoBehaviour
             
             player.Shield = false;
 
-            audioManager.SFXPlay(audioManager.shieldOff);
-            audioManager.SFXPlay(audioManager.explosion);
+            audioManager.SFXPlayOneShot(audioManager.shieldImpactSFX);
+            audioManager.SFXPlayOneShot(audioManager.explosionSFX);
 
             player.ChangeShieldState();
 
@@ -164,7 +168,7 @@ public class Enemy : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
-            audioManager.SFXPlay(audioManager.explosion);
+            audioManager.SFXPlayOneShot(audioManager.explosionSFX);
             Die(false, false, false, false, false);
         }
     }
@@ -172,7 +176,7 @@ public class Enemy : MonoBehaviour
     //Flare particle collision
     void OnParticleCollision()
     {
-        audioManager.SFXPlay(audioManager.explosion);
+        audioManager.SFXPlayOneShot(audioManager.explosionSFX);
         Die(false, false, true, false, false);
     }
 

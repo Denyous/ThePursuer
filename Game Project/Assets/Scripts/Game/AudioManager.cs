@@ -15,29 +15,30 @@ public class AudioManager : MonoBehaviour
     [Header("-----AudioSettings----")]
 
     public AudioMixer audioMixer;  // Audio Mixer bağlayacağız
-    public Slider MusicvolumeSlider;    // Ses seviyesi Slider'ı
-    public Slider SFXvolumeSlider;
+    public Slider musicVolumeSlider;    // Ses seviyesi Slider'ı
+    public Slider sfxVolumeSlider;
 
 
-    [Header("----SFX----")]
+    [Header("----Audio Sources----")]
+    [SerializeField] private AudioSource playerShipAudioSource;
 
-    public AudioClip background;
-    public AudioClip death;
-    public AudioClip explosion;
-    public AudioClip shield;
-    public AudioClip shieldOff;
-    public AudioClip flare;
-    public AudioClip laser;
-    public AudioClip blackHole;
-    public AudioClip blackholePauseScreen;
-    public AudioClip kamikaze;
-    public AudioClip speedUp;
-    public AudioClip collect;
-    public AudioClip gameoverScreen;
-    public AudioClip clickSound;
-    public AudioClip clockTick;
-    public AudioSource enemyShip;
-    public AudioClip enemyShipClip;
+
+    [Header("----Audio Clips----")]
+    public AudioClip explosionSFX;
+    public AudioClip shieldUpSFX;
+    public AudioClip shieldImpactSFX;
+    public AudioClip flareSFX;
+    public AudioClip laserSFX;
+    public AudioClip blackHoleInstantiationSFX;
+    public AudioClip enemiesSwallowedByBlackHoleSFX;
+    public AudioClip speedUpSFX;
+    public AudioClip speedDownSFX;
+    public AudioClip collectStarSFX;
+    public AudioClip collectBuffSFX;
+
+    public AudioClip gameOverScreenSFX;
+    public AudioClip buttonClickSFX;
+    public AudioClip pauseScreenClockTickSFX;
 
     private void Start()
     {
@@ -53,7 +54,7 @@ public class AudioManager : MonoBehaviour
     }
     public void SetMusicVolume()
     {
-        float volume = MusicvolumeSlider.value;
+        float volume = musicVolumeSlider.value;
         audioMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("Music", volume);
         PlayerPrefs.Save();
@@ -61,7 +62,7 @@ public class AudioManager : MonoBehaviour
 
     public void SetSFXVolume()
     {
-        float volume = SFXvolumeSlider.value;
+        float volume = sfxVolumeSlider.value;
         audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("SFX", volume);
         PlayerPrefs.Save();
@@ -69,23 +70,15 @@ public class AudioManager : MonoBehaviour
 
     private void LoadVolume()
     {
-        if (MusicvolumeSlider != null && SFXvolumeSlider != null)
+        if (musicVolumeSlider != null && sfxVolumeSlider != null)
         {
-            MusicvolumeSlider.value = PlayerPrefs.GetFloat("Music");
-            SFXvolumeSlider.value = PlayerPrefs.GetFloat("SFX");
+            musicVolumeSlider.value = PlayerPrefs.GetFloat("Music");
+            sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFX");
         }
     }
 
-    public void SFXPlay(AudioClip clip)
+    public void SFXPlayOneShot(AudioClip clip)
     {
         SFX.PlayOneShot(clip);
-    }
-
-    public void SFXStop(AudioSource source)
-    {
-        if (SFX.name == source.name)
-        {
-            SFX.Stop();
-        }
     }
 }

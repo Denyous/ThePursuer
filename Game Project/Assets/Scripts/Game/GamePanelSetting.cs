@@ -112,7 +112,7 @@ public class GamePanelSetting : MonoBehaviour
 
         for (int i = 2; i > 0; i--)
         {
-            audioManager.SFXPlay(audioManager.clockTick);
+            audioManager.SFXPlayOneShot(audioManager.pauseScreenClockTickSFX);
             countdownText.text = i.ToString(); // Geri sayım metnini güncelle
             yield return new WaitForSecondsRealtime(1f); // 1 saniye bekle (Time.timeScale = 0 olsa bile çalışır)
         }
@@ -137,7 +137,7 @@ public class GamePanelSetting : MonoBehaviour
 
     void ClickSound()
     {
-        audioManager.SFXPlay(audioManager.clickSound);
+        audioManager.SFXPlayOneShot(audioManager.buttonClickSFX);
     }
 
 }

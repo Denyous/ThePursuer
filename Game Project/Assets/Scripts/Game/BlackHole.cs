@@ -42,7 +42,7 @@ public class BlackHole : MonoBehaviour
 
             GameObject blackHoleRef = Instantiate(blackHolePrefab, spawnPosition, Quaternion.identity); // Karadelik oluştur
 
-            audioManager.SFXPlay(audioManager.blackHole); // blackhole yerleştirme sfx
+            audioManager.SFXPlayOneShot(audioManager.blackHoleInstantiationSFX); // blackhole yerleştirme sfx
 
             isPlacing = false;
             musicSource.UnPause();
@@ -58,7 +58,6 @@ public class BlackHole : MonoBehaviour
         if (playerScript.getBlackHoleCount() > 0)
         {
             isPlacing = true;
-            audioManager.SFXPlay(audioManager.blackholePauseScreen); // duraklama SFX oynatır.
             Time.timeScale = 0f; // Oyun duraklatılır
             
             musicSource.Pause();

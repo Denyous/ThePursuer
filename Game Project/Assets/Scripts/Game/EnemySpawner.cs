@@ -79,17 +79,17 @@ public class EnemySpawner : MonoBehaviour
             SpawnShieldPowerUp();
         }
 
-        InvokeRepeating("SpawnPooledEnemies", 1f, 5f);
+        InvokeRepeating("SpawnPooledEnemies", 1f, 1f);
         InvokeRepeating("SpawnPooledStars", 1f, 1f);
 
-        InvokeRepeating("SpawnPooledShields", 5f, 5f);
-        InvokeRepeating("SpawnPooledSpeedBuffs", 5f, 5f);
+        InvokeRepeating("SpawnPooledShields", 1f, 1f);
+        InvokeRepeating("SpawnPooledSpeedBuffs", 1f, 1f);
 
-        InvokeRepeating("SpawnPooledKamikazes", 10f, 5f);
+        InvokeRepeating("SpawnPooledKamikazes", 1f, 1f);
         InvokeRepeating("SpawnPooledFlares", 1f, 1f);
 
-        InvokeRepeating("SpawnPooledExplodes", 20f, 5f);
-        InvokeRepeating("SpawnPooledBlackHoles", 20f, 5f);
+        InvokeRepeating("SpawnPooledExplodes", 1f, 1f);
+        InvokeRepeating("SpawnPooledBlackHoles", 1f, 1f);
 
 
         m_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -395,7 +395,6 @@ public class EnemySpawner : MonoBehaviour
                 {
                     if (enemy != enemy1 && moreThanOne)
                     {
-                        audioManager.SFXPlay(audioManager.kamikaze);
                         Enemy enemyScript = enemy.GetComponent<Enemy>();
                         enemyScript.SetSpeed(90f);
                         enemyScript.SetSteer(30f);
@@ -406,7 +405,6 @@ public class EnemySpawner : MonoBehaviour
                     }
                     else if (enemy == enemy1 && !moreThanOne)
                     {
-                        audioManager.SFXPlay(audioManager.kamikaze);
                         Enemy enemyScript = enemy.GetComponent<Enemy>();
                         enemyScript.SetTarget(target);
                         enemyScript.SetSpeed(60f);
@@ -451,7 +449,7 @@ public class EnemySpawner : MonoBehaviour
     #region Explode buff functions
     public void ExplodeEnemies()
     {
-        audioManager.SFXPlay(audioManager.laser);
+        audioManager.SFXPlayOneShot(audioManager.laserSFX);
         GameObject explode = Instantiate(ExplodeEffect, transform.position, Quaternion.identity);
         explode.transform.SetParent(transform);
 
