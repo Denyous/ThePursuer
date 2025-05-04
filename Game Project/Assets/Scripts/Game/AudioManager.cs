@@ -18,11 +18,6 @@ public class AudioManager : MonoBehaviour
     public Slider musicVolumeSlider;    // Ses seviyesi Slider'ı
     public Slider sfxVolumeSlider;
 
-
-    [Header("----Audio Sources----")]
-    [SerializeField] private AudioSource playerShipAudioSource;
-
-
     [Header("----Audio Clips----")]
     public AudioClip explosionSFX;
     public AudioClip shieldUpSFX;
