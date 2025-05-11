@@ -65,14 +65,50 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 19ff7d6cb512b8b4a9e43d003f3d91cf
-    m_Address: Russian (Russia) (ru-RU)
+  - m_GUID: 42184ad779f44e44b8003ecab01d4d11
+    m_Address: Chinese (Simplified) (zh-Hans)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 580cec25bee98e44f8b075b8c0953464
     m_Address: Russian (ru)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfde13e851ed233478b23517c4aeeddf
+    m_Address: Arabic (ar)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4cb535a5f19aef4c9a70f6dbe1d0402
+    m_Address: Korean (ko)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 319c79e2bfd1afa4cb6f0f2aa3155530
+    m_Address: Portuguese (pt)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a65389dd548c9e240a492698febe1e62
+    m_Address: Ukrainian (uk)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70d2545af250d0d44b7088cf10b762c3
+    m_Address: Hindi (hi)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f4ebaf9b5e164344ebdd780b989d325e
+    m_Address: Chinese (Simplified) (zh)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
