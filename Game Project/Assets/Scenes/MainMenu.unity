@@ -3787,7 +3787,6 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 1005739dba854b54399bbb7dfa09e971, type: 2}
   musicVolumeSlider: {fileID: 1913698628}
   sfxVolumeSlider: {fileID: 1344756853}
-  playerShipAudioSource: {fileID: 0}
   explosionSFX: {fileID: 0}
   shieldUpSFX: {fileID: 0}
   shieldImpactSFX: {fileID: 0}
@@ -8132,7 +8131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -705.02545}
+  m_AnchoredPosition: {x: 0, y: -705.0254}
   m_SizeDelta: {x: 0, y: 1410.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1194474926
@@ -13096,10 +13095,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1817016433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.000015259156}
-  m_SizeDelta: {x: 1440, y: 1920}
+  m_SizeDelta: {x: 0, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2133809927
 MonoBehaviour:
