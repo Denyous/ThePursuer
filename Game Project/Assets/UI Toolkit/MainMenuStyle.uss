@@ -1,0 +1,69 @@
+.HighScore {
+}
+
+.GameTitle {
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font-definition: initial;
+    -unity-font-style: bold-and-italic;
+    font-size: 100px;
+    color: rgb(14, 162, 202);
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(252, 132, 43);
+    text-shadow: -7px 7px 3px rgb(255, 141, 0);
+    -unity-text-align: upper-center;
+    padding-bottom: 0;
+}
+
+.AllContainer {
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.Button {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 80%;
+    height: 15%;
+    max-width: 500px;
+    max-height: 250px;
+    min-width: 50px;
+    min-height: 25px;
+    align-self: auto;
+    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6');
+    -unity-background-scale-mode: stretch-to-fill;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.ButtonsPanel {
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 50%;
+    height: 50%;
+    max-width: 60%;
+    min-width: 20%;
+    min-height: 50%;
+    max-height: 50%;
+}
+
+.ElementContainer {
+    width: 90%;
+    height: 80%;
+    max-width: 90px;
+    max-height: 80px;
+    min-width: 40%;
+    min-height: 50%;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}

@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=ac19315bab526474087807c7d10a47bf&amp;type=3#MainMenuStyle" />
+    <ui:VisualElement name="Container" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&apos;);">
+        <ui:VisualElement name="ElementPanel" class="ElementContainer" style="max-width: 90%; max-height: 80%;">
+            <ui:Label tabindex="-1" text="The Pursuer" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GameTitle" class="GameTitle" />
+            <ui:Label tabindex="-1" text="High Score: 100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HighScore" class="HighScore GameTitle" style="font-size: 30px;" />
+            <ui:VisualElement name="ButtonPanel" class="ButtonsPanel" style="flex-grow: 1;">
+                <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="Button" />
+                <ui:Button text="Tutorial" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialButton" class="Button" />
+                <ui:Button text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingsButton" class="Button" />
+                <ui:Button text="Credits" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CreditsButton" class="Button" />
+                <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="Button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
