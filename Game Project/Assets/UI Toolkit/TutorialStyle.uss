@@ -19,8 +19,8 @@
     align-self: center;
     flex-grow: 1;
     background-image: url('project://database/Assets/Sprites/Backgrounds/InGame/ArkaplanDegrade.png?fileID=2800000&guid=cf3fe9f1b43e9d74d8f9361d6a0ed364&type=3#ArkaplanDegrade');
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
 }
 
 .Header {

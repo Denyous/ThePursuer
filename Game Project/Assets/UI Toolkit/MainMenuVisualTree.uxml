@@ -1,16 +1,74 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=ac19315bab526474087807c7d10a47bf&amp;type=3#MainMenuStyle" />
-    <ui:VisualElement name="Container" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&apos;);">
+    <ui:VisualElement name="MainMenuPanel" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&apos;); display: flex;">
         <ui:VisualElement name="ElementPanel" class="ElementContainer" style="max-width: 90%; max-height: 80%;">
-            <ui:Label tabindex="-1" text="The Pursuer" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GameTitle" class="GameTitle" />
-            <ui:Label tabindex="-1" text="High Score: 100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HighScore" class="HighScore GameTitle" style="font-size: 30px;" />
+            <ui:Label tabindex="-1" text="The Pursuer" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GameTitle" enable-rich-text="false" class="GameTitle TitleSizes MainTitleSize" style="width: auto; font-size: 100%;" />
+            <ui:Label tabindex="-1" text="High Score: 100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HighScore" class="HighScore GameTitle TitleSizes HighScoreSize" style="font-size: 30%;" />
             <ui:VisualElement name="ButtonPanel" class="ButtonsPanel" style="flex-grow: 1;">
                 <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="Button" />
-                <ui:Button text="Tutorial" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialButton" class="Button" />
-                <ui:Button text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingsButton" class="Button" />
+                <ui:Button text="How to play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialButton" class="Button" />
                 <ui:Button text="Credits" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CreditsButton" class="Button" />
                 <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="Button" />
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:VisualElement name="LanguageAndSoundPanel" class="LanguageAndSoundPanel" style="flex-grow: 1;">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="LanguageSelectorButton" class="Selector SelectorButton" style="background-image: url(&apos;project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&amp;guid=bd5dde16848754d4d8e3f6500b234abd&amp;type=3#Ui sheets_6&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);">
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LanguageSelectorLabel" class="SelectorLabel" />
+                <ui:VisualElement name="LanguageSelectorImage" class="SelectorImage" />
+            </ui:Button>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="SoundSelectorButton" class="Selector SelectorButton" style="background-image: url(&apos;project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&amp;guid=bd5dde16848754d4d8e3f6500b234abd&amp;type=3#Ui sheets_6&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);">
+                <ui:Label tabindex="-1" text="Sound" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SoundSelectorLabel" class="SelectorLabel" />
+                <ui:VisualElement name="SoundSelectorImage" class="SelectorImage" />
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="LanguageMenu" class="LanguageMenu" style="flex-grow: 1; display: flex;">
+        <ui:Button text="English" parse-escape-sequences="true" display-tooltip-when-elided="true" name="EnglishButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="Deutsch" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GermanButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="Türkçe" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TurkishButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="Français" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FrenchButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="Italiano" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ItalianButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="Polski" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PolishButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="Japanese" parse-escape-sequences="true" display-tooltip-when-elided="true" name="JapaneseButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="Russian" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RussianButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="Spanish" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SpanishButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="Chinese" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ChineseButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="Arabic" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ArabicButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="SoundMenu" class="SoundMenu" style="flex-grow: 1; height: 4%; left: 69.6%; top: 91%; background-image: url(&apos;project://database/Assets/Sprites/Backgrounds/InGame/ArkaplanDegrade.png?fileID=2800000&amp;guid=cf3fe9f1b43e9d74d8f9361d6a0ed364&amp;type=3#ArkaplanDegrade&apos;); display: none;">
+        <ui:Slider picking-mode="Ignore" label="Music" value="0.54" high-value="1" name="MusicSlider" show-input-field="false" class="SoundSliders" />
+        <ui:Slider picking-mode="Ignore" label="Sound" value="0.54" high-value="1" name="SfxSlider" class="SoundSliders unity-slider__dragger unity-slider__drag-line unity-slider__track unity-base-slider unity-slider" />
+    </ui:VisualElement>
+    <ui:VisualElement name="TutorialPanel" class="Container Hide" style="flex-grow: 1; display: none; justify-content: center;">
+        <ui:VisualElement name="ElementContainer" class="ElementContainer" style="flex-grow: 1; height: 85%; max-height: 85%; align-self: center; bottom: 3%;">
+            <ui:Label tabindex="-1" text="TUTORIAL" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialTitle" class="Header" />
+            <ui:VisualElement name="TutorialTemplate" class="TutorialTemplate" style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); background-image: url(&apos;project://database/Assets/Sprites/Tutorial%20Sprites/Tutorial%20template.png?fileID=21300000&amp;guid=eb533b6480054bd47beb0e0e6a645a49&amp;type=3#Tutorial template&apos;); -unity-background-scale-mode: stretch-to-fill;">
+                <ui:VisualElement name="InnerTutorialTemplate" class="InnerTutorialTemplate" style="align-self: auto;">
+                    <ui:VisualElement name="TutorialImageContainer" class="Image" style="bottom: 1.2%;" />
+                    <ui:VisualElement name="ButtonsPanel" class="TutorialsButtonPanel" style="flex-grow: 1;">
+                        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PrevButton" class="Button BackButtonBG TutorialButton" />
+                        <ui:Label tabindex="-1" text="1/9" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialNumber" class="TutorialNum" style="left: auto; right: 1%;" />
+                        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="NextButton" class="NextButtonBG TutorialButton" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" class="Button BackButton BackButtonBG" style="position: absolute; left: 3%; top: 92%; align-self: flex-start;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="CreditsPanel" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&apos;); display: none; justify-content: center;">
+        <ui:VisualElement name="CreditsElementPanel" style="max-width: 90%; max-height: 80%; width: 90%; height: 80%; justify-content: center; align-items: center; align-self: center;">
+            <ui:Label tabindex="-1" text="Game Design" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GameDesignTitle" enable-rich-text="false" class="CreditsTitle" />
+            <ui:Label tabindex="-1" text="Deniz Ölçe" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Deniz" enable-rich-text="false" class="CreditsNames" />
+            <ui:Label tabindex="-1" text="Görkem Özbudak" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Gorkem" enable-rich-text="false" class="CreditsNames" />
+            <ui:Label tabindex="-1" text="Oğuz Sevsel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Oguz" enable-rich-text="false" class="CreditsNames" />
+            <ui:Label tabindex="-1" text="Developers" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ProgrammingTitle" class="CreditsTitle" style="padding-top: 4px; margin-top: 5%;" />
+            <ui:Label tabindex="-1" text="Deniz Ölçe" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Deniz" enable-rich-text="false" class="CreditsNames" />
+            <ui:Label tabindex="-1" text="Oğuz Sevsel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Oguz" enable-rich-text="false" class="CreditsNames" />
+            <ui:Label tabindex="-1" text="Graphic Design" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GraphicDesignTitle" class="CreditsTitle" style="margin-top: 5%;" />
+            <ui:Label tabindex="-1" text="Görkem Özbudak" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Gorkem" enable-rich-text="false" class="CreditsNames" />
+            <ui:Label tabindex="-1" text="Audio Design" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AudioDesignTitle" class="CreditsTitle" style="margin-top: 5%;" />
+            <ui:Label tabindex="-1" text="Ateş Şentürk" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Ates" enable-rich-text="false" class="CreditsNames" />
+        </ui:VisualElement>
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CreditsBackButton" class="Button BackButton BackButtonBG" style="position: absolute; left: 3%; top: 92%; align-self: flex-start;" />
     </ui:VisualElement>
 </ui:UXML>

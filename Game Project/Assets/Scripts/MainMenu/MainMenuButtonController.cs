@@ -150,7 +150,6 @@ public class MainMenuButtonController : MonoBehaviour
     {
         ClickSound();
         Invoke("Waitforseconds", 0.2f);
-                       
     }
 
     public void ClickSound()
