@@ -675,7 +675,7 @@ MonoBehaviour:
   audio: {fileID: 549514747}
   TutorialImages:
   - {fileID: 21300000, guid: b815b24fe8d6b71479e4f969d173cf4c, type: 3}
-  - {fileID: 21300000, guid: 731d88e8a0a34664fa1fc3e47e3f77aa, type: 3}
+  - {fileID: 21300000, guid: 7afa67c50bb943f46b907a1abaa5013d, type: 3}
   - {fileID: 21300000, guid: f727a23e2afc48b46bb238e21c38d34c, type: 3}
   - {fileID: 21300000, guid: 362f18a2669b65e448f29b1b37f81a87, type: 3}
   - {fileID: 21300000, guid: de541d784794ebc4c80e650d63ef3261, type: 3}
