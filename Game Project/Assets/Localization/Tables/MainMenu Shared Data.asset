@@ -67,6 +67,42 @@ MonoBehaviour:
     m_Key: MainMenuCreditsAudioDesign
     m_Metadata:
       m_Items: []
+  - m_Id: 319059902648320
+    m_Key: MainMenuTutorialText1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319096757997568
+    m_Key: MainMenuTutorialText2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319122909483008
+    m_Key: MainMenuTutorialText3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319148339548160
+    m_Key: MainMenuTutorialText4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319175489277952
+    m_Key: MainMenuTutorialText5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319178811166720
+    m_Key: MainMenuTutorialText6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319179486449664
+    m_Key: MainMenuTutorialText7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319180061069312
+    m_Key: MainMenuTutorialText8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319180652466176
+    m_Key: MainMenuTutorialText9
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

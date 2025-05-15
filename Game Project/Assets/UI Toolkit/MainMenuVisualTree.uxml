@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=ac19315bab526474087807c7d10a47bf&amp;type=3#MainMenuStyle" />
-    <ui:VisualElement name="MainMenuPanel" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&apos;); display: flex;">
+    <ui:VisualElement name="MainMenuPanel" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&apos;); display: none;">
         <ui:VisualElement name="ElementPanel" class="ElementContainer" style="max-width: 90%; max-height: 80%;">
             <ui:Label tabindex="-1" text="The Pursuer" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GameTitle" enable-rich-text="false" class="GameTitle TitleSizes MainTitleSize" style="width: auto; font-size: 100%;" />
             <ui:Label tabindex="-1" text="High Score: 100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HighScore" class="HighScore GameTitle TitleSizes HighScoreSize" style="font-size: 30%; -unity-font: url(&apos;project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&amp;guid=b84a0e1eec8412342bc8f45a303513be&amp;type=3#NotoSans-Medium&apos;);" />
@@ -39,11 +39,12 @@
         <ui:Slider picking-mode="Ignore" label="Music" value="0.54" high-value="1" name="MusicSlider" show-input-field="false" class="SoundSliders" />
         <ui:Slider picking-mode="Ignore" label="Sound" value="0.54" high-value="1" name="SfxSlider" class="SoundSliders unity-slider__dragger unity-slider__drag-line unity-slider__track unity-base-slider unity-slider" />
     </ui:VisualElement>
-    <ui:VisualElement name="TutorialPanel" class="Container" style="flex-grow: 1; display: none; justify-content: center;">
+    <ui:VisualElement name="TutorialPanel" class="Container" style="flex-grow: 1; display: flex; justify-content: center;">
         <ui:VisualElement name="ElementContainer" class="ElementContainer" style="flex-grow: 1; height: 85%; max-height: 85%; align-self: center; bottom: 3%;">
             <ui:Label tabindex="-1" text="TUTORIAL" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialTitle" class="Header" />
             <ui:VisualElement name="TutorialTemplate" class="TutorialTemplate" style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); background-image: url(&apos;project://database/Assets/Sprites/Tutorial%20Sprites/Tutorial%20template.png?fileID=21300000&amp;guid=eb533b6480054bd47beb0e0e6a645a49&amp;type=3#Tutorial template&apos;); -unity-background-scale-mode: stretch-to-fill;">
                 <ui:VisualElement name="InnerTutorialTemplate" class="InnerTutorialTemplate" style="align-self: auto;">
+                    <ui:Label tabindex="-1" text="Move with the stick" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialText" style="height: 7%; width: 92%; font-size: 30px; -unity-font: resource(&apos;Noto-Sans/NotoSans-Medium&apos;); -unity-font-definition: initial; -unity-font-style: bold; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-text-align: middle-center; white-space: normal;" />
                     <ui:VisualElement name="TutorialImageContainer" class="Image" style="bottom: 1.2%;" />
                     <ui:VisualElement name="ButtonsPanel" class="TutorialsButtonPanel" style="flex-grow: 1;">
                         <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PrevButton" class="BackButtonBG TutorialButton" />

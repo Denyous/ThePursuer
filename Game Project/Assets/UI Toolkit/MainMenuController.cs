@@ -56,6 +56,7 @@ public class MainMenuController : MonoBehaviour
     public Sprite[] TutorialImages;
     public VisualElement TutorialImageContainer;
     public Label TutorialNumber;
+    public Label TutorialText;
     private int TutorialCount = 1;
     private int TutorialIndex = 0;
 
@@ -64,6 +65,7 @@ public class MainMenuController : MonoBehaviour
     private int highScore;
     public Label HighScoreText;
     public Label LanguageText;
+
 
     [SerializeField] private Font ArabicFont;
     [SerializeField] private Font ChineseFont;
@@ -234,6 +236,44 @@ public class MainMenuController : MonoBehaviour
 
         TutorialImageContainer.style.backgroundImage = new StyleBackground(TutorialImages[TutorialIndex]);
         TutorialNumber.text = TutorialCount + " / " + TutorialImages.Length;
+
+        ChangeTutorialText();
+    }
+
+    private void ChangeTutorialText()
+    {
+        switch (TutorialIndex)
+        {
+            case 0:
+                TutorialText.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenu", "MainMenuTutorialText1");
+                break;
+            case 1:
+                TutorialText.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenu", "MainMenuTutorialText2");
+                break;
+            case 2:
+                TutorialText.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenu", "MainMenuTutorialText3");
+                break;
+            case 3:
+                TutorialText.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenu", "MainMenuTutorialText4");
+                break;
+            case 4:
+                TutorialText.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenu", "MainMenuTutorialText5");
+                break;
+            case 5:
+                TutorialText.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenu", "MainMenuTutorialText6");
+                break;
+            case 6:
+                TutorialText.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenu", "MainMenuTutorialText7");
+                break;
+            case 7:
+                TutorialText.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenu", "MainMenuTutorialText8");
+                break;
+            case 8:
+                TutorialText.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenu", "MainMenuTutorialText9");
+                break;
+            default:
+                break;
+        }
     }
     private void OnTutorialPrevButtonClicked()
     {
@@ -252,6 +292,7 @@ public class MainMenuController : MonoBehaviour
 
         TutorialImageContainer.style.backgroundImage = new StyleBackground(TutorialImages[TutorialIndex]);
         TutorialNumber.text = TutorialCount + " / " + TutorialImages.Length;
+        ChangeTutorialText();
     }
     private void OnPlayButtonClicked()
     {
@@ -268,6 +309,7 @@ public class MainMenuController : MonoBehaviour
         TogglePanels(TutorialPanel, MainMenuPanel);
         TutorialImageContainer.style.backgroundImage = new StyleBackground(TutorialImages[TutorialIndex]);
         TutorialNumber.text = TutorialCount + " / " + TutorialImages.Length;
+        ChangeTutorialText();
     }
     private void OnCreditsButtonClicked()
     {
@@ -592,6 +634,7 @@ public class MainMenuController : MonoBehaviour
         //Get the reference for the tutorial image container and number
         TutorialImageContainer = MainMenu.Q<VisualElement>("TutorialImageContainer");
         TutorialNumber = MainMenu.Q<Label>("TutorialNumber");
+        TutorialText = MainMenu.Q<Label>("TutorialText");
 
         // Get the reference for the HighScore text
         HighScoreText = MainMenu.Q<Label>("HighScore");

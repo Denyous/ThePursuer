@@ -72,6 +72,42 @@ MonoBehaviour:
     m_Localized: AUDIO DESIGN
     m_Metadata:
       m_Items: []
+  - m_Id: 319059902648320
+    m_Localized: Move with the stick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319096757997568
+    m_Localized: Avoid missiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319122909483008
+    m_Localized: Collect points
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319148339548160
+    m_Localized: Collect speed buff for acceleration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319175489277952
+    m_Localized: Collect shield buff for one time protection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319178811166720
+    m_Localized: Collect flare power up for destroying missiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319179486449664
+    m_Localized: Collect kamikaze power up for turning missiles to each other
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319180061069312
+    m_Localized: Collect laser power up for quick destruction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319180652466176
+    m_Localized: Use black hole power up for vacuuming of the missiles
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
