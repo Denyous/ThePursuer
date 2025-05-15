@@ -57,19 +57,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1171060740096
-    m_Localized: Game Design
+    m_Localized: GAME DESIGN
     m_Metadata:
       m_Items: []
   - m_Id: 1242317770752
-    m_Localized: Developers
+    m_Localized: DEVELOPERS
     m_Metadata:
       m_Items: []
   - m_Id: 1296436875264
-    m_Localized: Graphic Design
+    m_Localized: GRAPHIC DESIGN
     m_Metadata:
       m_Items: []
   - m_Id: 1329529933824
-    m_Localized: Audio Design
+    m_Localized: AUDIO DESIGN
     m_Metadata:
       m_Items: []
   references:

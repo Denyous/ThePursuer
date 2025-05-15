@@ -20,19 +20,19 @@ MonoBehaviour:
     - rid: 3574364205212499979
   m_TableData:
   - m_Id: 1296436875264
-    m_Localized: Conception graphique
+    m_Localized: CONCEPTION GRAPHIQUE
     m_Metadata:
       m_Items: []
   - m_Id: 1329529933824
-    m_Localized: Conception audio
+    m_Localized: CONCEPTION AUDIO
     m_Metadata:
       m_Items: []
   - m_Id: 1242317770752
-    m_Localized: "D\xE9veloppeurs"
+    m_Localized: "D\xC9VELOPPEURS"
     m_Metadata:
       m_Items: []
   - m_Id: 1171060740096
-    m_Localized: Conception de jeux
+    m_Localized: CONCEPTION DE JEUX
     m_Metadata:
       m_Items: []
   - m_Id: 191422320640

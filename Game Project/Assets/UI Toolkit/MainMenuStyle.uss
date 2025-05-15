@@ -45,13 +45,14 @@
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     font-size: 35px;
-    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular');
     -unity-font-definition: initial;
     justify-content: center;
     align-items: center;
     text-overflow: ellipsis;
     -unity-text-align: middle-center;
     -unity-font-style: bold;
+    color: rgb(255, 255, 255);
 }
 
 .ButtonsPanel {
@@ -136,8 +137,10 @@
     flex-direction: row;
     -unity-text-align: middle-center;
     font-size: 30px;
-    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular');
     -unity-font-definition: initial;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
 }
 
 .LanguageMenu {
@@ -154,7 +157,7 @@
 
 .LanguageButtons {
     width: 45%;
-    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular');
     -unity-font-definition: initial;
     font-size: 30px;
     -unity-text-align: middle-center;
@@ -177,7 +180,7 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
-    -unity-font-style: normal;
+    -unity-font-style: bold;
 }
 
 .SoundMenu {
@@ -306,7 +309,7 @@
     font-size: 40px;
     -unity-font-style: bold;
     -unity-font-definition: initial;
-    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/SPACE%20EXPLORER.ttf?fileID=12800000&guid=cca25e50c7efb8e42bb6dc1d6ba55c86&type=3#SPACE EXPLORER');
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular');
     width: 10%;
     height: 25%;
     max-width: 10%;
@@ -360,7 +363,7 @@
 }
 
 .CreditsTitle {
-    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/SPACE%20EXPLORER.ttf?fileID=12800000&guid=cca25e50c7efb8e42bb6dc1d6ba55c86&type=3#SPACE EXPLORER');
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular');
     -unity-font-style: bold;
     -unity-text-align: middle-center;
     -unity-font-definition: initial;
@@ -375,41 +378,13 @@
 .CreditsNames {
     color: rgb(255, 255, 255);
     font-size: 30px;
-    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans');
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular');
     -unity-font-definition: initial;
     -unity-font-style: bold;
     -unity-text-align: middle-center;
 }
 
 .Button:active {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    width: 80%;
-    height: 15%;
-    max-width: 500px;
-    max-height: 250px;
-    min-width: 50px;
-    min-height: 25px;
-    align-self: center;
-    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6');
-    -unity-background-scale-mode: stretch-to-fill;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    font-size: 40px;
-    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
-    -unity-font-definition: initial;
-    justify-content: center;
-    align-items: center;
-    text-overflow: ellipsis;
-    -unity-text-align: middle-center;
     scale: 0.9 0.9;
 }
 
@@ -532,6 +507,9 @@
     padding-top: 0;
     padding-bottom: 0;
     width: 20%;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular');
+    -unity-font-definition: initial;
+    -unity-font-style: bold;
 }
 
 #SfxSlider #unity-drag-container {
@@ -603,4 +581,7 @@
     padding-top: 0;
     padding-bottom: 0;
     width: 20%;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular');
+    -unity-font-definition: initial;
+    -unity-font-style: bold;
 }

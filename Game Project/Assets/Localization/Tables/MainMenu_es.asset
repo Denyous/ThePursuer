@@ -57,19 +57,19 @@ MonoBehaviour:
       m_Items:
       - rid: 3574364205212499985
   - m_Id: 1171060740096
-    m_Localized: "Dise\xF1o de juegos"
+    m_Localized: "DISE\xD1O DE JUEGOS"
     m_Metadata:
       m_Items: []
   - m_Id: 1242317770752
-    m_Localized: Desarrolladores
+    m_Localized: DESARROLLADORES
     m_Metadata:
       m_Items: []
   - m_Id: 1296436875264
-    m_Localized: "Dise\xF1o gr\xE1fico"
+    m_Localized: "DISE\xD1O GR\xC1FICO"
     m_Metadata:
       m_Items: []
   - m_Id: 1329529933824
-    m_Localized: "Dise\xF1o de audio"
+    m_Localized: "DISE\xD1O DE AUDIO"
     m_Metadata:
       m_Items: []
   references:

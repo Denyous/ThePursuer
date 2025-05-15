@@ -57,19 +57,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1171060740096
-    m_Localized: "Oyun Tasar\u0131m\u0131"
+    m_Localized: OYUN TASARIMI
     m_Metadata:
       m_Items: []
   - m_Id: 1242317770752
-    m_Localized: "Geli\u015Ftiriciler"
+    m_Localized: PROGLAMLAMA
     m_Metadata:
       m_Items: []
   - m_Id: 1296436875264
-    m_Localized: "Grafik Tasar\u0131m\u0131"
+    m_Localized: "GRAF\u0130K TASARIMI"
     m_Metadata:
       m_Items: []
   - m_Id: 1329529933824
-    m_Localized: "Ses Tasar\u0131m\u0131"
+    m_Localized: SES TASARIMI
     m_Metadata:
       m_Items: []
   references:

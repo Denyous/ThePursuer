@@ -57,19 +57,19 @@ MonoBehaviour:
       m_Items:
       - rid: 3574364205212499981
   - m_Id: 1171060740096
-    m_Localized: Design del gioco
+    m_Localized: DESIGN DEL GIOCO
     m_Metadata:
       m_Items: []
   - m_Id: 1242317770752
-    m_Localized: Sviluppatori
+    m_Localized: SVILUPPATORI
     m_Metadata:
       m_Items: []
   - m_Id: 1296436875264
-    m_Localized: Design grafico
+    m_Localized: DESIGN GRAFICO
     m_Metadata:
       m_Items: []
   - m_Id: 1329529933824
-    m_Localized: Design audio
+    m_Localized: DESIGN AUDIO
     m_Metadata:
       m_Items: []
   references:

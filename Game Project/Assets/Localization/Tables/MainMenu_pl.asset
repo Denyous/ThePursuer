@@ -57,19 +57,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1171060740096
-    m_Localized: Projektowanie gier
+    m_Localized: PROJEKTOWANIE GIER
     m_Metadata:
       m_Items: []
   - m_Id: 1242317770752
-    m_Localized: Deweloperzy
+    m_Localized: DEWELOPERZY
     m_Metadata:
       m_Items: []
   - m_Id: 1296436875264
-    m_Localized: Projekt graficzny
+    m_Localized: PROJEKTOWANIE GRAFICZNE
     m_Metadata:
       m_Items: []
   - m_Id: 1329529933824
-    m_Localized: Projekt audio
+    m_Localized: PROJEKTOWANIE AUDIO
     m_Metadata:
       m_Items: []
   references:
