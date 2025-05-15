@@ -3,7 +3,7 @@
     <ui:VisualElement name="MainMenuPanel" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&apos;); display: flex;">
         <ui:VisualElement name="ElementPanel" class="ElementContainer" style="max-width: 90%; max-height: 80%;">
             <ui:Label tabindex="-1" text="The Pursuer" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GameTitle" enable-rich-text="false" class="GameTitle TitleSizes MainTitleSize" style="width: auto; font-size: 100%;" />
-            <ui:Label tabindex="-1" text="High Score: 100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HighScore" class="HighScore GameTitle TitleSizes HighScoreSize" style="font-size: 30%;" />
+            <ui:Label tabindex="-1" text="High Score: 100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HighScore" class="HighScore GameTitle TitleSizes HighScoreSize" style="font-size: 30%; -unity-font: url(&apos;project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&amp;guid=b84a0e1eec8412342bc8f45a303513be&amp;type=3#NotoSans-Medium&apos;);" />
             <ui:VisualElement name="ButtonPanel" class="ButtonsPanel" style="flex-grow: 1;">
                 <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="Button" />
                 <ui:Button text="How to play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialButton" class="Button" />
@@ -29,11 +29,11 @@
         <ui:Button text="Français" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FrenchButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
         <ui:Button text="Italiano" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ItalianButton" enable-rich-text="true" class="LanguageButtons" style="height: 6%; width: 90%;" />
         <ui:Button text="Polski" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PolishButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
-        <ui:Button text="日本語" parse-escape-sequences="true" display-tooltip-when-elided="true" name="JapaneseButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="日本語" parse-escape-sequences="true" display-tooltip-when-elided="true" name="JapaneseButton" class="LanguageButtons" style="height: 6%; width: 90%; -unity-font: resource(&apos;Noto-Sans/Japanese/NotoSansJP-Regular&apos;);" />
         <ui:Button text="Русский" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RussianButton" enable-rich-text="true" class="LanguageButtons" style="height: 6%; width: 90%;" />
         <ui:Button text="Español" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SpanishButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
-        <ui:Button text="中文" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ChineseButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
-        <ui:Button text="اللغة العربية" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ArabicButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="中文" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ChineseButton" class="LanguageButtons" style="height: 6%; width: 90%; -unity-font: resource(&apos;Noto-Sans/Chinese (Mandarin)/NotoSansSC-Regular&apos;);" />
+        <ui:Button text="اللغة العربية" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ArabicButton" class="LanguageButtons" style="height: 6%; width: 90%; -unity-font: url(&apos;project://database/Assets/Resources/Noto-Sans/Arabic/NotoSansArabic-Regular.ttf?fileID=12800000&amp;guid=9f2f8df08d75c524eb58be39a5068821&amp;type=3#NotoSansArabic-Regular&apos;);" />
     </ui:VisualElement>
     <ui:VisualElement name="SoundMenu" class="SoundMenu" style="flex-grow: 1; display: none;">
         <ui:Slider picking-mode="Ignore" label="Music" value="0.54" high-value="1" name="MusicSlider" show-input-field="false" class="SoundSliders" />

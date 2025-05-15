@@ -65,6 +65,11 @@ public class MainMenuController : MonoBehaviour
     public Label HighScoreText;
     public Label LanguageText;
 
+    [SerializeField] private Font ArabicFont;
+    [SerializeField] private Font ChineseFont;
+    [SerializeField] private Font JapaneseFont;
+    [SerializeField] private Font DefaultFont;
+
     private void Awake()
     {
         GetReferencesForPanels();
@@ -73,7 +78,6 @@ public class MainMenuController : MonoBehaviour
     private void Start()
     {
         LocalizationSettings.InitializationOperation.WaitForCompletion();
-
         if (!PlayerPrefs.HasKey("LanguageInitialized"))
         {
             // First time: use system locale
@@ -104,7 +108,6 @@ public class MainMenuController : MonoBehaviour
             LocalizedHighScore.Arguments = new object[] { highScore };
             HighScoreText.text = LocalizedHighScore.GetLocalizedString();
         }
-
         SetSound();
     }
     private void OnEnable()
@@ -428,6 +431,10 @@ public class MainMenuController : MonoBehaviour
                 PlayerPrefs.SetString("Language", languageCode);
                 PlayerPrefs.Save();
                 SetLanguageButtonText(languageCode);
+                SetFont(languageCode);
+                highScore = PlayerPrefs.GetInt("HighScore");
+                LocalizedHighScore.Arguments = new object[] { highScore };
+                HighScoreText.text = LocalizedHighScore.GetLocalizedString();
                 yield break;
             }
         }
@@ -471,6 +478,65 @@ public class MainMenuController : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+    private void SetFont(string LanguageCode)
+    {
+        var buttons = MainMenu.Query<Button>().ToList();
+        var labels = MainMenu.Query<Label>().ToList();
+        var sliders = MainMenu.Query<Slider>().ToList();
+
+        switch (LanguageCode)
+        {
+            case "ar":
+                SetFontForUIElements(ArabicFont, buttons, labels, sliders);
+                break;
+            case "zh":
+                SetFontForUIElements(ChineseFont, buttons, labels, sliders);
+                break;
+            case "ja":
+                SetFontForUIElements(JapaneseFont, buttons, labels, sliders);
+                break;
+            default:
+                SetFontForUIElements(DefaultFont, buttons, labels, sliders);
+                break;
+        }
+    }
+    private void SetFontForUIElements(Font font, List<Button> buttons, List<Label> labels, List<Slider> sliders)
+    {
+        foreach (var button in buttons)
+        {
+            if (button.name != "ArabicButton" &&
+                button.name != "JapaneseButton" &&
+                button.name != "ChineseButton" &&
+                button.name != "EnglishButton" &&
+                button.name != "TurkishButton" &&
+                button.name != "FrenchButton" && 
+                button.name != "ItalianButton" &&
+                button.name != "PolishButton" &&
+                button.name != "SpanishButton" &&
+                button.name != "RussianButton" &&
+                button.name != "GermanButton")
+            {
+                button.style.unityFont = font;
+            }
+        }
+
+        foreach (var label in labels)
+        {
+            if (label.name != "GameTitle" &&
+                label.name != "Deniz" &&
+                label.name != "Gorkem" &&
+                label.name != "Oguz" &&
+                label.name != "Ates")
+            {
+                label.style.unityFont = font;
+            }
+        }
+
+        foreach (var slider in sliders)
+        {
+            slider.style.unityFont = font;
         }
     }
     #endregion

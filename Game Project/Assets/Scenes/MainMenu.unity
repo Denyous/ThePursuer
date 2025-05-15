@@ -692,6 +692,10 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  ArabicFont: {fileID: 12800000, guid: 9f2f8df08d75c524eb58be39a5068821, type: 3}
+  ChineseFont: {fileID: 12800000, guid: 41cff764666ca8f4da7b23ce60788d5e, type: 3}
+  JapaneseFont: {fileID: 12800000, guid: a72b52b73a0e1c34689229db9f580539, type: 3}
+  DefaultFont: {fileID: 12800000, guid: b84a0e1eec8412342bc8f45a303513be, type: 3}
   references:
     version: 2
     RefIds: []
