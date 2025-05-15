@@ -15,30 +15,66 @@ MonoBehaviour:
   m_TableCollectionName: MainMenu
   m_TableCollectionNameGuidString: 009e39e46fd65bb45ba014d753f6fa4d
   m_Entries:
-  - m_Id: 24669376512
+  - m_Id: 140419584000
     m_Key: MainMenuStart
     m_Metadata:
       m_Items: []
-  - m_Id: 1422261800960
-    m_Key: MainMenuSettings
+  - m_Id: 191422320640
+    m_Key: MainMenuTutorial
     m_Metadata:
       m_Items: []
-  - m_Id: 2039562686464
+  - m_Id: 228185395200
     m_Key: MainMenuCredits
     m_Metadata:
       m_Items: []
-  - m_Id: 3215641333760
+  - m_Id: 253804204032
     m_Key: MainMenuQuit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 684676665344
+    m_Key: MainMenuSoundButtonLabel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 875341336576
+    m_Key: MainMenuMusic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 893703999488
+    m_Key: MainMenuSound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 913543057408
+    m_Key: MainMenuHighScore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1023593205760
+    m_Key: MainMenuTutorialTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1171060740096
+    m_Key: MainMenuCreditsGameDesign
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1242317770752
+    m_Key: MainMenuCreditsDevelopers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1296436875264
+    m_Key: MainMenuCreditsGraphicDesign
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1329529933824
+    m_Key: MainMenuCreditsAudioDesign
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 6065644178630770712
+    rid: 3574364205212499970
   references:
     version: 2
     RefIds:
-    - rid: 6065644178630770712
+    - rid: 3574364205212499970
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1744399922196
+        m_CustomEpoch: 1747259367998

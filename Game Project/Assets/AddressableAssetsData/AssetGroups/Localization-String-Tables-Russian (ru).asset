@@ -17,40 +17,11 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 2191288e86b6e90479eb11f515449640
   m_SerializeEntries:
-  - m_GUID: 1a9f2e261c63b4841a3a4d575fba8f0a
-    m_Address: Audio_ru
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 70028c62c096797438b0ce5a2bd0e643
-    m_Address: Credits_ru
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a2dec7fea70e64643b2dfecae17f6af0
     m_Address: MainMenu_ru
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ru
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: edb43b2baa4ce114ea61cb8785d0ecb0
-    m_Address: Language_ru
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fefca277d0717dd41aaf18f4d866d138
-    m_Address: SettingsMenu_ru
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru
-    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: b1bef92b4d6d33446abc1b2068e5a162, type: 2}

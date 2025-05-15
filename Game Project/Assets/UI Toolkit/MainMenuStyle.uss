@@ -1,0 +1,606 @@
+.GameTitle {
+    padding-bottom: 0;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font-definition: initial;
+    -unity-font-style: bold-and-italic;
+    color: rgb(73, 216, 255);
+    -unity-text-outline-width: 1px;
+    text-shadow: -7px 7px 3px rgb(255, 119, 0);
+    -unity-text-outline-color: rgb(255, 119, 0);
+}
+
+.AllContainer {
+    justify-content: space-around;
+    align-items: center;
+    flex-shrink: 1;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    flex-grow: 1;
+    overflow: visible;
+    align-self: center;
+}
+
+.Button {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 100%;
+    height: 20%;
+    max-width: 500px;
+    max-height: 250px;
+    min-width: 50px;
+    min-height: 25px;
+    align-self: center;
+    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6');
+    -unity-background-scale-mode: stretch-to-fill;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 35px;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font-definition: initial;
+    justify-content: center;
+    align-items: center;
+    text-overflow: ellipsis;
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+}
+
+.ButtonsPanel {
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 50%;
+    height: 50%;
+    max-width: 60%;
+    min-width: 20%;
+    min-height: 50%;
+    max-height: 50%;
+}
+
+.ElementContainer {
+    width: 90%;
+    height: 80%;
+    max-width: 90px;
+    max-height: 80px;
+    min-width: 40%;
+    min-height: 50%;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.SelectorImage {
+    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1297285183&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_13');
+    background-color: rgba(255, 255, 255, 0);
+    -unity-background-image-tint-color: rgb(68, 187, 202);
+    width: 10%;
+    height: 50%;
+    align-self: center;
+    justify-content: center;
+}
+
+.SelectorButton {
+    background-image: url('project://database/Assets/Sprites/Backgrounds/InGame/ArkaplanDegrade.png?fileID=2800000&guid=cf3fe9f1b43e9d74d8f9361d6a0ed364&type=3#ArkaplanDegrade');
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+    width: 45%;
+    height: 70%;
+    max-height: 70%;
+    flex-direction: row;
+    -unity-text-align: middle-center;
+    font-size: 20px;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font-definition: initial;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.LanguageAndSoundPanel {
+    width: 99%;
+    max-width: 99%;
+    height: 5%;
+    max-height: 5%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    top: 3.5%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.SelectorLabel {
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 60%;
+    height: 70%;
+    max-height: 70%;
+    flex-direction: row;
+    -unity-text-align: middle-center;
+    font-size: 30px;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font-definition: initial;
+}
+
+.LanguageMenu {
+    position: absolute;
+    top: 62.2%;
+    width: 44.5%;
+    left: 0.9%;
+    justify-content: center;
+    align-items: center;
+    height: 33%;
+    align-self: center;
+    flex-wrap: wrap;
+}
+
+.LanguageButtons {
+    width: 45%;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font-definition: initial;
+    font-size: 30px;
+    -unity-text-align: middle-center;
+    height: 16.6%;
+    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6');
+    max-height: 16.6%;
+    min-height: 16.6%;
+    color: rgb(255, 255, 255);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    max-width: 50%;
+    min-width: 50%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font-style: normal;
+}
+
+.SoundMenu {
+    justify-content: center;
+    align-items: stretch;
+    align-self: center;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: absolute;
+    left: 54.7%;
+    top: 80.2%;
+    width: 44.3%;
+    height: 15%;
+}
+
+.SoundSliders {
+    width: 100%;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font-definition: initial;
+    font-size: 15px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    height: 50%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.TutorialTemplate {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    height: 95%;
+}
+
+.ElementContainer {
+    width: 95%;
+    height: 90%;
+    max-width: 95%;
+    max-height: 90%;
+}
+
+.Container {
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    flex-grow: 1;
+    background-image: url('project://database/Assets/Sprites/Backgrounds/InGame/ArkaplanDegrade.png?fileID=2800000&guid=cf3fe9f1b43e9d74d8f9361d6a0ed364&type=3#ArkaplanDegrade');
+    width: 100%;
+    height: 100%;
+}
+
+.Header {
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/Audex/Audex.ttf?fileID=12800000&guid=ad39d634ccd4cac4790eb62e8737ce65&type=3#Audex');
+    font-size: 80px;
+    -unity-font-style: bold;
+    color: rgb(250, 143, 0);
+    -unity-text-outline-width: 0;
+    -unity-font-definition: initial;
+    -unity-text-align: upper-center;
+}
+
+.TutorialButton {
+    width: 30%;
+    height: 60%;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.Image {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 92%;
+    height: 80%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 3%;
+}
+
+.InnerTutorialTemplate {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 92%;
+    height: 92%;
+    justify-content: space-around;
+    align-items: center;
+    align-self: center;
+    flex-grow: 0;
+}
+
+.TutorialsButtonPanel {
+    flex-direction: row;
+    width: 95%;
+    height: 10%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    align-self: auto;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 95%;
+    min-height: 10%;
+    max-height: 13%;
+    max-width: 95px;
+}
+
+.TutorialNum {
+    font-size: 40px;
+    -unity-font-style: bold;
+    -unity-font-definition: initial;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/SPACE%20EXPLORER.ttf?fileID=12800000&guid=cca25e50c7efb8e42bb6dc1d6ba55c86&type=3#SPACE EXPLORER');
+    width: 10%;
+    height: 25%;
+    max-width: 10%;
+    max-height: 25%;
+    min-height: 25%;
+    min-width: 10%;
+    -unity-text-align: middle-center;
+}
+
+.BackButton {
+    position: absolute;
+    left: 3%;
+    top: 92%;
+    right: 0;
+    bottom: 0;
+    width: 20%;
+    height: 5%;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+.BackButtonBG {
+    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14');
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+.NextButtonBG {
+    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14');
+    rotate: 180deg;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-slice-left: 0;
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-slice-top: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-left: 0;
+}
+
+.CreditsTitle {
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/SPACE%20EXPLORER.ttf?fileID=12800000&guid=cca25e50c7efb8e42bb6dc1d6ba55c86&type=3#SPACE EXPLORER');
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    -unity-font-definition: initial;
+    width: 50%;
+    height: 5%;
+    font-size: 50px;
+    color: rgb(254, 200, 14);
+    text-shadow: -5px 5px 5px rgb(0, 0, 0);
+    -unity-text-outline-width: 1px;
+}
+
+.CreditsNames {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans');
+    -unity-font-definition: initial;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.Button:active {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 80%;
+    height: 15%;
+    max-width: 500px;
+    max-height: 250px;
+    min-width: 50px;
+    min-height: 25px;
+    align-self: center;
+    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6');
+    -unity-background-scale-mode: stretch-to-fill;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 40px;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font-definition: initial;
+    justify-content: center;
+    align-items: center;
+    text-overflow: ellipsis;
+    -unity-text-align: middle-center;
+    scale: 0.9 0.9;
+}
+
+.SelectorButton:active {
+    scale: 0.9 0.9;
+}
+
+.BackButton:active {
+    position: absolute;
+    left: 3%;
+    top: 92%;
+    right: 0;
+    bottom: 0;
+    width: 20%;
+    height: 5%;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    scale: 0.9 0.9;
+}
+
+.BackButtonBG:active {
+    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14');
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    scale: 0.9 0.9;
+}
+
+.NextButtonBG:active {
+    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14');
+    rotate: 180deg;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-slice-left: 0;
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-slice-top: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-left: 0;
+    scale: 0.9 0.9;
+}
+
+#MusicSlider #unity-drag-container {
+    height: 25%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#MusicSlider #unity-dragger {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 30px;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#MusicSlider #unity-tracker {
+    top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(60, 213, 255);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#MusicSlider VisualElement {
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+#MusicSlider Label {
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    font-size: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 20%;
+}
+
+#SfxSlider #unity-drag-container {
+    height: 25%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#SfxSlider #unity-dragger {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 30px;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#SfxSlider #unity-tracker {
+    top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(60, 213, 255);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#SfxSlider VisualElement {
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+#SfxSlider Label {
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    font-size: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 20%;
+}

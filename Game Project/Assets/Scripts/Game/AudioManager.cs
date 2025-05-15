@@ -4,24 +4,16 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
     [Header("----AudioSource----")]
-
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource SFX;
 
     [Header("-----AudioSettings----")]
-
-    public AudioMixer audioMixer;  // Audio Mixer bağlayacağız
-    public Slider musicVolumeSlider;    // Ses seviyesi Slider'ı
-    public Slider sfxVolumeSlider;
-
-
-    [Header("----Audio Sources----")]
-    [SerializeField] private AudioSource playerShipAudioSource;
-
+    public AudioMixer audioMixer;  
 
     [Header("----Audio Clips----")]
     public AudioClip explosionSFX;
@@ -39,42 +31,26 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameOverScreenSFX;
     public AudioClip buttonClickSFX;
     public AudioClip pauseScreenClockTickSFX;
-
-    private void Start()
+    
+    public void SetMusicVolume(float volume)
     {
-        if (PlayerPrefs.HasKey("Music") && PlayerPrefs.HasKey("SFX"))
-        {
-            LoadVolume();
-        }
-        else
-        {
-            SetMusicVolume();
-            SetSFXVolume();
-        }
-    }
-    public void SetMusicVolume()
-    {
-        float volume = musicVolumeSlider.value;
-        audioMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
+        float dB = Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20f;
+        audioMixer.SetFloat("Music", dB);
         PlayerPrefs.SetFloat("Music", volume);
         PlayerPrefs.Save();
+
+        if (!musicSource.isPlaying)
+        {
+            musicSource.Play();
+        }
     }
 
-    public void SetSFXVolume()
+    public void SetSFXVolume(float volume)
     {
-        float volume = sfxVolumeSlider.value;
-        audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
+        float dB = Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20f;
+        audioMixer.SetFloat("SFX", dB);
         PlayerPrefs.SetFloat("SFX", volume);
         PlayerPrefs.Save();
-    }
-
-    private void LoadVolume()
-    {
-        if (musicVolumeSlider != null && sfxVolumeSlider != null)
-        {
-            musicVolumeSlider.value = PlayerPrefs.GetFloat("Music");
-            sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFX");
-        }
     }
 
     public void SFXPlayOneShot(AudioClip clip)

@@ -16,24 +16,66 @@ MonoBehaviour:
     m_Code: tr
   m_SharedData: {fileID: 11400000, guid: 009e39e46fd65bb45ba014d753f6fa4d, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 3574364205212499986
   m_TableData:
-  - m_Id: 24669376512
+  - m_Id: 140419584000
     m_Localized: "Ba\u015Flat"
     m_Metadata:
       m_Items: []
-  - m_Id: 1422261800960
-    m_Localized: Ayarlar
+  - m_Id: 191422320640
+    m_Localized: "Nas\u0131l Oynan\u0131r?"
     m_Metadata:
       m_Items: []
-  - m_Id: 2039562686464
+  - m_Id: 228185395200
     m_Localized: "Eme\u011Fi Ge\xE7enler"
     m_Metadata:
       m_Items: []
-  - m_Id: 3215641333760
+  - m_Id: 253804204032
     m_Localized: "\xC7\u0131k\u0131\u015F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 684676665344
+    m_Localized: Ses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 875341336576
+    m_Localized: "M\xFCzik"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 893703999488
+    m_Localized: Ses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 913543057408
+    m_Localized: "Y\xFCksek Skor: {0} Puan"
+    m_Metadata:
+      m_Items:
+      - rid: 3574364205212499986
+  - m_Id: 1023593205760
+    m_Localized: "Nas\u0131l Oynan\u0131r?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1171060740096
+    m_Localized: "Oyun Tasar\u0131m\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1242317770752
+    m_Localized: "Geli\u015Ftiriciler"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1296436875264
+    m_Localized: "Grafik Tasar\u0131m\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1329529933824
+    m_Localized: "Ses Tasar\u0131m\u0131"
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3574364205212499986
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00d068b3d4000000
