@@ -22,35 +22,6 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-tr
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a1b43bb4e58762f43855740d684014c3
-    m_Address: SettingsMenu_tr
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-tr
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: da5f5e1c2b31aad4c98829317cfb2195
-    m_Address: Credits_tr
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-tr
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 25fced4c9ca758e47badecb707470ae5
-    m_Address: Audio_tr
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-tr
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 403636227e92d034eb9a410e33d624f4
-    m_Address: Language_tr
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-tr
-    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: b1bef92b4d6d33446abc1b2068e5a162, type: 2}

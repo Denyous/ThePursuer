@@ -150,19 +150,19 @@ public class Enemy : MonoBehaviour
             {
                 if (player != null && player.Shield == false)
                 {
-                    //int score = player.GetScore();
-                    //int highscore = PlayerPrefs.GetInt("HighScore", 0);
-                    
-                    //if (highscore < score)
-                    //{
-                    //    highscore = score;
-                    //    PlayerPrefs.SetInt("HighScore", highscore);
-                    //}
+                    int score = player.GetScore();
+                    int highscore = PlayerPrefs.GetInt("HighScore", 0);
 
-                    //player.CreateExplosion();
-                    //Object.Destroy(target.gameObject);
-                    //Object.Destroy(gameObject);
-                    //GameOver(score, highscore);
+                    if (highscore < score)
+                    {
+                        highscore = score;
+                        PlayerPrefs.SetInt("HighScore", highscore);
+                    }
+
+                    player.CreateExplosion();
+                    Object.Destroy(target.gameObject);
+                    Object.Destroy(gameObject);
+                    GameOver(score, highscore);
                 }
             }
         }

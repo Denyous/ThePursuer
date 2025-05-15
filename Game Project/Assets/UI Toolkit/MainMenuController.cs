@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 
 public class MainMenuController : MonoBehaviour
 {
+    //All Main Menu Containers
     public VisualElement MainMenu;
     public VisualElement TutorialPanel;
     public VisualElement MainMenuPanel;
@@ -17,11 +18,16 @@ public class MainMenuController : MonoBehaviour
     public VisualElement SoundPanel;
     public VisualElement CreditsPanel;
 
+    //Language and Sound Button Variables
     public VisualElement LanguageArrow;
     public VisualElement SoundArrow;
     private bool isLanguageRotated = false;
     private bool isSoundRotated = false;
+    public Slider MusicSlider;
+    public Slider SfxSlider;
+    public new AudioManager audio;
 
+    //All Main Menu and Sub Menu Buttons
     public Button PlayButton;
     public Button TutorialButton;
     public Button CreditsButton;
@@ -33,6 +39,7 @@ public class MainMenuController : MonoBehaviour
     public Button TutorialBackButton;
     public Button CreditsBackButton;
 
+    //Language Buttons
     public Button EnglishButton;
     public Button TurkishButton;
     public Button GermanButton;
@@ -45,120 +52,171 @@ public class MainMenuController : MonoBehaviour
     public Button ItalianButton;
     public Button SpanishButton;
 
-    public Slider MusicSlider;
-    public Slider SfxSlider;
-    public new AudioManager audio;
-
+    //Tutorial Variables
     public Sprite[] TutorialImages;
     public VisualElement TutorialImageContainer;
     public Label TutorialNumber;
-    public int TutorialCount = 1;
-    public int TutorialIndex = 0;
+    private int TutorialCount = 1;
+    private int TutorialIndex = 0;
+
+    //Localization Variables
+    [SerializeField] private LocalizedString LocalizedHighScore;
+    private int highScore;
+    public Label HighScoreText;
+    public Label LanguageText;
 
     private void Awake()
     {
-       GetReferencesForPanels();
-       LocalizationSettings.InitializationOperation.WaitForCompletion();
+        GetReferencesForPanels();
     }
-    //These should be in the start because audio mixer should be initialized
+    //SetSound() should be in the start because audio mixer should be initialized
     private void Start()
     {
+        LocalizationSettings.InitializationOperation.WaitForCompletion();
+
+        if (!PlayerPrefs.HasKey("LanguageInitialized"))
+        {
+            // First time: use system locale
+            Locale systemLocale = LocalizationSettings.SelectedLocale;
+
+            // Optionally save the code (e.g., "en", "tr") for later use
+            PlayerPrefs.SetString("Language", systemLocale.Identifier.Code);
+            PlayerPrefs.SetInt("LanguageInitialized", 1);
+            PlayerPrefs.Save();
+
+            string language = systemLocale.Identifier.Code;
+
+            SetLanguageButtonText(language);
+            SetLanguage(language);
+            SetLocalizedTextForUIElements();
+            highScore = PlayerPrefs.GetInt("HighScore");
+            LocalizedHighScore.Arguments = new object[] { highScore };
+            HighScoreText.text = LocalizedHighScore.GetLocalizedString();
+        }
+        else
+        {
+            string savedLangCode = PlayerPrefs.GetString("Language");
+
+            SetLanguageButtonText(savedLangCode);
+            SetLanguage(savedLangCode);
+            SetLocalizedTextForUIElements();
+            highScore = PlayerPrefs.GetInt("HighScore");
+            LocalizedHighScore.Arguments = new object[] { highScore };
+            HighScoreText.text = LocalizedHighScore.GetLocalizedString();
+        }
+
         SetSound();
     }
     private void OnEnable()
     {
         GetReferencesForUIElements();
         RegisterCallBacks();
+        LocalizedHighScore.StringChanged += UpdateHighScore;
     }
     private void OnDisable()
     {
         UnRegisterCallBacks();
+        LocalizedHighScore.StringChanged -= UpdateHighScore;
     }
-
-
 
     #region Events
 
     //Language Buttons
     private void OnSpanishButtonClicked()
     {
+        ClickSound();
         SetLanguage("es");
-        SetLocalizedTextForMainMenu();
+        SetLocalizedTextForUIElements();
     }
     private void OnItalianButtonClicked()
     {
+        ClickSound();
         SetLanguage("it");
-        SetLocalizedTextForMainMenu();
+        SetLocalizedTextForUIElements();
     }
     private void OnRussianButtonClicked()
     {
+        ClickSound();
         SetLanguage("ru");
-        SetLocalizedTextForMainMenu();
+        SetLocalizedTextForUIElements();
     }
     private void OnPolishButtonClicked()
     {
+        ClickSound();
         SetLanguage("pl");
-        SetLocalizedTextForMainMenu();
+        SetLocalizedTextForUIElements();
     }
     private void OnArabicButtonClicked()
     {
-        //SetLanguage("yok");
-        //SetLocalizedTextForMainMenu();
+        ClickSound();
+        SetLanguage("ar");
+        SetLocalizedTextForUIElements();
     }
     private void OnJapaneseButtonClicked()
     {
+        ClickSound();
         SetLanguage("ja");
-        SetLocalizedTextForMainMenu();
+        SetLocalizedTextForUIElements();
     }
     private void OnChineseButtonClicked()
     {
-        //SetLanguage("yok");
-        //SetLocalizedTextForMainMenu();
+        ClickSound();
+        SetLanguage("zh");
+        SetLocalizedTextForUIElements();
     }
     private void OnFrenchButtonClicked()
     {
+        ClickSound();
         SetLanguage("fr");
-        SetLocalizedTextForMainMenu();
+        SetLocalizedTextForUIElements();
     }
     private void OnGermanButtonClicked()
     {
+        ClickSound();
         SetLanguage("de");
-        SetLocalizedTextForMainMenu();
+        SetLocalizedTextForUIElements();
     }
     private void OnTurkishButtonClicked()
     {
+        ClickSound();
         SetLanguage("tr");
-        SetLocalizedTextForMainMenu();
+        SetLocalizedTextForUIElements();
     }
     private void OnEnglishButtonClicked()
     {
+        ClickSound();
         SetLanguage("en");
-        SetLocalizedTextForMainMenu();
+        SetLocalizedTextForUIElements();
     }
 
 
     private void OnSoundButtonClicked()
     {
+        ClickSound();
         isSoundRotated = !isSoundRotated;
         RotateArrow(SoundArrow, isSoundRotated);
         TogglePanel(SoundPanel);
     }
     private void OnLanguageButtonClicked()
     {
+        ClickSound();
         isLanguageRotated = !isLanguageRotated;
         RotateArrow(LanguageArrow, isLanguageRotated);
         TogglePanel(LanguagePanel);
     }
     private void OnCreditsBackButtonClicked()
     {
+        ClickSound();
         TogglePanels(MainMenuPanel, CreditsPanel);
     }
     private void OnTutorialBackButtonClicked()
     {
+        ClickSound();
         TogglePanels(MainMenuPanel, TutorialPanel);
     }
     private void OnTutorialNextButtonClicked()
     {
+        ClickSound();
         TutorialCount++;
         TutorialIndex++;
 
@@ -176,6 +234,7 @@ public class MainMenuController : MonoBehaviour
     }
     private void OnTutorialPrevButtonClicked()
     {
+        ClickSound();
         TutorialCount--;
         TutorialIndex--;
 
@@ -193,10 +252,12 @@ public class MainMenuController : MonoBehaviour
     }
     private void OnPlayButtonClicked()
     {
+        ClickSound();
         SceneManager.LoadScene("Game");
     }
     private void OnTutorialButtonClicked()
     {
+        ClickSound();
         TutorialCount = 1;
         TutorialIndex = 0;
         TutorialPrevButton.SetEnabled(false);
@@ -207,10 +268,12 @@ public class MainMenuController : MonoBehaviour
     }
     private void OnCreditsButtonClicked()
     {
+        ClickSound();
         TogglePanels(CreditsPanel, MainMenuPanel);
     }
     private void OnQuitButtonClicked()
     {
+        ClickSound();
         Application.Quit();
 
 #if UNITY_EDITOR
@@ -219,11 +282,84 @@ public class MainMenuController : MonoBehaviour
     }
     #endregion
     #region HelperFunctions
-    private void SetLocalizedTextForMainMenu()
+    private void UpdateHighScore(string value)
     {
-        SetLocalizedText(PlayButton, "MainMenuStart");
-        SetLocalizedText(QuitButton, "MainMenuQuit");
-        SetLocalizedText(CreditsButton, "MainMenuCredits");
+        HighScoreText.text = value;
+    }
+    public void ClickSound()
+    {
+        audio.SFXPlayOneShot(audio.buttonClickSFX);
+    }
+    private void SetLocalizedTextForUIElements()
+    {
+        var buttons = MainMenu.Query<Button>().ToList();
+        var labels = MainMenu.Query<Label>().ToList();
+        var sliders = MainMenu.Query<Slider>().ToList();
+
+        foreach (Slider slider in sliders)
+        {
+            switch (slider.name)
+            {
+                case "MusicSlider":
+                    SetLocalizedText(slider, "MainMenuMusic");
+                    break;
+                case "SfxSlider":
+                    SetLocalizedText(slider, "MainMenuSound");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        foreach (Label label in labels)
+        {
+            switch (label.name)
+            {
+                case "HighScore":
+                    SetLocalizedText(label, "MainMenuHighScore");
+                    break;
+                case "SoundSelectorLabel":
+                    SetLocalizedText(label, "MainMenuSoundButtonLabel");
+                    break;
+                case "TutorialTitle":
+                    SetLocalizedText(label, "MainMenuTutorialTitle");
+                    break;
+                case "GameDesignTitle":
+                    SetLocalizedText(label, "MainMenuCreditsGameDesign");
+                    break;
+                case "ProgrammingTitle":
+                    SetLocalizedText(label, "MainMenuCreditsDevelopers");
+                    break;
+                case "GraphicDesignTitle":
+                    SetLocalizedText(label, "MainMenuCreditsGraphicDesign");
+                    break;
+                case "AudioDesignTitle":
+                    SetLocalizedText(label, "MainMenuCreditsAudioDesign");
+                    break;
+                default:
+                    break;
+            }
+        }
+        foreach (Button button in buttons)
+        {
+            switch (button.name)
+            {
+                case "StartButton":
+                    SetLocalizedText(button, "MainMenuStart");
+                    break;
+                case "TutorialButton":
+                    SetLocalizedText(button, "MainMenuTutorial");
+                    break;
+                case "CreditsButton":
+                    SetLocalizedText(button, "MainMenuCredits");
+                    break;
+                case "QuitButton":
+                    SetLocalizedText(button, "MainMenuQuit");
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     private void SetLocalizedText(VisualElement element, string entryKey)
     {
@@ -238,6 +374,7 @@ public class MainMenuController : MonoBehaviour
         {
             if (element is Label label) label.text = localizedValue;
             else if (element is Button button) button.text = localizedValue;
+            else if (element is Slider slider) slider.label = localizedValue;
         };
     }
     private void SetSound()
@@ -288,8 +425,52 @@ public class MainMenuController : MonoBehaviour
             if (locale.Identifier.Code == languageCode)
             {
                 LocalizationSettings.SelectedLocale = locale;
+                PlayerPrefs.SetString("Language", languageCode);
+                PlayerPrefs.Save();
+                SetLanguageButtonText(languageCode);
                 yield break;
             }
+        }
+    }
+    private void SetLanguageButtonText(string LanguageCode)
+    {
+        switch (LanguageCode)
+        {
+            case "ar":
+                LanguageText.text = "اللغة العربية";
+                break;
+            case "zh":
+                LanguageText.text = "中文";
+                break;
+            case "en":
+                LanguageText.text = "English";
+                break;
+            case "fr":
+                LanguageText.text = "Français";
+                break;
+            case "de":
+                LanguageText.text = "Deutsch";
+                break;
+            case "it":
+                LanguageText.text = "Italiano";
+                break;
+            case "ja":
+                LanguageText.text = "日本語";
+                break;
+            case "pl":
+                LanguageText.text = "Polski";
+                break;
+            case "ru":
+                LanguageText.text = "Русский";
+                break;
+            case "es":
+                LanguageText.text = "Español";
+                break;
+            case "tr":
+                LanguageText.text = "Türkçe";
+                break;
+            default:
+                break;
         }
     }
     #endregion
@@ -342,11 +523,13 @@ public class MainMenuController : MonoBehaviour
         ItalianButton = MainMenu.Q<Button>("ItalianButton");
         SpanishButton = MainMenu.Q<Button>("SpanishButton");
 
-
-
         //Get the reference for the tutorial image container and number
         TutorialImageContainer = MainMenu.Q<VisualElement>("TutorialImageContainer");
         TutorialNumber = MainMenu.Q<Label>("TutorialNumber");
+
+        // Get the reference for the HighScore text
+        HighScoreText = MainMenu.Q<Label>("HighScore");
+        LanguageText = MainMenu.Q<Label>("LanguageSelectorLabel");
     }
     private void RegisterCallBacks()
     {
