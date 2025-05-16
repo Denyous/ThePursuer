@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class GameOver : MonoBehaviour
 {
     public TMP_Text PointText;
     public TMP_Text HighScoreText;
+    public LocalizedString LocalizedHighScore;
+    public LocalizedString LocalizedScore;
     public GameObject UI;
     public GameObject pauseIcon;
     private int _score;
@@ -36,7 +39,12 @@ public class GameOver : MonoBehaviour
         audioManager.SFXPlayOneShot(audioManager.gameOverScreenSFX);
         
         gameObject.SetActive(true);
-        PointText.text = _score.ToString() + " Points";
-        HighScoreText.text = "High Score: " + _highScore.ToString() + " Points";
+
+
+        LocalizedHighScore.Arguments = new object[] { _highScore };
+        LocalizedScore.Arguments = new object[] { _score };
+
+        HighScoreText.text = LocalizedHighScore.GetLocalizedString();
+        PointText.text = LocalizedScore.GetLocalizedString();
     }
 }

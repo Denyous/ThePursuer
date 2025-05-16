@@ -17,65 +17,65 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 009e39e46fd65bb45ba014d753f6fa4d, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 3574364205212499980
+    - rid: 3574364231128317958
   m_TableData:
-  - m_Id: 140419584000
-    m_Localized: Start
-    m_Metadata:
-      m_Items: []
-  - m_Id: 191422320640
-    m_Localized: Tutorial
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1023593205760
-    m_Localized: Tutorial
-    m_Metadata:
-      m_Items: []
-  - m_Id: 228185395200
-    m_Localized: Credits
-    m_Metadata:
-      m_Items: []
-  - m_Id: 253804204032
-    m_Localized: Beenden Sie
-    m_Metadata:
-      m_Items: []
-  - m_Id: 684676665344
-    m_Localized: Ton
-    m_Metadata:
-      m_Items: []
-  - m_Id: 893703999488
-    m_Localized: Ton
-    m_Metadata:
-      m_Items: []
-  - m_Id: 875341336576
-    m_Localized: Musik
-    m_Metadata:
-      m_Items: []
-  - m_Id: 913543057408
+  - m_Id: 58643238912
     m_Localized: 'Hohe Punktzahl: {0} Punkte'
     m_Metadata:
       m_Items:
-      - rid: 3574364205212499980
-  - m_Id: 1171060740096
+      - rid: 3574364231128317958
+  - m_Id: 29606072320
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32395284480
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37877239808
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41526284288
+    m_Localized: Beenden Sie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46836273152
+    m_Localized: Ton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49650651136
+    m_Localized: Musik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54381826048
+    m_Localized: Ton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61516337152
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64909529088
     m_Localized: SPIEL-GESTALTUNG
     m_Metadata:
       m_Items: []
-  - m_Id: 1242317770752
+  - m_Id: 68206252032
     m_Localized: ENTWICKLER
     m_Metadata:
       m_Items: []
-  - m_Id: 1296436875264
+  - m_Id: 71981125632
     m_Localized: GRAFIKGESTALTUNG
     m_Metadata:
       m_Items: []
-  - m_Id: 1329529933824
+  - m_Id: 75793747968
     m_Localized: AUDIO-GESTALTUNG
     m_Metadata:
       m_Items: []
   references:
     version: 2
     RefIds:
-    - rid: 3574364205212499980
+    - rid: 3574364231128317958
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d068b3d4000000
+        m_Entries: 00d068a70d000000

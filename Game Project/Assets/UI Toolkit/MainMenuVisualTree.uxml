@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=ac19315bab526474087807c7d10a47bf&amp;type=3#MainMenuStyle" />
-    <ui:VisualElement name="MainMenuPanel" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&apos;); display: none;">
+    <ui:VisualElement name="MainMenuPanel" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&apos;); display: flex;">
         <ui:VisualElement name="ElementPanel" class="ElementContainer" style="max-width: 90%; max-height: 80%;">
             <ui:Label tabindex="-1" text="The Pursuer" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GameTitle" enable-rich-text="false" class="GameTitle TitleSizes MainTitleSize" style="width: auto; font-size: 100%;" />
             <ui:Label tabindex="-1" text="High Score: 100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HighScore" class="HighScore GameTitle TitleSizes HighScoreSize" style="font-size: 30%; -unity-font: url(&apos;project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&amp;guid=b84a0e1eec8412342bc8f45a303513be&amp;type=3#NotoSans-Medium&apos;);" />
@@ -22,24 +22,26 @@
             </ui:Button>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="LanguageMenu" class="LanguageMenu" style="flex-grow: 1; display: none;">
+    <ui:ScrollView name="LanguageMenu" class="LanguageMenu" style="display: none;">
         <ui:Button text="English" parse-escape-sequences="true" display-tooltip-when-elided="true" name="EnglishButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
         <ui:Button text="Deutsch" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GermanButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
         <ui:Button text="Türkçe" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TurkishButton" enable-rich-text="true" class="LanguageButtons" style="height: 6%; width: 90%;" />
         <ui:Button text="Français" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FrenchButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
         <ui:Button text="Italiano" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ItalianButton" enable-rich-text="true" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="Português" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PortugueseButton" class="LanguageButtons" style="height: 6%; width: 90%; -unity-font: resource(&apos;Noto-Sans/NotoSans-Medium&apos;);" />
         <ui:Button text="Polski" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PolishButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
+        <ui:Button text="اللغة العربية" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ArabicButton" class="LanguageButtons" style="height: 6%; width: 90%; -unity-font: url(&apos;project://database/Assets/Resources/Noto-Sans/Arabic/NotoSansArabic-Regular.ttf?fileID=12800000&amp;guid=9f2f8df08d75c524eb58be39a5068821&amp;type=3#NotoSansArabic-Regular&apos;);" />
         <ui:Button text="日本語" parse-escape-sequences="true" display-tooltip-when-elided="true" name="JapaneseButton" class="LanguageButtons" style="height: 6%; width: 90%; -unity-font: resource(&apos;Noto-Sans/Japanese/NotoSansJP-Regular&apos;);" />
         <ui:Button text="Русский" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RussianButton" enable-rich-text="true" class="LanguageButtons" style="height: 6%; width: 90%;" />
         <ui:Button text="Español" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SpanishButton" class="LanguageButtons" style="height: 6%; width: 90%;" />
         <ui:Button text="中文" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ChineseButton" class="LanguageButtons" style="height: 6%; width: 90%; -unity-font: resource(&apos;Noto-Sans/Chinese (Mandarin)/NotoSansSC-Regular&apos;);" />
-        <ui:Button text="اللغة العربية" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ArabicButton" class="LanguageButtons" style="height: 6%; width: 90%; -unity-font: url(&apos;project://database/Assets/Resources/Noto-Sans/Arabic/NotoSansArabic-Regular.ttf?fileID=12800000&amp;guid=9f2f8df08d75c524eb58be39a5068821&amp;type=3#NotoSansArabic-Regular&apos;);" />
-    </ui:VisualElement>
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="HindiButton" text="हिन्दी" class="LanguageButtons" style="height: 6%; width: 90%; -unity-font: resource(&apos;Noto-Sans/Hindi/NotoSansDevanagari-Regular&apos;); -unity-font-definition: initial;" />
+    </ui:ScrollView>
     <ui:VisualElement name="SoundMenu" class="SoundMenu" style="flex-grow: 1; display: none;">
         <ui:Slider picking-mode="Ignore" label="Music" value="0.54" high-value="1" name="MusicSlider" show-input-field="false" class="SoundSliders" />
         <ui:Slider picking-mode="Ignore" label="Sound" value="0.54" high-value="1" name="SfxSlider" class="SoundSliders unity-slider__dragger unity-slider__drag-line unity-slider__track unity-base-slider unity-slider" />
     </ui:VisualElement>
-    <ui:VisualElement name="TutorialPanel" class="Container" style="flex-grow: 1; display: flex; justify-content: center;">
+    <ui:VisualElement name="TutorialPanel" class="Container" style="flex-grow: 1; display: none; justify-content: center;">
         <ui:VisualElement name="ElementContainer" class="ElementContainer" style="flex-grow: 1; height: 85%; max-height: 85%; align-self: center; bottom: 3%;">
             <ui:Label tabindex="-1" text="TUTORIAL" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialTitle" class="Header" />
             <ui:VisualElement name="TutorialTemplate" class="TutorialTemplate" style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); background-image: url(&apos;project://database/Assets/Sprites/Tutorial%20Sprites/Tutorial%20template.png?fileID=21300000&amp;guid=eb533b6480054bd47beb0e0e6a645a49&amp;type=3#Tutorial template&apos;); -unity-background-scale-mode: stretch-to-fill;">
@@ -48,7 +50,7 @@
                     <ui:VisualElement name="TutorialImageContainer" class="Image" style="bottom: 1.2%;" />
                     <ui:VisualElement name="ButtonsPanel" class="TutorialsButtonPanel" style="flex-grow: 1;">
                         <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PrevButton" class="BackButtonBG TutorialButton" />
-                        <ui:Label tabindex="-1" text="1/9" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialNumber" class="TutorialNum" style="left: auto; right: 1%;" />
+                        <ui:Label tabindex="-1" text="1/9" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialNumber" class="TutorialNum" />
                         <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="NextButton" class="NextButtonBG TutorialButton" />
                     </ui:VisualElement>
                 </ui:VisualElement>

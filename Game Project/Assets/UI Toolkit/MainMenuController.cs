@@ -14,7 +14,7 @@ public class MainMenuController : MonoBehaviour
     public VisualElement MainMenu;
     public VisualElement TutorialPanel;
     public VisualElement MainMenuPanel;
-    public VisualElement LanguagePanel;
+    public ScrollView LanguagePanel;
     public VisualElement SoundPanel;
     public VisualElement CreditsPanel;
 
@@ -51,6 +51,8 @@ public class MainMenuController : MonoBehaviour
     public Button RussianButton;
     public Button ItalianButton;
     public Button SpanishButton;
+    public Button HindiButton;
+    public Button PortugueseButton;
 
     //Tutorial Variables
     public Sprite[] TutorialImages;
@@ -70,6 +72,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Font ArabicFont;
     [SerializeField] private Font ChineseFont;
     [SerializeField] private Font JapaneseFont;
+    [SerializeField] private Font HindiFont;
     [SerializeField] private Font DefaultFont;
 
     private void Awake()
@@ -95,9 +98,6 @@ public class MainMenuController : MonoBehaviour
             SetLanguageButtonText(language);
             SetLanguage(language);
             SetLocalizedTextForUIElements();
-            highScore = PlayerPrefs.GetInt("HighScore");
-            LocalizedHighScore.Arguments = new object[] { highScore };
-            HighScoreText.text = LocalizedHighScore.GetLocalizedString();
         }
         else
         {
@@ -106,9 +106,6 @@ public class MainMenuController : MonoBehaviour
             SetLanguageButtonText(savedLangCode);
             SetLanguage(savedLangCode);
             SetLocalizedTextForUIElements();
-            highScore = PlayerPrefs.GetInt("HighScore");
-            LocalizedHighScore.Arguments = new object[] { highScore };
-            HighScoreText.text = LocalizedHighScore.GetLocalizedString();
         }
         SetSound();
     }
@@ -191,6 +188,18 @@ public class MainMenuController : MonoBehaviour
     {
         ClickSound();
         SetLanguage("en");
+        SetLocalizedTextForUIElements();
+    }
+    private void OnHindiButtonClicked()
+    {
+        ClickSound();
+        SetLanguage("hi");
+        SetLocalizedTextForUIElements();
+    }
+    private void OnPortugueseButtonClicked()
+    {
+        ClickSound();
+        SetLanguage("pt");
         SetLocalizedTextForUIElements();
     }
 
@@ -360,9 +369,6 @@ public class MainMenuController : MonoBehaviour
         {
             switch (label.name)
             {
-                case "HighScore":
-                    SetLocalizedText(label, "MainMenuHighScore");
-                    break;
                 case "SoundSelectorLabel":
                     SetLocalizedText(label, "MainMenuSoundButtonLabel");
                     break;
@@ -518,6 +524,12 @@ public class MainMenuController : MonoBehaviour
             case "tr":
                 LanguageText.text = "Türkçe";
                 break;
+            case "hi":
+                LanguageText.text = "हिन्दी";
+                break;
+            case "pt":
+                LanguageText.text = "Português";
+                break;
             default:
                 break;
         }
@@ -539,6 +551,9 @@ public class MainMenuController : MonoBehaviour
             case "ja":
                 SetFontForUIElements(JapaneseFont, buttons, labels, sliders);
                 break;
+            case "hi":
+                SetFontForUIElements(HindiFont, buttons, labels, sliders);
+                break;
             default:
                 SetFontForUIElements(DefaultFont, buttons, labels, sliders);
                 break;
@@ -558,7 +573,9 @@ public class MainMenuController : MonoBehaviour
                 button.name != "PolishButton" &&
                 button.name != "SpanishButton" &&
                 button.name != "RussianButton" &&
-                button.name != "GermanButton")
+                button.name != "GermanButton" &&
+                button.name != "HindiButton" &&
+                button.name != "PortugueseButton")
             {
                 button.style.unityFont = font;
             }
@@ -589,7 +606,7 @@ public class MainMenuController : MonoBehaviour
         MainMenuPanel = MainMenu.Q<VisualElement>("MainMenuPanel");
         MainMenu.Insert(0, MainMenuPanel);
         TutorialPanel = MainMenu.Q<VisualElement>("TutorialPanel");
-        LanguagePanel = MainMenu.Q<VisualElement>("LanguageMenu");
+        LanguagePanel = MainMenu.Q<ScrollView>("LanguageMenu");
         SoundPanel = MainMenu.Q<VisualElement>("SoundMenu");
         CreditsPanel = MainMenu.Q<VisualElement>("CreditsPanel");
 
@@ -597,9 +614,6 @@ public class MainMenuController : MonoBehaviour
         SoundArrow = MainMenu.Q<VisualElement>("SoundSelectorImage");
 
         Application.targetFrameRate = 60;
-        int highscore = PlayerPrefs.GetInt("HighScore");
-        //highScoreText.text = "HIGH SCORE: " + highscore.ToString() + " POINTS";
-
         // Get the reference for all the sliders
         MusicSlider = MainMenu.Q<Slider>("MusicSlider");
         SfxSlider = MainMenu.Q<Slider>("SfxSlider");
@@ -630,6 +644,8 @@ public class MainMenuController : MonoBehaviour
         RussianButton = MainMenu.Q<Button>("RussianButton");
         ItalianButton = MainMenu.Q<Button>("ItalianButton");
         SpanishButton = MainMenu.Q<Button>("SpanishButton");
+        HindiButton = MainMenu.Q<Button>("HindiButton");
+        PortugueseButton = MainMenu.Q<Button>("PortugueseButton");
 
         //Get the reference for the tutorial image container and number
         TutorialImageContainer = MainMenu.Q<VisualElement>("TutorialImageContainer");
@@ -693,6 +709,8 @@ public class MainMenuController : MonoBehaviour
         RussianButton.RegisterCallback<ClickEvent>(e => OnRussianButtonClicked());
         ItalianButton.RegisterCallback<ClickEvent>(e => OnItalianButtonClicked());
         SpanishButton.RegisterCallback<ClickEvent>(e => OnSpanishButtonClicked());
+        PortugueseButton.RegisterCallback<ClickEvent>(e => OnPortugueseButtonClicked());
+        HindiButton.RegisterCallback<ClickEvent>(e => OnHindiButtonClicked());
 
         // Events for Tutorial Buttons
         TutorialPrevButton.RegisterCallback<ClickEvent>(e => OnTutorialPrevButtonClicked());
@@ -745,6 +763,8 @@ public class MainMenuController : MonoBehaviour
         RussianButton.UnregisterCallback<ClickEvent>(e => OnRussianButtonClicked());
         ItalianButton.UnregisterCallback<ClickEvent>(e => OnItalianButtonClicked());
         SpanishButton.UnregisterCallback<ClickEvent>(e => OnSpanishButtonClicked());
+        PortugueseButton.UnregisterCallback<ClickEvent>(e => OnPortugueseButtonClicked());
+        HindiButton.UnregisterCallback<ClickEvent>(e => OnHindiButtonClicked());
 
 
         // Unregister all callbacks

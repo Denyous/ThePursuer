@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MainMenu_pt
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt
+  m_SharedData: {fileID: 11400000, guid: 009e39e46fd65bb45ba014d753f6fa4d, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 3574364231128317963
+  m_TableData:
+  - m_Id: 58643238912
+    m_Localized: "Pontua\xE7\xE3o M\xE1xima: {0} pontos"
+    m_Metadata:
+      m_Items:
+      - rid: 3574364231128317963
+  - m_Id: 29606072320
+    m_Localized: Iniciar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32395284480
+    m_Localized: Como Jogar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37877239808
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41526284288
+    m_Localized: Sair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46836273152
+    m_Localized: Som
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49650651136
+    m_Localized: "M\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54381826048
+    m_Localized: Som
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61516337152
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64909529088
+    m_Localized: Design de jogos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68206252032
+    m_Localized: Programadores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71981125632
+    m_Localized: "Design Gr\xE1fico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75793747968
+    m_Localized: "Design de \xC1udio"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 3574364231128317963
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00d068a70d000000

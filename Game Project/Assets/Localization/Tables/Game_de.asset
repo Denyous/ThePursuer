@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Game_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 9b9cd5237f05cdb4dbf46e0e4e7e88ab, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 3574364231128317978
+  m_TableData:
+  - m_Id: 51668111360
+    m_Localized: Weiter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55044526080
+    m_Localized: Neustart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57825349632
+    m_Localized: "Hauptmen\xFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7753748480
+    m_Localized: PAUSED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4700341063680
+    m_Localized: Klicken Sie irgendwo!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5188281225216
+    m_Localized: 'Hohe Punktzahl: {0} Punkte'
+    m_Metadata:
+      m_Items:
+      - rid: 3574364231128317978
+  - m_Id: 5215258988544
+    m_Localized: '{0} Punkte'
+    m_Metadata:
+      m_Items:
+      - rid: 3574364231128317978
+  - m_Id: 5245042741248
+    m_Localized: GAME OVER
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 3574364231128317978
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00d0a8fdb704000000d0a845be040000
