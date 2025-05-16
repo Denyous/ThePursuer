@@ -8,6 +8,7 @@ public class CollectibleController : MonoBehaviour
     private Camera Camera;
 
     [SerializeField] private GameObject collectiblePrefab;
+    [SerializeField] private GameObject enemyIndicatorPrefab;
 
     private GameObject icon;
     private GameObject Player;
@@ -91,7 +92,6 @@ public class CollectibleController : MonoBehaviour
 
         foreach (GameObject star in stars)
         {
-
             Vector3 viewportPos = Camera.WorldToViewportPoint(star.transform.position);
             bool isVisible = viewportPos.z > 0 && viewportPos.x > 0 && viewportPos.x < 1 && viewportPos.y > 0 && viewportPos.y < 1;
 
