@@ -1122,6 +1122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectiblePrefab: {fileID: 2663483546575590200, guid: 572c2411afea9b44fbb47401254827ff, type: 3}
+  enemyIndicatorPrefab: {fileID: 8371505102997875146, guid: 45873d90d6b389147956513d7704b62d, type: 3}
   ScreenBorder: 40
   VisibleDistance: 30
 --- !u!1 &455849287
@@ -3562,7 +3563,7 @@ MonoBehaviour:
   pauseIcon: {fileID: 0}
   UI: {fileID: 525662074}
   player: {fileID: 1503693119}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 1253070764}
   musicSource: {fileID: 1853756936}
   blackholeSprite: {fileID: 1412387751}
 --- !u!114 &1165175680
@@ -4339,7 +4340,7 @@ GameObject:
   - component: {fileID: 1405075683}
   m_Layer: 5
   m_Name: GameOverScreen
-  m_TagString: Untagged
+  m_TagString: GameOver
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4922,7 +4923,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!4 &1503693124
 Transform:
@@ -5510,6 +5511,7 @@ GameObject:
   - component: {fileID: 1582767127}
   - component: {fileID: 1582767125}
   - component: {fileID: 1582767131}
+  - component: {fileID: 1582767132}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5642,6 +5644,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thingtofollow: {fileID: 1503693124}
   speed: 10
+--- !u!81 &1582767132
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582767124}
+  m_Enabled: 0
 --- !u!1 &1691734657
 GameObject:
   m_ObjectHideFlags: 0

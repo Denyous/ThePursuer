@@ -56,13 +56,16 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameOver GameOverScreen;
     [SerializeField] private Button kamikazeButton;
 
+
     private Player playerScript;
+    private CollectibleController controller;
 
     //Camera is required for determining is there a more than one enemy on the screen
     private Camera m_camera;
 
     private void Start()
     {
+        controller = FindAnyObjectByType<CollectibleController>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         //This is an event on enemy killed
         Enemy.OnEnemyDied += HandleEnemyKilled;
@@ -95,7 +98,6 @@ public class EnemySpawner : MonoBehaviour
         m_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         playerScript = target.GetComponent<Player>();
     }
-
     
 
     #region Spawners
@@ -139,7 +141,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnStars()
     {
         Star = Instantiate(StarPrefab, SelectSpawnPointForPUandStars(), Quaternion.identity);
-        CollectibleController controller = FindAnyObjectByType<CollectibleController>();
+        
         Star.SetActive(false);
         pooledStars.Add(Star);
         controller.AddToStars(Star);
@@ -153,7 +155,6 @@ public class EnemySpawner : MonoBehaviour
         enemyScript.SetTarget(target);
         enemyScript.SetGameOverScreen(GameOverScreen);
         PrefabRef.SetActive(false);
-
         RegisterEnemy(PrefabRef);
     }
     #endregion
@@ -268,7 +269,7 @@ public class EnemySpawner : MonoBehaviour
     public void RegisterEnemy(GameObject enemy)
     {
         pooledEnemies.Add(enemy);
-        pooledEnemies.Add(enemy);
+        controller.AddToEnemies(enemy);
     }
     //Get enemy spawn point according to the spawn point objects in the unity 
     private Vector3 SelectEnemySpawnPoint()

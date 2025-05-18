@@ -18,6 +18,7 @@ TagManager:
   - kalkan
   - deneme
   - MainAudio
+  - GameOver
   layers:
   - Default
   - TransparentFX

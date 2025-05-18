@@ -83,18 +83,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 43a285c5b7179a84cb0df03d67d04771
-    m_Address: Hindi (hi) 1
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 32edfb66eac298d4c8924a82f6087a01
-    m_Address: Portuguese (pt) 1
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70d2545af250d0d44b7088cf10b762c3
     m_Address: Hindi (hi)
     m_ReadOnly: 1
@@ -109,12 +97,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 319c79e2bfd1afa4cb6f0f2aa3155530
     m_Address: Portuguese (pt)
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 42184ad779f44e44b8003ecab01d4d11
-    m_Address: Chinese (Simplified) (zh-Hans)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale

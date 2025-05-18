@@ -23,7 +23,6 @@ public class Enemy : MonoBehaviour
 
     //Player
     private GameObject target;
-
     private GameOver GameOverScreen;
 
     private void Start()
@@ -150,6 +149,8 @@ public class Enemy : MonoBehaviour
             {
                 if (player != null && player.Shield == false)
                 {
+                    player.CreateExplosion();
+
                     int score = player.GetScore();
                     int highscore = PlayerPrefs.GetInt("HighScore", 0);
 
@@ -159,10 +160,11 @@ public class Enemy : MonoBehaviour
                         PlayerPrefs.SetInt("HighScore", highscore);
                     }
 
-                    player.CreateExplosion();
                     Object.Destroy(target.gameObject);
                     Object.Destroy(gameObject);
                     GameOver(score, highscore);
+                    AudioListener listener = Camera.main.GetComponent<AudioListener>();
+                    listener.enabled = true;
                 }
             }
         }

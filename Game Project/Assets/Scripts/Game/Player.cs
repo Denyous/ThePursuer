@@ -141,22 +141,9 @@ public class Player : MonoBehaviour
         transform.position += Speed * Time.deltaTime * transform.up;
     }
 
-    //Handling collision for Shield
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            if (Shield != true)
-            {
-                AudioListener listener = Camera.main.GetComponent<AudioListener>();
-                listener.enabled = true;
-                audioManager.SFXPlayOneShot(audioManager.explosionSFX);
-            }
-        }
-    }
-
     public void CreateExplosion()
     {
+        audioManager.SFXPlayOneShot(audioManager.explosionSFX);
         Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y, 3), UnityEngine.Quaternion.identity);
     }
 

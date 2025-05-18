@@ -11,10 +11,12 @@ public class AudioSettings : MonoBehaviour
     
     void Start()
     {
-        float musicVolume = PlayerPrefs.GetFloat("Music", 0.75f); // varsayılan %75
-        audioMixer.SetFloat("Music", Mathf.Log10(musicVolume) * 20);
-
+        float musicVolume = PlayerPrefs.GetFloat("Music", 0.75f);
+        float dbMusic = Mathf.Log10(Mathf.Clamp(musicVolume, 0.0001f, 1f)) * 20f;
+        audioMixer.SetFloat("Music", dbMusic);
+        
         float soundVolume = PlayerPrefs.GetFloat("SFX", 0.75f);
-        audioMixer.SetFloat("SFX", Mathf.Log10(soundVolume) * 20);
+        float dbSFX = Mathf.Log10(Mathf.Clamp(soundVolume, 0.0001f, 1f)) * 20f;
+        audioMixer.SetFloat("SFX", dbSFX);
     }
 }

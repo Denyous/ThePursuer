@@ -13,7 +13,10 @@ public class CollectibleController : MonoBehaviour
     private GameObject icon;
     private GameObject Player;
     private GameObject nearestStar;
+    private GameObject closestEnemy;
+    private GameObject enemyIcon;
     private List<GameObject> stars = new List<GameObject>();
+    private List<GameObject> enemies = new List<GameObject>();
 
     [SerializeField] private float ScreenBorder;
     [SerializeField] private float VisibleDistance;
@@ -22,11 +25,15 @@ public class CollectibleController : MonoBehaviour
     {
         Camera = Camera.main;
         Player = transform.parent.gameObject;
+        enemyIcon = Instantiate(enemyIndicatorPrefab, GetIconPosition(closestEnemy), Quaternion.identity);
+        enemyIcon.SetActive(false);
+        icon = Instantiate(collectiblePrefab, GetIconPosition(nearestStar), Quaternion.identity);
+        icon.SetActive(false);
     }
 
     private void LateUpdate()
     {
-        float distance = GetDistanceToNearestStar(Player.transform, stars);
+        nearestStar = GetClosestGameObject(Player.transform, stars);
 
         if (Player != null && nearestStar != null && nearestStar.activeInHierarchy)
         {
@@ -35,16 +42,30 @@ public class CollectibleController : MonoBehaviour
 
             if (!isStarVisible)
             {
-                if (icon == null)
-                {
-                    icon = Instantiate(collectiblePrefab, GetIconPosition(), Quaternion.identity);
-                }
                 icon.SetActive(true);
-                UpdateIconPosition(icon, viewportPos, Camera);
+                UpdateIconPosition(icon, nearestStar, viewportPos, Camera);
             }
             else if (icon != null)
             {
                 icon.SetActive(false);
+            }
+        }
+
+        closestEnemy = GetClosestGameObject(Player.transform, enemies);
+
+        if (Player != null && closestEnemy != null && closestEnemy.activeInHierarchy)
+        {
+            Vector3 viewportPos = Camera.WorldToViewportPoint(closestEnemy.transform.position);
+            bool isEnemyVisible = viewportPos.x > 0.05f && viewportPos.x < 1.05f && viewportPos.y > 0.05f && viewportPos.y < 1.05f;
+
+            if (!isEnemyVisible)
+            {
+                enemyIcon.SetActive(true);
+                UpdateIconPosition(enemyIcon, closestEnemy, viewportPos, Camera);
+            }
+            else if (enemyIcon != null)
+            {
+                enemyIcon.SetActive(false);
             }
         }
     }
@@ -54,73 +75,86 @@ public class CollectibleController : MonoBehaviour
     {
         stars.Add(star);
     }
-    private Vector3 GetIconPosition()
+    public void AddToEnemies(GameObject star)
     {
-        Vector3 starPosition = Camera.WorldToViewportPoint(nearestStar.transform.position);
+        enemies.Add(star);
+    }
+    private Vector3 GetIconPosition(GameObject obj)
+    {
+        if (obj == null)
+        {
+            return Vector3.zero;
+        }
+
+        Vector3 objPosition = Camera.WorldToViewportPoint(nearestStar.transform.position);
         Vector3 iconPosition = new Vector3();
 
-        if (starPosition.x < 0f || starPosition.y < 0f)
+        if (objPosition.x < 0f || objPosition.y < 0f)
         {
-            if (starPosition.x < 0f)
+            if (objPosition.x < 0f)
             {
-                iconPosition = new Vector3(0f, nearestStar.transform.position.y);
+                iconPosition = new Vector3(0f, obj.transform.position.y);
             }
             else
             {
-                iconPosition = new Vector3(nearestStar.transform.position.x, 0f);
+                iconPosition = new Vector3(obj.transform.position.x, 0f);
             }
         }
 
-        if (starPosition.x > 1f || starPosition.y > 1f)
+        if (objPosition.x > 1f || objPosition.y > 1f)
         {
-            if (starPosition.x > 1f)
+            if (objPosition.x > 1f)
             {
-                iconPosition = new Vector3(1f, nearestStar.transform.position.y);
+                iconPosition = new Vector3(1f, obj.transform.position.y);
             }
             else
             {
-                iconPosition = new Vector3(nearestStar.transform.position.x, 1f);
+                iconPosition = new Vector3(obj.transform.position.x, 1f);
             }
         }
 
         return iconPosition;
     }
 
-    public float GetDistanceToNearestStar(Transform playerTransform, List<GameObject> stars)
+    public GameObject GetClosestGameObject(Transform subject, List<GameObject> objectList)
     {
         float minDistance = 0f;
+        GameObject gameObject = null;
 
-        foreach (GameObject star in stars)
+        foreach (GameObject obj in objectList)
         {
-            Vector3 viewportPos = Camera.WorldToViewportPoint(star.transform.position);
+            Vector3 viewportPos = Camera.WorldToViewportPoint(obj.transform.position);
             bool isVisible = viewportPos.z > 0 && viewportPos.x > 0 && viewportPos.x < 1 && viewportPos.y > 0 && viewportPos.y < 1;
 
-            if (star != null && star.activeInHierarchy)
+            if (obj != null && obj.activeInHierarchy)
             {
-                float distance = Vector3.Distance(playerTransform.position, star.transform.position);
+                float distance = Vector3.Distance(subject.position, obj.transform.position);
                 if (distance < minDistance || minDistance == 0f)
                 {
                     if (!isVisible)
                     {
                         minDistance = distance;
-                        nearestStar = star;
+                        gameObject = obj;
                     }
                 }
             }
         }
-
-        return minDistance;
+        if (gameObject != null)
+        {
+            return gameObject;
+        }
+        return null;
     }
 
-    void UpdateIconPosition(GameObject icon, Vector3 viewportPosition, Camera camera)
+    void UpdateIconPosition(GameObject icon, GameObject closestObject, Vector3 viewportPosition, Camera camera)
     {
         Vector3 screenPosition = new Vector3();
 
-        if (viewportPosition.x < 0) // Left side
+        if (viewportPosition.x < 0) 
         {
             screenPosition.x = ScreenBorder;
         }
-        else if (viewportPosition.x > 1) // Right side
+        else if (viewportPosition.x > 1) 
         {
             screenPosition.x = Screen.width - ScreenBorder;
         }
@@ -129,11 +163,11 @@ public class CollectibleController : MonoBehaviour
             screenPosition.x = viewportPosition.x * Screen.width;
         }
 
-        if (viewportPosition.y < 0) // Bottom side
+        if (viewportPosition.y < 0) 
         {
             screenPosition.y = ScreenBorder;
         }
-        else if (viewportPosition.y > 1) // Top side
+        else if (viewportPosition.y > 1)
         {
             screenPosition.y = Screen.height - ScreenBorder;
         }
@@ -146,7 +180,7 @@ public class CollectibleController : MonoBehaviour
             camera.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 1));
         icon.transform.position = iconPosition;
 
-        Vector3 directionToCollectible = nearestStar.transform.position - icon.transform.position;
+        Vector3 directionToCollectible = closestObject.transform.position - icon.transform.position;
 
         directionToCollectible.z = 0; 
         directionToCollectible.Normalize();
