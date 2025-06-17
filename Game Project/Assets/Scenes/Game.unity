@@ -4125,9 +4125,9 @@ MonoBehaviour:
   SFX: {fileID: 1691734659}
   audioMixer: {fileID: 0}
   explosionSFX: {fileID: 8300000, guid: f035590e7abe49341b457658d393706c, type: 3}
-  shieldUpSFX: {fileID: 8300000, guid: 5a288a6fe1b263440916a8f4685aa69d, type: 3}
+  shieldUpSFX: {fileID: 8300000, guid: 98958f5cad0bc8744b6b7d8b90460cfc, type: 3}
   shieldImpactSFX: {fileID: 8300000, guid: 61cb0ebf21fb389498ebe16295e0654a, type: 3}
-  flareSFX: {fileID: 8300000, guid: 814d281b81aa6c4439f8dc2558a99fda, type: 3}
+  flareSFX: {fileID: 8300000, guid: c31b76c7cb64eb945b675e66d191445c, type: 3}
   laserSFX: {fileID: 8300000, guid: 6bb1364deacf25a4cab9bbe187226600, type: 3}
   blackHoleInstantiationSFX: {fileID: 0}
   enemiesSwallowedByBlackHoleSFX: {fileID: 0}
@@ -5085,7 +5085,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 396785537042453105, guid: 1005739dba854b54399bbb7dfa09e971, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5d8127b50a77ed94fbc85d23f1c1a268, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3d08ca1fb42f7fa4baf044e2007fa0f9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
