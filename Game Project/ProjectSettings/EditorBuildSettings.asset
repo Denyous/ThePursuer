@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Samples/Ads Mediation/8.9.0/Unity LevelPlay Sample/Scenes/LevelPlaySample.unity
+    path: Assets/Scenes/LevelPlaySample.unity
     guid: bd1eb3e1953724de08fadd7cbbc6d358
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: cda85e412c939034eb911200d988ff8f, type: 2}
