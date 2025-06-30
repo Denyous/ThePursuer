@@ -16,7 +16,10 @@ public class PlayerReviveSystem : MonoBehaviour
 
     private void Update()
     {
-        PlayerDiedLoaction();
+        if (player != null)
+        {
+            PlayerDiedLoaction();
+        }
     }
     public void OnReviveButtonPressed()
     {
@@ -28,9 +31,8 @@ public class PlayerReviveSystem : MonoBehaviour
 
     public void RevivePlayer()
     {
-
-        player.transform.position = deathPosition; // ✅ Aynı noktada doğ
         player.SetActive(true);
+        player.transform.position = deathPosition; // ✅ Aynı noktada doğ
         UI.SetActive(true);
     }
 
