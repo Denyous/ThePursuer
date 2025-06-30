@@ -149,22 +149,22 @@ public class Enemy : MonoBehaviour
             {
                 if (player != null && player.Shield == false)
                 {
-                    //player.CreateExplosion();
+                    player.CreateExplosion();
 
-                    //int score = player.GetScore();
-                    //int highscore = PlayerPrefs.GetInt("HighScore", 0);
+                    int score = player.GetScore();
+                    int highscore = PlayerPrefs.GetInt("HighScore", 0);
 
-                    //if (highscore < score)
-                    //{
-                    //    highscore = score;
-                    //    PlayerPrefs.SetInt("HighScore", highscore);
-                    //}
+                    if (highscore < score)
+                    {
+                        highscore = score;
+                        PlayerPrefs.SetInt("HighScore", highscore);
+                    }
 
-                    //Object.Destroy(target.gameObject);
-                    //Object.Destroy(gameObject);
-                    //GameOver(score, highscore);
-                    //AudioListener listener = Camera.main.GetComponent<AudioListener>();
-                    //listener.enabled = true;
+                    Object.Destroy(target.gameObject);
+                    Object.Destroy(gameObject);
+                    GameOver(score, highscore);
+                    AudioListener listener = Camera.main.GetComponent<AudioListener>();
+                    listener.enabled = true;
                 }
             }
         }
