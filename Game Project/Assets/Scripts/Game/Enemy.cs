@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     //Player
     private GameObject target;
     private GameOver GameOverScreen;
+    
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         fire = Instantiate(rocketFire, transform, false);
         fire.transform.localPosition = new Vector3(0f, -2.1f, 1f);
+       
     }
 
     #region Follow Player Logic
@@ -160,9 +162,18 @@ public class Enemy : MonoBehaviour
                         PlayerPrefs.SetInt("HighScore", highscore);
                     }
 
+<<<<<<< Updated upstream
                     Object.Destroy(target.gameObject);
                     Object.Destroy(gameObject);
                     GameOver(score, highscore);
+=======
+                    target.gameObject.SetActive(false);
+                    Object.Destroy(gameObject);
+                    GameOver(score, highscore);
+
+                    //GameStats.AddDeath();
+
+>>>>>>> Stashed changes
                     AudioListener listener = Camera.main.GetComponent<AudioListener>();
                     listener.enabled = true;
                 }
