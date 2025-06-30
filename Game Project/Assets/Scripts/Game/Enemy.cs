@@ -163,16 +163,22 @@ public class Enemy : MonoBehaviour
                     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     Object.Destroy(target.gameObject);
                     Object.Destroy(gameObject);
                     GameOver(score, highscore);
 =======
+=======
+>>>>>>> Stashed changes
                     target.gameObject.SetActive(false);
                     Object.Destroy(gameObject);
                     GameOver(score, highscore);
 
                     //GameStats.AddDeath();
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                     AudioListener listener = Camera.main.GetComponent<AudioListener>();
                     listener.enabled = true;
