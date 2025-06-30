@@ -56,9 +56,7 @@ public class PlayerReviveSystem : MonoBehaviour
 
     public void PlayerDiedLoaction()
     {
-
         deathPosition = player.transform.position; // ✅ Ölüm konumunu kaydet
-
     }
 }
 
