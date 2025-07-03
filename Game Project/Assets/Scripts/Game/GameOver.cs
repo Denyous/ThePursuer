@@ -14,6 +14,7 @@ public class GameOver : MonoBehaviour
     public GameObject UI;
     public GameObject pauseIcon;
     public GameObject reviveButton;
+    public TextMeshProUGUI timerScore;
     private int _score;
     private int _highScore;
     AudioManager audioManager;
@@ -25,8 +26,8 @@ public class GameOver : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         UI.SetActive(false);
-        
 
+        TimerScoreText();
         _score = score;
         _highScore = highscore;
         
@@ -49,5 +50,13 @@ public class GameOver : MonoBehaviour
 
         HighScoreText.text = LocalizedHighScore.GetLocalizedString();
         PointText.text = LocalizedScore.GetLocalizedString();
+    }
+
+
+    void TimerScoreText()
+    {
+        int minutes = Mathf.FloorToInt(GameStats.elapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(GameStats.elapsedTime % 60f);
+        timerScore.text = $"{minutes:00}:{seconds:00}";
     }
 }

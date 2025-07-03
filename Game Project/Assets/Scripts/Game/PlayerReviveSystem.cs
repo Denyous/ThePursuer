@@ -25,6 +25,7 @@ public class PlayerReviveSystem : MonoBehaviour
     {
         UıSettings();
         RevivePlayer();
+        GameStats.isRunning = true; // Timer countiniue
     }
 
    
