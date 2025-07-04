@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -28,6 +29,7 @@ public class GameOver : MonoBehaviour
         UI.SetActive(false);
 
         TimerScoreText();
+
         _score = score;
         _highScore = highscore;
         
