@@ -16,7 +16,7 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 9b9cd5237f05cdb4dbf46e0e4e7e88ab
   m_Entries:
   - m_Id: 7753748480
-    m_Key: GamePauseTitle
+    m_Key: d
     m_Metadata:
       m_Items: []
   - m_Id: 51668111360
@@ -45,6 +45,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5245042741248
     m_Key: GameOver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19007599605428224
+    m_Key: GameAds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19007914060787712
+    m_Key: New Entry
     m_Metadata:
       m_Items: []
   m_Metadata:

@@ -24,6 +24,13 @@ MonoBehaviour:
     - Locale-ar
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9636c259296bb5341abb089593c90e52
+    m_Address: Tutorial_ar
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ar
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e7e57f50c16bad5429d13de9e40197d6
     m_Address: Game_ar
     m_ReadOnly: 1
