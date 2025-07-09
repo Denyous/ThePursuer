@@ -26,6 +26,27 @@ MonoBehaviour:
     m_Localized: Atla
     m_Metadata:
       m_Items: []
+  - m_Id: 319290695987200
+    m_Localized: "Tutorialdan \xE7\u0131kmak istiyor musun?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320929184067584
+    m_Localized: Evet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320968249815040
+    m_Localized: "Hay\u0131r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333728983527424
+    m_Localized: "Tebrikler, tutorial\u2019\u0131 bitirdiniz. Bu ipu\xE7lar\u0131n\u0131
+      her zaman ana men\xFCde bulabilirsiniz.\n\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334850028711936
+    m_Localized: Tamam
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

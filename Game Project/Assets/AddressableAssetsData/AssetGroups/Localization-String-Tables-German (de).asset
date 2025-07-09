@@ -31,13 +31,6 @@ MonoBehaviour:
     - Locale-de
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6801cf4a5df321847910f6f1eacf37f4
-    m_Address: tutorial_de
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-de
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9e572900ae132b1459e0b47215e28f0b
     m_Address: Tutorial_de
     m_ReadOnly: 1

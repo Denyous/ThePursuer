@@ -22,6 +22,31 @@ MonoBehaviour:
     m_Localized: Willkommen im Tutorial!
     m_Metadata:
       m_Items: []
+  - m_Id: 15727465836544
+    m_Localized: "\xDCberspringen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319290695987200
+    m_Localized: "M\xF6chtest du das Tutorial verlassen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320929184067584
+    m_Localized: Ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320968249815040
+    m_Localized: Nein
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333728983527424
+    m_Localized: "Gl\xFCckwunsch, du hast das Tutorial abgeschlossen. Diese Tipps
+      findest du jederzeit im Hauptmen\xFC."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334850028711936
+    m_Localized: Okay
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

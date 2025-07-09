@@ -22,6 +22,31 @@ MonoBehaviour:
     m_Localized: Benvenuto nel tutorial!
     m_Metadata:
       m_Items: []
+  - m_Id: 15727465836544
+    m_Localized: Salta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319290695987200
+    m_Localized: Vuoi uscire dal tutorial?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320929184067584
+    m_Localized: "S\xEC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320968249815040
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333728983527424
+    m_Localized: Congratulazioni, hai completato il tutorial. Puoi sempre trovare
+      questi suggerimenti nel menu principale.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334850028711936
+    m_Localized: Va bene
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

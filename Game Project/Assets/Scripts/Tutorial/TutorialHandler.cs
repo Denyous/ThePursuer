@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class TutorialHandler : MonoBehaviour
 {
@@ -22,6 +23,20 @@ public class TutorialHandler : MonoBehaviour
     [SerializeField] GameObject tutorialWelcome;
     private int count = 0;
 
+    [Header("TextMeshs")]
+
+    [SerializeField] TextMeshProUGUI text1 = new TextMeshProUGUI();
+    [SerializeField] TextMeshProUGUI text2 = new TextMeshProUGUI();
+    [SerializeField] TextMeshProUGUI text3 = new TextMeshProUGUI();
+    [SerializeField] TextMeshProUGUI text4 = new TextMeshProUGUI();
+    [SerializeField] TextMeshProUGUI text5 = new TextMeshProUGUI();
+    [SerializeField] TextMeshProUGUI text6 = new TextMeshProUGUI();
+    [SerializeField] TextMeshProUGUI text7 = new TextMeshProUGUI();
+    [SerializeField] TextMeshProUGUI text8 = new TextMeshProUGUI();
+    [SerializeField] TextMeshProUGUI text9 = new TextMeshProUGUI();
+
+
+   
     private void Start()
     {
         tutorialImage.sprite = tutorialSprites[count];
@@ -33,10 +48,13 @@ public class TutorialHandler : MonoBehaviour
         if (count >= 0)
         {
             count++;
+            Debug.Log(count);
+            TutorialTextReplace();
             tutorialImage.sprite = tutorialSprites[count];
             tutorialText.text = tutorialTexts[count];
+            
 
-            if (count == 9)
+            if (count == 10)
             {
                 tutorialFinished.SetActive(true);
             }
@@ -87,4 +105,30 @@ public class TutorialHandler : MonoBehaviour
         tutorialWelcome.SetActive(false);
         tutorialTemplate.SetActive(true);
     }
+
+   
+    void TutorialTextReplace()
+    {
+
+        switch (count)
+        {
+            case 1: tutorialTexts[1] = text1.text; break;
+            case 2: tutorialTexts[2] = text2.text; break;
+            case 3: tutorialTexts[3] = text3.text; break;
+            case 4: tutorialTexts[4] = text4.text; break;
+            case 5: tutorialTexts[5] = text5.text; break;
+            case 6: tutorialTexts[6] = text6.text; break;
+            case 7: tutorialTexts[7] = text7.text; break;
+            case 8: tutorialTexts[8] = text8.text; break;
+            case 9: tutorialTexts[9] = text9.text; break;
+
+            default: break;
+        }
+    }
+
+
+    
+
+
+    
 }

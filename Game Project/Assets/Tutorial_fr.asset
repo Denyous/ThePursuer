@@ -22,6 +22,31 @@ MonoBehaviour:
     m_Localized: "Bienvenue dans le tutoriel\_!"
     m_Metadata:
       m_Items: []
+  - m_Id: 15727465836544
+    m_Localized: Passer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319290695987200
+    m_Localized: "Voulez-vous quitter le didacticiel\_?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320929184067584
+    m_Localized: Oui
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320968249815040
+    m_Localized: Non
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333728983527424
+    m_Localized: "F\xE9licitations, vous avez termin\xE9 le didacticiel. Vous pouvez
+      toujours retrouver ces astuces dans le menu principal."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334850028711936
+    m_Localized: D'accord
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

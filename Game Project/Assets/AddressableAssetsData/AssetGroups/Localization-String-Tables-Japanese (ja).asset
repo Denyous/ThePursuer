@@ -31,13 +31,6 @@ MonoBehaviour:
     - Locale-ja
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 90e7f47e0057fbb44a9c6b83b2d1d48f
-    m_Address: tutorial_ja
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ja
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d0e771800c215e049805192bd68f2104
     m_Address: Tutorial_ja
     m_ReadOnly: 1

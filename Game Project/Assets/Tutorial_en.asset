@@ -26,6 +26,27 @@ MonoBehaviour:
     m_Localized: Skip
     m_Metadata:
       m_Items: []
+  - m_Id: 319290695987200
+    m_Localized: ' Do you want to exit the tutorial?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320929184067584
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320968249815040
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333728983527424
+    m_Localized: Congratulations, you've completed the tutorial. You can always find
+      these tips in the main menu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334850028711936
+    m_Localized: Okay
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

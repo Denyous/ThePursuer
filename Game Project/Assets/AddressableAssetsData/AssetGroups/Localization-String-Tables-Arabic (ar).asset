@@ -24,13 +24,6 @@ MonoBehaviour:
     - Locale-ar
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2d789fbaa74dd3547bf20ce4d11d0c0f
-    m_Address: tutorial_ar
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ar
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9636c259296bb5341abb089593c90e52
     m_Address: Tutorial_ar
     m_ReadOnly: 1

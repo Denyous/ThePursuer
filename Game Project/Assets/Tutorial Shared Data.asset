@@ -25,6 +25,32 @@ MonoBehaviour:
     m_Key: Tutorial_SkipButtonText
     m_Metadata:
       m_Items: []
+  - m_Id: 319290695987200
+    m_Key: 'Tutorial_SkipText
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320929184067584
+    m_Key: 'Tutorial_YesButton
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320968249815040
+    m_Key: Tutorial_NoButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333728983527424
+    m_Key: 'Tutorial_FinishedText
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334850028711936
+    m_Key: Tutorial_Okbutton
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
