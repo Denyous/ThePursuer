@@ -14,7 +14,7 @@ public class LanguageSwitcher : MonoBehaviour
     [SerializeField] private TMP_FontAsset HindiFont;
     [SerializeField] private TMP_FontAsset DefaultFont;
 
-    private void Start()
+    private void OnEnable()
     {
         string languageCode = PlayerPrefs.GetString("Language");
         SetLanguage(languageCode);

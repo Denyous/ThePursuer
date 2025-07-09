@@ -700,7 +700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1, y: -444}
+  m_AnchoredPosition: {x: 18, y: -541}
   m_SizeDelta: {x: 954.4, y: 283.8213}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &145087249
@@ -1942,8 +1942,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 199581a40fc72584090c334a83368ddb, type: 2}
+  m_sharedMaterial: {fileID: 5042568588126364398, guid: 199581a40fc72584090c334a83368ddb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2033,7 +2033,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:d7eb7bfa3db00924dabaea7f43960a76
     m_TableEntryReference:
-      m_KeyId: 1184593326080
+      m_KeyId: 1200019976192
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -2623,7 +2623,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:d7eb7bfa3db00924dabaea7f43960a76
     m_TableEntryReference:
-      m_KeyId: 15727465836544
+      m_KeyId: 2278807547904
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
