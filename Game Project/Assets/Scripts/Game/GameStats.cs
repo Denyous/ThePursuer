@@ -6,26 +6,21 @@ public class GameStats : MonoBehaviour
 {
     public static int deathCount = 0;
     [SerializeField] GameObject interstitalAds;
-    
-
 
     private void Update()
     {
         if (deathCount == 3)
         {
             deathCount = 0;
-            interstitalAds.SetActive(true);
+            AdsManager.instance.ShowInterstitialAd();
         }
     }
 
     public static void AddDeath()
     {
         deathCount++;
-      
         Debug.Log("Ölüm Sayısı: " + deathCount);
     }
-
-  
 
     public void SkipButton()
     {

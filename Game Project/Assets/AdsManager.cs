@@ -1,42 +1,83 @@
+using System.Threading.Tasks;
+using Unity.Services.Core;
 using Unity.Services.LevelPlay;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
-    private LevelPlayBannerAd bannerAd;
-    private LevelPlayInterstitialAd interstitialAd;
-    private LevelPlayRewardedAd rewardedVideoAd;
+    private Unity.Services.LevelPlay.LevelPlayBannerAd bannerAd;
+    private Unity.Services.LevelPlay.LevelPlayInterstitialAd interstitialAd;
+    private Unity.Services.LevelPlay.LevelPlayRewardedAd rewardedVideoAd;
     bool isAdsEnabled = false;
 
-    public void Start()
+    public static AdsManager instance;
+
+    private const string BannerAdUnitId = "b1mimusvm1ezh4dl"; 
+    private const string InterstitialAdUnitId = "7gfojay1ka2sjetm"; 
+    private const string RewardedAdUnitId = "q62bk3sr6ki7vauw"; 
+    private const string AppKey = "227bad085";
+
+    private void OnEnable()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private async void Awake()
+    {
+        await InitializeAdsAsync();
+    }
+
+    private async Task InitializeAdsAsync()
     {
         Debug.Log("[LevelPlaySample] LevelPlay.ValidateIntegration");
         LevelPlay.ValidateIntegration();
 
         Debug.Log($"[LevelPlaySample] Unity version {LevelPlay.UnityVersion}");
         Debug.Log("[LevelPlaySample] Register initialization callbacks");
+
+        var initTask = new TaskCompletionSource<bool>();
+
         LevelPlay.OnInitSuccess += SdkInitializationCompletedEvent;
+
         LevelPlay.OnInitFailed += SdkInitializationFailedEvent;
 
-        // SDK init
         Debug.Log("[LevelPlaySample] LevelPlay SDK initialization");
         LevelPlay.SetMetaData("is_test_suite", "enable");
         LevelPlay.SetConsent(true);
+        LevelPlay.Init(AppKey);
 
-        LevelPlay.Init(AdConfig.AppKey);
-        LevelPlay.LaunchTestSuite();
+        // Wait for initialization to complete
+        bool success = await initTask.Task;
+
+        if (success)
+        {
+            await EnableAdsAsync();
+        }
+        else
+        {
+            Debug.LogError("Ad initialization failed, not enabling ads.");
+        }
     }
 
-    void EnableAds()
+    private async Task EnableAdsAsync()
     {
-        // Register to ImpressionDataReadyEvent
+        Debug.Log("[LevelPlaySample] Enabling Ads");
+
         LevelPlay.OnImpressionDataReady += ImpressionDataReadyEvent;
 
-        // Create Rewarded Video object
-        rewardedVideoAd = new LevelPlayRewardedAd(AdConfig.RewardedVideoAdUnitId);
+        rewardedVideoAd = new LevelPlayRewardedAd(RewardedAdUnitId);
+        bannerAd = new LevelPlayBannerAd(BannerAdUnitId);
+        interstitialAd = new LevelPlayInterstitialAd(InterstitialAdUnitId);
 
-        // Register to Rewarded Video events
+        // Register Rewarded Events
         rewardedVideoAd.OnAdLoaded += RewardedVideoOnLoadedEvent;
         rewardedVideoAd.OnAdLoadFailed += RewardedVideoOnAdLoadFailedEvent;
         rewardedVideoAd.OnAdDisplayed += RewardedVideoOnAdDisplayedEvent;
@@ -46,10 +87,7 @@ public class AdsManager : MonoBehaviour
         rewardedVideoAd.OnAdClosed += RewardedVideoOnAdClosedEvent;
         rewardedVideoAd.OnAdInfoChanged += RewardedVideoOnAdInfoChangedEvent;
 
-        // Create Banner object
-        bannerAd = new LevelPlayBannerAd(AdConfig.BannerAdUnitId);
-
-        // Register to Banner events
+        // Register Banner Events
         bannerAd.OnAdLoaded += BannerOnAdLoadedEvent;
         bannerAd.OnAdLoadFailed += BannerOnAdLoadFailedEvent;
         bannerAd.OnAdDisplayed += BannerOnAdDisplayedEvent;
@@ -59,10 +97,7 @@ public class AdsManager : MonoBehaviour
         bannerAd.OnAdLeftApplication += BannerOnAdLeftApplicationEvent;
         bannerAd.OnAdExpanded += BannerOnAdExpandedEvent;
 
-        // Create Interstitial object
-        interstitialAd = new LevelPlayInterstitialAd(AdConfig.InterstitalAdUnitId);
-
-        // Register to Interstitial events
+        // Register Interstitial Events
         interstitialAd.OnAdLoaded += InterstitialOnAdLoadedEvent;
         interstitialAd.OnAdLoadFailed += InterstitialOnAdLoadFailedEvent;
         interstitialAd.OnAdDisplayed += InterstitialOnAdDisplayedEvent;
@@ -70,11 +105,17 @@ public class AdsManager : MonoBehaviour
         interstitialAd.OnAdClicked += InterstitialOnAdClickedEvent;
         interstitialAd.OnAdClosed += InterstitialOnAdClosedEvent;
         interstitialAd.OnAdInfoChanged += InterstitialOnAdInfoChangedEvent;
+
+        // Load all ads
+        bannerAd.LoadAd();
+        interstitialAd.LoadAd();
+        rewardedVideoAd.LoadAd();
+
+        await Task.CompletedTask; // Keep it async-compatible
     }
 
-
     #region Show Ads Functions
-    
+
     public void ShowInterstitialAd()
     {
         if (interstitialAd.IsAdReady())
@@ -91,8 +132,8 @@ public class AdsManager : MonoBehaviour
     {
         if (isAdsEnabled)
         {
-            Debug.Log("[LevelPlaySample] Show Interstitial Ad");
-            bannerAd.LoadAd();
+            Debug.Log("[LevelPlaySample] Show Banner Ad");
+            bannerAd.ShowAd();
         }
         else
         {
@@ -116,11 +157,13 @@ public class AdsManager : MonoBehaviour
 
     #region Initialization Events
 
-    void SdkInitializationCompletedEvent(LevelPlayConfiguration config)
+    private async void SdkInitializationCompletedEvent(LevelPlayConfiguration config)
     {
         Debug.Log($"[LevelPlaySample] Received SdkInitializationCompletedEvent with Config: {config}");
-        EnableAds();
+        //EnableAds();
+        await EnableAdsAsync();
         isAdsEnabled = true;
+        ShowBannerAd();
     }
 
     void SdkInitializationFailedEvent(LevelPlayInitError error)
@@ -154,6 +197,8 @@ public class AdsManager : MonoBehaviour
     void RewardedVideoOnAdRewardedEvent(LevelPlayAdInfo adInfo, LevelPlayReward reward)
     {
         Debug.Log($"[LevelPlaySample] Received RewardedVideoOnAdRewardedEvent With AdInfo: {adInfo} and Reward: {reward}");
+        rewardedVideoAd.LoadAd();
+        PlayerReviveSystem.instance.RevivePlayer();
     }
 
     void RewardedVideoOnAdClickedEvent(LevelPlayAdInfo adInfo)
@@ -187,6 +232,7 @@ public class AdsManager : MonoBehaviour
     void InterstitialOnAdDisplayedEvent(LevelPlayAdInfo adInfo)
     {
         Debug.Log($"[LevelPlaySample] Received InterstitialOnAdDisplayedEvent With AdInfo: {adInfo}");
+        //interstitialAd.LoadAd();
     }
 #pragma warning disable 0618
     void InterstitialOnAdDisplayFailedEvent(LevelPlayAdDisplayInfoError infoError)
@@ -230,6 +276,7 @@ public class AdsManager : MonoBehaviour
     void BannerOnAdDisplayedEvent(LevelPlayAdInfo adInfo)
     {
         Debug.Log($"[LevelPlaySample] Received BannerOnAdDisplayedEvent With AdInfo: {adInfo}");
+        //bannerAd.LoadAd();
     }
 #pragma warning disable 0618
     void BannerOnAdDisplayFailedEvent(LevelPlayAdDisplayInfoError adInfoError)
@@ -267,5 +314,6 @@ public class AdsManager : MonoBehaviour
     {
         bannerAd?.DestroyAd();
         interstitialAd?.DestroyAd();
+        rewardedVideoAd?.DestroyAd();
     }
 }
