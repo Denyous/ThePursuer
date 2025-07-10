@@ -25,6 +25,7 @@ public class TutorialHandler : MonoBehaviour
 
     [Header("TextMeshs")]
 
+    [SerializeField] TextMeshProUGUI text0 = new TextMeshProUGUI();
     [SerializeField] TextMeshProUGUI text1 = new TextMeshProUGUI();
     [SerializeField] TextMeshProUGUI text2 = new TextMeshProUGUI();
     [SerializeField] TextMeshProUGUI text3 = new TextMeshProUGUI();
@@ -39,25 +40,25 @@ public class TutorialHandler : MonoBehaviour
    
     private void Start()
     {
-        tutorialImage.sprite = tutorialSprites[count];
-        tutorialText.text = tutorialTexts[count];
+        
     }
 
     public void NextOnClicked()
     {
         if (count >= 0)
         {
-            count++;
+            TutorialTextReplace();                    
             Debug.Log(count);
-            TutorialTextReplace();
+            
             tutorialImage.sprite = tutorialSprites[count];
             tutorialText.text = tutorialTexts[count];
             
 
-            if (count == 10)
+            if (count == 9)
             {
                 tutorialFinished.SetActive(true);
             }
+            count++;
         }
     }
 
@@ -102,8 +103,13 @@ public class TutorialHandler : MonoBehaviour
 
     public void GoToTutorialButtonClicked()
     {
+        
         tutorialWelcome.SetActive(false);
         tutorialTemplate.SetActive(true);
+        
+        tutorialImage.sprite = tutorialSprites[count];
+        TutorialTextReplace();
+        tutorialText.text = tutorialTexts[count];
     }
 
    
@@ -112,6 +118,7 @@ public class TutorialHandler : MonoBehaviour
 
         switch (count)
         {
+            case 0: tutorialTexts[0] = text0.text; break;
             case 1: tutorialTexts[1] = text1.text; break;
             case 2: tutorialTexts[2] = text2.text; break;
             case 3: tutorialTexts[3] = text3.text; break;
