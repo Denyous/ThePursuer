@@ -72,10 +72,51 @@ MonoBehaviour:
     m_Localized: DESIGN AUDIO
     m_Metadata:
       m_Items: []
+  - m_Id: 80738832384
+    m_Localized: Muoviti con la levetta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84111052800
+    m_Localized: Evita i missili
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88703815680
+    m_Localized: Raccogli punti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91434307584
+    m_Localized: "Raccogli il potenziamento di velocit\xE0 per accelerare"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92851982336
+    m_Localized: Raccogli il potenziamento dello scudo per una protezione singola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93552431104
+    m_Localized: 'Usa il potenziamento bengala per distruggere i missili
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94248685568
+    m_Localized: Usa il potenziamento kamikaze per far attaccare i missili tra loro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94861053952
+    m_Localized: Usa il potenziamento laser per una distruzione rapida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95532142592
+    m_Localized: Usa il potenziamento del buco nero per attirare i missili
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3574364231128317960
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d068a70d000000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 58643238912

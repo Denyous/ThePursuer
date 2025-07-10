@@ -72,10 +72,55 @@ MonoBehaviour:
     m_Localized: AUDIO-GESTALTUNG
     m_Metadata:
       m_Items: []
+  - m_Id: 80738832384
+    m_Localized: Bewege dich mit dem Stick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84111052800
+    m_Localized: Weiche den Raketen aus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88703815680
+    m_Localized: 'Sammle Punkte
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91434307584
+    m_Localized: Sammle das Geschwindigkeitspower-up, um zu beschleunigen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92851982336
+    m_Localized: "Sammle das Schild-Power-up f\xFCr einmaligen Schutz"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93552431104
+    m_Localized: "Verwende das Leuchtfackel-Power-up, um Raketen zu zerst\xF6ren"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94248685568
+    m_Localized: 'Nutze das Kamikaze-Power-up, damit sich die Raketen gegenseitig
+      angreifen
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94861053952
+    m_Localized: "Nutze das Laser-Power-up f\xFCr schnelle Zerst\xF6rung\n\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95532142592
+    m_Localized: Nutze das Schwarzes-Loch-Power-up, um Raketen einzusaugen
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3574364231128317958
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d068a70d000000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 58643238912

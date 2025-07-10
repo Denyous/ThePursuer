@@ -72,10 +72,53 @@ MonoBehaviour:
     m_Localized: CONCEPTION AUDIO
     m_Metadata:
       m_Items: []
+  - m_Id: 80738832384
+    m_Localized: "D\xE9placez-vous avec le joystick"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84111052800
+    m_Localized: "\xC9vitez les missiles"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88703815680
+    m_Localized: Collectez des points
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91434307584
+    m_Localized: "R\xE9cup\xE9rez le bonus de vitesse pour acc\xE9l\xE9rer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92851982336
+    m_Localized: "R\xE9cup\xE9rez le bonus de bouclier pour une protection unique"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93552431104
+    m_Localized: "Utilisez le bonus de fus\xE9e \xE9clairante pour d\xE9truire les
+      missiles\n\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94248685568
+    m_Localized: Utilisez le bonus kamikaze pour que les missiles se ciblent entre
+      eux
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94861053952
+    m_Localized: Utilisez le bonus laser pour une destruction rapide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95532142592
+    m_Localized: 'Utilisez le bonus trou noir pour aspirer les missiles
+
+
+'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3574364231128317957
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d068a70d000000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 58643238912

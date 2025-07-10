@@ -72,10 +72,48 @@ MonoBehaviour:
     m_Localized: PROJEKTOWANIE AUDIO
     m_Metadata:
       m_Items: []
+  - m_Id: 80738832384
+    m_Localized: "Poruszaj si\u0119 dr\u0105\u017Ckiem"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84111052800
+    m_Localized: Unikaj rakiet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88703815680
+    m_Localized: Zbieraj punkty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91434307584
+    m_Localized: "Zbieraj przyspieszacz, aby zwi\u0119kszy\u0107 pr\u0119dko\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92851982336
+    m_Localized: "Zbierz os\u0142on\u0119, aby uzyska\u0107 jednorazow\u0105 ochron\u0119"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93552431104
+    m_Localized: "U\u017Cyj flary, aby zniszczy\u0107 rakiety"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94248685568
+    m_Localized: "U\u017Cyj kamikadze, aby rakiety atakowa\u0142y si\u0119 nawzajem"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94861053952
+    m_Localized: "U\u017Cyj lasera, aby szybko niszczy\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95532142592
+    m_Localized: "U\u017Cyj czarnej dziury, aby wci\u0105gn\u0105\u0107 rakiety"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3574364231128317962
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d068a70d000000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 58643238912

@@ -72,10 +72,52 @@ MonoBehaviour:
     m_Localized: "DISE\xD1O DE AUDIO"
     m_Metadata:
       m_Items: []
+  - m_Id: 80738832384
+    m_Localized: "Mu\xE9vete con la palanca"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84111052800
+    m_Localized: 'Evita los misiles
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88703815680
+    m_Localized: Recoge puntos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91434307584
+    m_Localized: Recoge el potenciador de velocidad para acelerar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92851982336
+    m_Localized: "Recoge el potenciador de escudo para una protecci\xF3n \xFAnica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93552431104
+    m_Localized: Usa el potenciador de bengala para destruir misiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94248685568
+    m_Localized: "Usa el potenciador kamikaze para que los misiles se apunten entre
+      s\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94861053952
+    m_Localized: "Usa el potenciador l\xE1ser para una destrucci\xF3n r\xE1pida"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95532142592
+    m_Localized: Usa el potenciador de agujero negro para atraer los misiles
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3574364231128317965
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d068a70d000000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 58643238912

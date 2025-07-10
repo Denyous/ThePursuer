@@ -74,7 +74,51 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 80738832384
-    m_Localized: 
+    m_Localized: "\u062A\u062D\u0631\u0643 \u0628\u0627\u0633\u062A\u062E\u062F\u0627\u0645
+      \u0639\u0635\u0627 \u0627\u0644\u062A\u062D\u0643\u0645"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84111052800
+    m_Localized: " \u062A\u062C\u0646\u0628 \u0627\u0644\u0635\u0648\u0627\u0631\u064A\u062E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88703815680
+    m_Localized: "\u0627\u062C\u0645\u0639 \u0627\u0644\u0646\u0642\u0627\u0637"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91434307584
+    m_Localized: "\u0627\u062C\u0645\u0639 \u062A\u0639\u0632\u064A\u0632 \u0627\u0644\u0633\u0631\u0639\u0629
+      \u0644\u0632\u064A\u0627\u062F\u0629 \u0627\u0644\u062A\u0633\u0627\u0631\u0639"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92851982336
+    m_Localized: "\u0627\u062C\u0645\u0639 \u062A\u0639\u0632\u064A\u0632 \u0627\u0644\u062F\u0631\u0639
+      \u0644\u0644\u062D\u0635\u0648\u0644 \u0639\u0644\u0649 \u062D\u0645\u0627\u064A\u0629
+      \u0644\u0645\u0631\u0629 \u0648\u0627\u062D\u062F\u0629"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93552431104
+    m_Localized: "\u0627\u0633\u062A\u062E\u062F\u0645 \u062A\u0639\u0632\u064A\u0632
+      \u0627\u0644\u0634\u0639\u0644\u0629 \u0644\u062A\u062F\u0645\u064A\u0631 \u0627\u0644\u0635\u0648\u0627\u0631\u064A\u062E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94248685568
+    m_Localized: "\u0627\u0633\u062A\u062E\u062F\u0645 \u062A\u0639\u0632\u064A\u0632
+      \u0627\u0644\u0643\u0627\u0645\u064A\u0643\u0627\u0632\u064A \u0644\u062C\u0639\u0644
+      \u0627\u0644\u0635\u0648\u0627\u0631\u064A\u062E \u062A\u0633\u062A\u0647\u062F\u0641
+      \u0628\u0639\u0636\u0647\u0627 \u0627\u0644\u0628\u0639\u0636\n\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94861053952
+    m_Localized: "\u0627\u0633\u062A\u062E\u062F\u0645 \u062A\u0639\u0632\u064A\u0632
+      \u0627\u0644\u0644\u064A\u0632\u0631 \u0644\u0644\u062A\u062F\u0645\u064A\u0631
+      \u0627\u0644\u0633\u0631\u064A\u0639"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95532142592
+    m_Localized: "\u0627\u0633\u062A\u062E\u062F\u0645 \u062A\u0639\u0632\u064A\u0632
+      \u0627\u0644\u062B\u0642\u0628 \u0627\u0644\u0623\u0633\u0648\u062F \u0644\u062C\u0630\u0628
+      \u0627\u0644\u0635\u0648\u0627\u0631\u064A\u062E"
     m_Metadata:
       m_Items: []
   references:
@@ -83,4 +127,6 @@ MonoBehaviour:
     - rid: 3574364231128317954
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d068a70d000000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 58643238912

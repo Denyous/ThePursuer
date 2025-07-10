@@ -72,10 +72,48 @@ MonoBehaviour:
     m_Localized: "Design de \xC1udio"
     m_Metadata:
       m_Items: []
+  - m_Id: 80738832384
+    m_Localized: Mova-se com o direcional
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84111052800
+    m_Localized: "Evite os m\xEDsseis"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88703815680
+    m_Localized: ' Colete pontos'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91434307584
+    m_Localized: Pegue o power-up de velocidade para acelerar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92851982336
+    m_Localized: "Pegue o power-up de escudo para prote\xE7\xE3o \xFAnica\n\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93552431104
+    m_Localized: "Use o power-up de sinalizador para destruir os m\xEDsseis"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94248685568
+    m_Localized: "Use o power-up kamikaze para fazer os m\xEDsseis se atacarem"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94861053952
+    m_Localized: "Use o power-up de laser para destrui\xE7\xE3o r\xE1pida"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95532142592
+    m_Localized: "Use o power-up de buraco negro para puxar os m\xEDsseis"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3574364231128317963
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d068a70d000000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 58643238912

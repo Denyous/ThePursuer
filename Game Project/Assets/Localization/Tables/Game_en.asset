@@ -57,6 +57,10 @@ MonoBehaviour:
     m_Localized: Interstitial Ads
     m_Metadata:
       m_Items: []
+  - m_Id: 19007914060787712
+    m_Localized: Revive
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

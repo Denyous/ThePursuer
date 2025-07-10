@@ -53,10 +53,17 @@ MonoBehaviour:
     m_Localized: GIOCO FINITO
     m_Metadata:
       m_Items: []
+  - m_Id: 19007914060787712
+    m_Localized: Rianimare
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3574364231128317980
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d0a8fdb704000000d0a845be040000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 5188281225216
+        - id: 5215258988544
