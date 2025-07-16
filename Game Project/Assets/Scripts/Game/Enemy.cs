@@ -169,7 +169,11 @@ public class Enemy : MonoBehaviour
                     GameOver(score, highscore);
 
                     AudioListener listener = Camera.main.GetComponent<AudioListener>();
-                    listener.enabled = true;
+
+                    if (listener is not null)
+                    {
+                        listener.enabled = true;
+                    }
                 }
             }
         }

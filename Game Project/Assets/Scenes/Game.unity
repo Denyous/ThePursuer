@@ -1201,6 +1201,7 @@ MonoBehaviour:
   enemyIndicatorPrefab: {fileID: 8371505102997875146, guid: 45873d90d6b389147956513d7704b62d, type: 3}
   ScreenBorder: 40
   VisibleDistance: 30
+  canvas: {fileID: 1999947357}
 --- !u!1 &455849287
 GameObject:
   m_ObjectHideFlags: 0
@@ -3864,8 +3865,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1165175678}
+  - component: {fileID: 1165175684}
   - component: {fileID: 1165175682}
-  - component: {fileID: 1165175683}
   - component: {fileID: 1165175679}
   - component: {fileID: 1165175680}
   - component: {fileID: 1165175681}
@@ -3962,7 +3963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interstitalAds: {fileID: 32467375}
---- !u!114 &1165175683
+--- !u!114 &1165175684
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3971,14 +3972,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1165175677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e420b9867e5f48f42a1ca4c2cb48f2a5, type: 3}
+  m_Script: {fileID: 11500000, guid: e912f1cf4926df34888647187da866be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1503693119}
-  gameOverScreen: {fileID: 1405075679}
-  reviveButton: {fileID: 1387959719}
-  UI: {fileID: 525662074}
-  reviveUsed: 0
+  uiRoot: {fileID: 1999947358}
+  canvas: {fileID: 1999947357}
 --- !u!1 &1177485361
 GameObject:
   m_ObjectHideFlags: 0
@@ -4786,7 +4784,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1165175683}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerReviveSystem, Assembly-CSharp
         m_MethodName: OnReviveButtonPressed
         m_Mode: 1
@@ -4953,9 +4951,7 @@ MonoBehaviour:
     m_LocalVariables: []
   UI: {fileID: 525662074}
   pauseIcon: {fileID: 1946800980}
-  reviveButton: {fileID: 0}
   musicSource: {fileID: 1853756936}
-  reviveSystem: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -5222,6 +5218,54 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!1 &1437113230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1437113231}
+  - component: {fileID: 1437113232}
+  m_Layer: 0
+  m_Name: PlayerReviveSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1437113231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437113230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.64307, y: -25.48691, z: -0.17079023}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1437113232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437113230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e420b9867e5f48f42a1ca4c2cb48f2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverScreen: {fileID: 1405075679}
+  reviveButton: {fileID: 1387959719}
+  UI: {fileID: 525662074}
+  reviveUsed: 0
 --- !u!1 &1439864897
 GameObject:
   m_ObjectHideFlags: 0
@@ -8150,3 +8194,4 @@ SceneRoots:
   - {fileID: 1504385651}
   - {fileID: 1553221536}
   - {fileID: 965691041}
+  - {fileID: 1437113231}

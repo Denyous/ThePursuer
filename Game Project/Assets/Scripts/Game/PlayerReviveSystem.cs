@@ -5,7 +5,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerReviveSystem : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     public GameObject gameOverScreen;
     public GameObject reviveButton;
     public GameObject UI;
@@ -27,6 +27,11 @@ public class PlayerReviveSystem : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void OnReviveButtonPressed()

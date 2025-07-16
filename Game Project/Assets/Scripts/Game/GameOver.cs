@@ -13,28 +13,22 @@ public class GameOver : MonoBehaviour
     public LocalizedString LocalizedScore;
     public GameObject UI;
     public GameObject pauseIcon;
-    public GameObject reviveButton;
     private int _score;
     private int _highScore;
     AudioManager audioManager;
     public AudioSource musicSource;
-    public PlayerReviveSystem reviveSystem;
     
     public void Setup(int score, int highscore)
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         UI.SetActive(false);
-        
 
         _score = score;
         _highScore = highscore;
         
         musicSource.Pause();
         Invoke("Wait1Second", 1f);
-
-
-       
     }
 
     void Wait1Second()
