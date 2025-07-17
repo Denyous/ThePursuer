@@ -335,14 +335,16 @@ public class MainMenuController : MonoBehaviour
         ClickSound();
         if (PlayerPrefs.GetInt("TutorialPlayed,", 0) == 0)
         {
+            AdsManager.instance.DestroyBanner();
+
             PlayerPrefs.SetInt("TutorialPlayed,", 1);
             PlayerPrefs.Save();
             
             SceneManager.LoadScene("Tutorial");
-            
         }
         else
         {
+            AdsManager.instance.DestroyBanner();
             SceneManager.LoadScene("Game");
         }
     }

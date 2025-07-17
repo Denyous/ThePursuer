@@ -1,10 +1,6 @@
-using com.unity3d.mediation;
-using System;
 using System.Threading.Tasks;
-using Unity.Services.Core;
 using Unity.Services.LevelPlay;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class AdsManager : MonoBehaviour
 {
@@ -42,34 +38,15 @@ public class AdsManager : MonoBehaviour
 
     private async Task InitializeAdsAsync()
     {
-        Debug.Log("[LevelPlaySample] LevelPlay.ValidateIntegration");
         Unity.Services.LevelPlay.LevelPlay.ValidateIntegration();
-
-        Debug.Log($"[LevelPlaySample] Unity version {Unity.Services.LevelPlay.LevelPlay.UnityVersion}");
-        Debug.Log("[LevelPlaySample] Register initialization callbacks");
-
-        var initTask = new TaskCompletionSource<bool>();
 
         Unity.Services.LevelPlay.LevelPlay.OnInitSuccess += SdkInitializationCompletedEvent;
 
         Unity.Services.LevelPlay.LevelPlay.OnInitFailed += SdkInitializationFailedEvent;
 
-        Debug.Log("[LevelPlaySample] LevelPlay SDK initialization");
         Unity.Services.LevelPlay.LevelPlay.SetMetaData("is_test_suite", "enable");
         Unity.Services.LevelPlay.LevelPlay.SetConsent(true);
         Unity.Services.LevelPlay.LevelPlay.Init(AppKey);
-
-        // Wait for initialization to complete
-        bool success = await initTask.Task;
-
-        if (success)
-        {
-            await EnableAdsAsync();
-        }
-        else
-        {
-            Debug.LogError("Ad initialization failed, not enabling ads.");
-        }
     }
 
     private async Task EnableAdsAsync()
@@ -115,8 +92,6 @@ public class AdsManager : MonoBehaviour
         bannerAd.LoadAd();
         interstitialAd.LoadAd();
         rewardedVideoAd.LoadAd();
-
-        await Task.CompletedTask; // Keep it async-compatible
     }
 
     #region Show Ads Functions
@@ -140,15 +115,10 @@ public class AdsManager : MonoBehaviour
         {
             //Debug.Log("[LevelPlaySample] Show Banner Ad");
             bannerAd.ShowAd();
-            BannerScale bannerScaler = GameObject.FindAnyObjectByType<BannerScale>();
 
             if (mainMenuController is not null)
             {
                 mainMenuController.AdjustUIForBannerAds();
-            }
-            else if (bannerScaler is not null)
-            {
-                bannerScaler.OnBannerShown();
             }
         }
         else
@@ -336,5 +306,23 @@ public class AdsManager : MonoBehaviour
         bannerAd?.DestroyAd();
         interstitialAd?.DestroyAd();
         rewardedVideoAd?.DestroyAd();
+    }
+
+    public void DestroyBanner()
+    {
+        bannerAd.HideAd();
+        isAdsEnabled = false;
+    }
+
+    public void ShowBanner()
+    {
+        bannerAd.ShowAd();
+        isAdsEnabled = true;
+    }
+
+    public void CreateBanner()
+    {
+        bannerAd = new Unity.Services.LevelPlay.LevelPlayBannerAd(BannerAdUnitId);
+        bannerAd.LoadAd();
     }
 }

@@ -20,8 +20,6 @@ public class CollectibleController : MonoBehaviour
 
     [SerializeField] private float ScreenBorder;
     [SerializeField] private float VisibleDistance;
-    private float firstScreenBorder;
-    public Canvas canvas;
 
     private void Start()
     {
@@ -31,30 +29,10 @@ public class CollectibleController : MonoBehaviour
         enemyIcon.SetActive(false);
         icon = Instantiate(collectiblePrefab, GetIconPosition(nearestStar), Quaternion.identity);
         icon.SetActive(false);
-        firstScreenBorder = ScreenBorder;
-    }
-
-    float GetBannerHeightInUIUnits()
-    {
-        float dpi = Screen.dpi;
-        if (dpi == 0) dpi = 160f; // fallback for editor
-
-        float bannerHeightPx = 50f * dpi / 160f; // 50dp standard height
-        float scaleFactor = canvas != null ? canvas.scaleFactor : 1f;
-        return bannerHeightPx / scaleFactor;
     }
 
     private void LateUpdate()
     {
-        if (AdsManager.instance.isAdsEnabled)
-        {
-            ScreenBorder = GetBannerHeightInUIUnits();
-        }
-        else
-        {
-            ScreenBorder = firstScreenBorder;
-        }
-
         nearestStar = GetClosestGameObject(Player.transform, stars);
 
         if (Player != null && nearestStar != null && nearestStar.activeInHierarchy)
@@ -174,11 +152,11 @@ public class CollectibleController : MonoBehaviour
 
         if (viewportPosition.x < 0) 
         {
-            screenPosition.x = firstScreenBorder;
+            screenPosition.x = ScreenBorder;
         }
         else if (viewportPosition.x > 1) 
         {
-            screenPosition.x = Screen.width - firstScreenBorder;
+            screenPosition.x = Screen.width - ScreenBorder;
         }
         else
         {
@@ -191,7 +169,7 @@ public class CollectibleController : MonoBehaviour
         }
         else if (viewportPosition.y > 1)
         {
-            screenPosition.y = Screen.height - firstScreenBorder;
+            screenPosition.y = Screen.height - ScreenBorder;
         }
         else
         {
