@@ -15,17 +15,11 @@ public class LevelPlaySample : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("[LevelPlaySample] LevelPlay.ValidateIntegration");
         LevelPlay.ValidateIntegration();
 
-        Debug.Log($"[LevelPlaySample] Unity version {LevelPlay.UnityVersion}");
-
-        Debug.Log("[LevelPlaySample] Register initialization callbacks");
         LevelPlay.OnInitSuccess += SdkInitializationCompletedEvent;
         LevelPlay.OnInitFailed += SdkInitializationFailedEvent;
 
-        // SDK init
-        Debug.Log("[LevelPlaySample] LevelPlay SDK initialization");
         LevelPlay.Init(AdConfig.AppKey);
     }
 

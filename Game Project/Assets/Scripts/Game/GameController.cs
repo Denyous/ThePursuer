@@ -24,7 +24,6 @@ public class GameController : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
-        AdsManager.instance.ShowBanner();
     }
 
     //Creating explosion for pooledEnemies 
