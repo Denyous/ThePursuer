@@ -45,6 +45,13 @@ public class PlayerReviveSystem : MonoBehaviour
         player.transform.position = deathPosition;
         UI.SetActive(true);
         UISettings();
+
+        AudioListener listener = Camera.main.GetComponent<AudioListener>();
+
+        if (listener is not null)
+        {
+            listener.enabled = false;
+        }
     }
 
     public void KillPlayer()

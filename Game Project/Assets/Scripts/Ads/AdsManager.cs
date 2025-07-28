@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
-    private Unity.Services.LevelPlay.LevelPlayBannerAd bannerAd;
     private Unity.Services.LevelPlay.LevelPlayInterstitialAd interstitialAd;
     private Unity.Services.LevelPlay.LevelPlayRewardedAd rewardedVideoAd;
     public bool isAdsEnabled = false;
 
     public static AdsManager instance;
 
-    private const string BannerAdUnitId = "b1mimusvm1ezh4dl"; 
     private const string InterstitialAdUnitId = "7gfojay1ka2sjetm"; 
     private const string RewardedAdUnitId = "q62bk3sr6ki7vauw"; 
     private const string AppKey = "227bad085";
@@ -36,6 +34,7 @@ public class AdsManager : MonoBehaviour
         InitializeAds();
     }
 
+    
     private void InitializeAds()
     {
         Unity.Services.LevelPlay.LevelPlay.ValidateIntegration();
@@ -53,7 +52,6 @@ public class AdsManager : MonoBehaviour
         Unity.Services.LevelPlay.LevelPlay.OnImpressionDataReady += ImpressionDataReadyEvent;
 
         rewardedVideoAd = new Unity.Services.LevelPlay.LevelPlayRewardedAd(RewardedAdUnitId);
-        bannerAd = new Unity.Services.LevelPlay.LevelPlayBannerAd(BannerAdUnitId);
         interstitialAd = new Unity.Services.LevelPlay.LevelPlayInterstitialAd(InterstitialAdUnitId);
 
         // Register Rewarded Events
@@ -66,16 +64,6 @@ public class AdsManager : MonoBehaviour
         rewardedVideoAd.OnAdClosed += RewardedVideoOnAdClosedEvent;
         rewardedVideoAd.OnAdInfoChanged += RewardedVideoOnAdInfoChangedEvent;
 
-        // Register Banner Events
-        bannerAd.OnAdLoaded += BannerOnAdLoadedEvent;
-        bannerAd.OnAdLoadFailed += BannerOnAdLoadFailedEvent;
-        bannerAd.OnAdDisplayed += BannerOnAdDisplayedEvent;
-        bannerAd.OnAdDisplayFailed += BannerOnAdDisplayFailedEvent;
-        bannerAd.OnAdClicked += BannerOnAdClickedEvent;
-        bannerAd.OnAdCollapsed += BannerOnAdCollapsedEvent;
-        bannerAd.OnAdLeftApplication += BannerOnAdLeftApplicationEvent;
-        bannerAd.OnAdExpanded += BannerOnAdExpandedEvent;
-
         // Register Interstitial Events
         interstitialAd.OnAdLoaded += InterstitialOnAdLoadedEvent;
         interstitialAd.OnAdLoadFailed += InterstitialOnAdLoadFailedEvent;
@@ -85,10 +73,7 @@ public class AdsManager : MonoBehaviour
         interstitialAd.OnAdClosed += InterstitialOnAdClosedEvent;
         interstitialAd.OnAdInfoChanged += InterstitialOnAdInfoChangedEvent;
 
-        // Load all ads
-        bannerAd.LoadAd();
-        interstitialAd.LoadAd();
-        rewardedVideoAd.LoadAd();
+        LoadAds();
     }
 
     #region Show Ads Functions
@@ -103,21 +88,7 @@ public class AdsManager : MonoBehaviour
             //Debug.LogWarning("[LevelPlaySample] Ads are not enabled yet. Cannot show Interstitial Ad.");
         }
     }
-    public void ShowBannerAd()
-    {
-        if (isAdsEnabled)
-        {
-            bannerAd.ShowAd();
-            if (mainMenuController is not null)
-            {
-                mainMenuController.AdjustUIForBannerAds();
-            }
-        }
-        else
-        {
-            //Debug.LogWarning("[LevelPlaySample] Ads are not enabled yet. Cannot show Interstitial Ad.");
-        }
-    }
+    
     public void ShowRewardedAd()
     {
         if (rewardedVideoAd.IsAdReady())
@@ -135,8 +106,8 @@ public class AdsManager : MonoBehaviour
 
     private void SdkInitializationCompletedEvent(Unity.Services.LevelPlay.LevelPlayConfiguration config)
     {
-        EnableAds();
         isAdsEnabled = true;
+        EnableAds();
     }
     void SdkInitializationFailedEvent(Unity.Services.LevelPlay.LevelPlayInitError error)
     {
@@ -203,58 +174,21 @@ public class AdsManager : MonoBehaviour
     }
     #endregion
 
-    #region Banner Events
-    void BannerOnAdLoadedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-    void BannerOnAdLoadFailedEvent(Unity.Services.LevelPlay.LevelPlayAdError error)
-    {
-    }
-    void BannerOnAdClickedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-    void BannerOnAdDisplayedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-#pragma warning disable 0618
-    void BannerOnAdDisplayFailedEvent(Unity.Services.LevelPlay.LevelPlayAdDisplayInfoError adInfoError)
-    {
-    }
-#pragma warning restore 0618
-    void BannerOnAdCollapsedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-    void BannerOnAdLeftApplicationEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-    void BannerOnAdExpandedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-    #endregion
-
     #region Impression Data Event
     void ImpressionDataReadyEvent(LevelPlayImpressionData impressionData)
     {
     }
 
     #endregion
-
     private void OnDisable()
     {
-        bannerAd?.DestroyAd();
         interstitialAd?.DestroyAd();
         rewardedVideoAd?.DestroyAd();
     }
 
-    public void HideBanner()
+    public void LoadAds()
     {
-        bannerAd.HideAd();
-        Debug.Log("Hide Banner Ad");
-    }
-
-    public void ShowBanner()
-    {
-        bannerAd.ShowAd();
-        Debug.Log("Show Banner Ad");
+        interstitialAd.LoadAd();
+        rewardedVideoAd.LoadAd();
     }
 }

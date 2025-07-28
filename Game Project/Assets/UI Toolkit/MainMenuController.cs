@@ -337,7 +337,7 @@ public class MainMenuController : MonoBehaviour
         {
             PlayerPrefs.SetInt("TutorialPlayed,", 1);
             PlayerPrefs.Save();
-            
+
             SceneManager.LoadScene("Tutorial");
         }
         else
