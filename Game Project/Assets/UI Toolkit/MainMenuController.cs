@@ -81,30 +81,7 @@ public class MainMenuController : MonoBehaviour
     {
         GetReferencesForPanels();
         originalBottom = MainMenu.resolvedStyle.bottom;
-        if (AdsManager.instance.isAdsEnabled)
-        {
-            AdjustUIForBannerAds();
-        }
     }
-    public void AdjustUIForBannerAds()
-    {
-        if (MainMenu is not null)
-        {
-            MainMenu.style.bottom = originalBottom + GetEstimatedBannerHeightInUIUnits();
-        }
-    }
-
-    private float GetEstimatedBannerHeightInUIUnits()
-    {
-        float dpi = Screen.dpi;
-        if (dpi <= 0) dpi = 160f;
-
-        float bannerHeightPixels = 50f * dpi / 160f;
-
-        // In UI Toolkit, layout uses raw pixels, so just return it
-        return bannerHeightPixels;
-    }
-
 
     //SetSound() should be in the start because audio mixer should be initialized
     private void Start()
