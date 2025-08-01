@@ -6,15 +6,8 @@ public class AdsManager : MonoBehaviour
 {
     private Unity.Services.LevelPlay.LevelPlayInterstitialAd interstitialAd;
     private Unity.Services.LevelPlay.LevelPlayRewardedAd rewardedVideoAd;
-    public bool isAdsEnabled = false;
 
     public static AdsManager instance;
-
-    private const string InterstitialAdUnitId = "7gfojay1ka2sjetm"; 
-    private const string RewardedAdUnitId = "q62bk3sr6ki7vauw"; 
-    private const string AppKey = "227bad085";
-
-    public MainMenuController mainMenuController;
 
     private void OnEnable()
     {
@@ -44,15 +37,15 @@ public class AdsManager : MonoBehaviour
 
         //Unity.Services.LevelPlay.LevelPlay.SetMetaData("is_test_suite", "enable");
         //Unity.Services.LevelPlay.LevelPlay.SetConsent(true);
-        Unity.Services.LevelPlay.LevelPlay.Init(AppKey);
+        Unity.Services.LevelPlay.LevelPlay.Init(AdConfig.AppKey);
     }
 
     private void EnableAds()
     {
         Unity.Services.LevelPlay.LevelPlay.OnImpressionDataReady += ImpressionDataReadyEvent;
 
-        rewardedVideoAd = new Unity.Services.LevelPlay.LevelPlayRewardedAd(RewardedAdUnitId);
-        interstitialAd = new Unity.Services.LevelPlay.LevelPlayInterstitialAd(InterstitialAdUnitId);
+        rewardedVideoAd = new Unity.Services.LevelPlay.LevelPlayRewardedAd(AdConfig.RewardedVideoAdUnitId);
+        interstitialAd = new Unity.Services.LevelPlay.LevelPlayInterstitialAd(AdConfig.InterstitalAdUnitId);
 
         // Register Rewarded Events
         rewardedVideoAd.OnAdLoaded += RewardedVideoOnLoadedEvent;
@@ -106,7 +99,6 @@ public class AdsManager : MonoBehaviour
 
     private void SdkInitializationCompletedEvent(Unity.Services.LevelPlay.LevelPlayConfiguration config)
     {
-        isAdsEnabled = true;
         EnableAds();
     }
     void SdkInitializationFailedEvent(Unity.Services.LevelPlay.LevelPlayInitError error)
@@ -180,6 +172,7 @@ public class AdsManager : MonoBehaviour
     }
 
     #endregion
+
     private void OnDisable()
     {
         interstitialAd?.DestroyAd();
