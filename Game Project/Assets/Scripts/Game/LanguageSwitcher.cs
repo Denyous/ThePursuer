@@ -14,11 +14,12 @@ public class LanguageSwitcher : MonoBehaviour
     [SerializeField] private TMP_FontAsset HindiFont;
     [SerializeField] private TMP_FontAsset DefaultFont;
 
-    private void OnEnable()
+    private void Awake()
     {
         string languageCode = PlayerPrefs.GetString("Language");
         SetLanguage(languageCode);
     }
+
     public void SetLanguage(string languageCode)
     {
         StartCoroutine(SetLocale(languageCode));

@@ -25,23 +25,16 @@ public class TutorialHandler : MonoBehaviour
 
     [Header("TextMeshs")]
 
-    [SerializeField] TextMeshProUGUI text0 = new TextMeshProUGUI();
-    [SerializeField] TextMeshProUGUI text1 = new TextMeshProUGUI();
-    [SerializeField] TextMeshProUGUI text2 = new TextMeshProUGUI();
-    [SerializeField] TextMeshProUGUI text3 = new TextMeshProUGUI();
-    [SerializeField] TextMeshProUGUI text4 = new TextMeshProUGUI();
-    [SerializeField] TextMeshProUGUI text5 = new TextMeshProUGUI();
-    [SerializeField] TextMeshProUGUI text6 = new TextMeshProUGUI();
-    [SerializeField] TextMeshProUGUI text7 = new TextMeshProUGUI();
-    [SerializeField] TextMeshProUGUI text8 = new TextMeshProUGUI();
-    [SerializeField] TextMeshProUGUI text9 = new TextMeshProUGUI();
-
-
-   
-    private void Start()
-    {
-        
-    }
+    [SerializeField] TextMeshProUGUI text0;
+    [SerializeField] TextMeshProUGUI text1;
+    [SerializeField] TextMeshProUGUI text2;
+    [SerializeField] TextMeshProUGUI text3;
+    [SerializeField] TextMeshProUGUI text4;
+    [SerializeField] TextMeshProUGUI text5;
+    [SerializeField] TextMeshProUGUI text6;
+    [SerializeField] TextMeshProUGUI text7;
+    [SerializeField] TextMeshProUGUI text8;
+    [SerializeField] TextMeshProUGUI text9;
 
     public void NextOnClicked()
     {
@@ -52,7 +45,6 @@ public class TutorialHandler : MonoBehaviour
             
             tutorialImage.sprite = tutorialSprites[count];
             tutorialText.text = tutorialTexts[count];
-            
 
             if (count == 9)
             {
@@ -69,14 +61,12 @@ public class TutorialHandler : MonoBehaviour
             count--;
             tutorialImage.sprite = tutorialSprites[(count)];
             tutorialText.text = tutorialTexts[count];
-
         }
     }
 
     public void OkButtonClicked()
     {
         Invoke("GoToMenu", 0.1f);
-
     }
 
     void GoToMenu()
@@ -84,12 +74,10 @@ public class TutorialHandler : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-
     public void SkipButtonOnClicked()
     {
         tutorialSkip.SetActive(true);
     }
-
 
     public void YesButtonClicked()
     {
@@ -103,7 +91,6 @@ public class TutorialHandler : MonoBehaviour
 
     public void GoToTutorialButtonClicked()
     {
-        
         tutorialWelcome.SetActive(false);
         tutorialTemplate.SetActive(true);
         
@@ -112,10 +99,8 @@ public class TutorialHandler : MonoBehaviour
         tutorialText.text = tutorialTexts[count];
     }
 
-   
     void TutorialTextReplace()
     {
-
         switch (count)
         {
             case 0: tutorialTexts[0] = text0.text; break;
@@ -132,10 +117,4 @@ public class TutorialHandler : MonoBehaviour
             default: break;
         }
     }
-
-
-    
-
-
-    
 }

@@ -2225,19 +2225,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textFields:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1322886602}
-  - {fileID: 1130766095}
-  - {fileID: 282803981}
-  - {fileID: 1477803249}
   - {fileID: 252088497}
-  - {fileID: 0}
+  - {fileID: 282803981}
+  - {fileID: 1044694845}
+  - {fileID: 1779991778}
+  - {fileID: 1322886602}
+  - {fileID: 1809958520}
+  - {fileID: 1858748418}
+  - {fileID: 1388037637}
+  - {fileID: 57555915}
+  - {fileID: 308568819}
+  - {fileID: 1163720399}
+  - {fileID: 1473305513}
+  - {fileID: 423286617}
+  - {fileID: 1424720100}
+  - {fileID: 1695335782}
+  - {fileID: 580765072}
+  - {fileID: 1431509499}
+  - {fileID: 748383833}
+  - {fileID: 1130766095}
+  - {fileID: 1801312649}
+  - {fileID: 765686642}
+  - {fileID: 1477803249}
   ArabicFont: {fileID: 11400000, guid: 10e1b4c456818554e9280d3c6630ccff, type: 2}
   ChineseFont: {fileID: 11400000, guid: 54af8eddc2c33b54f989b009e202c793, type: 2}
   JapaneseFont: {fileID: 11400000, guid: f28c0b05fa3ebd549a1df65624612e11, type: 2}
   HindiFont: {fileID: 11400000, guid: c104c89e77faa3845800fb8e63dff23f, type: 2}
-  DefaultFont: {fileID: 11400000, guid: 199581a40fc72584090c334a83368ddb, type: 2}
+  DefaultFont: {fileID: 11400000, guid: 764727a2bfa49e24bb3aa425380a5be9, type: 2}
 --- !u!1 &564409113
 GameObject:
   m_ObjectHideFlags: 0
