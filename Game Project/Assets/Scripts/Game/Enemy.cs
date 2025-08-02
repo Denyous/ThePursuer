@@ -168,12 +168,12 @@ public class Enemy : MonoBehaviour
                     GameStats.instance.AddDeath();
                     GameOver(score, highscore);
 
-                    AudioListener listener = Camera.main.GetComponent<AudioListener>();
+                    //AudioListener listener = Camera.main.GetComponent<AudioListener>();
 
-                    if (listener is not null)
-                    {
-                        listener.enabled = true;
-                    }
+                    //if (listener is not null)
+                    //{
+                    //    listener.enabled = true;
+                    //}
                 }
             }
         }
