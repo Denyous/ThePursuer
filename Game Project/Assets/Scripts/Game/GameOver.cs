@@ -32,12 +32,13 @@ public class GameOver : MonoBehaviour
 
         _score = score;
         _highScore = highscore;
-        
-        musicSource.Pause();
+
+        if (musicSource is not null)
+        {
+            musicSource.Pause();
+        }
+
         Invoke("Wait1Second", 1f);
-
-
-       
     }
 
     void Wait1Second()
@@ -57,8 +58,8 @@ public class GameOver : MonoBehaviour
 
     void TimerScoreText()
     {
-        int minutes = Mathf.FloorToInt(GameStats.elapsedTime / 60f);
-        int seconds = Mathf.FloorToInt(GameStats.elapsedTime % 60f);
+        int minutes = Mathf.FloorToInt(GameStats.instance.elapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(GameStats.instance.elapsedTime % 60f);
         timerScore.text = $"{minutes:00}:{seconds:00}";
     }
 }

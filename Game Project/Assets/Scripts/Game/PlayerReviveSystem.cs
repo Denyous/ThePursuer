@@ -12,9 +12,7 @@ public class PlayerReviveSystem : MonoBehaviour
 
 
     public bool reviveUsed = false;
-
     private Vector3 deathPosition; // ✅ Eklendi
-
     public static PlayerReviveSystem instance;
 
     private void OnEnable()

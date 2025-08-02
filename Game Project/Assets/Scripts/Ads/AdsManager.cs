@@ -26,7 +26,6 @@ public class AdsManager : MonoBehaviour
     {
         InitializeAds();
     }
-
     
     private void InitializeAds()
     {

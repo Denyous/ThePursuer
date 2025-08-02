@@ -5,29 +5,36 @@ using UnityEngine;
 
 public class GameStats : MonoBehaviour
 {
-    public static int deathCount = 0;
-    [SerializeField] GameObject interstitalAds;
-    
+    public int deathCount;
     public TextMeshProUGUI timerText; // UI'deki Text nesnesi
-    public static float elapsedTime = 0f;
-    public static bool isRunning = false;
+    public float elapsedTime = 0f;
+    public bool isRunning = false;
+    public static GameStats instance;
+    public int adsNumber;
 
+    private void Awake()
+    {
+        if (instance is null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        deathCount = 0;
+        System.Random random = new System.Random();
+        adsNumber = random.Next(3, 6);
+    }
 
     private void Start()
     {
         StartTimer();
-        
     }
-
     
     private void Update()
     {
-        if (deathCount == 3)
-        {
-            deathCount = 0;
-            interstitalAds.SetActive(true);
-        }
-
         if (isRunning)
         {
             elapsedTime += Time.deltaTime;
@@ -42,18 +49,16 @@ public class GameStats : MonoBehaviour
         timerText.text = $"{minutes:00}:{seconds:00}";
     }
 
-    public static void AddDeath()
+    public void AddDeath()
     {
         deathCount++;
         StopTimer();     
-        Debug.Log("Ölüm Sayısı: " + deathCount);
-    }
 
-  
-
-    public void SkipButton()
-    {
-        interstitalAds.SetActive(false);
+        if (deathCount == adsNumber)
+        {
+            deathCount = 0;
+            AdsManager.instance.ShowInterstitialAd();
+        }
     }
 
     public void StartTimer()
@@ -62,13 +67,19 @@ public class GameStats : MonoBehaviour
         elapsedTime = 0f;
     }
 
-    public static void StopTimer()
+    public void StopTimer()
     {
         isRunning = false;
     }
 
-    public static float GetElapsedTime()
+    public float GetElapsedTime()
     {
         return elapsedTime;
+    }
+
+    public void ResetDeathCount()
+    {
+        deathCount = 0;
+        PlayerPrefs.SetInt("DeathCount", deathCount);
     }
 }
