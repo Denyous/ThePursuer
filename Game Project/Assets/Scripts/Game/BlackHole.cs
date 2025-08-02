@@ -8,7 +8,7 @@ public class BlackHole : MonoBehaviour
 
     public GameObject tapMessageUI;
 
-    public GamePanelSetting pauseIcon;
+    private GamePanelSetting pauseIcon;
 
     public GameObject UI;
 

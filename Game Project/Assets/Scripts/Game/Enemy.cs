@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     public static event System.Action<GameObject> OnEnemyDied;
 
     //Player
-    private GameObject target;
+    private GameObject player;
     private GameOver GameOverScreen;
     
 
@@ -32,17 +32,16 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         fire = Instantiate(rocketFire, transform, false);
         fire.transform.localPosition = new Vector3(0f, -2.1f, 1f);
-       
     }
 
     #region Follow Player Logic
     //Enemies follow player
     private void FixedUpdate()
     {
-        if (target != null)
+        if (player != null)
         {
             rb.velocity = speed * Time.fixedDeltaTime * 15f * transform.up;
-            Vector2 direction = (target.transform.position - transform.position).normalized;
+            Vector2 direction = (player.transform.position - transform.position).normalized;
             float rotationSteer = Vector3.Cross(transform.up, direction).z;
             rb.angularVelocity = rotationSteer * steer * 10f;
         }
@@ -60,7 +59,7 @@ public class Enemy : MonoBehaviour
 
     public void SetTarget(GameObject newTarget)
     {
-        target = newTarget;
+        player = newTarget;
     }
     public void SetSpeed(float speed)
     {
@@ -128,14 +127,14 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("kalkan"))
         {
-            Player player = target.gameObject.GetComponent<Player>();
+            Player localPlayer = player.gameObject.GetComponent<Player>();
             
-            player.Shield = false;
+            localPlayer.Shield = false;
 
             audioManager.SFXPlayOneShot(audioManager.shieldImpactSFX);
             audioManager.SFXPlayOneShot(audioManager.explosionSFX);
 
-            player.ChangeShieldState();
+            localPlayer.ChangeShieldState();
 
             Die(false, false, false, false, true);
         }
@@ -162,13 +161,19 @@ public class Enemy : MonoBehaviour
                         PlayerPrefs.SetInt("HighScore", highscore);
                     }
 
-                    target.gameObject.SetActive(false);
+                    PlayerReviveSystem.instance.PlayerDiedLoaction();
+
+                    this.player.gameObject.SetActive(false);
                     gameObject.SetActive(false);
-                    GameStats.AddDeath();
+                    GameStats.instance.AddDeath();
                     GameOver(score, highscore);
 
                     AudioListener listener = Camera.main.GetComponent<AudioListener>();
-                    listener.enabled = true;
+
+                    if (listener is not null)
+                    {
+                        listener.enabled = true;
+                    }
                 }
             }
         }

@@ -1,47 +1,86 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerReviveSystem : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     public GameObject gameOverScreen;
     public GameObject reviveButton;
     public GameObject UI;
-    
+
 
     public bool reviveUsed = false;
 
     private Vector3 deathPosition; // ✅ Eklendi
 
-    private void Update()
+    public static PlayerReviveSystem instance;
+
+    private void OnEnable()
     {
-        if (player != null)
+        if (instance == null)
         {
-            PlayerDiedLoaction();
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
-    public void OnReviveButtonPressed()
+
+    private void Awake()
     {
-        UıSettings();
-        RevivePlayer();
-        GameStats.isRunning = true; // Timer countiniue
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-   
+    public void OnReviveButtonPressed()
+    {
+        AdsManager.instance.ShowRewardedAd();
+    }
 
     public void RevivePlayer()
     {
         player.SetActive(true);
-        player.transform.position = deathPosition; // ✅ Aynı noktada doğ
+        player.transform.position = deathPosition;
         UI.SetActive(true);
+        UISettings();
+
+        AudioListener listener = Camera.main.GetComponent<AudioListener>();
+
+        if (listener is not null)
+        {
+            listener.enabled = false;
+        }
     }
 
-    void UıSettings()
+    public void KillPlayer()
+    {
+        int highscore = PlayerPrefs.GetInt("HighScore");
+        int score;
+        GameOver GameOverScreen = gameOverScreen.GetComponent<GameOver>();
+        Player playerScript = player.GetComponent<Player>();
+        score = playerScript.GetScore();
+
+        if (highscore < score)
+        {
+            highscore = score;
+            PlayerPrefs.SetInt("HighScore", highscore);
+        }
+
+        GameOverScreen.Setup(score, highscore);
+        GameStats.instance.AddDeath();
+        gameOverScreen.SetActive(true);
+        reviveButton.SetActive(false);
+        player.SetActive(false);
+        reviveUsed = false;
+    }
+
+    public void UISettings()
     {
         reviveUsed = true;
 
-        GameStats.deathCount = 0;
+        GameStats.instance.ResetDeathCount();
 
         gameOverScreen.SetActive(false);
 
@@ -57,7 +96,7 @@ public class PlayerReviveSystem : MonoBehaviour
 
     public void PlayerDiedLoaction()
     {
-        deathPosition = player.transform.position; // ✅ Ölüm konumunu kaydet
+        deathPosition = player.transform.position;
     }
 }
 

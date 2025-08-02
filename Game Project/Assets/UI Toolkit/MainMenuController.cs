@@ -75,10 +75,14 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Font HindiFont;
     [SerializeField] private Font DefaultFont;
 
+    private float originalBottom;
+
     private void Awake()
     {
         GetReferencesForPanels();
+        originalBottom = MainMenu.resolvedStyle.bottom;
     }
+
     //SetSound() should be in the start because audio mixer should be initialized
     private void Start()
     {
@@ -310,9 +314,8 @@ public class MainMenuController : MonoBehaviour
         {
             PlayerPrefs.SetInt("Tutorialplayed,", 0);
             PlayerPrefs.Save();
-            
+
             SceneManager.LoadScene("Tutorial");
-            
         }
         else
         {
