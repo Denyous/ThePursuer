@@ -26,7 +26,6 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    //Creating explosion for pooledEnemies 
     public void HandleCollision(Vector3 position, bool enemiesCollideWithEachOther, bool BlackHole)
     {
         if (enemiesCollideWithEachOther)

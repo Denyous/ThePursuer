@@ -26,8 +26,12 @@ public class GameOver : MonoBehaviour
 
         _score = score;
         _highScore = highscore;
-        
-        musicSource.Pause();
+
+        if (musicSource is not null)
+        {
+            musicSource.Pause();
+        }
+
         Invoke("Wait1Second", 1f);
     }
 

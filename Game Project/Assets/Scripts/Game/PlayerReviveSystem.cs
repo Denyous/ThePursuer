@@ -69,7 +69,7 @@ public class PlayerReviveSystem : MonoBehaviour
         }
 
         GameOverScreen.Setup(score, highscore);
-        GameStats.AddDeath();
+        GameStats.instance.AddDeath();
         gameOverScreen.SetActive(true);
         reviveButton.SetActive(false);
         player.SetActive(false);
@@ -80,7 +80,7 @@ public class PlayerReviveSystem : MonoBehaviour
     {
         reviveUsed = true;
 
-        GameStats.deathCount = 0;
+        GameStats.instance.ResetDeathCount();
 
         gameOverScreen.SetActive(false);
 

@@ -23,7 +23,6 @@ public class GamePanelSetting : MonoBehaviour
     public Image fadeImage;
     public float fadeDuration = 1.5f;
 
-
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -57,8 +56,6 @@ public class GamePanelSetting : MonoBehaviour
 
     IEnumerator FadeOut()
     {
-        
-        
         float timer = 0f;
         Color color = fadeImage.color;
 
@@ -76,9 +73,6 @@ public class GamePanelSetting : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-
-
-
     public void MainMenu()
     {
         ClickSound();
@@ -86,8 +80,6 @@ public class GamePanelSetting : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
-
-
 
     void pauseIconFalse()
     {
@@ -139,5 +131,4 @@ public class GamePanelSetting : MonoBehaviour
     {
         audioManager.SFXPlayOneShot(audioManager.buttonClickSFX);
     }
-
 }

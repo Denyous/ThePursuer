@@ -1,29 +1,48 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameStats : MonoBehaviour
 {
-    public static int deathCount = 0;
-    [SerializeField] GameObject interstitalAds;
+    public int deathCount;
+    System.Random random = new System.Random();
+    public static GameStats instance;
 
-    private void Update()
+    int number = 0;
+
+    private void Awake()
     {
-        if (deathCount == 3)
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        PlayerPrefs.SetInt("DeathCount", 0);
+        deathCount = PlayerPrefs.GetInt("DeathCount", 0);
+        number = random.Next(3, 7);
+    }
+
+    public void AddDeath()
+    {
+        deathCount++;
+        PlayerPrefs.SetInt("DeathCount", deathCount);
+
+        if (deathCount == number)
         {
             deathCount = 0;
+            PlayerPrefs.SetInt("DeathCount", deathCount);
             AdsManager.instance.ShowInterstitialAd();
         }
     }
 
-    public static void AddDeath()
+    public void ResetDeathCount()
     {
-        deathCount++;
-        Debug.Log("Ölüm Sayısı: " + deathCount);
-    }
-
-    public void SkipButton()
-    {
-        interstitalAds.SetActive(false);
+        deathCount = 0;
+        PlayerPrefs.SetInt("DeathCount", deathCount);
     }
 }
