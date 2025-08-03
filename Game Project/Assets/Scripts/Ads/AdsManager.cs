@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Unity.Services.LevelPlay;
 using UnityEngine;
@@ -109,9 +110,17 @@ public class AdsManager : MonoBehaviour
     #region Rewarded Events
     void RewardedVideoOnLoadedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
     {
+        if (PlayerReviveSystem.instance is not null)
+        {
+            PlayerReviveSystem.instance.ShowReviveButton();
+        }
     }
     void RewardedVideoOnAdLoadFailedEvent(Unity.Services.LevelPlay.LevelPlayAdError error)
     {
+        if (PlayerReviveSystem.instance is not null)
+        {
+            PlayerReviveSystem.instance.HideReviveButton();
+        }
     }
     void RewardedVideoOnAdDisplayedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
     {

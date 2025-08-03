@@ -43,7 +43,7 @@ public class PlayerReviveSystem : MonoBehaviour
         player.transform.position = deathPosition;
         UI.SetActive(true);
         UISettings();
-
+        GameStats.ResumeTimer();
         AudioListener listener = Camera.main.GetComponent<AudioListener>();
 
         if (listener is not null)
@@ -67,7 +67,7 @@ public class PlayerReviveSystem : MonoBehaviour
         }
 
         GameOverScreen.Setup(score, highscore);
-        GameStats.instance.AddDeath();
+        GameStats.AddDeath();
         gameOverScreen.SetActive(true);
         reviveButton.SetActive(false);
         player.SetActive(false);
@@ -78,7 +78,7 @@ public class PlayerReviveSystem : MonoBehaviour
     {
         reviveUsed = true;
 
-        GameStats.instance.ResetDeathCount();
+        GameStats.ResetDeathCount();
 
         gameOverScreen.SetActive(false);
 
@@ -92,7 +92,23 @@ public class PlayerReviveSystem : MonoBehaviour
         }
     }
 
-    public void PlayerDiedLoaction()
+    public void ShowReviveButton()
+    {
+        if (reviveButton != null)
+        {
+            reviveButton.SetActive(true);
+        }
+    }
+
+    public void HideReviveButton()
+    {
+        if (reviveButton != null)
+        {
+            reviveButton.SetActive(false);
+        }
+    }
+
+    public void PlayerDiedLocation()
     {
         deathPosition = player.transform.position;
     }

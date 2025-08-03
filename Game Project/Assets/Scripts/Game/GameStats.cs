@@ -5,24 +5,24 @@ using UnityEngine;
 
 public class GameStats : MonoBehaviour
 {
-    public int deathCount;
+    public static int deathCount;
     public TextMeshProUGUI timerText; // UI'deki Text nesnesi
-    public float elapsedTime = 0f;
-    public bool isRunning = false;
-    public static GameStats instance;
-    public int adsNumber;
+    public static float elapsedTime = 0f;
+    public static bool isRunning = false;
+    //public static GameStats instance;
+    public static int adsNumber;
 
     private void Awake()
     {
-        if (instance is null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(gameObject);
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
         deathCount = 0;
         System.Random random = new System.Random();
         adsNumber = random.Next(3, 6);
@@ -49,7 +49,7 @@ public class GameStats : MonoBehaviour
         timerText.text = $"{minutes:00}:{seconds:00}";
     }
 
-    public void AddDeath()
+    public static void AddDeath()
     {
         deathCount++;
         StopTimer();     
@@ -61,23 +61,28 @@ public class GameStats : MonoBehaviour
         }
     }
 
-    public void StartTimer()
+    public static void StartTimer()
     {
         isRunning = true;
         elapsedTime = 0f;
     }
 
-    public void StopTimer()
+    public static void StopTimer()
     {
         isRunning = false;
     }
 
-    public float GetElapsedTime()
+    public static void ResumeTimer()
+    {
+        isRunning = true;
+    }
+
+    public static float GetElapsedTime()
     {
         return elapsedTime;
     }
 
-    public void ResetDeathCount()
+    public static void ResetDeathCount()
     {
         deathCount = 0;
         PlayerPrefs.SetInt("DeathCount", deathCount);

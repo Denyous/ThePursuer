@@ -58,8 +58,8 @@ public class GameOver : MonoBehaviour
 
     void TimerScoreText()
     {
-        int minutes = Mathf.FloorToInt(GameStats.instance.elapsedTime / 60f);
-        int seconds = Mathf.FloorToInt(GameStats.instance.elapsedTime % 60f);
+        int minutes = Mathf.FloorToInt(GameStats.elapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(GameStats.elapsedTime % 60f);
         timerScore.text = $"{minutes:00}:{seconds:00}";
     }
 }

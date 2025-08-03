@@ -320,6 +320,7 @@ public class MainMenuController : MonoBehaviour
         else
         {
             SceneManager.LoadScene("Game");
+            GameStats.StartTimer();
         }
     }
     private void OnTutorialButtonClicked()

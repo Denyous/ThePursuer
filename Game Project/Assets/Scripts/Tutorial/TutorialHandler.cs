@@ -41,7 +41,6 @@ public class TutorialHandler : MonoBehaviour
         if (count >= 0)
         {
             TutorialTextReplace();                    
-            Debug.Log(count);
             
             tutorialImage.sprite = tutorialSprites[count];
             tutorialText.text = tutorialTexts[count];
@@ -72,6 +71,7 @@ public class TutorialHandler : MonoBehaviour
     void GoToMenu()
     {
         SceneManager.LoadScene("Game");
+        GameStats.StartTimer();
     }
 
     public void SkipButtonOnClicked()
@@ -82,6 +82,7 @@ public class TutorialHandler : MonoBehaviour
     public void YesButtonClicked()
     {
         SceneManager.LoadScene("Game");
+        GameStats.StartTimer();
     }
 
     public void NoButtonClicked()

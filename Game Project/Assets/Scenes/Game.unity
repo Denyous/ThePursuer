@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 130131901}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5790024, y: -3.1139276, z: 401.50232}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -166,11 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4278036820249a8469dc348f8e432c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathCount: 0
   timerText: {fileID: 1708278805}
-  elapsedTime: 0
-  isRunning: 0
-  adsNumber: 0
 --- !u!1 &145544905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,7 +1591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.84, y: -93.6}
+  m_AnchoredPosition: {x: -0.84000015, y: -93.6}
   m_SizeDelta: {x: 59.42, y: 56.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542852094
@@ -5975,7 +5971,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1165175679}
+      - m_Target: {fileID: 381575968}
         m_TargetAssemblyTypeName: BlackHole, Assembly-CSharp
         m_MethodName: StartPlacement
         m_Mode: 1
@@ -6340,8 +6336,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 157, y: -142.80005}
-  m_SizeDelta: {x: 67.57001, y: 58.78}
+  m_AnchoredPosition: {x: 162.11, y: -142.80005}
+  m_SizeDelta: {x: 252.17, y: 58.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1708278805
 MonoBehaviour:
@@ -7379,7 +7375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -157, y: -142.79999}
+  m_AnchoredPosition: {x: -157, y: -142.80005}
   m_SizeDelta: {x: 86.52, y: 84.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1946800982

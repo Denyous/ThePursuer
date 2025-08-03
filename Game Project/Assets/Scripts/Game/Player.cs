@@ -238,9 +238,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-
-
  
     //Change Shield Visual according to the Shield bool
     public void ChangeShieldState()
@@ -256,17 +253,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    
-
-
-
     //Getting score to show in game over screen
     public int GetScore()
     {
-        return Score;
+        return (int)(Score * GameStats.GetElapsedTime());
     }
-
-
 
     //In UI when flare button pressed trigger this function
     public void CreateFlares()
