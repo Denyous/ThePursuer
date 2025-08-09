@@ -9,23 +9,18 @@ public class GameStats : MonoBehaviour
     public TextMeshProUGUI timerText; // UI'deki Text nesnesi
     public static float elapsedTime = 0f;
     public static bool isRunning = false;
-    //public static GameStats instance;
     public static int adsNumber;
 
     private void Awake()
     {
-        //if (instance == null)
-        //{
-        //    instance = this;
-        //    DontDestroyOnLoad(gameObject);
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
-        deathCount = 0;
+        deathCount = PlayerPrefs.GetInt("DeathCount");
         System.Random random = new System.Random();
-        adsNumber = random.Next(3, 6);
+        adsNumber = PlayerPrefs.GetInt("AdsNumber", 0);
+        if (adsNumber == 0)
+        {
+            adsNumber = random.Next(3, 6);
+            PlayerPrefs.SetInt("AdsNumber", adsNumber);
+        }
     }
 
     private void Start()
@@ -52,11 +47,16 @@ public class GameStats : MonoBehaviour
     public static void AddDeath()
     {
         deathCount++;
+        PlayerPrefs.SetInt("DeathCount", deathCount);
         StopTimer();     
-
-        if (deathCount == adsNumber)
+        Debug.Log("Death Count: " + deathCount);
+        Debug.Log("Ads Number: " + adsNumber);
+        if (deathCount >= adsNumber)
         {
             deathCount = 0;
+            adsNumber = 0;
+            PlayerPrefs.SetInt("AdsNumber", adsNumber);
+            PlayerPrefs.SetInt("DeathCount", deathCount);
             AdsManager.instance.ShowInterstitialAd();
         }
     }

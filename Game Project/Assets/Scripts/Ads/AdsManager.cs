@@ -78,7 +78,7 @@ public class AdsManager : MonoBehaviour
         }
         else
         {
-            //Debug.LogWarning("[LevelPlaySample] Ads are not enabled yet. Cannot show Interstitial Ad.");
+            Debug.LogWarning("[LevelPlaySample] Ads are not enabled yet. Cannot show Interstitial Ad.");
         }
     }
     
@@ -157,6 +157,7 @@ public class AdsManager : MonoBehaviour
 
     void InterstitialOnAdDisplayedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
     {
+        interstitialAd.LoadAd();
     }
 #pragma warning disable 0618
     void InterstitialOnAdDisplayFailedEvent(Unity.Services.LevelPlay.LevelPlayAdDisplayInfoError infoError)
@@ -168,6 +169,7 @@ public class AdsManager : MonoBehaviour
     }
     void InterstitialOnAdClosedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
     {
+        interstitialAd.LoadAd();
     }
     void InterstitialOnAdInfoChangedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
     {
