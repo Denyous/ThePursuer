@@ -82,16 +82,16 @@ public class EnemySpawner : MonoBehaviour
             SpawnShieldPowerUp();
         }
 
-        InvokeRepeating("SpawnPooledEnemies", 1f, 1f);
-        InvokeRepeating("SpawnPooledStars", 1f, 1f);
+        InvokeRepeating("SpawnPooledEnemies", 1f, 2f);
+        InvokeRepeating("SpawnPooledStars", 1f, 3f);
 
-        InvokeRepeating("SpawnPooledShields", 1f, 1f);
-        InvokeRepeating("SpawnPooledSpeedBuffs", 1f, 1f);
+        InvokeRepeating("SpawnPooledShields", 1f, 5f);
+        InvokeRepeating("SpawnPooledSpeedBuffs", 1f, 5f);
 
-        InvokeRepeating("SpawnPooledKamikazes", 1f, 1f);
-        InvokeRepeating("SpawnPooledFlares", 1f, 1f);
+        InvokeRepeating("SpawnPooledKamikazes", 1f, 5f);
+        InvokeRepeating("SpawnPooledFlares", 1f, 7f);
 
-        InvokeRepeating("SpawnPooledExplodes", 1f, 1f);
+        InvokeRepeating("SpawnPooledExplodes", 1f, 10f);
         InvokeRepeating("SpawnPooledBlackHoles", 1f, 1f);
 
 

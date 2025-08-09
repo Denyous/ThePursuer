@@ -48,7 +48,7 @@ public class BlackHole : MonoBehaviour
             musicSource.UnPause();
             Time.timeScale = 1f; // Oyun devam etsin
             tapMessageUI.SetActive(false);
-            pauseIcon.pauseIcon.SetActive(true);
+            //pauseIcon.pauseIcon.SetActive(true);
             UI.SetActive(true);
         }
     }
@@ -63,7 +63,7 @@ public class BlackHole : MonoBehaviour
             musicSource.Pause();
             
             tapMessageUI.SetActive(true);
-            pauseIcon.pauseIcon.SetActive(false);
+            //pauseIcon.pauseIcon.SetActive(false);
             UI.SetActive(false);
 
             playerScript.decreaseBlackHoleCount();
