@@ -3,7 +3,7 @@ guid: bd5dde16848754d4d8e3f6500b234abd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -165,10 +165,10 @@ TextureImporter:
       name: Ui sheets_0
       rect:
         serializedVersion: 2
-        x: 76
-        y: 893
-        width: 450
-        height: 330
+        x: 91
+        y: 872
+        width: 458
+        height: 335
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,8 +186,8 @@ TextureImporter:
       name: Ui sheets_2
       rect:
         serializedVersion: 2
-        x: 577
-        y: 892
+        x: 637
+        y: 870
         width: 453
         height: 331
       alignment: 0
@@ -204,34 +204,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ui sheets_4
-      rect:
-        serializedVersion: 2
-        x: 1085
-        y: 893
-        width: 454
-        height: 331
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 54136363a73c11a41bb4e3333cab08f2
-      internalID: 106903925
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Ui sheets_6
       rect:
         serializedVersion: 2
-        x: 70
-        y: 532
-        width: 540
-        height: 275
+        x: 99
+        y: 576
+        width: 474
+        height: 208
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,10 +228,10 @@ TextureImporter:
       name: Ui sheets_7
       rect:
         serializedVersion: 2
-        x: 655
-        y: 531
-        width: 540
-        height: 275
+        x: 607
+        y: 576
+        width: 471
+        height: 208
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,8 +249,8 @@ TextureImporter:
       name: Ui sheets_8
       rect:
         serializedVersion: 2
-        x: 86
-        y: 97
+        x: 108
+        y: 141
         width: 341
         height: 337
       alignment: 0
@@ -291,10 +270,10 @@ TextureImporter:
       name: Ui sheets_12
       rect:
         serializedVersion: 2
-        x: 466
-        y: 94
+        x: 484
+        y: 141
         width: 409
-        height: 388
+        height: 385
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,8 +291,8 @@ TextureImporter:
       name: Ui sheets_13
       rect:
         serializedVersion: 2
-        x: 921
-        y: 93
+        x: 941
+        y: 139
         width: 223
         height: 325
       alignment: 0
@@ -333,10 +312,10 @@ TextureImporter:
       name: Ui sheets_14
       rect:
         serializedVersion: 2
-        x: 1234
-        y: 111
-        width: 423
-        height: 300
+        x: 1250
+        y: 151
+        width: 432
+        height: 311
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
