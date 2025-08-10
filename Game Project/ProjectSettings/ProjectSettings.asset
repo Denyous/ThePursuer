@@ -36,12 +36,15 @@ PlayerSettings:
   m_SplashScreenBackgroundPortraitUvs:
     serializedVersion: 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     x: 0
     y: 0
     width: 1
     height: 1
   m_SplashScreenLogos: []
 =======
+=======
+>>>>>>> Stashed changes
     x: 0.026
     y: 0.5613333
     width: 0.107
