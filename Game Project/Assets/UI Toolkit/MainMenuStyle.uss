@@ -1,6 +1,6 @@
 .GameTitle {
     padding-bottom: 0;
-    -unity-font: url('project://database/Assets/Resources/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font: url("project://database/Assets/Resources/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular");
     -unity-font-definition: initial;
     -unity-font-style: bold-and-italic;
     color: rgb(73, 216, 255);
@@ -38,14 +38,14 @@
     min-width: 50px;
     min-height: 25px;
     align-self: center;
-    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6');
+    background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6");
     -unity-background-scale-mode: stretch-to-fill;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     font-size: 35px;
-    -unity-font: url('project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium');
+    -unity-font: url("project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium");
     -unity-font-definition: initial;
     justify-content: center;
     align-items: center;
@@ -53,6 +53,11 @@
     -unity-text-align: middle-center;
     -unity-font-style: bold;
     color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0);
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
 }
 
 .ButtonsPanel {
@@ -80,7 +85,7 @@
 }
 
 .SelectorImage {
-    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1297285183&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_13');
+    background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1297285183&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_13");
     background-color: rgba(255, 255, 255, 0);
     -unity-background-image-tint-color: rgb(68, 187, 202);
     width: 10%;
@@ -90,7 +95,7 @@
 }
 
 .SelectorButton {
-    background-image: url('project://database/Assets/Sprites/Backgrounds/InGame/ArkaplanDegrade.png?fileID=2800000&guid=cf3fe9f1b43e9d74d8f9361d6a0ed364&type=3#ArkaplanDegrade');
+    background-image: url("project://database/Assets/Sprites/Backgrounds/InGame/ArkaplanDegrade.png?fileID=2800000&guid=cf3fe9f1b43e9d74d8f9361d6a0ed364&type=3#ArkaplanDegrade");
     justify-content: center;
     align-items: center;
     align-self: center;
@@ -101,12 +106,17 @@
     flex-direction: row;
     -unity-text-align: middle-center;
     font-size: 20px;
-    -unity-font: url('project://database/Assets/Resources/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font: url("project://database/Assets/Resources/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular");
     -unity-font-definition: initial;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    background-color: rgba(255, 255, 255, 0);
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
 }
 
 .LanguageAndSoundPanel {
@@ -137,7 +147,7 @@
     flex-direction: row;
     -unity-text-align: middle-center;
     font-size: 30px;
-    -unity-font: url('project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium');
+    -unity-font: url("project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium");
     -unity-font-definition: initial;
     -unity-font-style: bold;
     color: rgb(255, 255, 255);
@@ -157,12 +167,12 @@
 
 .LanguageButtons {
     width: 99%;
-    -unity-font: url('project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium');
+    -unity-font: url("project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium");
     -unity-font-definition: initial;
     font-size: 30px;
     -unity-text-align: middle-center;
     height: 16.6%;
-    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6');
+    background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6");
     max-height: 16.6%;
     min-height: 16.6%;
     color: rgb(255, 255, 255);
@@ -181,6 +191,11 @@
     padding-top: 0;
     padding-bottom: 0;
     -unity-font-style: bold;
+    background-color: rgba(255, 255, 255, 0);
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
 }
 
 .SoundMenu {
@@ -200,7 +215,7 @@
 
 .SoundSliders {
     width: 100%;
-    -unity-font: url('project://database/Assets/Resources/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular');
+    -unity-font: url("project://database/Assets/Resources/blade_rounded/font/Bladerounded-Regular.otf?fileID=12800000&guid=59353040335fef24b9ab10124007f7ad&type=3#Bladerounded-Regular");
     -unity-font-definition: initial;
     font-size: 15px;
     -unity-font-style: bold;
@@ -237,13 +252,13 @@
     justify-content: center;
     align-self: center;
     flex-grow: 1;
-    background-image: url('project://database/Assets/Sprites/Backgrounds/InGame/ArkaplanDegrade.png?fileID=2800000&guid=cf3fe9f1b43e9d74d8f9361d6a0ed364&type=3#ArkaplanDegrade');
+    background-image: url("project://database/Assets/Sprites/Backgrounds/InGame/ArkaplanDegrade.png?fileID=2800000&guid=cf3fe9f1b43e9d74d8f9361d6a0ed364&type=3#ArkaplanDegrade");
     width: 100%;
     height: 100%;
 }
 
 .Header {
-    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/Audex/Audex.ttf?fileID=12800000&guid=ad39d634ccd4cac4790eb62e8737ce65&type=3#Audex');
+    -unity-font: url("project://database/Assets/TextMesh%20Pro/Fonts/Audex/Audex.ttf?fileID=12800000&guid=ad39d634ccd4cac4790eb62e8737ce65&type=3#Audex");
     font-size: 80px;
     -unity-font-style: bold;
     color: rgb(250, 143, 0);
@@ -309,7 +324,7 @@
     font-size: 30px;
     -unity-font-style: bold;
     -unity-font-definition: initial;
-    -unity-font: url('project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium');
+    -unity-font: url("project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium");
     width: 10%;
     height: 50%;
     max-width: 10%;
@@ -344,7 +359,7 @@
 }
 
 .BackButtonBG {
-    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14');
+    background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14");
     background-color: rgba(0, 0, 0, 0);
     -unity-background-image-tint-color: rgb(255, 255, 255);
     border-left-width: 0;
@@ -354,7 +369,7 @@
 }
 
 .NextButtonBG {
-    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14');
+    background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14");
     rotate: 180deg;
     -unity-background-image-tint-color: rgb(255, 255, 255);
     -unity-slice-left: 0;
@@ -373,7 +388,7 @@
 }
 
 .CreditsTitle {
-    -unity-font: url('project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium');
+    -unity-font: url("project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium");
     -unity-font-style: bold;
     -unity-text-align: middle-center;
     -unity-font-definition: initial;
@@ -388,7 +403,7 @@
 .CreditsNames {
     color: rgb(255, 255, 255);
     font-size: 30px;
-    -unity-font: url('project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium');
+    -unity-font: url("project://database/Assets/Resources/Noto-Sans/NotoSans-Medium.ttf?fileID=12800000&guid=b84a0e1eec8412342bc8f45a303513be&type=3#NotoSans-Medium");
     -unity-font-definition: initial;
     -unity-font-style: bold;
     -unity-text-align: middle-center;
@@ -418,7 +433,7 @@
 }
 
 .BackButtonBG:active {
-    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14');
+    background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14");
     background-color: rgba(0, 0, 0, 0);
     -unity-background-image-tint-color: rgb(255, 255, 255);
     border-left-width: 0;
@@ -429,7 +444,7 @@
 }
 
 .NextButtonBG:active {
-    background-image: url('project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14');
+    background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14");
     rotate: 180deg;
     -unity-background-image-tint-color: rgb(255, 255, 255);
     -unity-slice-left: 0;
@@ -517,7 +532,7 @@
     padding-top: 0;
     padding-bottom: 0;
     width: 20%;
-    -unity-font: url('project://database/Assets/Resources/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular');
+    -unity-font: url("project://database/Assets/Resources/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular");
     -unity-font-definition: initial;
     -unity-font-style: bold;
 }
@@ -591,7 +606,7 @@
     padding-top: 0;
     padding-bottom: 0;
     width: 20%;
-    -unity-font: url('project://database/Assets/Resources/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular');
+    -unity-font: url("project://database/Assets/Resources/Noto-Sans/Chinese%20(Mandarin)/NotoSansSC-Regular.ttf?fileID=12800000&guid=41cff764666ca8f4da7b23ce60788d5e&type=3#NotoSansSC-Regular");
     -unity-font-definition: initial;
     -unity-font-style: bold;
 }
