@@ -17,6 +17,7 @@ public class MainMenuController : MonoBehaviour
     public ScrollView LanguagePanel;
     public VisualElement SoundPanel;
     public VisualElement CreditsPanel;
+    public VisualElement NoAdsPanel;
 
     //Language and Sound Button Variables
     public VisualElement LanguageArrow;
@@ -38,6 +39,9 @@ public class MainMenuController : MonoBehaviour
     public Button TutorialNextButton;
     public Button TutorialBackButton;
     public Button CreditsBackButton;
+    public Button NoAdsButton;
+    public Button NoAdsBuyButton;
+    public Button NoAdsCancelButton;
 
     //Language Buttons
     public Button EnglishButton;
@@ -125,9 +129,9 @@ public class MainMenuController : MonoBehaviour
         LocalizedHighScore.StringChanged -= UpdateHighScore;
     }
 
-    #region Events
 
-    //Language Buttons
+    #region LanguageButtonEvents
+
     private void OnSpanishButtonClicked()
     {
         ClickSound();
@@ -207,26 +211,10 @@ public class MainMenuController : MonoBehaviour
         SetLocalizedTextForUIElements();
     }
 
+    #endregion
 
-    private void OnSoundButtonClicked()
-    {
-        ClickSound();
-        isSoundRotated = !isSoundRotated;
-        RotateArrow(SoundArrow, isSoundRotated);
-        TogglePanel(SoundPanel);
-    }
-    private void OnLanguageButtonClicked()
-    {
-        ClickSound();
-        isLanguageRotated = !isLanguageRotated;
-        RotateArrow(LanguageArrow, isLanguageRotated);
-        TogglePanel(LanguagePanel);
-    }
-    private void OnCreditsBackButtonClicked()
-    {
-        ClickSound();
-        TogglePanels(MainMenuPanel, CreditsPanel);
-    }
+    #region TutorialButtonEvents
+
     private void OnTutorialBackButtonClicked()
     {
         ClickSound();
@@ -252,7 +240,6 @@ public class MainMenuController : MonoBehaviour
 
         ChangeTutorialText();
     }
-
     private void ChangeTutorialText()
     {
         switch (TutorialIndex)
@@ -307,6 +294,66 @@ public class MainMenuController : MonoBehaviour
         TutorialNumber.text = TutorialCount + " / " + TutorialImages.Length;
         ChangeTutorialText();
     }
+    private void OnTutorialButtonClicked()
+    {
+        ClickSound();
+        TutorialCount = 1;
+        TutorialIndex = 0;
+        TutorialPrevButton.SetEnabled(false);
+        TutorialNextButton.SetEnabled(true);
+        TogglePanels(TutorialPanel, MainMenuPanel);
+        TutorialImageContainer.style.backgroundImage = new StyleBackground(TutorialImages[TutorialIndex]);
+        TutorialNumber.text = TutorialCount + " / " + TutorialImages.Length;
+        ChangeTutorialText();
+    }
+
+    #endregion
+
+    #region NoAdsButtonEvents
+    private void OnNoAdsButtonClicked()
+    {
+        ClickSound();
+        TogglePanels(NoAdsPanel, MainMenuPanel);
+    }
+
+    private void OnNoAdsbuyButtonClicked()
+    {
+        ClickSound();
+        IAPManager.instance.Purchase();
+        TogglePanels(MainMenuPanel, NoAdsPanel);
+    }
+
+    private void OnNoAdsCancelButtonClicked()
+    {
+        ClickSound();
+        TogglePanels(MainMenuPanel, NoAdsPanel);
+    }
+
+    #endregion
+
+    #region ButtonEvents
+
+    //Language Buttons
+
+    private void OnSoundButtonClicked()
+    {
+        ClickSound();
+        isSoundRotated = !isSoundRotated;
+        RotateArrow(SoundArrow, isSoundRotated);
+        TogglePanel(SoundPanel);
+    }
+    private void OnLanguageButtonClicked()
+    {
+        ClickSound();
+        isLanguageRotated = !isLanguageRotated;
+        RotateArrow(LanguageArrow, isLanguageRotated);
+        TogglePanel(LanguagePanel);
+    }
+    private void OnCreditsBackButtonClicked()
+    {
+        ClickSound();
+        TogglePanels(MainMenuPanel, CreditsPanel);
+    }
     private void OnPlayButtonClicked()
     {
         ClickSound();
@@ -323,18 +370,6 @@ public class MainMenuController : MonoBehaviour
             GameStats.StartTimer();
         }
     }
-    private void OnTutorialButtonClicked()
-    {
-        ClickSound();
-        TutorialCount = 1;
-        TutorialIndex = 0;
-        TutorialPrevButton.SetEnabled(false);
-        TutorialNextButton.SetEnabled(true);
-        TogglePanels(TutorialPanel, MainMenuPanel);
-        TutorialImageContainer.style.backgroundImage = new StyleBackground(TutorialImages[TutorialIndex]);
-        TutorialNumber.text = TutorialCount + " / " + TutorialImages.Length;
-        ChangeTutorialText();
-    }
     private void OnCreditsButtonClicked()
     {
         ClickSound();
@@ -350,6 +385,7 @@ public class MainMenuController : MonoBehaviour
 #endif
     }
     #endregion
+
     #region HelperFunctions
     private void UpdateHighScore(string value)
     {
@@ -614,7 +650,9 @@ public class MainMenuController : MonoBehaviour
         }
     }
     #endregion
+
     #region Event Registers and UnRegisters and References
+
     private void GetReferencesForPanels()
     {
         MainMenu = GetComponent<UIDocument>().rootVisualElement;
@@ -624,6 +662,7 @@ public class MainMenuController : MonoBehaviour
         LanguagePanel = MainMenu.Q<ScrollView>("LanguageMenu");
         SoundPanel = MainMenu.Q<VisualElement>("SoundMenu");
         CreditsPanel = MainMenu.Q<VisualElement>("CreditsPanel");
+        NoAdsPanel = MainMenu.Q<VisualElement>("NoAdsPanel");
 
         LanguageArrow = MainMenu.Q<VisualElement>("LanguageSelectorImage");
         SoundArrow = MainMenu.Q<VisualElement>("SoundSelectorImage");
@@ -646,6 +685,9 @@ public class MainMenuController : MonoBehaviour
         TutorialNextButton = MainMenu.Q<Button>("NextButton");
         TutorialBackButton = MainMenu.Q<Button>("BackButton");
         CreditsBackButton = MainMenu.Q<Button>("CreditsBackButton");
+        NoAdsButton = MainMenu.Q<Button>("NoAdsButton");
+        NoAdsBuyButton = MainMenu.Q<Button>("BuyButton");
+        NoAdsCancelButton = MainMenu.Q<Button>("CancelButton");
 
         // Get the reference for all the language buttons
         EnglishButton = MainMenu.Q<Button>("EnglishButton");
@@ -703,7 +745,6 @@ public class MainMenuController : MonoBehaviour
             }
         });
 
-
         // Events for Main Menu Buttons
         PlayButton.RegisterCallback<ClickEvent>(e => OnPlayButtonClicked());
         TutorialButton.RegisterCallback<ClickEvent>(e => OnTutorialButtonClicked());
@@ -711,6 +752,9 @@ public class MainMenuController : MonoBehaviour
         QuitButton.RegisterCallback<ClickEvent>(e => OnQuitButtonClicked());
         LanguageButton.RegisterCallback<ClickEvent>(e => OnLanguageButtonClicked());
         SoundButton.RegisterCallback<ClickEvent>(e => OnSoundButtonClicked());
+        NoAdsButton.RegisterCallback<ClickEvent>(e => OnNoAdsButtonClicked());
+        NoAdsBuyButton.RegisterCallback<ClickEvent>(e => OnNoAdsbuyButtonClicked());
+        NoAdsCancelButton.RegisterCallback<ClickEvent>(e => OnNoAdsCancelButtonClicked());
 
         // Events for Language Buttons
         EnglishButton.RegisterCallback<ClickEvent>(e => OnEnglishButtonClicked());
@@ -789,6 +833,8 @@ public class MainMenuController : MonoBehaviour
         QuitButton.UnregisterCallback<ClickEvent>(e => OnQuitButtonClicked());
         LanguageButton.UnregisterCallback<ClickEvent>(e => OnLanguageButtonClicked());
         SoundButton.UnregisterCallback<ClickEvent>(e => OnSoundButtonClicked());
+        NoAdsButton.UnregisterCallback<ClickEvent>(e => OnNoAdsButtonClicked());
+
         // Unregister for Tutorial Buttons
         TutorialPrevButton.UnregisterCallback<ClickEvent>(e => OnTutorialPrevButtonClicked());
         TutorialNextButton.UnregisterCallback<ClickEvent>(e => OnTutorialNextButtonClicked());
@@ -796,5 +842,6 @@ public class MainMenuController : MonoBehaviour
         // Unregister for Credits Buttons
         CreditsBackButton.UnregisterCallback<ClickEvent>(e => OnCreditsBackButtonClicked());
     }
+
     #endregion
 }

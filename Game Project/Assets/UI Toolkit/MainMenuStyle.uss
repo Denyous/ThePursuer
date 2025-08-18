@@ -719,3 +719,18 @@
     border-bottom-right-radius: 10px;
     height: 100%;
 }
+
+.noAdsButtons {
+    background-color: rgb(255, 0, 0);
+    -unity-background-image-tint-color: rgba(255, 121, 121, 0.51);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    font-size: 22px;
+    -unity-font: resource('Noto-Sans/Latin/NotoSans-Regular');
+    -unity-font-definition: initial;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+}

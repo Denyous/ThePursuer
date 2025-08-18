@@ -9,6 +9,7 @@ public class AdsManager : MonoBehaviour
     private Unity.Services.LevelPlay.LevelPlayRewardedAd rewardedVideoAd;
 
     public static AdsManager instance;
+    private bool adsEnabled = true;
 
     private void OnEnable()
     {
@@ -25,9 +26,24 @@ public class AdsManager : MonoBehaviour
 
     private void Awake()
     {
-        InitializeAds();
+        if (adsEnabled)
+        {
+            InitializeAds();
+        }
     }
     
+    public void RemoveAds()
+    {
+        adsEnabled = false;
+        DestroyAds();
+    }
+
+    private void DestroyAds()
+    {
+        interstitialAd?.DestroyAd();
+        rewardedVideoAd?.DestroyAd();
+    }
+
     private void InitializeAds()
     {
         Unity.Services.LevelPlay.LevelPlay.ValidateIntegration();
@@ -72,25 +88,35 @@ public class AdsManager : MonoBehaviour
     #region Show Ads Functions
     public void ShowInterstitialAd()
     {
-        if (interstitialAd.IsAdReady())
+        if (adsEnabled)
         {
-            interstitialAd.ShowAd();
-        }
-        else
-        {
-            Debug.LogWarning("[LevelPlaySample] Ads are not enabled yet. Cannot show Interstitial Ad.");
+            if (interstitialAd.IsAdReady())
+            {
+                interstitialAd.ShowAd();
+            }
+            else
+            {
+                Debug.LogWarning("[LevelPlaySample] Ads are not enabled yet. Cannot show Interstitial Ad.");
+            }
         }
     }
     
     public void ShowRewardedAd()
     {
-        if (rewardedVideoAd.IsAdReady())
+        if (adsEnabled)
         {
-            rewardedVideoAd.ShowAd();
+            if (rewardedVideoAd.IsAdReady())
+            {
+                rewardedVideoAd.ShowAd();
+            }
+            else
+            {
+                //Debug.LogWarning("[LevelPlaySample] Ads are not enabled yet. Cannot show Rewarded Ad.");
+            }
         }
         else
         {
-            //Debug.LogWarning("[LevelPlaySample] Ads are not enabled yet. Cannot show Rewarded Ad.");
+            PlayerReviveSystem.instance.RevivePlayer();
         }
     }
     #endregion
