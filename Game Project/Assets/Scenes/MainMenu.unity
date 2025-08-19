@@ -850,7 +850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NonConsumableItem:
     Name: No Ads
-    Id: NoAds
+    Id: no_ads
     Description: Remove forced Ads from the game
     Price: 1.99
 --- !u!1660057539 &9223372036854775807
