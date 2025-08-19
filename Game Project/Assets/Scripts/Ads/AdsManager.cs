@@ -24,13 +24,13 @@ public class AdsManager : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        if (adsEnabled)
-        {
-            InitializeAds();
-        }
-    }
+    //private void Awake()
+    //{
+    //    if (adsEnabled)
+    //    {
+    //        InitializeAds();
+    //    }
+    //}
     
     public void RemoveAds()
     {
@@ -44,16 +44,19 @@ public class AdsManager : MonoBehaviour
         rewardedVideoAd?.DestroyAd();
     }
 
-    private void InitializeAds()
+    public async Task InitializeAds()
     {
-        Unity.Services.LevelPlay.LevelPlay.ValidateIntegration();
+        if (adsEnabled)
+        {
+            Unity.Services.LevelPlay.LevelPlay.ValidateIntegration();
 
-        Unity.Services.LevelPlay.LevelPlay.OnInitSuccess += SdkInitializationCompletedEvent;
-        Unity.Services.LevelPlay.LevelPlay.OnInitFailed += SdkInitializationFailedEvent;
+            Unity.Services.LevelPlay.LevelPlay.OnInitSuccess += SdkInitializationCompletedEvent;
+            Unity.Services.LevelPlay.LevelPlay.OnInitFailed += SdkInitializationFailedEvent;
 
-        //Unity.Services.LevelPlay.LevelPlay.SetMetaData("is_test_suite", "enable");
-        //Unity.Services.LevelPlay.LevelPlay.SetConsent(true);
-        Unity.Services.LevelPlay.LevelPlay.Init(AdConfig.AppKey);
+            //Unity.Services.LevelPlay.LevelPlay.SetMetaData("is_test_suite", "enable");
+            //Unity.Services.LevelPlay.LevelPlay.SetConsent(true);
+            Unity.Services.LevelPlay.LevelPlay.Init(AdConfig.AppKey);
+        }
     }
 
     private void EnableAds()

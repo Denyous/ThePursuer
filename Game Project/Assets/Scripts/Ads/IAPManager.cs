@@ -7,6 +7,7 @@ using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Extension;
 using Unity.Services.Core;
 using Unity.Services.Core.Environments;
+using System.Threading.Tasks;
 
 
 [Serializable]
@@ -39,12 +40,12 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener
         }
     }
 
-    private void Start()
+    public async Task Initiate()
     {
         var options = new InitializationOptions()
                 .SetEnvironmentName("Production");
 
-        UnityServices.InitializeAsync(options);
+        await UnityServices.InitializeAsync(options);
 
         SetupBuilder();
     }

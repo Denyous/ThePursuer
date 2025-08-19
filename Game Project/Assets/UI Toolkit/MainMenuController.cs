@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -26,7 +27,7 @@ public class MainMenuController : MonoBehaviour
     private bool isSoundRotated = false;
     public Slider MusicSlider;
     public Slider SfxSlider;
-    public new AudioManager audio;
+    private AudioManager audioManager;
 
     //All Main Menu and Sub Menu Buttons
     public Button PlayButton;
@@ -79,16 +80,21 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Font HindiFont;
     [SerializeField] private Font DefaultFont;
 
-    private float originalBottom;
 
-    private void Awake()
+    public void InitiateSecond()
+    {
+        GetReferencesForUIElements();
+        RegisterCallBacks();
+        LocalizedHighScore.StringChanged += UpdateHighScore;
+    }
+    public void InitiateFirst()
     {
         GetReferencesForPanels();
-        originalBottom = MainMenu.resolvedStyle.bottom;
+        audioManager = FindAnyObjectByType<AudioManager>();
     }
 
     //SetSound() should be in the start because audio mixer should be initialized
-    private void Start()
+    public void InitiateThird()
     {
         LocalizationSettings.InitializationOperation.WaitForCompletion();
         if (!PlayerPrefs.HasKey("LanguageInitialized"))
@@ -117,12 +123,7 @@ public class MainMenuController : MonoBehaviour
         }
         SetSound();
     }
-    private void OnEnable()
-    {
-        GetReferencesForUIElements();
-        RegisterCallBacks();
-        LocalizedHighScore.StringChanged += UpdateHighScore;
-    }
+    
     private void OnDisable()
     {
         UnRegisterCallBacks();
@@ -393,7 +394,10 @@ public class MainMenuController : MonoBehaviour
     }
     public void ClickSound()
     {
-        audio.SFXPlayOneShot(audio.buttonClickSFX);
+        if (audioManager != null)
+        {
+            audioManager.SFXPlayOneShot(audioManager.buttonClickSFX);
+        }
     }
     private void SetLocalizedTextForUIElements()
     {
@@ -487,8 +491,8 @@ public class MainMenuController : MonoBehaviour
             SfxSlider.value = PlayerPrefs.GetFloat("SFX");
         }
 
-        audio.SetMusicVolume(MusicSlider.value);
-        audio.SetSFXVolume(SfxSlider.value);
+        audioManager.SetMusicVolume(MusicSlider.value);
+        audioManager.SetSFXVolume(SfxSlider.value);
     }
     private void TogglePanels(VisualElement showPanel, VisualElement hidePanel)
     {
@@ -719,13 +723,13 @@ public class MainMenuController : MonoBehaviour
         MusicSlider.RegisterValueChangedCallback(e =>
         {
             float volume = e.newValue;
-            audio.SetMusicVolume(volume);
+            audioManager.SetMusicVolume(volume);
         });
 
         SfxSlider.RegisterValueChangedCallback(e =>
         {
             float volume = e.newValue;
-            audio.SetSFXVolume(volume);
+            audioManager.SetSFXVolume(volume);
         });
 
         MainMenuPanel.RegisterCallback<PointerDownEvent>(evt =>
@@ -784,13 +788,13 @@ public class MainMenuController : MonoBehaviour
         MusicSlider.UnregisterValueChangedCallback(e =>
         {
             float volume = e.newValue;
-            audio.SetMusicVolume(volume);
+            audioManager.SetMusicVolume(volume);
         });
 
         SfxSlider.UnregisterValueChangedCallback(e =>
         {
             float volume = e.newValue;
-            audio.SetSFXVolume(volume);
+            audioManager.SetSFXVolume(volume);
         });
 
         MainMenuPanel.UnregisterCallback<PointerDownEvent>(evt =>

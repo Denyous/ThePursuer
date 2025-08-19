@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -13,7 +14,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource SFX;
 
     [Header("-----AudioSettings----")]
-    public AudioMixer audioMixer;  
+    [SerializeField] AudioMixer audioMixer;  
 
     [Header("----Audio Clips----")]
     public AudioClip explosionSFX;
@@ -31,6 +32,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameOverScreenSFX;
     public AudioClip buttonClickSFX;
     public AudioClip pauseScreenClockTickSFX;
+
+    public void EnableSound()
+    {
+        musicSource.enabled = true;
+        SFX.enabled = true;
+    }
     
     public void SetMusicVolume(float volume)
     {
@@ -39,7 +46,7 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetFloat("Music", volume);
         PlayerPrefs.Save();
 
-        if (!musicSource.isPlaying)
+        if (!musicSource.isPlaying && audioMixer != null)
         {
             musicSource.Play();
         }
