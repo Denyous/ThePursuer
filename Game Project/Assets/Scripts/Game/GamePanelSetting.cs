@@ -42,7 +42,6 @@ public class GamePanelSetting : MonoBehaviour
     {
         ClickSound();
         StartCoroutine(ResumeWithCountdown());
-
     }
 
     public void Replay()
@@ -70,7 +69,7 @@ public class GamePanelSetting : MonoBehaviour
         // Tamamen siyah oldu
         color.a = 1f;
         fadeImage.color = color;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void MainMenu()

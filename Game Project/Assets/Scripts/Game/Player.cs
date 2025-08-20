@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Numerics;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Splines;
 using Unity.Mathematics;
 using Vector3 = UnityEngine.Vector3;
