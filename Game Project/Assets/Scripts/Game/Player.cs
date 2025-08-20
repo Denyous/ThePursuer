@@ -255,6 +255,10 @@ public class Player : MonoBehaviour
     //Getting score to show in game over screen
     public int GetScore()
     {
+        if (Score == 0)
+        {
+            return (int)GameStats.GetElapsedTime();
+        }
         return (int)(Score * GameStats.GetElapsedTime());
     }
 
