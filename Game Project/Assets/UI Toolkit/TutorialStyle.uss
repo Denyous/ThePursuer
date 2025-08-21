@@ -1,0 +1,79 @@
+.SkipButton {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    left: 84%;
+    position: absolute;
+    top: 94%;
+    width: 15%;
+    height: 5%;
+    background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6");
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0);
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 13px;
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
+    color: rgb(0, 0, 0);
+    -unity-font-style: bold;
+    -unity-font: resource('Noto-Sans/Latin/NotoSans-Regular');
+    -unity-font-definition: initial;
+}
+
+.Button {
+    background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14");
+    width: 20%;
+    height: 70%;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.YesNoButtons {
+    background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6");
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    background-color: rgba(255, 255, 255, 0);
+    width: 30%;
+    height: 80%;
+    min-height: 80%;
+    max-height: 80%;
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    -unity-font: resource('Noto-Sans/Latin/NotoSans-Regular');
+    -unity-font-definition: initial;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    font-size: 100%;
+}
+
+.ClickButtons {
+    font-size: 50px;
+}
+
+.ClickButtons:active {
+    scale: 0.95 0.95;
+    transition-property: scale;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+}
