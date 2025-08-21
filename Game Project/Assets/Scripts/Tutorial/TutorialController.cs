@@ -10,7 +10,6 @@ using System;
 
 public class TutorialController : MonoBehaviour
 {
-    a
     public VisualElement panel;
     public VisualElement startTutorialPanel;
     public VisualElement tutorialPanel;
@@ -39,16 +38,19 @@ public class TutorialController : MonoBehaviour
     [SerializeField] private Font HindiFont;
     [SerializeField] private Font DefaultFont;
 
-    private int TutorialIndex = 1;
+    private int TutorialIndex = 0;
+    private string PanelName = string.Empty;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetLocalizedTextForUIElements();
+        PanelName = "Start";
         GetReferencesForUIElements();
-        string languageCode = PlayerPrefs.GetString("Language", "en");
+        string languageCode = PlayerPrefs.GetString("Language");
         SetFont(languageCode);
+        SetLocalizedTextForUIElements();
         tutorialImagePanel.style.backgroundImage = new StyleBackground(TutorialImages[TutorialIndex]);
+        ShowTutorialText(TutorialIndex);
     }
 
     private void TogglePanels(VisualElement showPanel, VisualElement hidePanel)
@@ -109,7 +111,7 @@ public class TutorialController : MonoBehaviour
                     SetLocalizedText(button, "Tutorial_NoButton");
                     break;
                 case "Btn_GoToGame":
-                    SetLocalizedText(button, "Tutorial_OkButton");
+                    SetLocalizedText(button, "Tutorial_Okbutton");
                     break;
                 default:
                     break;
@@ -180,35 +182,87 @@ public class TutorialController : MonoBehaviour
 
     private void RegisterCallbacks()
     {
-        goToTutorialButton.clicked += () => TogglePanels(tutorialPanel, startTutorialPanel);
-        skipButton.clicked += () => TogglePanels(tutorialPanel, startTutorialPanel);
-        yesButton.clicked += () => TogglePanels(endTutorialPanel, tutorialPanel);
-        noButton.clicked += () => TogglePanels(skipTutorialPanel, tutorialPanel);
-        goToTutorialButton.clicked += () => TogglePanels(tutorialPanel, startTutorialPanel);
-        goToTutorialButton.clicked += () => TogglePanels(tutorialPanel, startTutorialPanel);
-        prevButton.clicked += () => ShowPreviousImage();
-        nextButton.clicked += () => ShowNextImage();
+        goToTutorialButton.clicked += OnGoToTutorialButtonClicked;
+        skipButton.clicked += OnSkipButtonClicked;
+        yesButton.clicked += OnYesButtonClicked;
+        noButton.clicked += OnNoButtonClicked;
+        goToGameButton.clicked += OnGoToGameButtonClicked;
+        prevButton.clicked += () => OnPrevButtonClicked();
+        nextButton.clicked += () => OnNextButtonClicked();
     }
 
-    private void ShowNextImage()
+    private void OnGoToGameButtonClicked()
     {
-        if (TutorialIndex >= TutorialImages.Length) return;
-        TutorialIndex++;
-        ShowTutorialImages(TutorialIndex);
-        ShowTutorialText(TutorialIndex);
+        SceneManager.LoadScene("Game");
     }
 
-    private void ShowPreviousImage()
+    private void OnNoButtonClicked()
     {
-        if (TutorialIndex <= 1) return;
-        TutorialIndex--;
-        ShowTutorialImages(TutorialIndex);
-        ShowTutorialText(TutorialIndex);
+        if (PanelName == "Start")
+        {
+            skipButton.style.display = DisplayStyle.Flex;
+            TogglePanels(startTutorialPanel, skipTutorialPanel);
+        }
+        else if (PanelName == "Tutorial")
+        {
+            skipButton.style.display = DisplayStyle.Flex;
+            TogglePanels(tutorialPanel, skipTutorialPanel);
+        }
+    }
+
+    private void OnYesButtonClicked()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    private void OnSkipButtonClicked()
+    {
+        if (PanelName == "Start")
+        {
+            skipButton.style.display = DisplayStyle.None;
+            TogglePanels(skipTutorialPanel, startTutorialPanel);
+        }
+        else if (PanelName == "Tutorial")
+        {
+            skipButton.style.display = DisplayStyle.None;
+            TogglePanels(skipTutorialPanel, tutorialPanel);
+        }
+    }
+
+    private void OnGoToTutorialButtonClicked()
+    {
+        TogglePanels(tutorialPanel, startTutorialPanel);
+        PanelName = "Tutorial";
+    }
+
+    private void OnNextButtonClicked()
+    {
+        if (TutorialIndex >= TutorialImages.Length - 1)
+        {
+            skipButton.style.display = DisplayStyle.None;
+            TogglePanels(endTutorialPanel, tutorialPanel);
+        }
+        else
+        {
+            TutorialIndex++;
+            ShowTutorialImages(TutorialIndex);
+            ShowTutorialText(TutorialIndex);
+        }
+    }
+
+    private void OnPrevButtonClicked()
+    {
+        if (TutorialIndex > 0)
+        {
+            TutorialIndex--;
+            ShowTutorialImages(TutorialIndex);
+            ShowTutorialText(TutorialIndex);
+        }
     }
 
     private void ShowTutorialText(int tutorialIndex)
     {
-        string localizedTextKey = $"MainMenuTutorialText{tutorialIndex}";
+        string localizedTextKey = $"MainMenuTutorialText{tutorialIndex+1}";
         tutorialText.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenu", localizedTextKey);
     }
 
@@ -216,5 +270,4 @@ public class TutorialController : MonoBehaviour
     {
         tutorialImagePanel.style.backgroundImage = new StyleBackground(TutorialImages[TutorialIndex]);
     }
-   
 }

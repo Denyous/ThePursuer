@@ -61,7 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5f0eb101bb20747a3b583f4b133830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioObject: {fileID: 793139922614484068, guid: dbcc058b93b232244a72cbd42e2e9079, type: 3}
   TutorialImages:
   - {fileID: 21300000, guid: b815b24fe8d6b71479e4f969d173cf4c, type: 3}
   - {fileID: 21300000, guid: 7afa67c50bb943f46b907a1abaa5013d, type: 3}
@@ -83,7 +82,7 @@ MonoBehaviour:
     m_LocalVariables: []
   ArabicFont: {fileID: 12800000, guid: 9f2f8df08d75c524eb58be39a5068821, type: 3}
   ChineseFont: {fileID: 12800000, guid: 41cff764666ca8f4da7b23ce60788d5e, type: 3}
-  JapaneseFont: {fileID: 12800000, guid: a72b52b73a0e1c34689229db9f580539, type: 3}
+  JapaneseFont: {fileID: 12800000, guid: bcfd69ebaa6000e419cebf1a9fb0bb97, type: 3}
   HindiFont: {fileID: 12800000, guid: 57f543df75c00364aac02ea72bbc29eb, type: 3}
   DefaultFont: {fileID: 12800000, guid: c4fbb60101639ab46a1e1d79f3035b6b, type: 3}
   references:

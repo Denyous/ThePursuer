@@ -7,11 +7,6 @@
     padding-right: 0;
     padding-bottom: 0;
     padding-left: 0;
-    left: 84%;
-    position: absolute;
-    top: 94%;
-    width: 15%;
-    height: 5%;
     background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1501606589&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_6");
     -unity-background-image-tint-color: rgb(255, 255, 255);
     background-color: rgba(255, 255, 255, 0);
@@ -68,7 +63,10 @@
 }
 
 .ClickButtons {
-    font-size: 50px;
+    -unity-font: resource('Noto-Sans/Latin/NotoSans-Regular');
+    -unity-font-definition: initial;
+    -unity-font-style: bold;
+    font-size: 50%;
 }
 
 .ClickButtons:active {

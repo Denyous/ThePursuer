@@ -73,41 +73,41 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 80738832384
-    m_Localized: "\xC7ubuk ile hareket et"
+    m_Localized: "\xC7ubuk ile hareket et."
     m_Metadata:
       m_Items: []
   - m_Id: 84111052800
-    m_Localized: "F\xFCzelerden ka\xE7"
+    m_Localized: "F\xFCzelerden ka\xE7."
     m_Metadata:
       m_Items: []
   - m_Id: 88703815680
-    m_Localized: "Puanlar\u0131 topla"
+    m_Localized: "Puanlar\u0131 topla."
     m_Metadata:
       m_Items: []
   - m_Id: 91434307584
-    m_Localized: "H\u0131zlanmak i\xE7in g\xFC\xE7lendirme topla"
+    m_Localized: "H\u0131zlanmak i\xE7in g\xFC\xE7lendirme topla."
     m_Metadata:
       m_Items: []
   - m_Id: 92851982336
     m_Localized: "Bir seferli\u011Fine \xF6l\xFCmden ka\xE7mak i\xE7in kalkan g\xFC\xE7lendirmesini
-      topla"
+      topla."
     m_Metadata:
       m_Items: []
   - m_Id: 93552431104
     m_Localized: "F\xFCzeleri yok etmek i\xE7in fi\u015Fek g\xFC\xE7lendirmesini
-      kullan"
+      kullan."
     m_Metadata:
       m_Items: []
   - m_Id: 94248685568
-    m_Localized: "Kamikaze g\xFC\xE7lendirmesiyle f\xFCzeleri birbirine \xE7arpt\u0131r"
+    m_Localized: "Kamikaze g\xFC\xE7lendirmesiyle f\xFCzeleri birbirine \xE7arpt\u0131r."
     m_Metadata:
       m_Items: []
   - m_Id: 94861053952
-    m_Localized: "Lazer ile f\xFCzeleri yok et"
+    m_Localized: "Lazer ile f\xFCzeleri yok et."
     m_Metadata:
       m_Items: []
   - m_Id: 95532142592
-    m_Localized: "Kara delik olu\u015Fturarak f\xFCzeleri i\xE7ine \xE7ek"
+    m_Localized: "Kara delik olu\u015Fturarak f\xFCzeleri i\xE7ine \xE7ek."
     m_Metadata:
       m_Items: []
   references:
@@ -116,4 +116,6 @@ MonoBehaviour:
     - rid: 3574364231128317966
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d068a70d000000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 58643238912

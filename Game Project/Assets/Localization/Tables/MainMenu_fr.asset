@@ -94,7 +94,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 93552431104
     m_Localized: "Utilisez le bonus de fus\xE9e \xE9clairante pour d\xE9truire les
-      missiles\n\n"
+      missiles"
     m_Metadata:
       m_Items: []
   - m_Id: 94248685568
@@ -107,10 +107,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 95532142592
-    m_Localized: 'Utilisez le bonus trou noir pour aspirer les missiles
-
-
-'
+    m_Localized: Utilisez le bonus trou noir pour aspirer les missiles
     m_Metadata:
       m_Items: []
   references:

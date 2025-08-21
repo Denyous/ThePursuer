@@ -16,21 +16,15 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: d7eb7bfa3db00924dabaea7f43960a76
   m_Entries:
   - m_Id: 320929184067584
-    m_Key: 'Tutorial_YesButton
-
-'
+    m_Key: Tutorial_YesButton
     m_Metadata:
       m_Items: []
   - m_Id: 1184593326080
-    m_Key: 'Tutorial_Welcome
-
-'
+    m_Key: Tutorial_Welcome
     m_Metadata:
       m_Items: []
   - m_Id: 319290695987200
-    m_Key: 'Tutorial_SkipText
-
-'
+    m_Key: Tutorial_SkipText
     m_Metadata:
       m_Items: []
   - m_Id: 15727465836544
@@ -46,9 +40,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 333728983527424
-    m_Key: 'Tutorial_FinishedText
-
-'
+    m_Key: Tutorial_FinishedText
     m_Metadata:
       m_Items: []
   m_Metadata:
