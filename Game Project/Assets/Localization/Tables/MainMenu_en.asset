@@ -108,10 +108,16 @@ MonoBehaviour:
     m_Localized: AUDIO DESIGN
     m_Metadata:
       m_Items: []
+  - m_Id: 35643345980338176
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3574364231128317956
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d068a70d000000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 58643238912
