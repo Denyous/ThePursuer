@@ -124,6 +124,10 @@ MonoBehaviour:
       \u0915\u0930\u0947\u0902"
     m_Metadata:
       m_Items: []
+  - m_Id: 35643345980338176
+    m_Localized: "\u0930\u0926\u094D\u0926 \u0915\u0930\u0947\u0902"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
