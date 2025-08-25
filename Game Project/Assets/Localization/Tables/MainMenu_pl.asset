@@ -108,6 +108,10 @@ MonoBehaviour:
     m_Localized: "U\u017Cyj czarnej dziury, aby wci\u0105gn\u0105\u0107 rakiety"
     m_Metadata:
       m_Items: []
+  - m_Id: 35643345980338176
+    m_Localized: Anuluj
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
