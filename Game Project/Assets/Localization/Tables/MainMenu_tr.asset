@@ -110,10 +110,6 @@ MonoBehaviour:
     m_Localized: "Kara delik olu\u015Fturarak f\xFCzeleri i\xE7ine \xE7ek."
     m_Metadata:
       m_Items: []
-  - m_Id: 35643345980338176
-    m_Localized: "\u0130ptal "
-    m_Metadata:
-      m_Items: []
   references:
     version: 2
     RefIds:

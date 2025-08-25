@@ -110,10 +110,6 @@ MonoBehaviour:
     m_Localized: Utilisez le bonus trou noir pour aspirer les missiles
     m_Metadata:
       m_Items: []
-  - m_Id: 35643345980338176
-    m_Localized: Annuler
-    m_Metadata:
-      m_Items: []
   references:
     version: 2
     RefIds:

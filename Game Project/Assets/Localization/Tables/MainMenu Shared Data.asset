@@ -103,10 +103,6 @@ MonoBehaviour:
     m_Key: MainMenuTutorialText9
     m_Metadata:
       m_Items: []
-  - m_Id: 35643345980338176
-    m_Key: MainMenuAdsCancel
-    m_Metadata:
-      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
