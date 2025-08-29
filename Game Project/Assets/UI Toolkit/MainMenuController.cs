@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
@@ -62,16 +63,16 @@ public class MainMenuController : MonoBehaviour
     //Tutorial Variables
     public Sprite[] TutorialImages;
     public VisualElement TutorialImageContainer;
-    public Label TutorialNumber;
-    public Label TutorialText;
+    public UnityEngine.UIElements.Label TutorialNumber;
+    public UnityEngine.UIElements.Label TutorialText;
     private int TutorialCount = 1;
     private int TutorialIndex = 0;
 
     //Localization Variables
     [SerializeField] private LocalizedString LocalizedHighScore;
     private int highScore;
-    public Label HighScoreText;
-    public Label LanguageText;
+    public UnityEngine.UIElements.Label HighScoreText;
+    public UnityEngine.UIElements.Label LanguageText;
 
 
     [SerializeField] private Font ArabicFont;
@@ -402,7 +403,7 @@ public class MainMenuController : MonoBehaviour
     private void SetLocalizedTextForUIElements()
     {
         var buttons = MainMenu.Query<Button>().ToList();
-        var labels = MainMenu.Query<Label>().ToList();
+        var labels = MainMenu.Query<UnityEngine.UIElements.Label>().ToList();
         var sliders = MainMenu.Query<Slider>().ToList();
 
         foreach (Slider slider in sliders)
@@ -420,7 +421,7 @@ public class MainMenuController : MonoBehaviour
             }
         }
 
-        foreach (Label label in labels)
+        foreach (UnityEngine.UIElements.Label label in labels)
         {
             switch (label.name)
             {
@@ -478,7 +479,7 @@ public class MainMenuController : MonoBehaviour
         // Register callback so it updates immediately and on language switch
         localizedString.StringChanged += (localizedValue) =>
         {
-            if (element is Label label) label.text = localizedValue;
+            if (element is UnityEngine.UIElements.Label label) label.text = localizedValue;
             else if (element is Button button) button.text = localizedValue;
             else if (element is Slider slider) slider.label = localizedValue;
         };
@@ -592,29 +593,30 @@ public class MainMenuController : MonoBehaviour
     private void SetFont(string LanguageCode)
     {
         var buttons = MainMenu.Query<Button>().ToList();
-        var labels = MainMenu.Query<Label>().ToList();
+        var labels = MainMenu.Query<UnityEngine.UIElements.Label>().ToList();
         var sliders = MainMenu.Query<Slider>().ToList();
 
         switch (LanguageCode)
         {
             case "ar":
-                SetFontForUIElements(ArabicFont, buttons, labels, sliders);
+                SetFontForUIElements(ArabicFont, buttons, labels, sliders, true);
                 break;
             case "zh":
-                SetFontForUIElements(ChineseFont, buttons, labels, sliders);
+                SetFontForUIElements(ChineseFont, buttons, labels, sliders, false);
                 break;
             case "ja":
-                SetFontForUIElements(JapaneseFont, buttons, labels, sliders);
+                SetFontForUIElements(JapaneseFont, buttons, labels, sliders, false);
                 break;
             case "hi":
-                SetFontForUIElements(HindiFont, buttons, labels, sliders);
+                SetFontForUIElements(HindiFont, buttons, labels, sliders, false);
                 break;
             default:
-                SetFontForUIElements(DefaultFont, buttons, labels, sliders);
+                SetFontForUIElements(DefaultFont, buttons, labels, sliders, false);
                 break;
         }
     }
-    private void SetFontForUIElements(Font font, List<Button> buttons, List<Label> labels, List<Slider> sliders)
+    private void SetFontForUIElements(Font font, List<Button> buttons, List<UnityEngine.UIElements.Label> labels, 
+        List<Slider> sliders, bool isArabic)
     {
         foreach (var button in buttons)
         {
@@ -633,6 +635,14 @@ public class MainMenuController : MonoBehaviour
                 button.name != "PortugueseButton")
             {
                 button.style.unityFont = font;
+                if (isArabic)
+                {
+                    button.languageDirection = UnityEngine.UIElements.LanguageDirection.RTL;
+                }
+                else
+                {
+                    button.languageDirection = UnityEngine.UIElements.LanguageDirection.LTR;
+                }
             }
         }
 
@@ -645,6 +655,14 @@ public class MainMenuController : MonoBehaviour
                 label.name != "Ates")
             {
                 label.style.unityFont = font;
+                if (isArabic)
+                {
+                    label.languageDirection = UnityEngine.UIElements.LanguageDirection.RTL;
+                }
+                else
+                {
+                    label.languageDirection = UnityEngine.UIElements.LanguageDirection.LTR;
+                }
             }
         }
 
@@ -710,12 +728,12 @@ public class MainMenuController : MonoBehaviour
 
         //Get the reference for the tutorial image container and number
         TutorialImageContainer = MainMenu.Q<VisualElement>("TutorialImageContainer");
-        TutorialNumber = MainMenu.Q<Label>("TutorialNumber");
-        TutorialText = MainMenu.Q<Label>("TutorialText");
+        TutorialNumber = MainMenu.Q<UnityEngine.UIElements.Label>("TutorialNumber");
+        TutorialText = MainMenu.Q<UnityEngine.UIElements.Label>("TutorialText");
 
         // Get the reference for the HighScore text
-        HighScoreText = MainMenu.Q<Label>("HighScore");
-        LanguageText = MainMenu.Q<Label>("LanguageSelectorLabel");
+        HighScoreText = MainMenu.Q<UnityEngine.UIElements.Label>("HighScore");
+        LanguageText = MainMenu.Q<UnityEngine.UIElements.Label>("LanguageSelectorLabel");
     }
     private void RegisterCallBacks()
     {

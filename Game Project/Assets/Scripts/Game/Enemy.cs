@@ -106,7 +106,10 @@ public class Enemy : MonoBehaviour
 
     public void ActivateKamikaze(GameObject ParticleSystem)
     {
-        kamikazeEffect = Instantiate(ParticleSystem, transform.position, Quaternion.identity);
+        if (kamikazeEffect == null)
+        {
+            kamikazeEffect = Instantiate(ParticleSystem, transform.position, Quaternion.identity);
+        }
         kamikazeEffect.transform.SetParent(transform);
         kamikazeEffect.SetActive(true);
         kamikazeSFX.Play();
@@ -163,10 +166,10 @@ public class Enemy : MonoBehaviour
 
                     PlayerReviveSystem.instance.PlayerDiedLocation();
 
-                    this.player.gameObject.SetActive(false);
-                    gameObject.SetActive(false);
-                    GameStats.AddDeath();
-                    GameOver(score, highscore);
+                    //this.player.gameObject.SetActive(false);
+                    //gameObject.SetActive(false);
+                    //GameStats.AddDeath();
+                    //GameOver(score, highscore);
 
                     AudioListener listener = Camera.main.GetComponent<AudioListener>();
 

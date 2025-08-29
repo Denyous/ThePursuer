@@ -426,7 +426,7 @@ public class EnemySpawner : MonoBehaviour
 
     private bool CheckIfMoreThanOneEnemyVisible(List<GameObject> enemies)
     {
-        int counter = -1;
+        int counter = 0;
 
         foreach (GameObject enemy in enemies)
         {

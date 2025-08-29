@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Reflection.Emit;
 using UnityEditor;
+using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using System;
 
 public class TutorialController : MonoBehaviour
 {
@@ -27,10 +28,10 @@ public class TutorialController : MonoBehaviour
     public Button skipButton;
     public Button goToGameButton;
 
-    public Label welcomeTitle;
-    public Label tutorialText;
-    public Label tutorialSkipTitle;
-    public Label tutorialEndTitle;
+    public UnityEngine.UIElements.Label welcomeTitle;
+    public UnityEngine.UIElements.Label tutorialText;
+    public UnityEngine.UIElements.Label tutorialSkipTitle;
+    public UnityEngine.UIElements.Label tutorialEndTitle;
 
     [SerializeField] private Font ArabicFont;
     [SerializeField] private Font ChineseFont;
@@ -70,7 +71,7 @@ public class TutorialController : MonoBehaviour
         // Register callback so it updates immediately and on language switch
         localizedString.StringChanged += (localizedValue) =>
         {
-            if (element is Label label) label.text = localizedValue;
+            if (element is UnityEngine.UIElements.Label label) label.text = localizedValue;
             else if (element is Button button) button.text = localizedValue;
         };
     }
@@ -78,9 +79,9 @@ public class TutorialController : MonoBehaviour
     private void SetLocalizedTextForUIElements()
     {
         var buttons = panel.Query<Button>().ToList();
-        var labels = panel.Query<Label>().ToList();
+        var labels = panel.Query<UnityEngine.UIElements.Label>().ToList();
 
-        foreach (Label label in labels)
+        foreach (UnityEngine.UIElements.Label label in labels)
         {
             switch (label.name)
             {
@@ -122,38 +123,54 @@ public class TutorialController : MonoBehaviour
     private void SetFont(string LanguageCode)
     {
         var buttons = panel.Query<Button>().ToList();
-        var labels = panel.Query<Label>().ToList();
+        var labels = panel.Query<UnityEngine.UIElements.Label>().ToList();
 
         switch (LanguageCode)
         {
             case "ar":
-                SetFontForUIElements(ArabicFont, buttons, labels);
+                SetFontForUIElements(ArabicFont, buttons, labels, true);
                 break;
             case "zh":
-                SetFontForUIElements(ChineseFont, buttons, labels);
+                SetFontForUIElements(ChineseFont, buttons, labels, false);
                 break;
             case "ja":
-                SetFontForUIElements(JapaneseFont, buttons, labels);
+                SetFontForUIElements(JapaneseFont, buttons, labels, false);
                 break;
             case "hi":
-                SetFontForUIElements(HindiFont, buttons, labels);
+                SetFontForUIElements(HindiFont, buttons, labels, false);
                 break;
             default:
-                SetFontForUIElements(DefaultFont, buttons, labels);
+                SetFontForUIElements(DefaultFont, buttons, labels, false);
                 break;
         }
     }
 
-    private void SetFontForUIElements(Font font, List<Button> buttons, List<Label> labels)
+    private void SetFontForUIElements(Font font, List<Button> buttons, List<UnityEngine.UIElements.Label> labels, bool isArabic)
     {
         foreach (var button in buttons)
         {
             button.style.unityFont = font;
+            if (isArabic)
+            {
+                button.languageDirection = UnityEngine.UIElements.LanguageDirection.RTL;
+            }
+            else
+            {
+                button.languageDirection = UnityEngine.UIElements.LanguageDirection.LTR;
+            }
         }
 
         foreach (var label in labels)
         {
             label.style.unityFont = font;
+            if (isArabic)
+            {
+                label.languageDirection = UnityEngine.UIElements.LanguageDirection.RTL;
+            }
+            else
+            {
+                label.languageDirection = UnityEngine.UIElements.LanguageDirection.LTR;
+            }
         }
     }
 
@@ -173,10 +190,10 @@ public class TutorialController : MonoBehaviour
         noButton = panel.Q<Button>("Btn_No");
         skipButton = panel.Q<Button>("Btn_Skip");
         goToGameButton = panel.Q<Button>("Btn_GoToGame");
-        welcomeTitle = panel.Q<Label>("Txt_WelcomeTitle");
-        tutorialText = panel.Q<Label>("Txt_TutorialText");
-        tutorialSkipTitle = panel.Q<Label>("Txt_TutorialSkipTitle");
-        tutorialEndTitle = panel.Q<Label>("Txt_TutorialEndTitle");
+        welcomeTitle = panel.Q<UnityEngine.UIElements.Label>("Txt_WelcomeTitle");
+        tutorialText = panel.Q<UnityEngine.UIElements.Label>("Txt_TutorialText");
+        tutorialSkipTitle = panel.Q<UnityEngine.UIElements.Label>("Txt_TutorialSkipTitle");
+        tutorialEndTitle = panel.Q<UnityEngine.UIElements.Label>("Txt_TutorialEndTitle");
         RegisterCallbacks();
     }
 
@@ -208,10 +225,12 @@ public class TutorialController : MonoBehaviour
             skipButton.style.display = DisplayStyle.Flex;
             TogglePanels(tutorialPanel, skipTutorialPanel);
         }
+        AudioManager.instance.SFXPlayOneShot(AudioManager.instance.buttonClickSFX);
     }
 
     private void OnYesButtonClicked()
     {
+        AudioManager.instance.SFXPlayOneShot(AudioManager.instance.buttonClickSFX);
         SceneManager.LoadScene("Game");
     }
 
@@ -227,10 +246,12 @@ public class TutorialController : MonoBehaviour
             skipButton.style.display = DisplayStyle.None;
             TogglePanels(skipTutorialPanel, tutorialPanel);
         }
+        AudioManager.instance.SFXPlayOneShot(AudioManager.instance.buttonClickSFX);
     }
 
     private void OnGoToTutorialButtonClicked()
     {
+        AudioManager.instance.SFXPlayOneShot(AudioManager.instance.buttonClickSFX);
         TogglePanels(tutorialPanel, startTutorialPanel);
         PanelName = "Tutorial";
     }
@@ -248,6 +269,7 @@ public class TutorialController : MonoBehaviour
             ShowTutorialImages(TutorialIndex);
             ShowTutorialText(TutorialIndex);
         }
+        AudioManager.instance.SFXPlayOneShot(AudioManager.instance.buttonClickSFX);
     }
 
     private void OnPrevButtonClicked()
@@ -258,6 +280,7 @@ public class TutorialController : MonoBehaviour
             ShowTutorialImages(TutorialIndex);
             ShowTutorialText(TutorialIndex);
         }
+        AudioManager.instance.SFXPlayOneShot(AudioManager.instance.buttonClickSFX);
     }
 
     private void ShowTutorialText(int tutorialIndex)

@@ -69,6 +69,7 @@ public class LanguageSwitcher : MonoBehaviour
         foreach (var text in textFields)
         {
             text.font = font;
+            text.isRightToLeftText = (font == ArabicFont);
         }
     }
 }
