@@ -23,7 +23,7 @@ public class FinalScoreTest : MonoBehaviour
     
     void Start()
     {
-        gameStatTimer =GameObject.Find("GameStatsManager").GetComponent<GameStats>();
+        gameStatTimer = GameObject.Find("GameStatsManager").GetComponent<GameStats>();
         starCount = GameObject.Find("Player").GetComponent<Player>();
     }
 
@@ -45,33 +45,57 @@ public class FinalScoreTest : MonoBehaviour
 
     private IEnumerator AnimateScore(int startTimer, int startStars)
     {
-        int t = startTimer;
-        int s = startStars;
+        int time = startTimer;
+        int starCount = startStars;
+        float interval;
 
-        while (t > 0 || s > 0)
+        if (starCount > 0 && time > 0)
         {
-            if (t > 0)
-            {
-                t--;
-                timerText.text = t.ToString();
-                finalScore += startStars; // timer azalınca yıldız etkisi
-            }
-
-            if (s > 0)
-            {
-                s--;
-                starText.text = s.ToString();
-                finalScore += startTimer; // yıldız azalınca timer etkisi
-            }
-
-            scoreText.text = finalScore.ToString();
-
-            yield return new WaitForSeconds(1f); // animasyon hızı
+            interval = startStars / startTimer;
+        }
+        else
+        {
+            interval = 0.5f;
         }
 
-        // Son kesin değer
-        finalScore = startTimer * startStars;
-        scoreText.text = finalScore.ToString();
+        starText.text = starCount.ToString();
+        timerText.text = time.ToString();
+        Debug.Log($"Final Score--------{time * starCount}");
+
+        if (interval < 0.8f)
+        {
+            interval = 0.8f;
+        }
+
+        while (time > 0 || starCount > 0)
+        {
+            yield return new WaitForSeconds(interval);
+
+            if (startStars != 0)
+            {
+                if (starCount > 0)
+                {
+                    starCount--;
+                    if (time > 0)
+                    {
+                        time -= startTimer;
+                        timerText.text = time.ToString();
+                    }
+                    starText.text = starCount.ToString();
+                    finalScore += startTimer;
+                }
+            }
+            else
+            {
+                if (time > 0)
+                {
+                    time -= 2;
+                    timerText.text = time.ToString();
+                }
+            }
+            scoreText.text = finalScore.ToString();
+        }
+        Debug.Log($"Calculated Final Score: {finalScore}");
     }
 }
 
