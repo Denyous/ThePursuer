@@ -33,6 +33,21 @@ public class AudioManager : MonoBehaviour
     public AudioClip buttonClickSFX;
     public AudioClip pauseScreenClockTickSFX;
 
+    public static AudioManager instance;
+
+    private void OnEnable()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void EnableSound()
     {
         musicSource.enabled = true;

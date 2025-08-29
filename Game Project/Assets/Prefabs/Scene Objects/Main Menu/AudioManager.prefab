@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 353190375064038114}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: MainAudio
+  m_TagString: Audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,18 +49,18 @@ MonoBehaviour:
   musicSource: {fileID: 483784805075519892}
   SFX: {fileID: 369917731846788642}
   audioMixer: {fileID: 24100000, guid: 1005739dba854b54399bbb7dfa09e971, type: 2}
-  explosionSFX: {fileID: 0}
-  shieldUpSFX: {fileID: 0}
-  shieldImpactSFX: {fileID: 0}
-  flareSFX: {fileID: 0}
-  laserSFX: {fileID: 0}
-  blackHoleInstantiationSFX: {fileID: 0}
+  explosionSFX: {fileID: 8300000, guid: f035590e7abe49341b457658d393706c, type: 3}
+  shieldUpSFX: {fileID: 8300000, guid: 5a288a6fe1b263440916a8f4685aa69d, type: 3}
+  shieldImpactSFX: {fileID: 8300000, guid: 61cb0ebf21fb389498ebe16295e0654a, type: 3}
+  flareSFX: {fileID: 8300000, guid: c31b76c7cb64eb945b675e66d191445c, type: 3}
+  laserSFX: {fileID: 8300000, guid: 6bb1364deacf25a4cab9bbe187226600, type: 3}
+  blackHoleInstantiationSFX: {fileID: 8300000, guid: 5724e2e1ce9d8a240859b69a599f06ee, type: 3}
   enemiesSwallowedByBlackHoleSFX: {fileID: 0}
-  speedUpSFX: {fileID: 0}
-  speedDownSFX: {fileID: 0}
-  collectStarSFX: {fileID: 0}
-  collectBuffSFX: {fileID: 0}
-  gameOverScreenSFX: {fileID: 0}
+  speedUpSFX: {fileID: 8300000, guid: 98958f5cad0bc8744b6b7d8b90460cfc, type: 3}
+  speedDownSFX: {fileID: 8300000, guid: 57e46087ee017c9448f3c7f13a6bce35, type: 3}
+  collectStarSFX: {fileID: 8300000, guid: d94e78f4110184548bb749ae38c3c285, type: 3}
+  collectBuffSFX: {fileID: 8300000, guid: d94e78f4110184548bb749ae38c3c285, type: 3}
+  gameOverScreenSFX: {fileID: 8300000, guid: 56db68ea816daa64f9407d4c97472bf1, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: 302a7ee850fea20439e8ac128f7ba6e7, type: 3}
   pauseScreenClockTickSFX: {fileID: 8300000, guid: fa3ef48f28f8f1441a68f27e4e11d61d, type: 3}
 --- !u!1001 &1483711059771414917

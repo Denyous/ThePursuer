@@ -22,14 +22,16 @@ public class GameInitiator : MonoBehaviour
     private async Task InitializeAudio()
     {
         await Task.Yield();
-        _audioManager.SetActive(true);
-        _audioManager.GetComponent<AudioManager>().EnableSound();
+        if (_audioManager != null)
+        {
+            _audioManager.SetActive(true);
+            _audioManager.GetComponent<AudioManager>().EnableSound();
+        }
     }
 
     private async Task InitializeUI()
     {
         await Task.Yield();
-
         var menu = _mainMenuController.GetComponent<MainMenuController>();
         menu.InitiateFirst();   
         menu.InitiateSecond();
