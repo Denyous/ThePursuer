@@ -18,7 +18,7 @@
     border-right-color: rgba(255, 255, 255, 0);
     border-top-color: rgba(255, 255, 255, 0);
     border-bottom-color: rgba(255, 255, 255, 0);
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     -unity-font-style: bold;
     -unity-font: resource('Noto-Sans/Latin/NotoSans-Regular');
     -unity-font-definition: initial;
