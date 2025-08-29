@@ -166,10 +166,10 @@ public class Enemy : MonoBehaviour
 
                     PlayerReviveSystem.instance.PlayerDiedLocation();
 
-                    //this.player.gameObject.SetActive(false);
-                    //gameObject.SetActive(false);
-                    //GameStats.AddDeath();
-                    //GameOver(score, highscore);
+                    this.player.gameObject.SetActive(false);
+                    gameObject.SetActive(false);
+                    GameStats.AddDeath();
+                    GameOver(score, highscore);
 
                     AudioListener listener = Camera.main.GetComponent<AudioListener>();
 
