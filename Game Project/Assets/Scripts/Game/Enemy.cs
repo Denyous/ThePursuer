@@ -172,7 +172,7 @@ public class Enemy : MonoBehaviour
 
                     if (listener is not null)
                     {
-                        listener.enabled = true;
+                        listener.enabled = true; 
                     }
                 }
             }
