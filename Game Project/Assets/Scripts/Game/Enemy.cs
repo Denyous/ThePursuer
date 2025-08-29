@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private GameObject kamikazeEffect;
     Rigidbody2D rb;
     private AudioManager audioManager;
+    private FinalScoreTest finalScore;
 
     //This is an event to be handled in EnemySpawner script
     public static event System.Action<GameObject> OnEnemyDied;
@@ -24,11 +25,13 @@ public class Enemy : MonoBehaviour
     //Player
     private GameObject player;
     private GameOver GameOverScreen;
+
     
 
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        finalScore = GameObject.Find("_GM").GetComponent<FinalScoreTest>();
         rb = GetComponent<Rigidbody2D>();
         fire = Instantiate(rocketFire, transform, false);
         fire.transform.localPosition = new Vector3(0f, -2.1f, 1f);
@@ -166,7 +169,9 @@ public class Enemy : MonoBehaviour
                     this.player.gameObject.SetActive(false);
                     gameObject.SetActive(false);
                     GameStats.AddDeath();
+                    finalScore.ShowFinalScore();
                     GameOver(score, highscore);
+
 
                     //AudioListener listener = Camera.main.GetComponent<AudioListener>();
 

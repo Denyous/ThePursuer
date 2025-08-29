@@ -27,7 +27,7 @@ public class GameStats : MonoBehaviour
     {
         StartTimer();
     }
-    
+
     private void Update()
     {
         if (isRunning)
@@ -37,18 +37,19 @@ public class GameStats : MonoBehaviour
         }
     }
 
-    void UpdateTimerUI()
+    public int UpdateTimerUI()
     {
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(elapsedTime % 60f);
         timerText.text = $"{minutes:00}:{seconds:00}";
+        return seconds;
     }
 
     public static void AddDeath()
     {
         deathCount++;
         PlayerPrefs.SetInt("DeathCount", deathCount);
-        StopTimer();     
+        StopTimer();
         Debug.Log("Death Count: " + deathCount);
         Debug.Log("Ads Number: " + adsNumber);
         if (deathCount >= adsNumber)
