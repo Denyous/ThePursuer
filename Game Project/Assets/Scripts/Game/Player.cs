@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     private AudioManager audioManager;
     private EnemySpawner Spawner;
     private CollectibleController controller;
-    private int Score = 0;
+    public int Score = 0;
     private float targetAngle;
     public bool Shield;
     private float speedUpDuration = 0f;

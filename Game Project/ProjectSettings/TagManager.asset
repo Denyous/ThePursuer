@@ -19,6 +19,7 @@ TagManager:
   - deneme
   - MainAudio
   - GameOver
+  - Spawner
   layers:
   - Default
   - TransparentFX

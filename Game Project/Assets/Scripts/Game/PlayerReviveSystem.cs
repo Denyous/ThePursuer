@@ -9,6 +9,7 @@ public class PlayerReviveSystem : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject reviveButton;
     public GameObject UI;
+    
 
 
     public bool reviveUsed = false;
@@ -39,8 +40,10 @@ public class PlayerReviveSystem : MonoBehaviour
 
     public void RevivePlayer()
     {
+
         player.SetActive(true);
         player.transform.position = deathPosition;
+
         UI.SetActive(true);
         UISettings();
         GameStats.ResumeTimer();
@@ -112,6 +115,9 @@ public class PlayerReviveSystem : MonoBehaviour
     {
         deathPosition = player.transform.position;
     }
+
+
+   
 }
 
 
