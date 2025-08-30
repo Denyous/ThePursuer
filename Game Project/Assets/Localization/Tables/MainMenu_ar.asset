@@ -125,6 +125,16 @@ MonoBehaviour:
     m_Localized: "\u0625\u0644\u063A\u0627\u0621"
     m_Metadata:
       m_Items: []
+  - m_Id: 38597809647702016
+    m_Localized: "\u0627\u0644\u0648\u0642\u062A: {0}"
+    m_Metadata:
+      m_Items:
+      - rid: 3574364231128317954
+  - m_Id: 38597857026560000
+    m_Localized: "\u0627\u0644\u0646\u062A\u064A\u062C\u0629: {0}"
+    m_Metadata:
+      m_Items:
+      - rid: 3574364231128317954
   references:
     version: 2
     RefIds:
@@ -134,3 +144,5 @@ MonoBehaviour:
         m_Entries: 
         m_SharedEntries:
         - id: 58643238912
+        - id: 38597809647702016
+        - id: 38597857026560000

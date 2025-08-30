@@ -47,12 +47,14 @@ public class GameOver : MonoBehaviour
         
         gameObject.SetActive(true);
 
-
         LocalizedHighScore.Arguments = new object[] { _highScore };
-        LocalizedScore.Arguments = new object[] { _score };
+        //LocalizedScore.Arguments = new object[] { _score };
 
         HighScoreText.text = LocalizedHighScore.GetLocalizedString();
-        PointText.text = LocalizedScore.GetLocalizedString();
+        //PointText.text = LocalizedScore.GetLocalizedString();
+
+        FinalScoreTest finalScore = FindObjectOfType<FinalScoreTest>();
+        finalScore.ShowFinalScore();
     }
 
 

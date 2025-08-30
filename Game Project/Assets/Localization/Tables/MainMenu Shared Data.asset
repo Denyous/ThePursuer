@@ -107,6 +107,14 @@ MonoBehaviour:
     m_Key: MainMenuAdsCancel
     m_Metadata:
       m_Items: []
+  - m_Id: 38597809647702016
+    m_Key: MainMenuTime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38597857026560000
+    m_Key: MainMenuStar
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

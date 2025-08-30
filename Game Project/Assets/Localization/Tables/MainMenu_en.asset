@@ -112,6 +112,16 @@ MonoBehaviour:
     m_Localized: Cancel
     m_Metadata:
       m_Items: []
+  - m_Id: 38597809647702016
+    m_Localized: 'Time: {0}'
+    m_Metadata:
+      m_Items:
+      - rid: 3574364231128317956
+  - m_Id: 38597857026560000
+    m_Localized: 'Score: {0}'
+    m_Metadata:
+      m_Items:
+      - rid: 3574364231128317956
   references:
     version: 2
     RefIds:
@@ -121,3 +131,5 @@ MonoBehaviour:
         m_Entries: 
         m_SharedEntries:
         - id: 58643238912
+        - id: 38597809647702016
+        - id: 38597857026560000

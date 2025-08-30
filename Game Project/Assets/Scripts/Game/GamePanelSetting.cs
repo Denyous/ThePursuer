@@ -22,10 +22,12 @@ public class GamePanelSetting : MonoBehaviour
     
     public Image fadeImage;
     public float fadeDuration = 1.5f;
+    private FinalScoreTest finalScoreTest;
 
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        finalScoreTest = GameObject.FindGameObjectWithTag("_GM").GetComponent<FinalScoreTest>();
     }
 
     public void OpenPausePanel()
@@ -51,6 +53,7 @@ public class GamePanelSetting : MonoBehaviour
         Time.timeScale = 1f;
 
         StartCoroutine(FadeOut());
+        finalScoreTest.SetTextBoxesActive();
     }
 
     IEnumerator FadeOut()
@@ -78,13 +81,12 @@ public class GamePanelSetting : MonoBehaviour
 
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+        finalScoreTest.SetTextBoxesActive();
     }
 
     void pauseIconFalse()
     {
-
         pauseIcon.SetActive(false);
-
     }
 
     void pauseIconTrue()
@@ -94,7 +96,6 @@ public class GamePanelSetting : MonoBehaviour
 
     IEnumerator ResumeWithCountdown()
     {
-
         resumeButton.interactable = false;
         mainButton.interactable = false;
         restartButton.interactable = false;
@@ -117,7 +118,6 @@ public class GamePanelSetting : MonoBehaviour
         musicSource.UnPause();
 
         pauseIconTrue();
-
 
         resumeButton.interactable = true;
         mainButton.interactable = true;

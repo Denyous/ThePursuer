@@ -2491,7 +2491,7 @@ public class LeanTween : MonoBehaviour {
     * @param {Transform} transform:Transform the transform you wish to follow
     * @param {LeanProp} leanProp:LeanProp enum of the type of following you wish to do position, scale, color, etc.
     * @param {float} smoothTime:float roughly the time it takes to reach the destination
-    * @param {float} [maxSpeed]:float maximum Speed at which it moves towards the destination
+    * @param {float} [maxSpeed]:float maximum speed at which it moves towards the destination
     * @example
     * LeanTween.followDamp(transform, followTransform, LeanProp.localY, 1.1f);
     */
@@ -2558,7 +2558,7 @@ public class LeanTween : MonoBehaviour {
     * @param {Transform} transform:Transform the transform you wish to follow
     * @param {LeanProp} leanProp:LeanProp enum of the type of following you wish to do position, scale, color, etc.
     * @param {float} smoothTime:float roughly the time it takes to reach the destination
-    * @param {float} [maxSpeed]:float maximum Speed at which it moves towards the destination
+    * @param {float} [maxSpeed]:float maximum speed at which it moves towards the destination
     * @param {float} [friction]:float rate at which the spring is slowed down once it reaches it's destination
     * @param {float} [accelRate]:float the rate it accelerates from it's initial position
     * @example
@@ -2627,7 +2627,7 @@ public class LeanTween : MonoBehaviour {
     * @param {Transform} transform:Transform the transform you wish to follow
     * @param {LeanProp} leanProp:LeanProp enum of the type of following you wish to do position, scale, color, etc.
     * @param {float} smoothTime:float roughly the time it takes to reach the destination
-    * @param {float} [maxSpeed]:float maximum Speed at which it moves towards the destination
+    * @param {float} [maxSpeed]:float maximum speed at which it moves towards the destination
     * @param {float} [friction]:float rate at which the spring is slowed down once it reaches it's destination
     * @param {float} [accelRate]:float the rate it accelerates from it's initial position
     * @param {float} [hitDamp]:float the rate at which to dampen the bounciness of when it reaches it's destination
@@ -2689,7 +2689,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Follow another transforms position/scale/color with a constant Speed</summary>
+    * <summary>Follow another transforms position/scale/color with a constant speed</summary>
     * 
     * @method LeanTween.followLinear
     * @param {Transform} transform:Transform the transform you wish to be the follower
@@ -3190,7 +3190,7 @@ public class LTBezierPath {
 */
 [System.Serializable]
 public class LTSpline {
-    public static int DISTANCE_COUNT = 3; // increase for a more accurate constant Speed
+    public static int DISTANCE_COUNT = 3; // increase for a more accurate constant speed
     public static int SUBLINE_COUNT = 20; // increase for a more accurate smoothing of the curves into lines
 
     /**
