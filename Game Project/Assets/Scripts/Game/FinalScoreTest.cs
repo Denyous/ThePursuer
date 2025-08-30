@@ -74,7 +74,7 @@ public class FinalScoreTest : MonoBehaviour
         if (initialStars > 0)
         {
             LeanTween.cancel(starText.rectTransform);
-            LeanTween.value(gameObject, initialStars, 0, duration).setOnUpdate((float val) =>
+            LeanTween.value(starText.gameObject, initialStars, 0, duration).setOnUpdate((float val) =>
             {
                 int newStars = Mathf.RoundToInt(val);
                 int decrease = initialStars - newStars;
@@ -113,7 +113,7 @@ public class FinalScoreTest : MonoBehaviour
         if (initialTimer > 0)
         {
             LeanTween.cancel(timerText.rectTransform);
-            LeanTween.value(gameObject, initialTimer, 0, duration).setOnUpdate((float val) =>
+            LeanTween.value(timerText.gameObject, initialTimer, 0, duration).setOnUpdate((float val) =>
             {
                 int newTimer = Mathf.FloorToInt(val);
                 if (newTimer < lastTimer)
@@ -180,8 +180,11 @@ public class FinalScoreTest : MonoBehaviour
 
     public void SetTextBoxesActive()
     {
-        timerText.gameObject.gameObject.SetActive(true);
-        starText.gameObject.gameObject.SetActive(true);
+        LeanTween.cancelAll();
+        timerText.gameObject.SetActive(true);
+        starText.gameObject.SetActive(true);
+        timerText.rectTransform.localScale = Vector3.one;
+        starText.rectTransform.localScale = Vector3.one;
         UnScalePanel();
     }
 

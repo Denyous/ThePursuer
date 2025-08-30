@@ -78,7 +78,6 @@ public class GamePanelSetting : MonoBehaviour
     public void MainMenu()
     {
         ClickSound();
-
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
         finalScoreTest.SetTextBoxesActive();
