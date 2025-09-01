@@ -49,19 +49,19 @@ MonoBehaviour:
   musicSource: {fileID: 483784805075519892}
   SFX: {fileID: 369917731846788642}
   audioMixer: {fileID: 24100000, guid: 1005739dba854b54399bbb7dfa09e971, type: 2}
-  explosionSFX: {fileID: 8300000, guid: f035590e7abe49341b457658d393706c, type: 3}
-  shieldUpSFX: {fileID: 8300000, guid: 5a288a6fe1b263440916a8f4685aa69d, type: 3}
+  explosionSFX: {fileID: 8300000, guid: 01c0559e559a09641b939e897006ddb7, type: 3}
+  shieldUpSFX: {fileID: 8300000, guid: 39ffb225684abe74f94d3ec469a272bc, type: 3}
   shieldImpactSFX: {fileID: 8300000, guid: 61cb0ebf21fb389498ebe16295e0654a, type: 3}
-  flareSFX: {fileID: 8300000, guid: c31b76c7cb64eb945b675e66d191445c, type: 3}
-  laserSFX: {fileID: 8300000, guid: 6bb1364deacf25a4cab9bbe187226600, type: 3}
-  blackHoleInstantiationSFX: {fileID: 8300000, guid: 5724e2e1ce9d8a240859b69a599f06ee, type: 3}
+  flareSFX: {fileID: 8300000, guid: 502c4f8335d8c274cbbf752fe822360e, type: 3}
+  laserSFX: {fileID: 8300000, guid: 0be803e3e190e494e9448ca093b957f7, type: 3}
+  blackHoleInstantiationSFX: {fileID: 8300000, guid: d92c34bbb1a05774985986d8f50359a7, type: 3}
   enemiesSwallowedByBlackHoleSFX: {fileID: 0}
-  speedUpSFX: {fileID: 8300000, guid: 98958f5cad0bc8744b6b7d8b90460cfc, type: 3}
-  speedDownSFX: {fileID: 8300000, guid: 57e46087ee017c9448f3c7f13a6bce35, type: 3}
-  collectStarSFX: {fileID: 8300000, guid: d94e78f4110184548bb749ae38c3c285, type: 3}
-  collectBuffSFX: {fileID: 8300000, guid: d94e78f4110184548bb749ae38c3c285, type: 3}
+  speedUpSFX: {fileID: 8300000, guid: a41b56c0512b495428bea5b1bf9f6553, type: 3}
+  speedDownSFX: {fileID: 8300000, guid: 4b6af6680ce5a8f4bbf6202203626c93, type: 3}
+  collectStarSFX: {fileID: 8300000, guid: 8deeabc44b5d4784ea81bd2a0a3fbc2c, type: 3}
+  collectBuffSFX: {fileID: 8300000, guid: 8deeabc44b5d4784ea81bd2a0a3fbc2c, type: 3}
   gameOverScreenSFX: {fileID: 8300000, guid: 56db68ea816daa64f9407d4c97472bf1, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: 302a7ee850fea20439e8ac128f7ba6e7, type: 3}
+  buttonClickSFX: {fileID: 8300000, guid: 0247e1a5c9b298441b4788f4d862245d, type: 3}
   pauseScreenClockTickSFX: {fileID: 8300000, guid: fa3ef48f28f8f1441a68f27e4e11d61d, type: 3}
 --- !u!1001 &1483711059771414917
 PrefabInstance:
@@ -309,7 +309,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 161804794746222114, guid: 1005739dba854b54399bbb7dfa09e971, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 33700a7a6b5de034193bcf3bfde278ef, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b0bb0383bd5424b4182ec9bdbf57f2d8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
