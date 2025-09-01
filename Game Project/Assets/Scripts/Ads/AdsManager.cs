@@ -53,8 +53,8 @@ public class AdsManager : MonoBehaviour
             Unity.Services.LevelPlay.LevelPlay.OnInitSuccess += SdkInitializationCompletedEvent;
             Unity.Services.LevelPlay.LevelPlay.OnInitFailed += SdkInitializationFailedEvent;
 
-            //Unity.Services.LevelPlay.LevelPlay.SetMetaData("is_test_suite", "enable");
-            //Unity.Services.LevelPlay.LevelPlay.SetConsent(true);
+            Unity.Services.LevelPlay.LevelPlay.SetMetaData("is_test_suite", "enable");
+            Unity.Services.LevelPlay.LevelPlay.SetConsent(true);
             Unity.Services.LevelPlay.LevelPlay.Init(AdConfig.AppKey);
         }
     }
