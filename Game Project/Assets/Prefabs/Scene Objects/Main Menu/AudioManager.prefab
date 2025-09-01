@@ -55,14 +55,12 @@ MonoBehaviour:
   flareSFX: {fileID: 8300000, guid: 502c4f8335d8c274cbbf752fe822360e, type: 3}
   laserSFX: {fileID: 8300000, guid: 0be803e3e190e494e9448ca093b957f7, type: 3}
   blackHoleInstantiationSFX: {fileID: 8300000, guid: d92c34bbb1a05774985986d8f50359a7, type: 3}
-  enemiesSwallowedByBlackHoleSFX: {fileID: 0}
   speedUpSFX: {fileID: 8300000, guid: a41b56c0512b495428bea5b1bf9f6553, type: 3}
   speedDownSFX: {fileID: 8300000, guid: 4b6af6680ce5a8f4bbf6202203626c93, type: 3}
   collectStarSFX: {fileID: 8300000, guid: 8deeabc44b5d4784ea81bd2a0a3fbc2c, type: 3}
   collectBuffSFX: {fileID: 8300000, guid: 79e1fabedbd238f45b38a81277fdc774, type: 3}
-  gameOverScreenSFX: {fileID: 8300000, guid: 56db68ea816daa64f9407d4c97472bf1, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: 0247e1a5c9b298441b4788f4d862245d, type: 3}
-  pauseScreenClockTickSFX: {fileID: 8300000, guid: fa3ef48f28f8f1441a68f27e4e11d61d, type: 3}
+  pauseScreenClockTickSFX: {fileID: 8300000, guid: c2b1b650e571c904f9f52d1eb6590561, type: 3}
 --- !u!1001 &1483711059771414917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -309,7 +307,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 161804794746222114, guid: 1005739dba854b54399bbb7dfa09e971, type: 2}
-  m_audioClip: {fileID: 8300000, guid: b0bb0383bd5424b4182ec9bdbf57f2d8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b052e7e4f0e59c94cb25f15f491cd234, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

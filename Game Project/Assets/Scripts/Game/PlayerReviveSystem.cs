@@ -56,28 +56,6 @@ public class PlayerReviveSystem : MonoBehaviour
         }
     }
 
-    //public void KillPlayer()
-    //{
-    //    int highscore = PlayerPrefs.GetInt("HighScore");
-    //    int score;
-    //    GameOver GameOverScreen = gameOverScreen.GetComponent<GameOver>();
-    //    Player playerScript = player.GetComponent<Player>();
-    //    score = playerScript.GetScore();
-
-    //    if (highscore < score)
-    //    {
-    //        highscore = score;
-    //        PlayerPrefs.SetInt("HighScore", highscore);
-    //    }
-
-    //    GameOverScreen.Setup(score, highscore);
-    //    GameStats.AddDeath();
-    //    gameOverScreen.SetActive(true);
-    //    reviveButton.SetActive(false);
-    //    player.SetActive(false);
-    //    reviveUsed = false;
-    //}
-
     public void UISettings()
     {
         reviveUsed = true;

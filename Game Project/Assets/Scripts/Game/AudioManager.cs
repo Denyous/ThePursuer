@@ -23,13 +23,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip flareSFX;
     public AudioClip laserSFX;
     public AudioClip blackHoleInstantiationSFX;
-    public AudioClip enemiesSwallowedByBlackHoleSFX;
     public AudioClip speedUpSFX;
     public AudioClip speedDownSFX;
     public AudioClip collectStarSFX;
     public AudioClip collectBuffSFX;
 
-    public AudioClip gameOverScreenSFX;
     public AudioClip buttonClickSFX;
     public AudioClip pauseScreenClockTickSFX;
 

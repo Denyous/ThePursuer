@@ -40,9 +40,9 @@ public class BlackHole : MonoBehaviour
             Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             spawnPosition.z = 0; // 2D olduğu için Z'yi sıfırla
 
-            GameObject blackHoleRef = Instantiate(blackHolePrefab, spawnPosition, Quaternion.identity); // Karadelik oluştur
+            GameObject blackHoleRef = Instantiate(blackHolePrefab, spawnPosition, Quaternion.identity);
 
-            audioManager.SFXPlayOneShot(audioManager.blackHoleInstantiationSFX); // blackhole yerleştirme sfx
+            audioManager.SFXPlayOneShot(audioManager.blackHoleInstantiationSFX);
 
             isPlacing = false;
             musicSource.UnPause();

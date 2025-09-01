@@ -244,11 +244,11 @@ public class Player : MonoBehaviour
         if (Shield == false)
         {
             
-            shieldVisual.SetActive(false);  // Kalkan görselini kapat
+            shieldVisual.SetActive(false);
         }
         else
         {
-            shieldVisual.SetActive(true);  // Kalkan görselini aç
+            shieldVisual.SetActive(true);
         }
     }
 

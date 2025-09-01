@@ -45,8 +45,6 @@ public class GameOver : MonoBehaviour
 
     private void SecondStep()
     {
-        audioManager.SFXPlayOneShot(audioManager.gameOverScreenSFX);
-
         gameObject.SetActive(true);
 
         LocalizedHighScore.Arguments = new object[] { _highScore };
