@@ -610,6 +610,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205769883}
   m_CullTransparentMesh: 1
+--- !u!1 &246562723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 246562724}
+  - component: {fileID: 246562725}
+  m_Layer: 0
+  m_Name: FinalScoreAnimation
+  m_TagString: FinalScore
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &246562724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246562723}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.15133113, y: -3.7128856, z: -2.9066617}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &246562725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246562723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a7add7bf003524f83fc8f78e394654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 504336669}
+  starText: {fileID: 727815305}
+  scoreText: {fileID: 1413435082}
+  panelRectTransform: {fileID: 5781576}
+  pointImageRectTransform: {fileID: 1439864898}
+  LocalizedScore:
+    m_TableReference:
+      m_TableCollectionName: GUID:9b9cd5237f05cdb4dbf46e0e4e7e88ab
+    m_TableEntryReference:
+      m_KeyId: 5215258988544
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  LocalizedTime:
+    m_TableReference:
+      m_TableCollectionName: GUID:009e39e46fd65bb45ba014d753f6fa4d
+    m_TableEntryReference:
+      m_KeyId: 38597809647702016
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  LocalizedStar:
+    m_TableReference:
+      m_TableCollectionName: GUID:009e39e46fd65bb45ba014d753f6fa4d
+    m_TableEntryReference:
+      m_KeyId: 38597857026560000
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  duration: 5
+  tweenDuration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &261148759
 GameObject:
   m_ObjectHideFlags: 0
@@ -4796,7 +4877,6 @@ GameObject:
   - component: {fileID: 1165175679}
   - component: {fileID: 1165175680}
   - component: {fileID: 1165175681}
-  - component: {fileID: 1165175682}
   m_Layer: 0
   m_Name: _GM
   m_TagString: _GM
@@ -4874,55 +4954,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cleanEnemies: {fileID: 0}
---- !u!114 &1165175682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165175677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21a7add7bf003524f83fc8f78e394654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 504336669}
-  starText: {fileID: 727815305}
-  scoreText: {fileID: 1413435082}
-  panelRectTransform: {fileID: 5781576}
-  pointImageRectTransform: {fileID: 1439864898}
-  LocalizedScore:
-    m_TableReference:
-      m_TableCollectionName: GUID:9b9cd5237f05cdb4dbf46e0e4e7e88ab
-    m_TableEntryReference:
-      m_KeyId: 5215258988544
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  LocalizedTime:
-    m_TableReference:
-      m_TableCollectionName: GUID:009e39e46fd65bb45ba014d753f6fa4d
-    m_TableEntryReference:
-      m_KeyId: 38597809647702016
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  LocalizedStar:
-    m_TableReference:
-      m_TableCollectionName: GUID:009e39e46fd65bb45ba014d753f6fa4d
-    m_TableEntryReference:
-      m_KeyId: 38597857026560000
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  duration: 5
-  tweenDuration: 0.5
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &1177485361
 GameObject:
   m_ObjectHideFlags: 0
@@ -6157,7 +6188,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 150}
+  m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1413435082
 MonoBehaviour:
@@ -6379,7 +6410,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 100, y: 0}
-  m_SizeDelta: {x: 100, y: 150}
+  m_SizeDelta: {x: 200, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1439864899
 SpriteRenderer:
@@ -9400,6 +9431,7 @@ SceneRoots:
   - {fileID: 1757601074}
   - {fileID: 381575967}
   - {fileID: 1437113231}
+  - {fileID: 246562724}
   - {fileID: 1253070763}
   - {fileID: 1033099936}
   - {fileID: 1582767128}

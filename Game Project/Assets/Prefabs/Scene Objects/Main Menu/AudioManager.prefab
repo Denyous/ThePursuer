@@ -59,7 +59,7 @@ MonoBehaviour:
   speedUpSFX: {fileID: 8300000, guid: a41b56c0512b495428bea5b1bf9f6553, type: 3}
   speedDownSFX: {fileID: 8300000, guid: 4b6af6680ce5a8f4bbf6202203626c93, type: 3}
   collectStarSFX: {fileID: 8300000, guid: 8deeabc44b5d4784ea81bd2a0a3fbc2c, type: 3}
-  collectBuffSFX: {fileID: 8300000, guid: 8deeabc44b5d4784ea81bd2a0a3fbc2c, type: 3}
+  collectBuffSFX: {fileID: 8300000, guid: 79e1fabedbd238f45b38a81277fdc774, type: 3}
   gameOverScreenSFX: {fileID: 8300000, guid: 56db68ea816daa64f9407d4c97472bf1, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: 0247e1a5c9b298441b4788f4d862245d, type: 3}
   pauseScreenClockTickSFX: {fileID: 8300000, guid: fa3ef48f28f8f1441a68f27e4e11d61d, type: 3}

@@ -44,7 +44,8 @@ public class FinalScoreTest : MonoBehaviour
 
     public void AnimateFinalScore(int startTimer, int startStars)
     {
-        LeanTween.cancelAll();
+        LeanTween.cancel(starText.gameObject);
+        LeanTween.cancel(timerText.gameObject);
         WaitForSec(1f);
         timer = startTimer;
         stars = startStars;
@@ -73,8 +74,7 @@ public class FinalScoreTest : MonoBehaviour
 
         if (initialStars > 0)
         {
-            LeanTween.cancel(starText.rectTransform);
-            LeanTween.value(starText.gameObject, initialStars, 0, duration).setOnUpdate((float val) =>
+            LeanTween.value(starText.gameObject,initialStars, 0f, duration).setOnUpdate((float val) =>
             {
                 int newStars = Mathf.RoundToInt(val);
                 int decrease = initialStars - newStars;
@@ -93,8 +93,8 @@ public class FinalScoreTest : MonoBehaviour
                     if (stars <= 0)
                     {
                         completedTweenStar = true;
-                        LeanTween.cancel(starText.rectTransform);
-                        LeanTween.scale(starText.rectTransform, Vector3.zero, 0.2f)
+                        LeanTween.cancel(starText.gameObject);
+                        LeanTween.scale(starText.gameObject, Vector3.zero, 0.2f)
                             .setEase(LeanTweenType.easeInBack)
                             .setOnComplete(() => starText.gameObject.SetActive(false));
                     }
@@ -104,16 +104,15 @@ public class FinalScoreTest : MonoBehaviour
         else
         {
             completedTweenStar = true;
-            LeanTween.cancel(starText.rectTransform);
-            LeanTween.scale(starText.rectTransform, Vector3.zero, 0.2f)
+            LeanTween.cancel(starText.gameObject);
+            LeanTween.scale(starText.gameObject, Vector3.zero, 0.2f)
                 .setEase(LeanTweenType.easeInBack)
                 .setOnComplete(() => starText.gameObject.SetActive(false));
         }
 
         if (initialTimer > 0)
         {
-            LeanTween.cancel(timerText.rectTransform);
-            LeanTween.value(timerText.gameObject, initialTimer, 0, duration).setOnUpdate((float val) =>
+            LeanTween.value(timerText.gameObject,initialTimer, 0f, duration).setOnUpdate((float val) =>
             {
                 int newTimer = Mathf.FloorToInt(val);
                 if (newTimer < lastTimer)
@@ -141,8 +140,8 @@ public class FinalScoreTest : MonoBehaviour
                     if (newTimer <= 0)
                     {
                         completedTweenTimer = true;
-                        LeanTween.cancel(timerText.rectTransform);
-                        LeanTween.scale(timerText.rectTransform, Vector3.zero, 0.2f)
+                        LeanTween.cancel(timerText.gameObject);
+                        LeanTween.scale(timerText.gameObject, Vector3.zero, 0.2f)
                             .setEase(LeanTweenType.easeInBack)
                             .setOnComplete(() => timerText.gameObject.SetActive(false));
 
@@ -158,33 +157,45 @@ public class FinalScoreTest : MonoBehaviour
 
     void ScalePanel()
     {
-        LeanTween.cancel(panelRectTransform.gameObject);
-        LeanTween.cancel(pointImageRectTransform.gameObject);
-        LeanTween.cancel(scoreText.gameObject);
+        //LeanTween.cancel(panelRectTransform.gameObject);
+        //LeanTween.cancel(pointImageRectTransform.gameObject);
+        //LeanTween.cancel(scoreText.gameObject);
         LeanTween.moveY(panelRectTransform, panelRectTransform.anchoredPosition.y + 150, tweenDuration)
         .setEase(LeanTweenType.easeOutBack);
         LeanTween.scale(pointImageRectTransform, new Vector3(10, 10, 1), tweenDuration);
-        LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x + 50, tweenDuration);
+        LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x + 100, tweenDuration);
     }
 
     public void UnScalePanel()
     {
-        LeanTween.cancel(panelRectTransform.gameObject);
-        LeanTween.cancel(pointImageRectTransform.gameObject);
-        LeanTween.cancel(scoreText.gameObject);
+        //LeanTween.cancel(panelRectTransform.gameObject);
+        //LeanTween.cancel(pointImageRectTransform.gameObject);
+        //LeanTween.cancel(scoreText.gameObject);
         LeanTween.moveY(panelRectTransform, panelRectTransform.anchoredPosition.y - 150, tweenDuration)
         .setEase(LeanTweenType.easeOutBack);
         LeanTween.scale(pointImageRectTransform, new Vector3(0,0,1), tweenDuration);
-        LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x - 50, tweenDuration);
+        LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x - 100, tweenDuration);
+    }
+
+    public void MakeTextBoxActive()
+    {
+        timerText.gameObject.SetActive(true);
+        starText.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(true);
+        timerText.rectTransform.localScale = Vector3.one;
+        starText.rectTransform.localScale = Vector3.one;
+        scoreText.rectTransform.localScale = Vector3.one;
     }
 
     public void SetTextBoxesActive()
     {
-        LeanTween.cancelAll();
+        //LeanTween.cancelAll();
         timerText.gameObject.SetActive(true);
         starText.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(true);
         timerText.rectTransform.localScale = Vector3.one;
         starText.rectTransform.localScale = Vector3.one;
+        scoreText.rectTransform.localScale = Vector3.one;
         UnScalePanel();
     }
 
@@ -197,6 +208,10 @@ public class FinalScoreTest : MonoBehaviour
         timerText.text = timer.ToString();
         starText.text = stars.ToString();
         scoreText.text = finalScore.ToString();
+
+        timerText.gameObject.SetActive(true);
+        starText.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(true);
 
         AnimateFinalScore(timer, stars);
     }

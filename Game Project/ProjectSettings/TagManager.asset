@@ -21,6 +21,7 @@ TagManager:
   - GameOver
   - Spawner
   - _GM
+  - FinalScore
   layers:
   - Default
   - TransparentFX

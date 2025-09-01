@@ -21,13 +21,15 @@ public class GameOver : MonoBehaviour
     AudioManager audioManager;
     public AudioSource musicSource;
     public PlayerReviveSystem reviveSystem;
-    
+    private FinalScoreTest finalScore;
+
     public void Setup(int score, int highscore)
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        finalScore = GameObject.FindGameObjectWithTag("FinalScore").GetComponent<FinalScoreTest>();
 
         UI.SetActive(false);
-
+        finalScore.MakeTextBoxActive();
         TimerScoreText();
 
         _score = score;
@@ -38,13 +40,13 @@ public class GameOver : MonoBehaviour
             musicSource.Pause();
         }
 
-        Invoke("Wait1Second", 1f);
+        Invoke("SecondStep", 1f);
     }
 
-    void Wait1Second()
+    private void SecondStep()
     {
         audioManager.SFXPlayOneShot(audioManager.gameOverScreenSFX);
-        
+
         gameObject.SetActive(true);
 
         LocalizedHighScore.Arguments = new object[] { _highScore };
@@ -52,8 +54,6 @@ public class GameOver : MonoBehaviour
 
         HighScoreText.text = LocalizedHighScore.GetLocalizedString();
         //PointText.text = LocalizedScore.GetLocalizedString();
-
-        FinalScoreTest finalScore = FindObjectOfType<FinalScoreTest>();
         finalScore.ShowFinalScore();
     }
 

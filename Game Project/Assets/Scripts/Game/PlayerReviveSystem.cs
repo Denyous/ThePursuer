@@ -31,7 +31,7 @@ public class PlayerReviveSystem : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        finalScoreTest = GameObject.FindGameObjectWithTag("_GM").GetComponent<FinalScoreTest>();
+        finalScoreTest = GameObject.FindGameObjectWithTag("FinalScore").GetComponent<FinalScoreTest>();
     }
 
     public void OnReviveButtonPressed()
