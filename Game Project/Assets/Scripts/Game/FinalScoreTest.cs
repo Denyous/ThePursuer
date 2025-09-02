@@ -84,7 +84,6 @@ public class FinalScoreTest : MonoBehaviour
             LeanTween.value(starText.gameObject, initialStars, 0f, duration).setOnUpdate((float val) =>
             {
                 int newStars = Mathf.RoundToInt(val);
-                int decrease = initialStars - newStars;
 
                 if (newStars < stars)
                 {
@@ -126,6 +125,7 @@ public class FinalScoreTest : MonoBehaviour
 
         if (initialTimer > 0)
         {
+            AudioManager.instance.SFXPlayOneShot(AudioManager.instance.highScoreAnimationSFX);
             LeanTween.value(timerText.gameObject, initialTimer, 0f, duration).setOnUpdate((float val) =>
             {
                 int newTimer = Mathf.FloorToInt(val);
@@ -172,7 +172,13 @@ public class FinalScoreTest : MonoBehaviour
                         }
                     }
                 }
-            }).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
+            }).setEase(LeanTweenType.linear).setIgnoreTimeScale(true).setOnComplete(() =>
+            {
+                if (finalScore > highScore)
+                {
+                    PlayerPrefs.SetInt("HighScore", finalScore);    
+                }
+            });
         }
     }
 

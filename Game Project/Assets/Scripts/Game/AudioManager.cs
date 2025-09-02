@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip speedDownSFX;
     public AudioClip collectStarSFX;
     public AudioClip collectBuffSFX;
+    public AudioClip highScoreAnimationSFX;
 
     public AudioClip buttonClickSFX;
     public AudioClip pauseScreenClockTickSFX;
