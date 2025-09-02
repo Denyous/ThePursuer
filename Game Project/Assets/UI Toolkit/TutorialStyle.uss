@@ -27,7 +27,7 @@
 .Button {
     background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14");
     width: 20%;
-    height: 70%;
+    height: 80%;
     background-color: rgba(255, 255, 255, 0);
 }
 

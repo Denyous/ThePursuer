@@ -23,7 +23,7 @@ public class GameOver : MonoBehaviour
     public PlayerReviveSystem reviveSystem;
     private FinalScoreTest finalScore;
 
-    public void Setup(int score, int highscore)
+    public void Setup()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         finalScore = GameObject.FindGameObjectWithTag("FinalScore").GetComponent<FinalScoreTest>();
@@ -31,9 +31,6 @@ public class GameOver : MonoBehaviour
         UI.SetActive(false);
         finalScore.MakeTextBoxActive();
         TimerScoreText();
-
-        _score = score;
-        _highScore = highscore;
 
         if (musicSource is not null)
         {
@@ -47,12 +44,8 @@ public class GameOver : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        LocalizedHighScore.Arguments = new object[] { _highScore };
-        //LocalizedScore.Arguments = new object[] { _score };
-
-        HighScoreText.text = LocalizedHighScore.GetLocalizedString();
-        //PointText.text = LocalizedScore.GetLocalizedString();
         finalScore.ShowFinalScore();
+        Time.timeScale = 0f;
     }
 
 

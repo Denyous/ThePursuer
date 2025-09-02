@@ -31,7 +31,7 @@ public class CollectibleController : MonoBehaviour
         icon.SetActive(false);
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         nearestStar = GetClosestGameObject(Player.transform, stars);
 
@@ -49,6 +49,14 @@ public class CollectibleController : MonoBehaviour
             {
                 icon.SetActive(false);
             }
+        }
+        else if (nearestStar == null)
+        {
+            icon.SetActive(false);
+        }
+        else if (stars.Count == 0)
+        {
+            icon.SetActive(false);
         }
 
         closestEnemy = GetClosestGameObject(Player.transform, enemies);
@@ -68,7 +76,16 @@ public class CollectibleController : MonoBehaviour
                 enemyIcon.SetActive(false);
             }
         }
+        else if (closestEnemy == null)
+        {
+            enemyIcon.SetActive(false);
+        }
+        else if (enemies.Count == 0)
+        {
+            enemyIcon.SetActive(false);
+        }
     }
+
 
     #region Handling Icon Positions on the side of the screen
     public void AddToStars(GameObject star)

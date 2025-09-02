@@ -659,6 +659,7 @@ MonoBehaviour:
   scoreText: {fileID: 1413435082}
   panelRectTransform: {fileID: 5781576}
   pointImageRectTransform: {fileID: 1439864898}
+  HighScoreText: {fileID: 305315458}
   LocalizedScore:
     m_TableReference:
       m_TableCollectionName: GUID:9b9cd5237f05cdb4dbf46e0e4e7e88ab
@@ -682,6 +683,15 @@ MonoBehaviour:
       m_TableCollectionName: GUID:009e39e46fd65bb45ba014d753f6fa4d
     m_TableEntryReference:
       m_KeyId: 38597857026560000
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  LocalizedHighScore:
+    m_TableReference:
+      m_TableCollectionName: GUID:9b9cd5237f05cdb4dbf46e0e4e7e88ab
+    m_TableEntryReference:
+      m_KeyId: 5188281225216
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -5933,7 +5943,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f452fc1b01939044db36f0d2afda71d0, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0

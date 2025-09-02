@@ -49,15 +49,15 @@
                 <ui:VisualElement name="InnerTutorialTemplate" class="InnerTutorialTemplate" style="align-self: auto;">
                     <ui:Label tabindex="-1" text="Move with the stick" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialText" style="height: 10%; width: 92%; font-size: 30%; -unity-font: resource(&apos;Noto-Sans/Latin/NotoSans-Regular&apos;); -unity-font-definition: initial; -unity-font-style: bold; -unity-text-align: middle-center; white-space: normal; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; letter-spacing: -5px; word-spacing: -5px; -unity-paragraph-spacing: -10px; color: rgb(0, 0, 0);" />
                     <ui:VisualElement name="TutorialImageContainer" class="Image" style="bottom: 1.2%;" />
-                    <ui:VisualElement name="ButtonsPanel" class="TutorialsButtonPanel" style="flex-grow: 1;">
-                        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PrevButton" class="BackButtonBG TutorialButton" />
+                    <ui:VisualElement name="ButtonsPanel" class="TutorialsButtonPanel" style="flex-grow: 1; bottom: 0.4%;">
+                        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PrevButton" class="BackButtonBG TutorialButton" style="background-image: url(&quot;project://database/Assets/Sprites/Tutorial%20Sprites/tutorial%20screen%20button.png?fileID=21300000&amp;guid=3cf9978985b8550418dc771d9925cbc2&amp;type=3#tutorial screen button&quot;); height: 90%;" />
                         <ui:Label tabindex="-1" text="1/9" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TutorialNumber" class="TutorialNum" style="-unity-font: resource(&apos;Noto-Sans/Latin/NotoSans-Regular&apos;);" />
-                        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="NextButton" class="NextButtonBG TutorialButton" />
+                        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="NextButton" class="NextButtonBG TutorialButton" style="background-image: url(&quot;project://database/Assets/Sprites/Tutorial%20Sprites/tutorial%20screen%20button.png?fileID=21300000&amp;guid=3cf9978985b8550418dc771d9925cbc2&amp;type=3#tutorial screen button&quot;); height: 90%;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" class="BackButton BackButtonBG" style="position: absolute; left: 3%; top: 92%; align-self: flex-start;" />
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" class="BackButton BackButtonBG" style="position: absolute; left: 3%; top: 92%; align-self: flex-start; rotate: 0;" />
     </ui:VisualElement>
     <ui:VisualElement name="CreditsPanel" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&quot;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&quot;); display: none; justify-content: center;">
         <ui:VisualElement name="CreditsElementPanel" style="max-width: 90%; max-height: 80%; width: 90%; height: 80%; justify-content: center; align-items: center; align-self: center;">
@@ -73,7 +73,7 @@
             <ui:Label tabindex="-1" text="Audio Design" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AudioDesignTitle" class="CreditsTitle" style="margin-top: 5%; -unity-font: resource(&apos;Noto-Sans/Latin/NotoSans-Bold&apos;);" />
             <ui:Label tabindex="-1" text="Ateş Şentürk" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Ates" enable-rich-text="false" class="CreditsNames" style="-unity-font: resource(&apos;Noto-Sans/Latin/NotoSans-Regular&apos;);" />
         </ui:VisualElement>
-        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CreditsBackButton" class="BackButton BackButtonBG" style="position: absolute; left: 3%; top: 92%; align-self: flex-start;" />
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CreditsBackButton" class="BackButton BackButtonBG" style="position: absolute; left: 3%; top: 92%; align-self: flex-start; rotate: 0;" />
     </ui:VisualElement>
     <ui:VisualElement name="NoAdsPanel" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&quot;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&quot;); display: none; justify-content: center;">
         <ui:VisualElement name="NoAdsElementPanel" style="flex-grow: 1; width: 100%; height: 25%; min-height: 25%; max-height: 30%;">

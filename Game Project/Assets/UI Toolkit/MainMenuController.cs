@@ -92,6 +92,7 @@ public class MainMenuController : MonoBehaviour
     {
         GetReferencesForPanels();
         audioManager = FindAnyObjectByType<AudioManager>();
+        //PlayerPrefs.DeleteKey("HighScore");
     }
 
     //SetSound() should be in the start because audio mixer should be initialized

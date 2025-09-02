@@ -207,10 +207,10 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     position: absolute;
-    left: 54.7%;
-    top: 80.2%;
-    width: 44.3%;
-    height: 15%;
+    left: 59%;
+    top: 85%;
+    width: 40%;
+    height: 10%;
 }
 
 .SoundSliders {
@@ -366,11 +366,11 @@
     border-right-width: 0;
     border-top-width: 0;
     border-bottom-width: 0;
+    rotate: 180deg;
 }
 
 .NextButtonBG {
     background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14");
-    rotate: 180deg;
     -unity-background-image-tint-color: rgb(255, 255, 255);
     -unity-slice-left: 0;
     -unity-background-scale-mode: stretch-to-fill;
@@ -445,7 +445,7 @@
 
 .NextButtonBG:active {
     background-image: url("project://database/Assets/Sprites/UI%20Sheets/Ui%20sheets.png?fileID=-1902998606&guid=bd5dde16848754d4d8e3f6500b234abd&type=3#Ui sheets_14");
-    rotate: 180deg;
+    rotate: 0;
     -unity-background-image-tint-color: rgb(255, 255, 255);
     -unity-slice-left: 0;
     -unity-background-scale-mode: stretch-to-fill;
@@ -464,7 +464,7 @@
 }
 
 #MusicSlider #unity-drag-container {
-    height: 25%;
+    height: 50%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -484,7 +484,7 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
-    width: 30px;
+    width: 25%;
     height: 100%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -538,7 +538,7 @@
 }
 
 #SfxSlider #unity-drag-container {
-    height: 25%;
+    height: 50%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -558,7 +558,7 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
-    width: 30px;
+    width: 25%;
     height: 100%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;

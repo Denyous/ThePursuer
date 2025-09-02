@@ -53,7 +53,6 @@ public class GamePanelSetting : MonoBehaviour
         Time.timeScale = 1f;
 
         StartCoroutine(FadeOut());
-        finalScoreTest.SetTextBoxesActive();
     }
 
     IEnumerator FadeOut()
@@ -80,7 +79,6 @@ public class GamePanelSetting : MonoBehaviour
         ClickSound();
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
-        finalScoreTest.SetTextBoxesActive();
     }
 
     void pauseIconFalse()

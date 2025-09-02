@@ -37,11 +37,11 @@ public class PlayerReviveSystem : MonoBehaviour
     public void OnReviveButtonPressed()
     {
         AdsManager.instance.ShowRewardedAd();
-        finalScoreTest.SetTextBoxesActive();
     }
 
     public void RevivePlayer()
     {
+        finalScoreTest.SetTextBoxesActive();
         player.SetActive(true);
         player.transform.position = deathPosition;
 
@@ -54,6 +54,10 @@ public class PlayerReviveSystem : MonoBehaviour
         {
             listener.enabled = false;
         }
+
+        Time.timeScale = 1f;
+        EnemySpawner spawner = player.GetComponentInChildren<EnemySpawner>();
+        spawner.ExplodeEnemies();
     }
 
     public void UISettings()

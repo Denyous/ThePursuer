@@ -49,9 +49,9 @@ public class Enemy : MonoBehaviour
     #endregion
 
     //Showing game over screen
-    public void GameOver(int score, int highscore)
+    public void GameOver()
     {
-        GameOverScreen.Setup(score, highscore);
+        GameOverScreen.Setup();
     }
 
 
@@ -155,20 +155,20 @@ public class Enemy : MonoBehaviour
                 {
                     player.CreateExplosion();
 
-                    int score = player.GetScore();
-                    int highscore = PlayerPrefs.GetInt("HighScore", 0);
+                    //int score = player.GetScore();
+                    //int highscore = PlayerPrefs.GetInt("HighScore", 0);
 
-                    if (highscore < score)
-                    {
-                        highscore = score;
-                        PlayerPrefs.SetInt("HighScore", highscore);
-                    }
+                    //if (highscore < score)
+                    //{
+                    //    highscore = score;
+                    //    PlayerPrefs.SetInt("HighScore", highscore);
+                    //}
 
                     PlayerReviveSystem.instance.PlayerDiedLocation();
 
                     this.player.gameObject.SetActive(false);
                     gameObject.SetActive(false);
-                    GameOver(score, highscore);
+                    GameOver();
                     GameStats.AddDeath();
 
                     AudioListener listener = Camera.main.GetComponent<AudioListener>();
