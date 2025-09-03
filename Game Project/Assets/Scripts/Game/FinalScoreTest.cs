@@ -27,7 +27,7 @@ public class FinalScoreTest : MonoBehaviour
 
     [Header("--Variables--")]
 
-    public float duration = 5f;
+    public float duration = 1f;
     public float tweenDuration = 0.5f;
     private bool completedTweenStar = false;
     private bool completedTweenTimer = false;
@@ -86,13 +86,6 @@ public class FinalScoreTest : MonoBehaviour
 
         Debug.Log($"Timer: {timer} \n Stars: {stars}");
         Debug.Log($"Duration: {duration}");
-
-        duration = (float)(stars / timer);
-
-        if (duration < 1)
-        {
-            duration = 1;
-        }
 
         int initialStars = stars;
         int initialTimer = timer;

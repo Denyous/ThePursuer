@@ -696,7 +696,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  duration: 5
+  duration: 1
   tweenDuration: 0.5
   references:
     version: 2
@@ -5569,6 +5569,7 @@ MonoBehaviour:
   speedDownSFX: {fileID: 8300000, guid: 57e46087ee017c9448f3c7f13a6bce35, type: 3}
   collectStarSFX: {fileID: 8300000, guid: 56db68ea816daa64f9407d4c97472bf1, type: 3}
   collectBuffSFX: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
+  highScoreAnimationSFX: {fileID: 0}
   buttonClickSFX: {fileID: 8300000, guid: 302a7ee850fea20439e8ac128f7ba6e7, type: 3}
   pauseScreenClockTickSFX: {fileID: 8300000, guid: 302a7ee850fea20439e8ac128f7ba6e7, type: 3}
 --- !u!114 &1253070765
