@@ -155,15 +155,6 @@ public class Enemy : MonoBehaviour
                 {
                     player.CreateExplosion();
 
-                    //int score = player.GetScore();
-                    //int highscore = PlayerPrefs.GetInt("HighScore", 0);
-
-                    //if (highscore < score)
-                    //{
-                    //    highscore = score;
-                    //    PlayerPrefs.SetInt("HighScore", highscore);
-                    //}
-
                     PlayerReviveSystem.instance.PlayerDiedLocation();
 
                     this.player.gameObject.SetActive(false);

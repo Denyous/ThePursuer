@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Mathematics;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -77,5 +78,47 @@ public class AudioManager : MonoBehaviour
     public void SFXPlayOneShot(AudioClip clip)
     {
         SFX.PlayOneShot(clip);
+    }
+
+    public float GetMusicVolume()
+    {
+        return musicSource.volume;
+    }
+
+    public void AdjustMusicVolume(float volume)
+    {
+        musicSource.volume = volume;    
+    }
+
+    public IEnumerator FadeInMusicCoroutine(float duration)
+    {
+        float time = 0f;
+        musicSource.volume = 0f;
+        musicSource.Play();
+
+        while (time < duration)
+        {
+            time += Time.unscaledDeltaTime;
+            musicSource.volume = Mathf.Lerp(0f, 1f, time / duration);
+            yield return null;
+        }
+
+        musicSource.volume = 1f;
+    }
+
+    public IEnumerator FadeOutMusicCoroutine(float duration)
+    {
+        float startVolume = musicSource.volume;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.unscaledDeltaTime;
+            musicSource.volume = Mathf.Lerp(startVolume, 0f, time / duration);
+            yield return null;
+        }
+
+        musicSource.volume = 0f;
+        musicSource.Stop();
     }
 }

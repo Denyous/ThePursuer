@@ -31,6 +31,7 @@ public class FinalScoreTest : MonoBehaviour
     public float tweenDuration = 0.5f;
     private bool completedTweenStar = false;
     private bool completedTweenTimer = false;
+    private float musicVolume;
 
     void Start()
     {
@@ -44,11 +45,12 @@ public class FinalScoreTest : MonoBehaviour
 
     public void AnimateFinalScore(int timer, int stars, int finalScore, int highScore)
     {
-        LeanTween.cancel(starText.gameObject);
-        LeanTween.cancel(timerText.gameObject);
-        LeanTween.cancel(scoreText.gameObject);
-        LeanTween.cancel(HighScoreText.gameObject);
+        LeanTween.cancelAll();
         WaitForSec(1f);
+
+       
+        StartCoroutine(AudioManager.instance.FadeOutMusicCoroutine(0.2f));
+        AudioManager.instance.SFXPlayOneShot(AudioManager.instance.highScoreAnimationSFX);
 
         if (stars == 0 || timer == 0)
         {
@@ -89,7 +91,7 @@ public class FinalScoreTest : MonoBehaviour
 
         int initialStars = stars;
         int initialTimer = timer;
-        
+
         AnimatePointText(initialStars, duration);
         AnimateTimerText(initialTimer, duration);
 
@@ -98,6 +100,7 @@ public class FinalScoreTest : MonoBehaviour
 
     private void AnimateScoreText(float score, float duration, float highScore)
     {
+        LeanTween.cancel(scoreText.gameObject);
         LeanTween.value(scoreText.gameObject, 0f, score, duration).setOnUpdate((float val) =>
         {
             int newScore = Mathf.FloorToInt(val);
@@ -121,6 +124,7 @@ public class FinalScoreTest : MonoBehaviour
 
     private void AnimateTimerText(float timer, float duration)
     {
+        LeanTween.cancel(timerText.gameObject);
         LeanTween.value(timerText.gameObject, timer, 0f, duration).setOnUpdate((float val) =>
         {
             int newTimer = Mathf.FloorToInt(val);
@@ -139,6 +143,7 @@ public class FinalScoreTest : MonoBehaviour
 
     private void AnimatePointText(float point, float duration)
     {
+        LeanTween.cancel(starText.gameObject);
         LeanTween.value(starText.gameObject, point, 0f, duration).setOnUpdate((float val) =>
         {
             int newPoint = Mathf.FloorToInt(val);
@@ -160,6 +165,7 @@ public class FinalScoreTest : MonoBehaviour
         .setEase(LeanTweenType.easeOutBack).setIgnoreTimeScale(true);
         LeanTween.scale(pointImageRectTransform, new Vector3(12, 12, 1), tweenDuration).setIgnoreTimeScale(true);
         LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x + 30, tweenDuration).setIgnoreTimeScale(true);
+        StartCoroutine(AudioManager.instance.FadeInMusicCoroutine(0.2f));
     }
 
     public void UnScalePanel()
