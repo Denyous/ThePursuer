@@ -97,20 +97,23 @@ public class GamePanelSetting : MonoBehaviour
         mainButton.interactable = false;
         restartButton.interactable = false;
 
-        countdownText.gameObject.SetActive(true); // Geri sayımı göster
+        countdownText.gameObject.SetActive(true); 
 
         for (int i = 2; i > 0; i--)
         {
-            audioManager.SFXPlayOneShot(audioManager.pauseScreenClockTickSFX);
-            countdownText.text = i.ToString(); // Geri sayım metnini güncelle
-            yield return new WaitForSecondsRealtime(1f); // 1 saniye bekle (Time.timeScale = 0 olsa bile çalışır)
+            countdownText.text = i.ToString();
+            audioManager.SFXPlayOneShot(audioManager.clockTickSFX);
+            yield return new WaitForSecondsRealtime(0.5f); 
+
+            audioManager.SFXPlayOneShot(audioManager.clockTockSFX);
+            yield return new WaitForSecondsRealtime(0.5f); 
         }
 
         pauseScreen.SetActive(false);
 
-        countdownText.gameObject.SetActive(false); // Geri sayımı gizle
-                                                   // Pause menüsünü kapat
-        Time.timeScale = 1f; // Oyunu devam ettir
+        countdownText.gameObject.SetActive(false); 
+                                                   
+        Time.timeScale = 1f; 
 
         musicSource.UnPause();
 

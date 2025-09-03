@@ -82,7 +82,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnShieldPowerUp();
         }
 
-        InvokeRepeating("SpawnPooledEnemies", 1f, 0.1f);
+        InvokeRepeating("SpawnPooledEnemies", 3f, 5f);
         InvokeRepeating("SpawnPooledStars", 1f, 3f);
 
         InvokeRepeating("SpawnPooledShields", 1f, 5f);
@@ -92,8 +92,7 @@ public class EnemySpawner : MonoBehaviour
         InvokeRepeating("SpawnPooledFlares", 1f, 7f);
 
         InvokeRepeating("SpawnPooledExplodes", 1f, 10f);
-        InvokeRepeating("SpawnPooledBlackHoles", 1f, 1f);
-
+        InvokeRepeating("SpawnPooledBlackHoles", 1f, 5f);
 
         m_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         playerScript = target.GetComponent<Player>();

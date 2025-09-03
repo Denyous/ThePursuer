@@ -1,12 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Unity.Mathematics;
-using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
@@ -31,7 +25,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip highScoreAnimationSFX;
 
     public AudioClip buttonClickSFX;
-    public AudioClip pauseScreenClockTickSFX;
+    public AudioClip clockTickSFX;
+    public AudioClip clockTockSFX;
 
     public static AudioManager instance;
 

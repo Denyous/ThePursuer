@@ -61,7 +61,8 @@ MonoBehaviour:
   collectBuffSFX: {fileID: 8300000, guid: 79e1fabedbd238f45b38a81277fdc774, type: 3}
   highScoreAnimationSFX: {fileID: 8300000, guid: e4a93511694a2ce4aa3199ac43ad8474, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: 0247e1a5c9b298441b4788f4d862245d, type: 3}
-  pauseScreenClockTickSFX: {fileID: 8300000, guid: c2b1b650e571c904f9f52d1eb6590561, type: 3}
+  clockTickSFX: {fileID: 8300000, guid: 5ec2c969bc3c0cc4bb72b72875dac285, type: 3}
+  clockTockSFX: {fileID: 8300000, guid: e07a248c98f1a6c47987a8ae5b9861b3, type: 3}
 --- !u!1001 &1483711059771414917
 PrefabInstance:
   m_ObjectHideFlags: 0
