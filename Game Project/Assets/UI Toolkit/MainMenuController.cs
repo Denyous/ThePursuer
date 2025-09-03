@@ -44,6 +44,7 @@ public class MainMenuController : MonoBehaviour
     public Button NoAdsButton;
     public Button NoAdsBuyButton;
     public Button NoAdsCancelButton;
+    public Button ResetButton;
 
     //Language Buttons
     public Button EnglishButton;
@@ -92,7 +93,6 @@ public class MainMenuController : MonoBehaviour
     {
         GetReferencesForPanels();
         audioManager = FindAnyObjectByType<AudioManager>();
-        //PlayerPrefs.DeleteKey("HighScore");
     }
 
     //SetSound() should be in the start because audio mixer should be initialized
@@ -711,6 +711,7 @@ public class MainMenuController : MonoBehaviour
         NoAdsButton = MainMenu.Q<Button>("NoAdsButton");
         NoAdsBuyButton = MainMenu.Q<Button>("BuyButton");
         NoAdsCancelButton = MainMenu.Q<Button>("CancelButton");
+        ResetButton = MainMenu.Q<Button>("test");
 
         // Get the reference for all the language buttons
         EnglishButton = MainMenu.Q<Button>("EnglishButton");
@@ -778,6 +779,7 @@ public class MainMenuController : MonoBehaviour
         NoAdsButton.RegisterCallback<ClickEvent>(e => OnNoAdsButtonClicked());
         NoAdsBuyButton.RegisterCallback<ClickEvent>(e => OnNoAdsbuyButtonClicked());
         NoAdsCancelButton.RegisterCallback<ClickEvent>(e => OnNoAdsCancelButtonClicked());
+        ResetButton.RegisterCallback<ClickEvent>(e => OnResetButtonClicked());
 
         // Events for Language Buttons
         EnglishButton.RegisterCallback<ClickEvent>(e => OnEnglishButtonClicked());
@@ -802,6 +804,12 @@ public class MainMenuController : MonoBehaviour
         // Events for Credits Buttons
         CreditsBackButton.RegisterCallback<ClickEvent>(e => OnCreditsBackButtonClicked());
     }
+
+    private void OnResetButtonClicked()
+    {
+        PlayerPrefs.DeleteKey("HighScore");
+    }
+
     private void UnRegisterCallBacks()
     {
         MusicSlider.UnregisterValueChangedCallback(e =>

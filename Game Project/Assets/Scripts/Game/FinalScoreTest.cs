@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Localization;
 
@@ -26,11 +27,6 @@ public class FinalScoreTest : MonoBehaviour
 
     [Header("--Variables--")]
 
-    int stars;
-    int timer;
-    int finalScore;
-    int highScore;
-
     public float duration = 5f;
     public float tweenDuration = 0.5f;
     private bool completedTweenStar = false;
@@ -46,17 +42,39 @@ public class FinalScoreTest : MonoBehaviour
         yield return new WaitForSeconds(time);
     }
 
-    public void AnimateFinalScore(int startTimer, int startStars, int highScore)
+    public void AnimateFinalScore(int timer, int stars, int finalScore, int highScore)
     {
         LeanTween.cancel(starText.gameObject);
         LeanTween.cancel(timerText.gameObject);
+        LeanTween.cancel(scoreText.gameObject);
+        LeanTween.cancel(HighScoreText.gameObject);
         WaitForSec(1f);
-        timer = startTimer;
-        stars = startStars;
-        this.highScore = highScore;
-        int lastTimer = timer;
 
-        finalScore = 0;
+        if (stars == 0 || timer == 0)
+        {
+            if (stars > 0 && timer > 0)
+            {
+                finalScore = (stars * timer);
+            }
+            else if (timer > 0)
+            {
+                finalScore = timer * 1;
+            }
+            else
+            {
+                finalScore = 0;
+            }
+        }
+        else
+        {
+            finalScore = (stars * timer);
+        }
+
+        if (finalScore > highScore)
+        {
+            PlayerPrefs.SetInt("HighScore", finalScore);
+        }
+
         LocalizedScore.Arguments = new object[] { finalScore };
         LocalizedStar.Arguments = new object[] { stars };
         LocalizedTime.Arguments = new object[] { timer };
@@ -67,6 +85,7 @@ public class FinalScoreTest : MonoBehaviour
         HighScoreText.text = LocalizedHighScore.GetLocalizedString();
 
         Debug.Log($"Timer: {timer} \n Stars: {stars}");
+        Debug.Log($"Duration: {duration}");
 
         duration = (float)(stars / timer);
 
@@ -74,120 +93,80 @@ public class FinalScoreTest : MonoBehaviour
         {
             duration = 1;
         }
-        Debug.Log($"Duration: {duration}");
 
         int initialStars = stars;
         int initialTimer = timer;
+        
+        AnimatePointText(initialStars, duration);
+        AnimateTimerText(initialTimer, duration);
 
-        if (initialStars > 0)
+        AnimateScoreText(finalScore, duration + tweenDuration, highScore);
+    }
+
+    private void AnimateScoreText(float score, float duration, float highScore)
+    {
+        LeanTween.value(scoreText.gameObject, 0f, score, duration).setOnUpdate((float val) =>
         {
-            LeanTween.value(starText.gameObject, initialStars, 0f, duration).setOnUpdate((float val) =>
+            int newScore = Mathf.FloorToInt(val);
+            LocalizedScore.Arguments[0] = newScore;
+            scoreText.text = LocalizedScore.GetLocalizedString();
+
+            if (newScore >= highScore)
             {
-                int newStars = Mathf.RoundToInt(val);
+                LocalizedHighScore.Arguments[0] = newScore;
+                HighScoreText.text = LocalizedHighScore.GetLocalizedString();
+            }
 
-                if (newStars < stars)
-                {
-                    int step = stars - newStars;
-                    finalScore += step * timer;
-                    stars = newStars;
-                    LocalizedStar.Arguments[0] = stars;
-                    LocalizedScore.Arguments[0] = Convert.ToInt32(finalScore);
+            if (completedTweenStar && completedTweenTimer)
+            {
+                ScalePanel();
+            }
+        })
+        .setEase(LeanTweenType.linear)
+        .setIgnoreTimeScale(true);
+    }
 
-                    starText.text = LocalizedStar.GetLocalizedString();
-                    scoreText.text = LocalizedScore.GetLocalizedString();
-
-                    if (finalScore > highScore)
-                    {
-                        LocalizedHighScore.Arguments[0] = finalScore;
-                        HighScoreText.text = LocalizedHighScore.GetLocalizedString();
-                        PlayerPrefs.SetInt("HighScore", finalScore);
-                    }
-
-                    if (stars <= 0)
-                    {
-                        completedTweenStar = true;
-                        LeanTween.cancel(starText.gameObject);
-                        LeanTween.scale(starText.gameObject, Vector3.zero, 0.2f)
-                            .setEase(LeanTweenType.easeInBack)
-                            .setOnComplete(() => starText.gameObject.SetActive(false)).setIgnoreTimeScale(true);
-                    }
-                }
-            }).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
-        }
-        else
+    private void AnimateTimerText(float timer, float duration)
+    {
+        LeanTween.value(timerText.gameObject, timer, 0f, duration).setOnUpdate((float val) =>
         {
+            int newTimer = Mathf.FloorToInt(val);
+
+            LocalizedTime.Arguments[0] = newTimer;
+            timerText.text = LocalizedTime.GetLocalizedString();
+        })
+        .setEase(LeanTweenType.linear)
+        .setOnComplete(() => 
+        { 
+            timerText.gameObject.SetActive(false); 
+            completedTweenTimer = true; 
+        })
+        .setIgnoreTimeScale(true);
+    }
+
+    private void AnimatePointText(float point, float duration)
+    {
+        LeanTween.value(starText.gameObject, point, 0f, duration).setOnUpdate((float val) =>
+        {
+            int newPoint = Mathf.FloorToInt(val);
+            LocalizedStar.Arguments[0] = newPoint;
+            starText.text = LocalizedStar.GetLocalizedString();
+        })
+        .setEase(LeanTweenType.linear)
+        .setOnComplete(() => 
+        { 
+            starText.gameObject.SetActive(false); 
             completedTweenStar = true;
-            LeanTween.cancel(starText.gameObject);
-            LeanTween.scale(starText.gameObject, Vector3.zero, 0.2f)
-                .setEase(LeanTweenType.easeInBack)
-                .setOnComplete(() => starText.gameObject.SetActive(false)).setIgnoreTimeScale(true);
-        }
-
-        if (initialTimer > 0)
-        {
-            AudioManager.instance.SFXPlayOneShot(AudioManager.instance.highScoreAnimationSFX);
-            LeanTween.value(timerText.gameObject, initialTimer, 0f, duration).setOnUpdate((float val) =>
-            {
-                int newTimer = Mathf.FloorToInt(val);
-                if (newTimer < lastTimer)
-                {
-                    int decrease = lastTimer - newTimer;
-
-                    if (stars > 0)
-                    {
-                        finalScore += decrease * stars;
-                        LocalizedScore.Arguments[0] = Convert.ToInt32(finalScore);
-                    }
-                    else
-                    {
-                        finalScore += decrease;
-                        LocalizedScore.Arguments[0] = Convert.ToInt32(finalScore);
-                    }
-
-                    lastTimer = newTimer;
-                    timer = newTimer;
-                    LocalizedTime.Arguments[0] = timer;
-
-                    timerText.text = LocalizedTime.GetLocalizedString();
-                    scoreText.text = LocalizedScore.GetLocalizedString();
-
-                    if (finalScore > highScore)
-                    {
-                        LocalizedHighScore.Arguments[0] = finalScore;
-                        HighScoreText.text = LocalizedHighScore.GetLocalizedString();
-                        PlayerPrefs.SetInt("HighScore", finalScore);
-                    }
-
-                    if (newTimer <= 0)
-                    {
-                        completedTweenTimer = true;
-                        LeanTween.cancel(timerText.gameObject);
-                        LeanTween.scale(timerText.gameObject, Vector3.zero, 0.2f)
-                            .setEase(LeanTweenType.easeInBack)
-                            .setOnComplete(() => timerText.gameObject.SetActive(false)).setIgnoreTimeScale(true);
-
-                        if (completedTweenStar && completedTweenTimer)
-                        {
-                            ScalePanel();
-                        }
-                    }
-                }
-            }).setEase(LeanTweenType.linear).setIgnoreTimeScale(true).setOnComplete(() =>
-            {
-                if (finalScore > highScore)
-                {
-                    PlayerPrefs.SetInt("HighScore", finalScore);    
-                }
-            });
-        }
+        })
+        .setIgnoreTimeScale(true);
     }
 
     void ScalePanel()
     {
-        LeanTween.moveY(panelRectTransform, panelRectTransform.anchoredPosition.y + 150, tweenDuration)
+        LeanTween.moveY(panelRectTransform, panelRectTransform.anchoredPosition.y + 65, tweenDuration)
         .setEase(LeanTweenType.easeOutBack).setIgnoreTimeScale(true);
-        LeanTween.scale(pointImageRectTransform, new Vector3(10, 10, 1), tweenDuration).setIgnoreTimeScale(true);
-        LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x + 100, tweenDuration).setIgnoreTimeScale(true);
+        LeanTween.scale(pointImageRectTransform, new Vector3(12, 12, 1), tweenDuration).setIgnoreTimeScale(true);
+        LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x + 30, tweenDuration).setIgnoreTimeScale(true);
     }
 
     public void UnScalePanel()
@@ -222,10 +201,10 @@ public class FinalScoreTest : MonoBehaviour
 
     public void ShowFinalScore()
     {
-        timer = (int)GameStats.GetElapsedTime();
-        stars = player.Score;
-        this.highScore = PlayerPrefs.GetInt("HighScore");
-        finalScore = 0;
+        int timer = (int)GameStats.GetElapsedTime();
+        int stars = player.Score;
+        int highScore = PlayerPrefs.GetInt("HighScore");
+        int finalScore = 0;
 
         timerText.text = timer.ToString();
         starText.text = stars.ToString();
@@ -235,7 +214,7 @@ public class FinalScoreTest : MonoBehaviour
         starText.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
 
-        AnimateFinalScore(timer, stars, highScore);
+        AnimateFinalScore(timer, stars, finalScore, highScore);
     }
 }
 
