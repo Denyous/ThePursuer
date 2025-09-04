@@ -117,11 +117,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3574364231128317962
-  - m_Id: 38597857026560000
-    m_Localized: 'Wynik: {0}'
+  - m_Id: 40507526577967104
+    m_Localized: 'Punkty: {0}'
     m_Metadata:
-      m_Items:
-      - rid: 3574364231128317962
+      m_Items: []
+  - m_Id: 40509001710489600
+    m_Localized: "Kupi\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40509040432304128
+    m_Localized: "Czy chcesz dokona\u0107 zakupu, aby cieszy\u0107 si\u0119 gr\u0105
+      bez reklam?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -132,4 +140,3 @@ MonoBehaviour:
         m_SharedEntries:
         - id: 58643238912
         - id: 38597809647702016
-        - id: 38597857026560000

@@ -117,11 +117,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3574364231128317963
-  - m_Id: 38597857026560000
-    m_Localized: "Pontua\xE7\xE3o: {0}"
+  - m_Id: 40507526577967104
+    m_Localized: 'Pontos: {0}'
     m_Metadata:
-      m_Items:
-      - rid: 3574364231128317963
+      m_Items: []
+  - m_Id: 40509001710489600
+    m_Localized: Comprar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40509040432304128
+    m_Localized: "Gostaria de fazer uma compra para experimentar o jogo sem an\xFAncios?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -132,4 +139,3 @@ MonoBehaviour:
         m_SharedEntries:
         - id: 58643238912
         - id: 38597809647702016
-        - id: 38597857026560000

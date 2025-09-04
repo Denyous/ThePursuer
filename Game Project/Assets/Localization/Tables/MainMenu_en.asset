@@ -117,11 +117,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3574364231128317956
-  - m_Id: 38597857026560000
-    m_Localized: 'Score: {0}'
+  - m_Id: 40507526577967104
+    m_Localized: 'Points: {0}'
     m_Metadata:
-      m_Items:
-      - rid: 3574364231128317956
+      m_Items: []
+  - m_Id: 40509001710489600
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40509040432304128
+    m_Localized: Would you like to make a purchase to experience the game without
+      ads?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -132,4 +140,3 @@ MonoBehaviour:
         m_SharedEntries:
         - id: 58643238912
         - id: 38597809647702016
-        - id: 38597857026560000

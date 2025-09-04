@@ -721,16 +721,30 @@
 }
 
 .noAdsButtons {
-    background-color: rgb(255, 0, 0);
-    -unity-background-image-tint-color: rgba(255, 121, 121, 0.51);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
-    font-size: 22px;
+    font-size: 32px;
     -unity-font: resource('Noto-Sans/Latin/NotoSans-Regular');
     -unity-font-definition: initial;
     -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    background-color: rgba(255, 255, 255, 0);
+    align-items: center;
+    text-overflow: clip;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-self: center;
+}
+
+.NoAdsButtonsLabels {
+    bottom: 12%;
+    -unity-font-style: bold;
+    font-size: 22px;
+    -unity-font: resource('Noto-Sans/Latin/NotoSans-Regular');
     color: rgb(255, 255, 255);
     -unity-text-align: middle-center;
 }

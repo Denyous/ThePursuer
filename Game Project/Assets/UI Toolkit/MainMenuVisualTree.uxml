@@ -75,13 +75,15 @@
         </ui:VisualElement>
         <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CreditsBackButton" class="BackButton BackButtonBG" style="position: absolute; left: 3%; top: 92%; align-self: flex-start; rotate: 0;" />
     </ui:VisualElement>
-    <ui:VisualElement name="NoAdsPanel" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&quot;project://database/Assets/Sprites/Backgrounds/Menu/Mm_Backg_2160x4096.png?fileID=21300000&amp;guid=587111475dfa4e444a65fcc7494bea32&amp;type=3#Mm_Backg_2160x4096&quot;); display: none; justify-content: center;">
-        <ui:VisualElement name="NoAdsElementPanel" style="flex-grow: 1; width: 100%; height: 25%; min-height: 25%; max-height: 30%;">
-            <ui:VisualElement name="NoAdsHeader" style="flex-grow: 1; height: 50%; background-image: url(&quot;project://database/Assets/Sprites/Logo/Olivium%20Games%208.png?fileID=2800000&amp;guid=ced84f98574372f489deff05fa627273&amp;type=3#Olivium Games 8&quot;);" />
-            <ui:VisualElement name="ButtonPanel" style="flex-grow: 1; flex-direction: row; justify-content: center; background-color: rgba(0, 0, 0, 0);">
-                <ui:Button text="Cancel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CancelButton" class="noAdsButtons" style="width: 30%;" />
-                <ui:Button text="Buy" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BuyButton" class="noAdsButtons" style="width: 30%; background-color: rgba(21, 255, 0, 0.52);" />
-            </ui:VisualElement>
+    <ui:VisualElement name="NoAdsPanel" class="AllContainer" style="flex-grow: 1; color: rgb(255, 255, 255); width: 100%; height: 100%; background-image: url(&quot;project://database/Assets/Sprites/Noads_UI/No%20Ads%20Background.jpg?fileID=21300000&amp;guid=4739b6dc31d644140b78da9f746a02f8&amp;type=3#No Ads Background&quot;); display: none; justify-content: center; flex-direction: row;">
+        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExplanationLabel" text="Do you want to buy no ads subscription?" style="position: absolute; bottom: 53%; width: 45%; height: 10%; font-size: 26px; -unity-font-style: bold; white-space: normal; -unity-text-align: middle-center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font: resource(&apos;Noto-Sans/Latin/NotoSans-Regular&apos;); color: rgb(255, 255, 255);" />
+        <ui:VisualElement name="ButtonPanel" style="flex-grow: 1; flex-direction: row; justify-content: center; background-color: rgba(0, 0, 0, 0); flex-wrap: wrap; align-self: auto; align-items: center; height: 12%; top: 42%;">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CancelButton" class="noAdsButtons Button" style="width: 30%; background-image: url(&quot;project://database/Assets/Sprites/Noads_UI/Cancel%20button.png?fileID=2800000&amp;guid=6f3cb385231e71d48aea064f6782d056&amp;type=3#Cancel button&quot;); -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(188, 188, 188, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);">
+                <ui:Label tabindex="-1" text="Cancel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CancelLabel" class="NoAdsButtonsLabels" style="font-size: 26px;" />
+            </ui:Button>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="BuyButton" class="noAdsButtons Button" style="width: 30%; background-image: url(&quot;project://database/Assets/Sprites/Noads_UI/Accept%20Button.png?fileID=2800000&amp;guid=88a6b8ae45859d64a8a672c2b520743d&amp;type=3#Accept Button&quot;); background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);">
+                <ui:Label tabindex="-1" text="Buy" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BuyLabel" class="NoAdsButtonsLabels" style="font-size: 26px;" />
+            </ui:Button>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

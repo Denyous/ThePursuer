@@ -117,11 +117,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3574364231128317960
-  - m_Id: 38597857026560000
-    m_Localized: 'Punteggio: {0}'
+  - m_Id: 40507526577967104
+    m_Localized: 'Punti: {0}'
     m_Metadata:
-      m_Items:
-      - rid: 3574364231128317960
+      m_Items: []
+  - m_Id: 40509001710489600
+    m_Localized: Acquistare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40509040432304128
+    m_Localized: "Desideri effettuare un acquisto per provare il gioco senza pubblicit\xE0?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -132,4 +139,3 @@ MonoBehaviour:
         m_SharedEntries:
         - id: 58643238912
         - id: 38597809647702016
-        - id: 38597857026560000

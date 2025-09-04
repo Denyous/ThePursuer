@@ -44,6 +44,9 @@ public class MainMenuController : MonoBehaviour
     public Button NoAdsButton;
     public Button NoAdsBuyButton;
     public Button NoAdsCancelButton;
+    //public UnityEngine.UIElements.Label NoAdsCancelLabel;
+    //public UnityEngine.UIElements.Label NoAdsBuyLabel;
+    //public UnityEngine.UIElements.Label NoAdsExplanationLabel;
 
     //Language Buttons
     public Button EnglishButton;
@@ -442,6 +445,15 @@ public class MainMenuController : MonoBehaviour
                     break;
                 case "AudioDesignTitle":
                     SetLocalizedText(label, "MainMenuCreditsAudioDesign");
+                    break;
+                case "ExplanationLabel":
+                    SetLocalizedText(label, "MainMenuAdsExplanation");
+                    break;
+                case "CancelLabel":
+                    SetLocalizedText(label, "MainMenuAdsCancel");
+                    break;
+                case "BuyLabel":
+                    SetLocalizedText(label, "MainMenuAdsBuy");
                     break;
                 default:
                     break;

@@ -682,7 +682,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:009e39e46fd65bb45ba014d753f6fa4d
     m_TableEntryReference:
-      m_KeyId: 38597857026560000
+      m_KeyId: 40507526577967104
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -2866,7 +2866,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:009e39e46fd65bb45ba014d753f6fa4d
     m_TableEntryReference:
-      m_KeyId: 38597857026560000
+      m_KeyId: 40507526577967104
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1
@@ -5571,7 +5571,8 @@ MonoBehaviour:
   collectBuffSFX: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
   highScoreAnimationSFX: {fileID: 0}
   buttonClickSFX: {fileID: 8300000, guid: 302a7ee850fea20439e8ac128f7ba6e7, type: 3}
-  pauseScreenClockTickSFX: {fileID: 8300000, guid: 302a7ee850fea20439e8ac128f7ba6e7, type: 3}
+  clockTickSFX: {fileID: 0}
+  clockTockSFX: {fileID: 0}
 --- !u!114 &1253070765
 MonoBehaviour:
   m_ObjectHideFlags: 0

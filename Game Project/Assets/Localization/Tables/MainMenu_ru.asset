@@ -131,11 +131,21 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3574364231128317964
-  - m_Id: 38597857026560000
-    m_Localized: "\u041E\u0446\u0435\u043D\u043A\u0430: {0}"
+  - m_Id: 40507526577967104
+    m_Localized: "\u041E\u0447\u043A\u0438: {0}"
     m_Metadata:
-      m_Items:
-      - rid: 3574364231128317964
+      m_Items: []
+  - m_Id: 40509001710489600
+    m_Localized: "\u041A\u0443\u043F\u0438\u0442\u044C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40509040432304128
+    m_Localized: "\u0425\u043E\u0442\u0438\u0442\u0435 \u043B\u0438 \u0432\u044B
+      \u0441\u043E\u0432\u0435\u0440\u0448\u0438\u0442\u044C \u043F\u043E\u043A\u0443\u043F\u043A\u0443,
+      \u0447\u0442\u043E\u0431\u044B \u043D\u0430\u0441\u043B\u0430\u0434\u0438\u0442\u044C\u0441\u044F
+      \u0438\u0433\u0440\u043E\u0439 \u0431\u0435\u0437 \u0440\u0435\u043A\u043B\u0430\u043C\u044B?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -146,4 +156,3 @@ MonoBehaviour:
         m_SharedEntries:
         - id: 58643238912
         - id: 38597809647702016
-        - id: 38597857026560000

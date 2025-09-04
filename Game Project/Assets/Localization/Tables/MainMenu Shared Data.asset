@@ -111,8 +111,16 @@ MonoBehaviour:
     m_Key: MainMenuTime
     m_Metadata:
       m_Items: []
-  - m_Id: 38597857026560000
-    m_Key: MainMenuStar
+  - m_Id: 40507526577967104
+    m_Key: MainMenuPoint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40509001710489600
+    m_Key: MainMenuAdsBuy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40509040432304128
+    m_Key: MainMenuAdsExplanation
     m_Metadata:
       m_Items: []
   m_Metadata:
