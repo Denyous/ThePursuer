@@ -87,5 +87,13 @@ public class GameStats : MonoBehaviour
     {
         deathCount = 0;
         PlayerPrefs.SetInt("DeathCount", deathCount);
+
+        System.Random random = new System.Random();
+        adsNumber = PlayerPrefs.GetInt("AdsNumber", 0);
+        if (adsNumber == 0)
+        {
+            adsNumber = random.Next(3, 6);
+            PlayerPrefs.SetInt("AdsNumber", adsNumber);
+        }
     }
 }

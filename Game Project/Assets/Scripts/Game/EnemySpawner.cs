@@ -33,6 +33,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject FlarePrefab;
     [SerializeField] private GameObject ExplodePrefab;
 
+    [SerializeField] private float buffSpawnStartTime;
+    [SerializeField] private float enemySpawnStartTime;
+
+    [SerializeField] private float enemySpawnInterval;
+    [SerializeField] private float kamikazeSpawnInterval;
+    [SerializeField] private float starSpawnInterval;
+    [SerializeField] private float laserSpawnInterval;
+    [SerializeField] private float blackHoleSpawnInterval;
+    [SerializeField] private float flareSpawnInterval;
+    [SerializeField] private float speedUpSpawnInterval;
+    [SerializeField] private float shieldSpawnInterval;
+
 
     //Kamikaze Effect Particle System
     [SerializeField] private GameObject KamikazeEffect;
@@ -82,17 +94,17 @@ public class EnemySpawner : MonoBehaviour
             SpawnShieldPowerUp();
         }
 
-        InvokeRepeating("SpawnPooledEnemies", 3f, 5f);
-        InvokeRepeating("SpawnPooledStars", 1f, 3f);
+        InvokeRepeating("SpawnPooledEnemies", enemySpawnStartTime, enemySpawnInterval);
+        InvokeRepeating("SpawnPooledStars", buffSpawnStartTime, starSpawnInterval);
 
-        InvokeRepeating("SpawnPooledShields", 1f, 5f);
-        InvokeRepeating("SpawnPooledSpeedBuffs", 1f, 5f);
+        InvokeRepeating("SpawnPooledShields", buffSpawnStartTime, shieldSpawnInterval);
+        InvokeRepeating("SpawnPooledSpeedBuffs", buffSpawnStartTime, speedUpSpawnInterval);
 
-        InvokeRepeating("SpawnPooledKamikazes", 1f, 5f);
-        InvokeRepeating("SpawnPooledFlares", 1f, 7f);
+        InvokeRepeating("SpawnPooledKamikazes", buffSpawnStartTime, kamikazeSpawnInterval);
+        InvokeRepeating("SpawnPooledFlares", buffSpawnStartTime, flareSpawnInterval);
 
-        InvokeRepeating("SpawnPooledExplodes", 1f, 10f);
-        InvokeRepeating("SpawnPooledBlackHoles", 1f, 5f);
+        InvokeRepeating("SpawnPooledExplodes", buffSpawnStartTime, laserSpawnInterval);
+        InvokeRepeating("SpawnPooledBlackHoles", buffSpawnStartTime, blackHoleSpawnInterval);
 
         m_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         playerScript = target.GetComponent<Player>();
@@ -411,6 +423,7 @@ public class EnemySpawner : MonoBehaviour
                         enemyScript.SetSteer(25f);
                         Kamikaze = false;
                         enemyScript.Die(false, true, false, false, false);
+                        audioManager.SFXPlayOneShot(audioManager.explosionSFX);
                     }
                 }
             }
