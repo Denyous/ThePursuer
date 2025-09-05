@@ -116,8 +116,6 @@ public class FinalScoreTest : MonoBehaviour
             if (completedTweenStar && completedTweenTimer)
             {
                 ScalePanel();
-                completedTweenStar = false;
-                completedTweenTimer = false;
             }
         })
         .setEase(LeanTweenType.linear)
@@ -172,10 +170,10 @@ public class FinalScoreTest : MonoBehaviour
 
     public void UnScalePanel()
     {
-        LeanTween.moveY(panelRectTransform, panelRectTransform.anchoredPosition.y - 65, tweenDuration)
+        LeanTween.moveY(panelRectTransform, panelRectTransform.anchoredPosition.y - 150, tweenDuration)
         .setEase(LeanTweenType.easeOutBack).setIgnoreTimeScale(true);
         LeanTween.scale(pointImageRectTransform, new Vector3(0,0,1), tweenDuration).setIgnoreTimeScale(true);
-        LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x - 30, tweenDuration).setIgnoreTimeScale(true);
+        LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x - 100, tweenDuration).setIgnoreTimeScale(true);
     }
 
     public void MakeTextBoxActive()
