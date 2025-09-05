@@ -362,7 +362,7 @@ public class MainMenuController : MonoBehaviour
     private void OnPlayButtonClicked()
     {
         ClickSound();
-        if (PlayerPrefs.GetInt("Tutorialplayed", 0) == 1)
+        if (PlayerPrefs.GetInt("Tutorialplayed", 0) == 0)
         {
             PlayerPrefs.SetInt("Tutorialplayed", 1);
             PlayerPrefs.Save();
