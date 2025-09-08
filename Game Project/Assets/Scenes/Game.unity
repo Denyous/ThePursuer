@@ -6668,7 +6668,6 @@ GameObject:
   - component: {fileID: 1503693124}
   - component: {fileID: 1503693120}
   - component: {fileID: 1503693126}
-  - component: {fileID: 1503693128}
   - component: {fileID: 1503693129}
   - component: {fileID: 1503693130}
   m_Layer: 6
@@ -6779,14 +6778,6 @@ MonoBehaviour:
   explodeCount: 0
   Score: 0
   Shield: 0
---- !u!81 &1503693128
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503693119}
-  m_Enabled: 1
 --- !u!60 &1503693129
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7433,7 +7424,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582767124}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!1 &1691734657
 GameObject:
   m_ObjectHideFlags: 0

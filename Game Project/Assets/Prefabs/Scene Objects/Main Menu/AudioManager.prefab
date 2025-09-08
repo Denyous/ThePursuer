@@ -54,12 +54,12 @@ MonoBehaviour:
   shieldImpactSFX: {fileID: 8300000, guid: 61cb0ebf21fb389498ebe16295e0654a, type: 3}
   flareSFX: {fileID: 8300000, guid: 502c4f8335d8c274cbbf752fe822360e, type: 3}
   laserSFX: {fileID: 8300000, guid: 0be803e3e190e494e9448ca093b957f7, type: 3}
-  blackHoleInstantiationSFX: {fileID: 8300000, guid: d92c34bbb1a05774985986d8f50359a7, type: 3}
+  blackHoleInstantiationSFX: {fileID: 8300000, guid: d51331569d949e24ea322ed997d9bb59, type: 3}
   speedUpSFX: {fileID: 8300000, guid: a41b56c0512b495428bea5b1bf9f6553, type: 3}
   speedDownSFX: {fileID: 8300000, guid: 4b6af6680ce5a8f4bbf6202203626c93, type: 3}
   collectStarSFX: {fileID: 8300000, guid: 8deeabc44b5d4784ea81bd2a0a3fbc2c, type: 3}
   collectBuffSFX: {fileID: 8300000, guid: 79e1fabedbd238f45b38a81277fdc774, type: 3}
-  highScoreAnimationSFX: {fileID: 8300000, guid: e4a93511694a2ce4aa3199ac43ad8474, type: 3}
+  highScoreAnimationSFX: {fileID: 8300000, guid: daea1ff131af1f7448b2bcf8feb4e991, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: 0247e1a5c9b298441b4788f4d862245d, type: 3}
   clockTickSFX: {fileID: 8300000, guid: 5ec2c969bc3c0cc4bb72b72875dac285, type: 3}
   clockTockSFX: {fileID: 8300000, guid: e07a248c98f1a6c47987a8ae5b9861b3, type: 3}

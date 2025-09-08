@@ -97,7 +97,6 @@ public class AudioManager : MonoBehaviour
             musicSource.volume = Mathf.Lerp(0f, 1f, time / duration);
             yield return null;
         }
-
         musicSource.volume = 1f;
     }
 

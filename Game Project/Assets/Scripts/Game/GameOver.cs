@@ -43,7 +43,6 @@ public class GameOver : MonoBehaviour
     private void SecondStep()
     {
         gameObject.SetActive(true);
-
         finalScore.ShowFinalScore();
         Time.timeScale = 0f;
     }

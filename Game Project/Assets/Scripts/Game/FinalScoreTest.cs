@@ -40,7 +40,7 @@ public class FinalScoreTest : MonoBehaviour
 
     private IEnumerator WaitForSec(float time)
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSecondsRealtime(time);
     }
 
     public void AnimateFinalScore(int timer, int stars, int finalScore, int highScore)
@@ -48,8 +48,6 @@ public class FinalScoreTest : MonoBehaviour
         LeanTween.cancelAll();
         WaitForSec(1f);
 
-       
-        StartCoroutine(AudioManager.instance.FadeOutMusicCoroutine(0.2f));
         AudioManager.instance.SFXPlayOneShot(AudioManager.instance.highScoreAnimationSFX);
 
         if (stars == 0 || timer == 0)
@@ -163,16 +161,16 @@ public class FinalScoreTest : MonoBehaviour
 
     void ScalePanel()
     {
-        LeanTween.moveY(panelRectTransform, panelRectTransform.anchoredPosition.y + 65, tweenDuration)
+        LeanTween.moveY(panelRectTransform, panelRectTransform.anchoredPosition.y + 80, tweenDuration)
         .setEase(LeanTweenType.easeOutBack).setIgnoreTimeScale(true);
         LeanTween.scale(pointImageRectTransform, new Vector3(12, 12, 1), tweenDuration).setIgnoreTimeScale(true);
         LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x + 30, tweenDuration).setIgnoreTimeScale(true);
-        StartCoroutine(AudioManager.instance.FadeInMusicCoroutine(0.2f));
+        StartCoroutine(AudioManager.instance.FadeInMusicCoroutine(2f));
     }
 
     public void UnScalePanel()
     {
-        LeanTween.moveY(panelRectTransform, panelRectTransform.anchoredPosition.y - 65, tweenDuration)
+        LeanTween.moveY(panelRectTransform, panelRectTransform.anchoredPosition.y - 80, tweenDuration)
         .setEase(LeanTweenType.easeOutBack).setIgnoreTimeScale(true);
         LeanTween.scale(pointImageRectTransform, new Vector3(0,0,1), tweenDuration).setIgnoreTimeScale(true);
         LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x - 30, tweenDuration).setIgnoreTimeScale(true);

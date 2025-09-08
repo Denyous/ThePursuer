@@ -161,13 +161,7 @@ public class Enemy : MonoBehaviour
                     gameObject.SetActive(false);
                     GameOver();
                     GameStats.AddDeath();
-
-                    AudioListener listener = Camera.main.GetComponent<AudioListener>();
-
-                    if (listener is not null)
-                    {
-                        listener.enabled = true;
-                    }
+                    audioManager.AdjustMusicVolume(0f);
                 }
             }
         }
