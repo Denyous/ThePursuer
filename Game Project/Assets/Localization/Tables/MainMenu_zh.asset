@@ -17,13 +17,8 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 009e39e46fd65bb45ba014d753f6fa4d, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 3574364231128317955
+    - rid: 8528837169257381893
   m_TableData:
-  - m_Id: 58643238912
-    m_Localized: "\u6700\u9AD8\u5206\uFF1A {0} \u5206"
-    m_Metadata:
-      m_Items:
-      - rid: 3574364231128317955
   - m_Id: 29606072320
     m_Localized: "\u5F00\u59CB"
     m_Metadata:
@@ -52,6 +47,11 @@ MonoBehaviour:
     m_Localized: "\u58F0\u97F3"
     m_Metadata:
       m_Items: []
+  - m_Id: 58643238912
+    m_Localized: "\u6700\u9AD8\u5206\uFF1A {0} \u5206"
+    m_Metadata:
+      m_Items:
+      - rid: 8528837169257381893
   - m_Id: 61516337152
     m_Localized: "\u6559\u7A0B"
     m_Metadata:
@@ -108,34 +108,36 @@ MonoBehaviour:
     m_Localized: "\u4F7F\u7528\u9ED1\u6D1E\u9053\u5177\u5438\u5F15\u5BFC\u5F39"
     m_Metadata:
       m_Items: []
-  - m_Id: 35643345980338176
+  - m_Id: 24736485376
     m_Localized: "\u53D6\u6D88"
     m_Metadata:
       m_Items: []
-  - m_Id: 38597809647702016
+  - m_Id: 24757456896
     m_Localized: "\u65F6\u95F4\uFF1A{0}"
     m_Metadata:
       m_Items:
-      - rid: 3574364231128317955
-  - m_Id: 40507526577967104
+      - rid: 8528837169257381893
+  - m_Id: 24757456897
     m_Localized: "\u79EF\u5206\uFF1A{0}"
     m_Metadata:
-      m_Items: []
-  - m_Id: 40509001710489600
+      m_Items:
+      - rid: 8528837169257381893
+  - m_Id: 24757456898
     m_Localized: "\u4E70"
     m_Metadata:
       m_Items: []
-  - m_Id: 40509040432304128
+  - m_Id: 24757456899
     m_Localized: "\u60A8\u662F\u5426\u613F\u610F\u8D2D\u4E70\u4EE5\u4F53\u9A8C\u65E0\u5E7F\u544A\u7684\u6E38\u620F\uFF1F"
     m_Metadata:
       m_Items: []
   references:
     version: 2
     RefIds:
-    - rid: 3574364231128317955
+    - rid: 8528837169257381893
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 
         m_SharedEntries:
+        - id: 24757456896
+        - id: 24757456897
         - id: 58643238912
-        - id: 38597809647702016

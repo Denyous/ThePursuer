@@ -103,34 +103,34 @@ MonoBehaviour:
     m_Key: MainMenuTutorialText9
     m_Metadata:
       m_Items: []
-  - m_Id: 35643345980338176
+  - m_Id: 24736485376
     m_Key: MainMenuAdsCancel
     m_Metadata:
       m_Items: []
-  - m_Id: 38597809647702016
+  - m_Id: 24757456896
     m_Key: MainMenuTime
     m_Metadata:
       m_Items: []
-  - m_Id: 40507526577967104
+  - m_Id: 24757456897
     m_Key: MainMenuPoint
     m_Metadata:
       m_Items: []
-  - m_Id: 40509001710489600
+  - m_Id: 24757456898
     m_Key: MainMenuAdsBuy
     m_Metadata:
       m_Items: []
-  - m_Id: 40509040432304128
+  - m_Id: 24757456899
     m_Key: MainMenuAdsExplanation
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 3574364231128317953
+    rid: 8528837169257381892
   references:
     version: 2
     RefIds:
-    - rid: 3574364231128317953
+    - rid: 8528837169257381892
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1747359230558
+        m_CustomEpoch: 1757512341636

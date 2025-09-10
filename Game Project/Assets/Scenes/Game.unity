@@ -673,7 +673,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:009e39e46fd65bb45ba014d753f6fa4d
     m_TableEntryReference:
-      m_KeyId: 38597809647702016
+      m_KeyId: 24757456896
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -682,7 +682,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:009e39e46fd65bb45ba014d753f6fa4d
     m_TableEntryReference:
-      m_KeyId: 40507526577967104
+      m_KeyId: 24757456897
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1074,16 +1074,16 @@ MonoBehaviour:
   BlackHolePrefab: {fileID: 7038371340064349472, guid: 2225503b4e49c4748948debbb93f6360, type: 3}
   FlarePrefab: {fileID: 5727472222842294389, guid: cc69ad745633e8d4395c0f0ec5063543, type: 3}
   ExplodePrefab: {fileID: 7038371340064349472, guid: 786a981f8c9e2344bb35160adb71b4b2, type: 3}
-  buffSpawnStartTime: 3
-  enemySpawnStartTime: 2
-  enemySpawnInterval: 2
-  kamikazeSpawnInterval: 3
-  starSpawnInterval: 3
+  buffSpawnStartTime: 4.84
+  enemySpawnStartTime: 2.5
+  enemySpawnInterval: 2.74
+  kamikazeSpawnInterval: 7
+  starSpawnInterval: 7.2
   laserSpawnInterval: 15
-  blackHoleSpawnInterval: 10
-  flareSpawnInterval: 7
-  speedUpSpawnInterval: 5
-  shieldSpawnInterval: 5
+  blackHoleSpawnInterval: 1
+  flareSpawnInterval: 8
+  speedUpSpawnInterval: 8
+  shieldSpawnInterval: 8
   KamikazeEffect: {fileID: 9008445294550007333, guid: bd9f9379c9ac4f74f8d72ecc2bb63074, type: 3}
   ExplodeEffect: {fileID: 8657183636083783020, guid: 40890fc6f4238d7449a7b8cf60b0e466, type: 3}
   kamikazeSprite: {fileID: 463294507}
@@ -2070,7 +2070,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:009e39e46fd65bb45ba014d753f6fa4d
     m_TableEntryReference:
-      m_KeyId: 38597809647702016
+      m_KeyId: 24757456896
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1
@@ -2078,7 +2078,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 504336669}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   references:
     version: 2
     RefIds: []
@@ -2876,7 +2888,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:009e39e46fd65bb45ba014d753f6fa4d
     m_TableEntryReference:
-      m_KeyId: 40507526577967104
+      m_KeyId: 24757456897
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1
@@ -2884,7 +2896,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 727815305}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   references:
     version: 2
     RefIds: []
@@ -4377,7 +4401,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:9b9cd5237f05cdb4dbf46e0e4e7e88ab
     m_TableEntryReference:
-      m_KeyId: 19007914060787712
+      m_KeyId: 33963954176
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1
@@ -5837,7 +5861,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387959719}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 84.2878}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.87979, y: 0.87979, z: 0.87979}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6161,7 +6185,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 3068193
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 97e2477ea2c22474f9b1025f9a1e7622, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9074,7 +9098,6 @@ MonoBehaviour:
   - {fileID: 1163767819}
   - {fileID: 504336669}
   - {fileID: 727815305}
-  ArabicFont: {fileID: 11400000, guid: 10e1b4c456818554e9280d3c6630ccff, type: 2}
   ChineseFont: {fileID: 11400000, guid: 54af8eddc2c33b54f989b009e202c793, type: 2}
   JapaneseFont: {fileID: 11400000, guid: dce3628c57033a9479fa9e7960b1ea79, type: 2}
   HindiFont: {fileID: 11400000, guid: c104c89e77faa3845800fb8e63dff23f, type: 2}
@@ -9189,7 +9212,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022510002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

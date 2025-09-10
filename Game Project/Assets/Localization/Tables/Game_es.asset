@@ -16,9 +16,12 @@ MonoBehaviour:
     m_Code: es
   m_SharedData: {fileID: 11400000, guid: 9b9cd5237f05cdb4dbf46e0e4e7e88ab, type: 2}
   m_Metadata:
-    m_Items:
-    - rid: 3574364231128317985
+    m_Items: []
   m_TableData:
+  - m_Id: 7753748480
+    m_Localized: PAUSADO
+    m_Metadata:
+      m_Items: []
   - m_Id: 51668111360
     m_Localized: "Contin\xFAe en"
     m_Metadata:
@@ -31,39 +34,26 @@ MonoBehaviour:
     m_Localized: "Men\xFA principal"
     m_Metadata:
       m_Items: []
-  - m_Id: 7753748480
-    m_Localized: PAUSADO
+  - m_Id: 4700341063680
+    m_Localized: "\xA1Haga clic en cualquier lugar!"
     m_Metadata:
       m_Items: []
   - m_Id: 5188281225216
     m_Localized: "Puntuaci\xF3n m\xE1xima: {0} Puntos"
     m_Metadata:
-      m_Items:
-      - rid: 3574364231128317985
+      m_Items: []
   - m_Id: 5215258988544
     m_Localized: '{0} Puntos'
-    m_Metadata:
-      m_Items:
-      - rid: 3574364231128317985
-  - m_Id: 4700341063680
-    m_Localized: "\xA1Haga clic en cualquier lugar!"
     m_Metadata:
       m_Items: []
   - m_Id: 5245042741248
     m_Localized: GAME OVER
     m_Metadata:
       m_Items: []
-  - m_Id: 19007914060787712
+  - m_Id: 33963954176
     m_Localized: Revivir
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds:
-    - rid: 3574364231128317985
-      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries: 
-        m_SharedEntries:
-        - id: 5188281225216
-        - id: 5215258988544
+    RefIds: []

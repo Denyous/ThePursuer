@@ -48,12 +48,6 @@ public class PlayerReviveSystem : MonoBehaviour
         UI.SetActive(true);
         UISettings();
         GameStats.ResumeTimer();
-        AudioListener listener = Camera.main.GetComponent<AudioListener>();
-
-        if (listener is not null)
-        {
-            listener.enabled = false;
-        }
 
         Time.timeScale = 1f;
         EnemySpawner spawner = player.GetComponentInChildren<EnemySpawner>();

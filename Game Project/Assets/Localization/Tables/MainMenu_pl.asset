@@ -17,13 +17,8 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 009e39e46fd65bb45ba014d753f6fa4d, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 3574364231128317962
+    - rid: 8528837169257381900
   m_TableData:
-  - m_Id: 58643238912
-    m_Localized: "Wysoki wynik: {0} punkt\xF3w"
-    m_Metadata:
-      m_Items:
-      - rid: 3574364231128317962
   - m_Id: 29606072320
     m_Localized: Start
     m_Metadata:
@@ -52,6 +47,11 @@ MonoBehaviour:
     m_Localized: "D\u017Awi\u0119k"
     m_Metadata:
       m_Items: []
+  - m_Id: 58643238912
+    m_Localized: "Wysoki wynik: {0} punkt\xF3w"
+    m_Metadata:
+      m_Items:
+      - rid: 8528837169257381900
   - m_Id: 61516337152
     m_Localized: Samouczek
     m_Metadata:
@@ -108,24 +108,25 @@ MonoBehaviour:
     m_Localized: "U\u017Cyj czarnej dziury, aby wci\u0105gn\u0105\u0107 rakiety"
     m_Metadata:
       m_Items: []
-  - m_Id: 35643345980338176
+  - m_Id: 24736485376
     m_Localized: Anuluj
     m_Metadata:
       m_Items: []
-  - m_Id: 38597809647702016
+  - m_Id: 24757456896
     m_Localized: 'Czas: {0}'
     m_Metadata:
       m_Items:
-      - rid: 3574364231128317962
-  - m_Id: 40507526577967104
+      - rid: 8528837169257381900
+  - m_Id: 24757456897
     m_Localized: 'Punkty: {0}'
     m_Metadata:
-      m_Items: []
-  - m_Id: 40509001710489600
+      m_Items:
+      - rid: 8528837169257381900
+  - m_Id: 24757456898
     m_Localized: "Kupi\u0107"
     m_Metadata:
       m_Items: []
-  - m_Id: 40509040432304128
+  - m_Id: 24757456899
     m_Localized: "Czy chcesz dokona\u0107 zakupu, aby cieszy\u0107 si\u0119 gr\u0105
       bez reklam?"
     m_Metadata:
@@ -133,10 +134,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3574364231128317962
+    - rid: 8528837169257381900
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 
         m_SharedEntries:
+        - id: 24757456896
+        - id: 24757456897
         - id: 58643238912
-        - id: 38597809647702016

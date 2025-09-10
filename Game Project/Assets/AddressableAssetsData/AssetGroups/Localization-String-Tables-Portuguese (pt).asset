@@ -17,6 +17,13 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4e4b9e77b9337447489d03c40dbb7b1f
   m_SerializeEntries:
+  - m_GUID: 05263963f5203654691f75801da6a347
+    m_Address: Tutorial_pt
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4da266269f40656458e99c9ba07c5fcf
     m_Address: MainMenu_pt
     m_ReadOnly: 1
@@ -26,13 +33,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5775379068a066048943a62999a69583
     m_Address: Game_pt
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-pt
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b2545447a5976974eb858e230b2cbb53
-    m_Address: Tutorial_pt
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-pt

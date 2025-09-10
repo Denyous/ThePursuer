@@ -17,13 +17,8 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 009e39e46fd65bb45ba014d753f6fa4d, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 3574364231128317961
+    - rid: 8528837169257381899
   m_TableData:
-  - m_Id: 58643238912
-    m_Localized: "\u30CF\u30A4\u30B9\u30B3\u30A2\uFF1A{0}\u70B9"
-    m_Metadata:
-      m_Items:
-      - rid: 3574364231128317961
   - m_Id: 29606072320
     m_Localized: "\u30B9\u30BF\u30FC\u30C8"
     m_Metadata:
@@ -52,6 +47,11 @@ MonoBehaviour:
     m_Localized: "\u30B5\u30A6\u30F3\u30C9"
     m_Metadata:
       m_Items: []
+  - m_Id: 58643238912
+    m_Localized: "\u30CF\u30A4\u30B9\u30B3\u30A2\uFF1A{0}\u70B9"
+    m_Metadata:
+      m_Items:
+      - rid: 8528837169257381899
   - m_Id: 61516337152
     m_Localized: "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB"
     m_Metadata:
@@ -108,34 +108,36 @@ MonoBehaviour:
     m_Localized: "\u30DF\u30B5\u30A4\u30EB\u3092\u5438\u3044\u8FBC\u3080\u305F\u3081\u306B\u30D6\u30E9\u30C3\u30AF\u30DB\u30FC\u30EB\u30D1\u30EF\u30FC\u30A2\u30C3\u30D7\u3092\u4F7F\u3044\u307E\u3057\u3087\u3046"
     m_Metadata:
       m_Items: []
-  - m_Id: 35643345980338176
+  - m_Id: 24736485376
     m_Localized: "\u30AD\u30E3\u30F3\u30BB\u30EB"
     m_Metadata:
       m_Items: []
-  - m_Id: 38597809647702016
+  - m_Id: 24757456896
     m_Localized: "\u6642\u523B: {0}"
     m_Metadata:
       m_Items:
-      - rid: 3574364231128317961
-  - m_Id: 40507526577967104
+      - rid: 8528837169257381899
+  - m_Id: 24757456897
     m_Localized: "\u30DD\u30A4\u30F3\u30C8: {0}"
     m_Metadata:
-      m_Items: []
-  - m_Id: 40509001710489600
+      m_Items:
+      - rid: 8528837169257381899
+  - m_Id: 24757456898
     m_Localized: "\u8CB7\u3046"
     m_Metadata:
       m_Items: []
-  - m_Id: 40509040432304128
+  - m_Id: 24757456899
     m_Localized: "\u5E83\u544A\u306A\u3057\u3067\u30B2\u30FC\u30E0\u3092\u4F53\u9A13\u3059\u308B\u305F\u3081\u306B\u8CFC\u5165\u3057\u307E\u3059\u304B?"
     m_Metadata:
       m_Items: []
   references:
     version: 2
     RefIds:
-    - rid: 3574364231128317961
+    - rid: 8528837169257381899
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 
         m_SharedEntries:
+        - id: 24757456896
+        - id: 24757456897
         - id: 58643238912
-        - id: 38597809647702016

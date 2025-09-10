@@ -16,9 +16,12 @@ MonoBehaviour:
     m_Code: ja
   m_SharedData: {fileID: 11400000, guid: 9b9cd5237f05cdb4dbf46e0e4e7e88ab, type: 2}
   m_Metadata:
-    m_Items:
-    - rid: 3574364231128317981
+    m_Items: []
   m_TableData:
+  - m_Id: 7753748480
+    m_Localized: "\u4E00\u6642\u505C\u6B62"
+    m_Metadata:
+      m_Items: []
   - m_Id: 51668111360
     m_Localized: "\u7D9A\u3051\u308B"
     m_Metadata:
@@ -31,39 +34,26 @@ MonoBehaviour:
     m_Localized: "\u30E1\u30A4\u30F3\u30E1\u30CB\u30E5\u30FC"
     m_Metadata:
       m_Items: []
-  - m_Id: 7753748480
-    m_Localized: "\u4E00\u6642\u505C\u6B62"
+  - m_Id: 4700341063680
+    m_Localized: "\u3069\u3053\u3067\u3082\u30AF\u30EA\u30C3\u30AF\uFF01"
     m_Metadata:
       m_Items: []
   - m_Id: 5188281225216
     m_Localized: "\u30CF\u30A4\u30B9\u30B3\u30A2\uFF1A{0}\u70B9"
     m_Metadata:
-      m_Items:
-      - rid: 3574364231128317981
+      m_Items: []
   - m_Id: 5215258988544
     m_Localized: "{0} \u30DD\u30A4\u30F3\u30C8"
-    m_Metadata:
-      m_Items:
-      - rid: 3574364231128317981
-  - m_Id: 4700341063680
-    m_Localized: "\u3069\u3053\u3067\u3082\u30AF\u30EA\u30C3\u30AF\uFF01"
     m_Metadata:
       m_Items: []
   - m_Id: 5245042741248
     m_Localized: "\u30B2\u30FC\u30E0\u30AA\u30FC\u30D0\u30FC"
     m_Metadata:
       m_Items: []
-  - m_Id: 19007914060787712
+  - m_Id: 33963954176
     m_Localized: "\u5FA9\u6D3B\u3059\u308B"
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds:
-    - rid: 3574364231128317981
-      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries: 
-        m_SharedEntries:
-        - id: 5188281225216
-        - id: 5215258988544
+    RefIds: []

@@ -24,15 +24,15 @@ MonoBehaviour:
     - Locale-pl
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7fe1802a5a63b454ea49d399fcb52165
-    m_Address: Tutorial_pl
+  - m_GUID: 9defce4502cf574449ad42079c638074
+    m_Address: MainMenu_pl
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-pl
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9defce4502cf574449ad42079c638074
-    m_Address: MainMenu_pl
+  - m_GUID: b0b0cfc43b7c470429f5b96f42743034
+    m_Address: Tutorial_pl
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-pl

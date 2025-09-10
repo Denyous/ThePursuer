@@ -31,7 +31,7 @@ MonoBehaviour:
     - Locale-zh
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ebb78ebb4747115488eea6664b495ef6
+  - m_GUID: 426237b30678d2d4e92c5937a706e44f
     m_Address: Tutorial_zh
     m_ReadOnly: 1
     m_SerializedLabels:

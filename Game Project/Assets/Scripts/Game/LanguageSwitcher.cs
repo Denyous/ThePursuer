@@ -8,7 +8,6 @@ public class LanguageSwitcher : MonoBehaviour
 {
     public List<TextMeshProUGUI> textFields;
 
-    [SerializeField] private TMP_FontAsset ArabicFont;
     [SerializeField] private TMP_FontAsset ChineseFont;
     [SerializeField] private TMP_FontAsset JapaneseFont;
     [SerializeField] private TMP_FontAsset HindiFont;
@@ -46,9 +45,6 @@ public class LanguageSwitcher : MonoBehaviour
     {
         switch (LanguageCode)
         {
-            case "ar":
-                SetFontForUIElements(ArabicFont);
-                break;
             case "zh":
                 SetFontForUIElements(ChineseFont);
                 break;
@@ -69,7 +65,6 @@ public class LanguageSwitcher : MonoBehaviour
         foreach (var text in textFields)
         {
             text.font = font;
-            text.isRightToLeftText = (font == ArabicFont);
         }
     }
 }

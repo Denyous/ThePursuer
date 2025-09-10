@@ -55,7 +55,6 @@ public class MainMenuController : MonoBehaviour
     public Button FrenchButton;
     public Button ChineseButton;
     public Button JapaneseButton;
-    public Button ArabicButton;
     public Button PolishButton;
     public Button RussianButton;
     public Button ItalianButton;
@@ -559,9 +558,6 @@ public class MainMenuController : MonoBehaviour
     {
         switch (LanguageCode)
         {
-            case "ar":
-                LanguageText.text = "اللغة العربية";
-                break;
             case "zh":
                 LanguageText.text = "中文";
                 break;
@@ -610,9 +606,6 @@ public class MainMenuController : MonoBehaviour
 
         switch (LanguageCode)
         {
-            case "ar":
-                SetFontForUIElements(ArabicFont, buttons, labels, sliders, true);
-                break;
             case "zh":
                 SetFontForUIElements(ChineseFont, buttons, labels, sliders, false);
                 break;
@@ -632,7 +625,7 @@ public class MainMenuController : MonoBehaviour
     {
         foreach (var button in buttons)
         {
-            if (button.name != "ArabicButton" &&
+            if (
                 button.name != "JapaneseButton" &&
                 button.name != "ChineseButton" &&
                 button.name != "EnglishButton" &&
@@ -647,14 +640,6 @@ public class MainMenuController : MonoBehaviour
                 button.name != "PortugueseButton")
             {
                 button.style.unityFont = font;
-                if (isArabic)
-                {
-                    button.languageDirection = UnityEngine.UIElements.LanguageDirection.RTL;
-                }
-                else
-                {
-                    button.languageDirection = UnityEngine.UIElements.LanguageDirection.LTR;
-                }
             }
         }
 
@@ -667,14 +652,6 @@ public class MainMenuController : MonoBehaviour
                 label.name != "Ates")
             {
                 label.style.unityFont = font;
-                if (isArabic)
-                {
-                    label.languageDirection = UnityEngine.UIElements.LanguageDirection.RTL;
-                }
-                else
-                {
-                    label.languageDirection = UnityEngine.UIElements.LanguageDirection.LTR;
-                }
             }
         }
 
@@ -730,7 +707,6 @@ public class MainMenuController : MonoBehaviour
         FrenchButton = MainMenu.Q<Button>("FrenchButton");
         ChineseButton = MainMenu.Q<Button>("ChineseButton");
         JapaneseButton = MainMenu.Q<Button>("JapaneseButton");
-        ArabicButton = MainMenu.Q<Button>("ArabicButton");
         PolishButton = MainMenu.Q<Button>("PolishButton");
         RussianButton = MainMenu.Q<Button>("RussianButton");
         ItalianButton = MainMenu.Q<Button>("ItalianButton");
@@ -797,7 +773,6 @@ public class MainMenuController : MonoBehaviour
         FrenchButton.RegisterCallback<ClickEvent>(e => OnFrenchButtonClicked());
         ChineseButton.RegisterCallback<ClickEvent>(e => OnChineseButtonClicked());
         JapaneseButton.RegisterCallback<ClickEvent>(e => OnJapaneseButtonClicked());
-        ArabicButton.RegisterCallback<ClickEvent>(e => OnArabicButtonClicked());
         PolishButton.RegisterCallback<ClickEvent>(e => OnPolishButtonClicked());
         RussianButton.RegisterCallback<ClickEvent>(e => OnRussianButtonClicked());
         ItalianButton.RegisterCallback<ClickEvent>(e => OnItalianButtonClicked());
@@ -857,7 +832,6 @@ public class MainMenuController : MonoBehaviour
         FrenchButton.UnregisterCallback<ClickEvent>(e => OnFrenchButtonClicked());
         ChineseButton.UnregisterCallback<ClickEvent>(e => OnChineseButtonClicked());
         JapaneseButton.UnregisterCallback<ClickEvent>(e => OnJapaneseButtonClicked());
-        ArabicButton.UnregisterCallback<ClickEvent>(e => OnArabicButtonClicked());
         PolishButton.UnregisterCallback<ClickEvent>(e => OnPolishButtonClicked());
         RussianButton.UnregisterCallback<ClickEvent>(e => OnRussianButtonClicked());
         ItalianButton.UnregisterCallback<ClickEvent>(e => OnItalianButtonClicked());

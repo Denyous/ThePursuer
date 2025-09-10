@@ -17,13 +17,8 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 009e39e46fd65bb45ba014d753f6fa4d, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 3574364231128317959
+    - rid: 8528837169257381897
   m_TableData:
-  - m_Id: 58643238912
-    m_Localized: "\u0909\u091A\u094D\u091A \u0938\u094D\u0915\u094B\u0930: {0} \u0905\u0902\u0915"
-    m_Metadata:
-      m_Items:
-      - rid: 3574364231128317959
   - m_Id: 29606072320
     m_Localized: "\u0936\u0941\u0930\u0942"
     m_Metadata:
@@ -52,6 +47,11 @@ MonoBehaviour:
     m_Localized: "\u0906\u0935\u093E\u091C\u093C"
     m_Metadata:
       m_Items: []
+  - m_Id: 58643238912
+    m_Localized: "\u0909\u091A\u094D\u091A \u0938\u094D\u0915\u094B\u0930: {0} \u0905\u0902\u0915"
+    m_Metadata:
+      m_Items:
+      - rid: 8528837169257381897
   - m_Id: 61516337152
     m_Localized: "\u091F\u094D\u092F\u0942\u091F\u094B\u0930\u093F\u092F\u0932"
     m_Metadata:
@@ -124,24 +124,25 @@ MonoBehaviour:
       \u0915\u0930\u0947\u0902"
     m_Metadata:
       m_Items: []
-  - m_Id: 35643345980338176
+  - m_Id: 24736485376
     m_Localized: "\u0930\u0926\u094D\u0926 \u0915\u0930\u0947\u0902"
     m_Metadata:
       m_Items: []
-  - m_Id: 38597809647702016
+  - m_Id: 24757456896
     m_Localized: "\u0938\u092E\u092F: {0}"
     m_Metadata:
       m_Items:
-      - rid: 3574364231128317959
-  - m_Id: 40507526577967104
+      - rid: 8528837169257381897
+  - m_Id: 24757456897
     m_Localized: "\u0905\u0902\u0915: {0}"
     m_Metadata:
-      m_Items: []
-  - m_Id: 40509001710489600
+      m_Items:
+      - rid: 8528837169257381897
+  - m_Id: 24757456898
     m_Localized: "\u0916\u0930\u0940\u0926\u0928\u093E"
     m_Metadata:
       m_Items: []
-  - m_Id: 40509040432304128
+  - m_Id: 24757456899
     m_Localized: "\u0915\u094D\u092F\u093E \u0906\u092A \u0935\u093F\u091C\u094D\u091E\u093E\u092A\u0928
       \u0930\u0939\u093F\u0924 \u0917\u0947\u092E \u0915\u093E \u0905\u0928\u0941\u092D\u0935
       \u0932\u0947\u0928\u0947 \u0915\u0947 \u0932\u093F\u090F \u0916\u0930\u0940\u0926\u093E\u0930\u0940
@@ -151,10 +152,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3574364231128317959
+    - rid: 8528837169257381897
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 
         m_SharedEntries:
+        - id: 24757456896
+        - id: 24757456897
         - id: 58643238912
-        - id: 38597809647702016

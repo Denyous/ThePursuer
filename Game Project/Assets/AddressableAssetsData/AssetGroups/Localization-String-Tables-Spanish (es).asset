@@ -31,7 +31,7 @@ MonoBehaviour:
     - Locale-es
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d799ef57866e04345b41bed8174a8e0b
+  - m_GUID: ddb89b4093ea2364baac9260f15263c2
     m_Address: Tutorial_es
     m_ReadOnly: 1
     m_SerializedLabels:

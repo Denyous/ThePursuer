@@ -17,15 +17,15 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: beee9036f706b51488afb5b55d3475c1
   m_SerializeEntries:
-  - m_GUID: 1fb764ea47c00d744b675d07f9f2c9ac
-    m_Address: MainMenu_fr
+  - m_GUID: 165f583e6eb3c374fb5c04c849a3e6dd
+    m_Address: Tutorial_fr
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fr
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6010833f7569ee143a81929f9c2490d9
-    m_Address: Tutorial_fr
+  - m_GUID: 1fb764ea47c00d744b675d07f9f2c9ac
+    m_Address: MainMenu_fr
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fr

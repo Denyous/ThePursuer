@@ -17,13 +17,8 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 009e39e46fd65bb45ba014d753f6fa4d, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 3574364231128317965
+    - rid: 8528837169257381903
   m_TableData:
-  - m_Id: 58643238912
-    m_Localized: "Puntuaci\xF3n m\xE1xima: {0} puntos"
-    m_Metadata:
-      m_Items:
-      - rid: 3574364231128317965
   - m_Id: 29606072320
     m_Localized: Inicio
     m_Metadata:
@@ -52,6 +47,11 @@ MonoBehaviour:
     m_Localized: Sonido
     m_Metadata:
       m_Items: []
+  - m_Id: 58643238912
+    m_Localized: "Puntuaci\xF3n m\xE1xima: {0} puntos"
+    m_Metadata:
+      m_Items:
+      - rid: 8528837169257381903
   - m_Id: 61516337152
     m_Localized: "Tutor\xEDa"
     m_Metadata:
@@ -109,24 +109,25 @@ MonoBehaviour:
     m_Localized: Usa el potenciador de agujero negro para atraer los misiles
     m_Metadata:
       m_Items: []
-  - m_Id: 35643345980338176
+  - m_Id: 24736485376
     m_Localized: Cancelar
     m_Metadata:
       m_Items: []
-  - m_Id: 38597809647702016
+  - m_Id: 24757456896
     m_Localized: 'Hora: {0}'
     m_Metadata:
       m_Items:
-      - rid: 3574364231128317965
-  - m_Id: 40507526577967104
+      - rid: 8528837169257381903
+  - m_Id: 24757456897
     m_Localized: 'Puntos: {0}'
     m_Metadata:
-      m_Items: []
-  - m_Id: 40509001710489600
+      m_Items:
+      - rid: 8528837169257381903
+  - m_Id: 24757456898
     m_Localized: Comprar
     m_Metadata:
       m_Items: []
-  - m_Id: 40509040432304128
+  - m_Id: 24757456899
     m_Localized: "\xBFTe gustar\xEDa realizar una compra para experimentar el juego
       sin anuncios?"
     m_Metadata:
@@ -134,10 +135,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3574364231128317965
+    - rid: 8528837169257381903
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 
         m_SharedEntries:
+        - id: 24757456896
+        - id: 24757456897
         - id: 58643238912
-        - id: 38597809647702016
