@@ -1080,7 +1080,7 @@ MonoBehaviour:
   kamikazeSpawnInterval: 7
   starSpawnInterval: 7.2
   laserSpawnInterval: 15
-  blackHoleSpawnInterval: 1
+  blackHoleSpawnInterval: 15
   flareSpawnInterval: 8
   speedUpSpawnInterval: 8
   shieldSpawnInterval: 8
