@@ -161,7 +161,7 @@ public class Enemy : MonoBehaviour
                     gameObject.SetActive(false);
                     GameOver();
                     GameStats.AddDeath();
-                    audioManager.AdjustMusicVolume(0f);
+                    audioManager.FadeOutMusic(1f);
                 }
             }
         }

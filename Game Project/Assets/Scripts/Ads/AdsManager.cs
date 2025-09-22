@@ -1,5 +1,4 @@
 using GoogleMobileAds.Api;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -16,9 +15,9 @@ public class AdsManager : MonoBehaviour
 #if UNITY_ANDROID
     //private string bannerAdUnitId = "ca-app-pub-3940256099942544/6300978111";
     //private string interestitialAdUnitId = "ca-app-pub-4834092355268168/4277082895\r\n";
-    private string testInterestitialAdUnitId = "ca-app-pub-3940256099942544/1033173712\r\n";
+    private string testInterestitialAdUnitId = "ca-app-pub-3940256099942544/1033173712";
     //private string rewardedAdUnitId = "ca-app-pub-4834092355268168/1004052292\r\n";
-    private string testRewardedAdUnitId = "ca-app-pub-3940256099942544/5224354917\r\n";
+    private string testRewardedAdUnitId = "ca-app-pub-3940256099942544/5224354917";
     //private string nativeAdUnitId = "ca-app-pub-3940256099942544/2247696110";
 #elif UNITY_IPHONE
     private string bannerAdUnitId = "ca-app-pub-3940256099942544/2934735716";
@@ -64,8 +63,7 @@ public class AdsManager : MonoBehaviour
         {
             MobileAds.Initialize(initStatus =>
             {
-                Debug.Log("Admob SDK Initilized");
-                //Load ads after initialization
+                Debug.Log("Admob SDK Initialized");
                 LoadInterstitialAd();
                 LoadRewardedAd();
             });
@@ -158,7 +156,7 @@ public class AdsManager : MonoBehaviour
 
     public void ShowRewardedAd()
     {
-        if (rewardedAd != null && rewardedAd.CanShowAd())
+        if (rewardedAd != null && rewardedAd.CanShowAd() && adsEnabled)
         {
             rewardedAd.Show((Reward reward) =>
             {

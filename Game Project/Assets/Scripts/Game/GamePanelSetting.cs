@@ -71,6 +71,7 @@ public class GamePanelSetting : MonoBehaviour
         // Tamamen siyah oldu
         color.a = 1f;
         fadeImage.color = color;
+        audioManager.FadeInMusic(2f);
         SceneManager.LoadScene(2);
     }
 
@@ -78,6 +79,7 @@ public class GamePanelSetting : MonoBehaviour
     {
         ClickSound();
         Time.timeScale = 1f;
+        audioManager.FadeInMusic(2f);
         SceneManager.LoadScene(0);
     }
 

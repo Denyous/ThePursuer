@@ -88,31 +88,31 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener
 
     private void CheckNonConsumable(string id)
     {
-        if (storeController != null)
-        {
-            var product = storeController.products.WithID(id);
+        //if (storeController != null)
+        //{
+        //    var product = storeController.products.WithID(id);
 
-            if (product != null)
-            {
-                if (product.hasReceipt)
-                {
-                    print($"Non-consumable {id} already purchased.");
-                    AdsManager.Instance.RemoveAds();
-                }
-                else
-                {
-                    print($"Non-consumable {id} is not purchased.");
-                }
-            }
-            else
-            {
-                print($"Non-consumable {id} not found in store.");
-            }
-        }
-        else
-        {
-            print("Store controller is not initialized.");
-        }
+        //    if (product != null)
+        //    {
+        //        if (product.hasReceipt)
+        //        {
+        //            print($"Non-consumable {id} already purchased.");
+        //            AdsManager.Instance.RemoveAds();
+        //        }
+        //        else
+        //        {
+        //            print($"Non-consumable {id} is not purchased.");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        print($"Non-consumable {id} not found in store.");
+        //    }
+        //}
+        //else
+        //{
+        //    print("Store controller is not initialized.");
+        //}
     }
 
     public void OnPurchaseFailed(Product product, PurchaseFailureDescription failureDescription)
