@@ -1611,7 +1611,11 @@ MonoBehaviour:
   enemyIndicatorPrefab: {fileID: 8371505102997875146, guid: 45873d90d6b389147956513d7704b62d, type: 3}
   ScreenBorder: 40
   VisibleDistance: 30
-  visibleSignalDistance: 20
+  enemyIconNormalSprite: {fileID: 21300000, guid: 295b3185333e31742b36d5a8038988fc, type: 3}
+  enemyIconCloseSprite: {fileID: 21300000, guid: 6d6cf402c16db22439a526c6d0e5ab3f, type: 3}
+  pulseDistance: 15
+  pulseSpeed: 10
+  pulseScale: 2
 --- !u!1 &455849287
 GameObject:
   m_ObjectHideFlags: 0

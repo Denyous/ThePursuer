@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -19,25 +19,16 @@ public class CollectibleController : MonoBehaviour
     private GameObject enemyIcon;
     private List<GameObject> stars = new List<GameObject>();
     private List<GameObject> enemies = new List<GameObject>();
-    private SpriteRenderer enemyIconSpriteRenderer;
 
     [SerializeField] private float ScreenBorder;
     [SerializeField] private float VisibleDistance;
-    [SerializeField] private float visibleSignalDistance;
-    [SerializeField] private Sprite enemyIconNormalSprite;
-    [SerializeField] private Sprite enemyIconCloseSprite;
+    [SerializeField] private float pulseDistance = 10f;   
+    [SerializeField] private float pulseSpeed = 20f;      
+    [SerializeField] private float pulseScale = 2f;   
+    private Vector3 enemyIconBaseScale;
 
-    private float increasedEnemyIconSizeX = 0f;
-    private float increasedEnemyIconSizeY = 0f;
-    private float increasedEnemyIconSizeZ = 0f;
-    private float decreasedEnemyIconSizeX = 0f;
-    private float decreasedEnemyIconSizeY = 0f;
-    private float decreasedEnemyIconSizeZ = 0f;
-
-    private event Action increase;
-    private event Action decrease;
-
-    private bool isBlinkingCoroutineRunning = false;
+    private Coroutine pulseCoroutine;
+    private bool isPulsing = false;
 
     private void Start()
     {
@@ -45,63 +36,9 @@ public class CollectibleController : MonoBehaviour
         Player = transform.parent.gameObject;
         enemyIcon = Instantiate(enemyIndicatorPrefab, GetIconPosition(closestEnemy), Quaternion.identity);
         enemyIcon.SetActive(false);
-        increasedEnemyIconSizeX = enemyIcon.transform.localScale.x * 2f;
-        increasedEnemyIconSizeY = enemyIcon.transform.localScale.y * 2f;
-        increasedEnemyIconSizeZ = enemyIcon.transform.localScale.z;
-        decreasedEnemyIconSizeX = enemyIcon.transform.localScale.x;
-        decreasedEnemyIconSizeY = enemyIcon.transform.localScale.y;
-        decreasedEnemyIconSizeZ = enemyIcon.transform.localScale.z;
-
+        enemyIconBaseScale = enemyIcon.transform.localScale;
         icon = Instantiate(collectiblePrefab, GetIconPosition(nearestStar), Quaternion.identity);
         icon.SetActive(false);
-        enemyIconSpriteRenderer = enemyIcon.GetComponent<SpriteRenderer>();
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.white;
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(Vector3.zero, new Vector3(VisibleDistance, VisibleDistance));
-        Gizmos.DrawLine(Vector3.zero, new Vector3(visibleSignalDistance, visibleSignalDistance));
-    }
-
-    private void Awake()
-    {
-        increase += IncreaseEnemyIconSize;
-        decrease += DecreaseEnemyIconSize;
-    }
-
-    private IEnumerator Blink(float time)
-    {
-        isBlinkingCoroutineRunning = true;
-
-        while (true) // loop until broken outside
-        {
-            increase.Invoke();
-            yield return new WaitForSeconds(time);
-            decrease.Invoke();
-            yield return new WaitForSeconds(time);
-        }
-    }
-
-    private void IncreaseEnemyIconSize()
-    {
-        enemyIcon.transform.localScale = new Vector3(increasedEnemyIconSizeX, increasedEnemyIconSizeY, increasedEnemyIconSizeZ);
-
-        //enemyIconSpriteRenderer.color = Color.red;
-    }
-
-    private void DecreaseEnemyIconSize()
-    {
-        enemyIcon.transform.localScale = new Vector3(decreasedEnemyIconSizeX, decreasedEnemyIconSizeY, decreasedEnemyIconSizeZ);
-
-        //enemyIconSpriteRenderer.color = new Color(colorRed, colorGreen, colorBlue, 1f);
-    }
-
-    private void DestroyEvents()
-    {
-        increase -= IncreaseEnemyIconSize;
-        decrease -= DecreaseEnemyIconSize;
     }
 
     private void Update()
@@ -146,35 +83,52 @@ public class CollectibleController : MonoBehaviour
                 enemyIcon.SetActive(true);
                 UpdateIconPosition(enemyIcon, closestEnemy, viewportPos, Camera);
 
-                if (distanceToEnemy < visibleSignalDistance)
+                if (distanceToEnemy < pulseDistance)
                 {
-                    StartCoroutine(Blink(distanceToEnemy * 0.5f));
+                    if (!isPulsing)
+                    {
+                        pulseCoroutine = StartCoroutine(PulseEnemyIcon());
+                        isPulsing = true;
+                    }
                 }
-                //else if (distanceToEnemy < visibleSignalDistance && isBlinkingCoroutineRunning)
-                //{
-                    
-                //}
+                else
+                {
+                    if (isPulsing)
+                    {
+                        StopCoroutine(pulseCoroutine);
+                        enemyIcon.transform.localScale = enemyIconBaseScale;
+                        isPulsing = false;
+                    }
+                }
             }
-            else if (enemyIcon != null)
+            else
             {
                 enemyIcon.SetActive(false);
+                if (isPulsing)
+                {
+                    StopCoroutine(pulseCoroutine);
+                    enemyIcon.transform.localScale = enemyIconBaseScale;
+                    isPulsing = false;
+                }
             }
         }
         else if (closestEnemy == null)
         {
-            if (isBlinkingCoroutineRunning)
+            if (isPulsing)
             {
-                StopCoroutine(Blink(0.5f));
-                isBlinkingCoroutineRunning = false;
+                StopCoroutine(pulseCoroutine);
+                enemyIcon.transform.localScale = enemyIconBaseScale;
+                isPulsing = false;
             }
             enemyIcon.SetActive(false);
         }
         else if (enemies.Count == 0)
         {
-            if (isBlinkingCoroutineRunning)
+            if (isPulsing)
             {
-                StopCoroutine(Blink(0.5f));
-                isBlinkingCoroutineRunning = false;
+                StopCoroutine(pulseCoroutine);
+                enemyIcon.transform.localScale = enemyIconBaseScale;
+                isPulsing = false;
             }
             enemyIcon.SetActive(false);
         }
@@ -312,4 +266,15 @@ public class CollectibleController : MonoBehaviour
         }
     }
     #endregion
+
+    // --- Pulse Coroutine ---
+    private IEnumerator PulseEnemyIcon()
+    {
+        while (true)
+        {
+            float scale = 1f + (Mathf.Sin(Time.time * pulseSpeed) * 0.5f + 0.5f) * (pulseScale - 1f);
+            enemyIcon.transform.localScale = enemyIconBaseScale * scale;
+            yield return null;
+        }
+    }
 }
