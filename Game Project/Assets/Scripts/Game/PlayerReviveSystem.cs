@@ -36,7 +36,7 @@ public class PlayerReviveSystem : MonoBehaviour
 
     public void OnReviveButtonPressed()
     {
-        AdsManager.instance.ShowRewardedAd();
+        AdsManager.Instance.ShowRewardedAd();
     }
 
     public void RevivePlayer()

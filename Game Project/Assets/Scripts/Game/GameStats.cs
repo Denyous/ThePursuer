@@ -58,7 +58,7 @@ public class GameStats : MonoBehaviour
             adsNumber = 0;
             PlayerPrefs.SetInt("AdsNumber", adsNumber);
             PlayerPrefs.SetInt("DeathCount", deathCount);
-            AdsManager.instance.ShowInterstitialAd();
+            AdsManager.Instance.ShowInterstitialAd();
         }
     }
 
