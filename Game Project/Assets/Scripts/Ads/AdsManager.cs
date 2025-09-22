@@ -1,10 +1,10 @@
 using GoogleMobileAds.Api;
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
-
     public static AdsManager Instance;
     private bool adsEnabled = true;
 
@@ -97,7 +97,7 @@ public class AdsManager : MonoBehaviour
             {
                 Debug.LogError("Rewarded ad closed.");
                 LoadRewardedAd();
-                PlayerReviveSystem.instance.RevivePlayer();
+                StartCoroutine(ResumeAndRevive());
             };
             rewardedAd.OnAdFullScreenContentFailed += (error) =>
             {
@@ -106,6 +106,11 @@ public class AdsManager : MonoBehaviour
         });
     }
 
+    private IEnumerator ResumeAndRevive()
+    {
+        yield return PlayerReviveSystem.instance.ResumeWithCountdown();
+        PlayerReviveSystem.instance.RevivePlayer();
+    }
 
     private void LoadInterstitialAd()
     {
@@ -161,7 +166,6 @@ public class AdsManager : MonoBehaviour
             rewardedAd.Show((Reward reward) =>
             {
                 Debug.Log($"User earned reward: {reward.Amount} {reward.Type}");
-                //PlayerReviveSystem.instance.RevivePlayer();
             });
         }
         else

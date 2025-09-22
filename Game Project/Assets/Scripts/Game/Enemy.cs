@@ -102,8 +102,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-
     public void ActivateKamikaze(GameObject ParticleSystem)
     {
         if (kamikazeEffect == null)
