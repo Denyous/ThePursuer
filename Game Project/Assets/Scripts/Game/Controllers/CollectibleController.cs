@@ -24,6 +24,8 @@ public class CollectibleController : MonoBehaviour
     [SerializeField] private float ScreenBorder;
     [SerializeField] private float VisibleDistance;
     [SerializeField] private float visibleSignalDistance;
+    [SerializeField] private Sprite enemyIconNormalSprite;
+    [SerializeField] private Sprite enemyIconCloseSprite;
 
     private float increasedEnemyIconSizeX = 0f;
     private float increasedEnemyIconSizeY = 0f;
@@ -34,10 +36,6 @@ public class CollectibleController : MonoBehaviour
 
     private event Action increase;
     private event Action decrease;
-
-    private float colorRed = 0f;
-    private float colorGreen = 0f;
-    private float colorBlue = 0f;
 
     private bool isBlinkingCoroutineRunning = false;
 
@@ -57,9 +55,6 @@ public class CollectibleController : MonoBehaviour
         icon = Instantiate(collectiblePrefab, GetIconPosition(nearestStar), Quaternion.identity);
         icon.SetActive(false);
         enemyIconSpriteRenderer = enemyIcon.GetComponent<SpriteRenderer>();
-        colorRed = enemyIconSpriteRenderer.color.r;
-        colorGreen = enemyIconSpriteRenderer.color.g;
-        colorBlue = enemyIconSpriteRenderer.color.b;
     }
 
     private void OnDrawGizmos()
@@ -91,21 +86,14 @@ public class CollectibleController : MonoBehaviour
 
     private void IncreaseEnemyIconSize()
     {
-        //enemyIcon.transform.localScale = new Vector3(increasedEnemyIconSizeX, increasedEnemyIconSizeY, increasedEnemyIconSizeZ);
-        LeanTween.cancel(enemyIcon);
-
-        LeanTween.scale(enemyIcon, new Vector3(increasedEnemyIconSizeX, increasedEnemyIconSizeY, increasedEnemyIconSizeZ), 0.1f).setEase(LeanTweenType.easeOutSine);
+        enemyIcon.transform.localScale = new Vector3(increasedEnemyIconSizeX, increasedEnemyIconSizeY, increasedEnemyIconSizeZ);
 
         //enemyIconSpriteRenderer.color = Color.red;
     }
 
     private void DecreaseEnemyIconSize()
     {
-        //enemyIcon.transform.localScale = new Vector3(decreasedEnemyIconSizeX, decreasedEnemyIconSizeY, decreasedEnemyIconSizeZ);
-
-        LeanTween.cancel(enemyIcon);
-
-        LeanTween.scale(enemyIcon, new Vector3(decreasedEnemyIconSizeX, decreasedEnemyIconSizeY, decreasedEnemyIconSizeZ), 0.1f).setEase(LeanTweenType.easeOutSine);
+        enemyIcon.transform.localScale = new Vector3(decreasedEnemyIconSizeX, decreasedEnemyIconSizeY, decreasedEnemyIconSizeZ);
 
         //enemyIconSpriteRenderer.color = new Color(colorRed, colorGreen, colorBlue, 1f);
     }
@@ -162,11 +150,10 @@ public class CollectibleController : MonoBehaviour
                 {
                     StartCoroutine(Blink(distanceToEnemy * 0.5f));
                 }
-                else if (distanceToEnemy < visibleSignalDistance && isBlinkingCoroutineRunning)
-                {
-                    StopCoroutine(Blink(distanceToEnemy * 0.5f));
-                    isBlinkingCoroutineRunning = false;
-                }
+                //else if (distanceToEnemy < visibleSignalDistance && isBlinkingCoroutineRunning)
+                //{
+                    
+                //}
             }
             else if (enemyIcon != null)
             {
@@ -175,10 +162,20 @@ public class CollectibleController : MonoBehaviour
         }
         else if (closestEnemy == null)
         {
+            if (isBlinkingCoroutineRunning)
+            {
+                StopCoroutine(Blink(0.5f));
+                isBlinkingCoroutineRunning = false;
+            }
             enemyIcon.SetActive(false);
         }
         else if (enemies.Count == 0)
         {
+            if (isBlinkingCoroutineRunning)
+            {
+                StopCoroutine(Blink(0.5f));
+                isBlinkingCoroutineRunning = false;
+            }
             enemyIcon.SetActive(false);
         }
     }
