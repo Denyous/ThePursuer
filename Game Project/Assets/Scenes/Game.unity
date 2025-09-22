@@ -1611,6 +1611,7 @@ MonoBehaviour:
   enemyIndicatorPrefab: {fileID: 8371505102997875146, guid: 45873d90d6b389147956513d7704b62d, type: 3}
   ScreenBorder: 40
   VisibleDistance: 30
+  visibleSignalDistance: 20
 --- !u!1 &455849287
 GameObject:
   m_ObjectHideFlags: 0
@@ -6873,7 +6874,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -4.82}
-  m_LocalScale: {x: 0.48, y: 1.1, z: 1.4}
+  m_LocalScale: {x: 0.36, y: 0.86, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2125443271}

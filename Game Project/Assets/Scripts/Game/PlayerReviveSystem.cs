@@ -47,6 +47,7 @@ public class PlayerReviveSystem : MonoBehaviour
         finalScoreTest.SetTextBoxesActive();
         player.SetActive(true);
         player.transform.position = deathPosition;
+        player.gameObject.GetComponent<Player>().StartShieldCoroutine();
 
         UI.SetActive(true);
         UISettings();

@@ -85,6 +85,17 @@ public class Player : MonoBehaviour
         MakeButtonTransparent(flareButton);
     }
 
+    public void StartShieldCoroutine()
+    {
+        StartCoroutine(ShieldPlayer());
+    }
+    private IEnumerator ShieldPlayer()
+    {
+        Shield = true;
+        yield return new WaitForSeconds(3f);
+        Shield = false;
+    }
+
     private void Update()
     {
         float newX = Joystick.Horizontal;
@@ -243,7 +254,6 @@ public class Player : MonoBehaviour
     {
         if (Shield == false)
         {
-            
             shieldVisual.SetActive(false);
         }
         else

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CollectibleController : MonoBehaviour
 {
@@ -17,9 +19,27 @@ public class CollectibleController : MonoBehaviour
     private GameObject enemyIcon;
     private List<GameObject> stars = new List<GameObject>();
     private List<GameObject> enemies = new List<GameObject>();
+    private SpriteRenderer enemyIconSpriteRenderer;
 
     [SerializeField] private float ScreenBorder;
     [SerializeField] private float VisibleDistance;
+    [SerializeField] private float visibleSignalDistance;
+
+    private float increasedEnemyIconSizeX = 0f;
+    private float increasedEnemyIconSizeY = 0f;
+    private float increasedEnemyIconSizeZ = 0f;
+    private float decreasedEnemyIconSizeX = 0f;
+    private float decreasedEnemyIconSizeY = 0f;
+    private float decreasedEnemyIconSizeZ = 0f;
+
+    private event Action increase;
+    private event Action decrease;
+
+    private float colorRed = 0f;
+    private float colorGreen = 0f;
+    private float colorBlue = 0f;
+
+    private bool isBlinkingCoroutineRunning = false;
 
     private void Start()
     {
@@ -27,8 +47,73 @@ public class CollectibleController : MonoBehaviour
         Player = transform.parent.gameObject;
         enemyIcon = Instantiate(enemyIndicatorPrefab, GetIconPosition(closestEnemy), Quaternion.identity);
         enemyIcon.SetActive(false);
+        increasedEnemyIconSizeX = enemyIcon.transform.localScale.x * 2f;
+        increasedEnemyIconSizeY = enemyIcon.transform.localScale.y * 2f;
+        increasedEnemyIconSizeZ = enemyIcon.transform.localScale.z;
+        decreasedEnemyIconSizeX = enemyIcon.transform.localScale.x;
+        decreasedEnemyIconSizeY = enemyIcon.transform.localScale.y;
+        decreasedEnemyIconSizeZ = enemyIcon.transform.localScale.z;
+
         icon = Instantiate(collectiblePrefab, GetIconPosition(nearestStar), Quaternion.identity);
         icon.SetActive(false);
+        enemyIconSpriteRenderer = enemyIcon.GetComponent<SpriteRenderer>();
+        colorRed = enemyIconSpriteRenderer.color.r;
+        colorGreen = enemyIconSpriteRenderer.color.g;
+        colorBlue = enemyIconSpriteRenderer.color.b;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(Vector3.zero, new Vector3(VisibleDistance, VisibleDistance));
+        Gizmos.DrawLine(Vector3.zero, new Vector3(visibleSignalDistance, visibleSignalDistance));
+    }
+
+    private void Awake()
+    {
+        increase += IncreaseEnemyIconSize;
+        decrease += DecreaseEnemyIconSize;
+    }
+
+    private IEnumerator Blink(float time)
+    {
+        isBlinkingCoroutineRunning = true;
+
+        while (true) // loop until broken outside
+        {
+            increase.Invoke();
+            yield return new WaitForSeconds(time);
+            decrease.Invoke();
+            yield return new WaitForSeconds(time);
+        }
+    }
+
+    private void IncreaseEnemyIconSize()
+    {
+        //enemyIcon.transform.localScale = new Vector3(increasedEnemyIconSizeX, increasedEnemyIconSizeY, increasedEnemyIconSizeZ);
+        LeanTween.cancel(enemyIcon);
+
+        LeanTween.scale(enemyIcon, new Vector3(increasedEnemyIconSizeX, increasedEnemyIconSizeY, increasedEnemyIconSizeZ), 0.1f).setEase(LeanTweenType.easeOutSine);
+
+        //enemyIconSpriteRenderer.color = Color.red;
+    }
+
+    private void DecreaseEnemyIconSize()
+    {
+        //enemyIcon.transform.localScale = new Vector3(decreasedEnemyIconSizeX, decreasedEnemyIconSizeY, decreasedEnemyIconSizeZ);
+
+        LeanTween.cancel(enemyIcon);
+
+        LeanTween.scale(enemyIcon, new Vector3(decreasedEnemyIconSizeX, decreasedEnemyIconSizeY, decreasedEnemyIconSizeZ), 0.1f).setEase(LeanTweenType.easeOutSine);
+
+        //enemyIconSpriteRenderer.color = new Color(colorRed, colorGreen, colorBlue, 1f);
+    }
+
+    private void DestroyEvents()
+    {
+        increase -= IncreaseEnemyIconSize;
+        decrease -= DecreaseEnemyIconSize;
     }
 
     private void Update()
@@ -66,10 +151,22 @@ public class CollectibleController : MonoBehaviour
             Vector3 viewportPos = Camera.WorldToViewportPoint(closestEnemy.transform.position);
             bool isEnemyVisible = viewportPos.x > 0.05f && viewportPos.x < 1.05f && viewportPos.y > 0.05f && viewportPos.y < 1.05f;
 
+            float distanceToEnemy = Vector3.Distance(Player.transform.position, closestEnemy.transform.position);
+
             if (!isEnemyVisible)
             {
                 enemyIcon.SetActive(true);
                 UpdateIconPosition(enemyIcon, closestEnemy, viewportPos, Camera);
+
+                if (distanceToEnemy < visibleSignalDistance)
+                {
+                    StartCoroutine(Blink(distanceToEnemy * 0.5f));
+                }
+                else if (distanceToEnemy < visibleSignalDistance && isBlinkingCoroutineRunning)
+                {
+                    StopCoroutine(Blink(distanceToEnemy * 0.5f));
+                    isBlinkingCoroutineRunning = false;
+                }
             }
             else if (enemyIcon != null)
             {
