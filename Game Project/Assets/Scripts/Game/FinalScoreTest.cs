@@ -31,7 +31,6 @@ public class FinalScoreTest : MonoBehaviour
     public float tweenDuration = 0.5f;
     private bool completedTweenStar = false;
     private bool completedTweenTimer = false;
-    private float musicVolume;
 
     void Start()
     {
@@ -83,9 +82,6 @@ public class FinalScoreTest : MonoBehaviour
         timerText.text = LocalizedTime.GetLocalizedString();
         starText.text = LocalizedStar.GetLocalizedString();
         HighScoreText.text = LocalizedHighScore.GetLocalizedString();
-
-        Debug.Log($"Timer: {timer} \n Stars: {stars}");
-        Debug.Log($"Duration: {duration}");
 
         int initialStars = stars;
         int initialTimer = timer;
@@ -165,7 +161,7 @@ public class FinalScoreTest : MonoBehaviour
         .setEase(LeanTweenType.easeOutBack).setIgnoreTimeScale(true);
         LeanTween.scale(pointImageRectTransform, new Vector3(12, 12, 1), tweenDuration).setIgnoreTimeScale(true);
         LeanTween.moveLocalX(scoreText.gameObject, scoreText.rectTransform.anchoredPosition.x + 30, tweenDuration).setIgnoreTimeScale(true);
-        StartCoroutine(AudioManager.instance.FadeInMusicCoroutine(2f));
+        AudioManager.instance.FadeInMusic(2f);
     }
 
     public void UnScalePanel()

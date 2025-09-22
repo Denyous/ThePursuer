@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Game Project/Assets/ExternalDependencyManager.meta
 guid: 318c8171e8be69a4c9de547c07427e4d
 folderAsset: yes
 DefaultImporter:
+========
+guid: 70734dfbbb059244b85610204a5fd002
+TextScriptImporter:
+>>>>>>>> Admob:Game Project/Assets/AddressableAssetsData/link.xml.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

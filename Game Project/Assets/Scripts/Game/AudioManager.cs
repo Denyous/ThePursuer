@@ -85,6 +85,19 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = volume;    
     }
 
+    public void FadeInMusic(float duration)
+    {
+        if (musicSource.volume < 1f)
+        {
+            StartCoroutine(FadeInMusicCoroutine(duration));
+        }
+    }
+
+    public void FadeOutMusic(float duration)
+    {
+        StartCoroutine(FadeOutMusicCoroutine(duration));
+    }
+
     public IEnumerator FadeInMusicCoroutine(float duration)
     {
         float time = 0f;
@@ -97,6 +110,7 @@ public class AudioManager : MonoBehaviour
             musicSource.volume = Mathf.Lerp(0f, 1f, time / duration);
             yield return null;
         }
+
         musicSource.volume = 1f;
     }
 

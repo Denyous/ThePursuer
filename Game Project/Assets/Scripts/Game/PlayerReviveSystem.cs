@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PlayerReviveSystem : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class PlayerReviveSystem : MonoBehaviour
     public GameObject UI;
     public FinalScoreTest finalScoreTest;
 
+    [SerializeField] private TMPro.TextMeshProUGUI countdownText;
 
     public bool reviveUsed = false;
     private Vector3 deathPosition;
@@ -36,7 +39,7 @@ public class PlayerReviveSystem : MonoBehaviour
 
     public void OnReviveButtonPressed()
     {
-        AdsManager.instance.ShowRewardedAd();
+        AdsManager.Instance.ShowRewardedAd();
     }
 
     public void RevivePlayer()
@@ -44,6 +47,7 @@ public class PlayerReviveSystem : MonoBehaviour
         finalScoreTest.SetTextBoxesActive();
         player.SetActive(true);
         player.transform.position = deathPosition;
+        player.gameObject.GetComponent<Player>().StartShieldCoroutine();
 
         UI.SetActive(true);
         UISettings();
@@ -52,6 +56,38 @@ public class PlayerReviveSystem : MonoBehaviour
         Time.timeScale = 1f;
         EnemySpawner spawner = player.GetComponentInChildren<EnemySpawner>();
         spawner.ExplodeEnemies();
+        AudioManager.instance.FadeInMusic(2f);
+    }
+
+    public IEnumerator ResumeAfterCountdown()
+    {
+        Debug.Log(">>> Starting ResumeAfterCountdown");
+        yield return StartCoroutine(ResumeWithCountdown());
+        Debug.Log(">>> Countdown finished, reviving player...");
+        RevivePlayer();
+    }
+
+    public void ResumeGame()
+    {
+        StartCoroutine(ResumeAfterCountdown());
+    }
+
+    public IEnumerator ResumeWithCountdown()
+    {
+        countdownText.gameObject.SetActive(true);
+        gameOverScreen.SetActive(false);
+
+        for (int i = 2; i > 0; i--)
+        {
+            countdownText.text = i.ToString();
+            AudioManager.instance.SFXPlayOneShot(AudioManager.instance.clockTickSFX);
+            yield return new WaitForSecondsRealtime(0.5f);
+            AudioManager.instance.SFXPlayOneShot(AudioManager.instance.clockTockSFX);
+            yield return new WaitForSecondsRealtime(0.5f);
+        }
+
+        countdownText.gameObject.SetActive(false);
+        UI.SetActive(true);
     }
 
     public void UISettings()
@@ -61,6 +97,7 @@ public class PlayerReviveSystem : MonoBehaviour
         GameStats.ResetDeathCount();
 
         gameOverScreen.SetActive(false);
+
 
         if (!reviveUsed)
         {

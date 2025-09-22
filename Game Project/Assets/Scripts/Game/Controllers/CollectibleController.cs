@@ -1,7 +1,9 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CollectibleController : MonoBehaviour
 {
@@ -20,6 +22,13 @@ public class CollectibleController : MonoBehaviour
 
     [SerializeField] private float ScreenBorder;
     [SerializeField] private float VisibleDistance;
+    [SerializeField] private float pulseDistance = 10f;   
+    [SerializeField] private float pulseSpeed = 20f;      
+    [SerializeField] private float pulseScale = 2f;   
+    private Vector3 enemyIconBaseScale;
+
+    private Coroutine pulseCoroutine;
+    private bool isPulsing = false;
 
     private void Start()
     {
@@ -27,6 +36,7 @@ public class CollectibleController : MonoBehaviour
         Player = transform.parent.gameObject;
         enemyIcon = Instantiate(enemyIndicatorPrefab, GetIconPosition(closestEnemy), Quaternion.identity);
         enemyIcon.SetActive(false);
+        enemyIconBaseScale = enemyIcon.transform.localScale;
         icon = Instantiate(collectiblePrefab, GetIconPosition(nearestStar), Quaternion.identity);
         icon.SetActive(false);
     }
@@ -66,22 +76,60 @@ public class CollectibleController : MonoBehaviour
             Vector3 viewportPos = Camera.WorldToViewportPoint(closestEnemy.transform.position);
             bool isEnemyVisible = viewportPos.x > 0.05f && viewportPos.x < 1.05f && viewportPos.y > 0.05f && viewportPos.y < 1.05f;
 
+            float distanceToEnemy = Vector3.Distance(Player.transform.position, closestEnemy.transform.position);
+
             if (!isEnemyVisible)
             {
                 enemyIcon.SetActive(true);
                 UpdateIconPosition(enemyIcon, closestEnemy, viewportPos, Camera);
+
+                if (distanceToEnemy < pulseDistance)
+                {
+                    if (!isPulsing)
+                    {
+                        pulseCoroutine = StartCoroutine(PulseEnemyIcon());
+                        isPulsing = true;
+                    }
+                }
+                else
+                {
+                    if (isPulsing)
+                    {
+                        StopCoroutine(pulseCoroutine);
+                        enemyIcon.transform.localScale = enemyIconBaseScale;
+                        isPulsing = false;
+                    }
+                }
             }
-            else if (enemyIcon != null)
+            else
             {
                 enemyIcon.SetActive(false);
+                if (isPulsing)
+                {
+                    StopCoroutine(pulseCoroutine);
+                    enemyIcon.transform.localScale = enemyIconBaseScale;
+                    isPulsing = false;
+                }
             }
         }
         else if (closestEnemy == null)
         {
+            if (isPulsing)
+            {
+                StopCoroutine(pulseCoroutine);
+                enemyIcon.transform.localScale = enemyIconBaseScale;
+                isPulsing = false;
+            }
             enemyIcon.SetActive(false);
         }
         else if (enemies.Count == 0)
         {
+            if (isPulsing)
+            {
+                StopCoroutine(pulseCoroutine);
+                enemyIcon.transform.localScale = enemyIconBaseScale;
+                isPulsing = false;
+            }
             enemyIcon.SetActive(false);
         }
     }
@@ -218,4 +266,15 @@ public class CollectibleController : MonoBehaviour
         }
     }
     #endregion
+
+    // --- Pulse Coroutine ---
+    private IEnumerator PulseEnemyIcon()
+    {
+        while (true)
+        {
+            float scale = 1f + (Mathf.Sin(Time.time * pulseSpeed) * 0.5f + 0.5f) * (pulseScale - 1f);
+            enemyIcon.transform.localScale = enemyIconBaseScale * scale;
+            yield return null;
+        }
+    }
 }

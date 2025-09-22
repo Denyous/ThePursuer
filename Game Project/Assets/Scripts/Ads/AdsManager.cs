@@ -1,21 +1,43 @@
-using System.Diagnostics.CodeAnalysis;
+using GoogleMobileAds.Api;
+using System.Collections;
 using System.Threading.Tasks;
-using Unity.Services.LevelPlay;
 using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
-    private Unity.Services.LevelPlay.LevelPlayInterstitialAd interstitialAd;
-    private Unity.Services.LevelPlay.LevelPlayRewardedAd rewardedVideoAd;
-
-    public static AdsManager instance;
+    public static AdsManager Instance;
     private bool adsEnabled = true;
+    private bool _showRewardedAd = false;
+
+    private InterstitialAd interstitialAd;
+    private RewardedAd rewardedAd;
+    private NativeOverlayAd nativeOverlayAd;
+
+#if UNITY_ANDROID
+    //private string bannerAdUnitId = "ca-app-pub-3940256099942544/6300978111";
+    //private string interestitialAdUnitId = "ca-app-pub-4834092355268168/4277082895\r\n";
+    private string testInterestitialAdUnitId = "ca-app-pub-3940256099942544/1033173712";
+    //private string rewardedAdUnitId = "ca-app-pub-4834092355268168/1004052292\r\n";
+    private string testRewardedAdUnitId = "ca-app-pub-3940256099942544/5224354917";
+    //private string nativeAdUnitId = "ca-app-pub-3940256099942544/2247696110";
+#elif UNITY_IPHONE
+    private string bannerAdUnitId = "ca-app-pub-3940256099942544/2934735716";
+    private string interestitialAdUnitId = "ca-app-pub-3940256099942544/4411468910";
+    private string rewardedAdUnitId = "ca-app-pub-3940256099942544/1712485313";
+    private string nativeAdUnitId = "ca-app-pub-3940256099942544/3986624511";
+#else
+    private string bannerAdUnitId = "unused";
+    private string interestitialAdUnitId = "unused";
+    private string rewardedAdUnitId = "unused";
+    private string nativeAdUnitId = "unused";
+    
+#endif
 
     private void OnEnable()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -24,14 +46,6 @@ public class AdsManager : MonoBehaviour
         }
     }
 
-    //private void Awake()
-    //{
-    //    if (adsEnabled)
-    //    {
-    //        InitializeAds();
-    //    }
-    //}
-    
     public void RemoveAds()
     {
         adsEnabled = false;
@@ -40,184 +54,138 @@ public class AdsManager : MonoBehaviour
 
     private void DestroyAds()
     {
-        interstitialAd?.DestroyAd();
-        rewardedVideoAd?.DestroyAd();
+        interstitialAd?.Destroy();
+        rewardedAd?.Destroy();
     }
 
     public async Task InitializeAds()
     {
         if (adsEnabled)
         {
-            Unity.Services.LevelPlay.LevelPlay.ValidateIntegration();
-
-            Unity.Services.LevelPlay.LevelPlay.OnInitSuccess += SdkInitializationCompletedEvent;
-            Unity.Services.LevelPlay.LevelPlay.OnInitFailed += SdkInitializationFailedEvent;
-
-            Unity.Services.LevelPlay.LevelPlay.SetMetaData("is_test_suite", "enable");
-            Unity.Services.LevelPlay.LevelPlay.SetConsent(true);
-            Unity.Services.LevelPlay.LevelPlay.Init(AdConfig.AppKey);
+            MobileAds.Initialize(initStatus =>
+            {
+                Debug.Log("Admob SDK Initialized");
+                LoadInterstitialAd();
+                LoadRewardedAd();
+            });
         }
     }
 
-    private void EnableAds()
+    private void LoadRewardedAd()
     {
-        Unity.Services.LevelPlay.LevelPlay.OnImpressionDataReady += ImpressionDataReadyEvent;
+        // Clean up any existing rewarded ad
+        if (rewardedAd != null)
+        {
+            rewardedAd.Destroy();
+            rewardedAd = null;
+        }
 
-        rewardedVideoAd = new Unity.Services.LevelPlay.LevelPlayRewardedAd(AdConfig.RewardedVideoAdUnitId);
-        interstitialAd = new Unity.Services.LevelPlay.LevelPlayInterstitialAd(AdConfig.InterstitalAdUnitId);
+        // Load a new rewarded ad
+        RewardedAd.Load(testRewardedAdUnitId, new AdRequest(), (RewardedAd ad, LoadAdError error) =>
+        {
+            if (error != null || ad == null)
+            {
+                Debug.LogError("Rewarded ad failed to load:" + error?.GetMessage());
+                return;
+            }
 
-        // Register Rewarded Events
-        rewardedVideoAd.OnAdLoaded += RewardedVideoOnLoadedEvent;
-        rewardedVideoAd.OnAdLoadFailed += RewardedVideoOnAdLoadFailedEvent;
-        rewardedVideoAd.OnAdDisplayed += RewardedVideoOnAdDisplayedEvent;
-        rewardedVideoAd.OnAdDisplayFailed += RewardedVideoOnAdDisplayedFailedEvent;
-        rewardedVideoAd.OnAdRewarded += RewardedVideoOnAdRewardedEvent;
-        rewardedVideoAd.OnAdClicked += RewardedVideoOnAdClickedEvent;
-        rewardedVideoAd.OnAdClosed += RewardedVideoOnAdClosedEvent;
-        rewardedVideoAd.OnAdInfoChanged += RewardedVideoOnAdInfoChangedEvent;
+            rewardedAd = ad;
+            Debug.Log("Rewarded ad loaded.");
 
-        // Register Interstitial Events
-        interstitialAd.OnAdLoaded += InterstitialOnAdLoadedEvent;
-        interstitialAd.OnAdLoadFailed += InterstitialOnAdLoadFailedEvent;
-        interstitialAd.OnAdDisplayed += InterstitialOnAdDisplayedEvent;
-        interstitialAd.OnAdDisplayFailed += InterstitialOnAdDisplayFailedEvent;
-        interstitialAd.OnAdClicked += InterstitialOnAdClickedEvent;
-        interstitialAd.OnAdClosed += InterstitialOnAdClosedEvent;
-        interstitialAd.OnAdInfoChanged += InterstitialOnAdInfoChangedEvent;
-
-        LoadAds();
+            // Register ad events
+            rewardedAd.OnAdFullScreenContentClosed += () =>
+            {
+                Debug.LogError("Rewarded ad closed.");
+                LoadRewardedAd();
+                _showRewardedAd = true;
+            };
+            rewardedAd.OnAdFullScreenContentFailed += (error) =>
+            {
+                Debug.LogError("Rewarded ad failed to show:" + error.GetMessage());
+            };
+        });
     }
 
-    #region Show Ads Functions
+    private void Update()
+    {
+        if (_showRewardedAd && adsEnabled)
+        {
+            PlayerReviveSystem.instance.ResumeGame();
+            _showRewardedAd = false;
+        }
+    }
+
+    private void LoadInterstitialAd()
+    {
+        // Clean up any existing interstitial ad
+        if (interstitialAd != null)
+        {
+            interstitialAd.Destroy();
+            interstitialAd = null;
+        }
+
+        // Load a new interstitial ad
+        InterstitialAd.Load(testInterestitialAdUnitId, new AdRequest(), (InterstitialAd ad, LoadAdError error) => {
+
+            if (error != null || ad == null)
+            {
+                Debug.LogError("Interstitial ad failed to load: " + error?.GetMessage());
+                return;
+            };
+
+            interstitialAd = ad;
+            Debug.Log("Interstitial ad loaded");
+
+            // Register ad events
+            interstitialAd.OnAdFullScreenContentClosed += () =>
+            {
+                Debug.Log("Interstitial ad closed");
+                LoadInterstitialAd();
+            };
+
+            interstitialAd.OnAdFullScreenContentFailed += (error) =>
+            {
+                Debug.Log("Interstitial ad failed to show: " + error.GetMessage());
+            };
+        });
+    }
+
     public void ShowInterstitialAd()
     {
-        if (adsEnabled)
+        if (interstitialAd != null && interstitialAd.CanShowAd())
         {
-            if (interstitialAd.IsAdReady())
-            {
-                interstitialAd.ShowAd();
-            }
-            else
-            {
-                Debug.LogWarning("[LevelPlaySample] Ads are not enabled yet. Cannot show Interstitial Ad.");
-            }
-        }
-    }
-    
-    public void ShowRewardedAd()
-    {
-        if (adsEnabled)
-        {
-            if (rewardedVideoAd.IsAdReady())
-            {
-                rewardedVideoAd.ShowAd();
-            }
-            else
-            {
-                //Debug.LogWarning("[LevelPlaySample] Ads are not enabled yet. Cannot show Rewarded Ad.");
-            }
+            interstitialAd.Show();
         }
         else
         {
-            PlayerReviveSystem.instance.RevivePlayer();
+            Debug.Log("Interstitial ad not ready");
         }
     }
-    #endregion
 
-    #region Initialization Events
-
-    private void SdkInitializationCompletedEvent(Unity.Services.LevelPlay.LevelPlayConfiguration config)
+    public void ShowRewardedAd()
     {
-        EnableAds();
-    }
-    void SdkInitializationFailedEvent(Unity.Services.LevelPlay.LevelPlayInitError error)
-    {
-    }
-
-    #endregion
-
-    #region Rewarded Events
-    void RewardedVideoOnLoadedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-        
-    }
-    void RewardedVideoOnAdLoadFailedEvent(Unity.Services.LevelPlay.LevelPlayAdError error)
-    {
-        if (PlayerReviveSystem.instance is not null)
+        if (rewardedAd != null && rewardedAd.CanShowAd() && adsEnabled)
         {
-            PlayerReviveSystem.instance.HideReviveButton();
+            rewardedAd.Show((Reward reward) =>
+            {
+                Debug.Log($"User earned reward: {reward.Amount} {reward.Type}");
+            });
+        }
+        else
+        {
+            Debug.Log("Rewarded ad not ready");
         }
     }
-    void RewardedVideoOnAdDisplayedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-#pragma warning disable 0618
-    void RewardedVideoOnAdDisplayedFailedEvent(Unity.Services.LevelPlay.LevelPlayAdDisplayInfoError error)
-    {
-    }
-#pragma warning restore 0618
-    void RewardedVideoOnAdRewardedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo, Unity.Services.LevelPlay.LevelPlayReward reward)
-    {
-        rewardedVideoAd.LoadAd();
-        PlayerReviveSystem.instance.RevivePlayer();
-    }
-    void RewardedVideoOnAdClickedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-    void RewardedVideoOnAdClosedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-    void RewardedVideoOnAdInfoChangedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-    #endregion
-
-    #region Interstitial Events
-    void InterstitialOnAdLoadedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-
-    void InterstitialOnAdLoadFailedEvent(Unity.Services.LevelPlay.LevelPlayAdError error)
-    {
-    }
-
-    void InterstitialOnAdDisplayedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-        interstitialAd.LoadAd();
-    }
-#pragma warning disable 0618
-    void InterstitialOnAdDisplayFailedEvent(Unity.Services.LevelPlay.LevelPlayAdDisplayInfoError infoError)
-    {
-    }
-#pragma warning restore 0618
-    void InterstitialOnAdClickedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-    void InterstitialOnAdClosedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-        interstitialAd.LoadAd();
-    }
-    void InterstitialOnAdInfoChangedEvent(Unity.Services.LevelPlay.LevelPlayAdInfo adInfo)
-    {
-    }
-    #endregion
-
-    #region Impression Data Event
-    void ImpressionDataReadyEvent(LevelPlayImpressionData impressionData)
-    {
-    }
-
-    #endregion
 
     private void OnDisable()
     {
-        interstitialAd?.DestroyAd();
-        rewardedVideoAd?.DestroyAd();
+        interstitialAd?.Destroy();
+        rewardedAd?.Destroy();
     }
 
     public void LoadAds()
     {
-        interstitialAd.LoadAd();
-        rewardedVideoAd.LoadAd();
+        //interstitialAd.LoadAd();
+        //rewardedVideoAd.LoadAd();
     }
 }

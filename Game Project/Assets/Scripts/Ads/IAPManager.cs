@@ -62,7 +62,7 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener
         {
             Debug.Log($"Purchase successful: {product.definition.id}");
             // Handle successful purchase logic here
-            AdsManager.instance.RemoveAds();
+            AdsManager.Instance.RemoveAds();
             return PurchaseProcessingResult.Complete;
         }
         else
@@ -97,7 +97,7 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener
                 if (product.hasReceipt)
                 {
                     print($"Non-consumable {id} already purchased.");
-                    AdsManager.instance.RemoveAds();
+                    AdsManager.Instance.RemoveAds();
                 }
                 else
                 {
