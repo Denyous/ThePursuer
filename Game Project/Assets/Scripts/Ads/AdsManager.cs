@@ -7,6 +7,7 @@ public class AdsManager : MonoBehaviour
 {
     public static AdsManager Instance;
     private bool adsEnabled = true;
+    private bool _showRewardedAd = false;
 
     private InterstitialAd interstitialAd;
     private RewardedAd rewardedAd;
@@ -77,7 +78,6 @@ public class AdsManager : MonoBehaviour
         {
             rewardedAd.Destroy();
             rewardedAd = null;
-            PlayerReviveSystem.instance.HideReviveButton();
         }
 
         // Load a new rewarded ad
@@ -97,7 +97,7 @@ public class AdsManager : MonoBehaviour
             {
                 Debug.LogError("Rewarded ad closed.");
                 LoadRewardedAd();
-                StartCoroutine(ResumeAndRevive());
+                _showRewardedAd = true;
             };
             rewardedAd.OnAdFullScreenContentFailed += (error) =>
             {
@@ -106,10 +106,13 @@ public class AdsManager : MonoBehaviour
         });
     }
 
-    private IEnumerator ResumeAndRevive()
+    private void Update()
     {
-        yield return PlayerReviveSystem.instance.ResumeWithCountdown();
-        PlayerReviveSystem.instance.RevivePlayer();
+        if (_showRewardedAd && adsEnabled)
+        {
+            PlayerReviveSystem.instance.ResumeGame();
+            _showRewardedAd = false;
+        }
     }
 
     private void LoadInterstitialAd()
@@ -137,7 +140,7 @@ public class AdsManager : MonoBehaviour
             interstitialAd.OnAdFullScreenContentClosed += () =>
             {
                 Debug.Log("Interstitial ad closed");
-                LoadInterstitialAd(); // Preload the next ad
+                LoadInterstitialAd();
             };
 
             interstitialAd.OnAdFullScreenContentFailed += (error) =>
@@ -170,7 +173,6 @@ public class AdsManager : MonoBehaviour
         }
         else
         {
-            PlayerReviveSystem.instance.HideReviveButton();
             Debug.Log("Rewarded ad not ready");
         }
     }

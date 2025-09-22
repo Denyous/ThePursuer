@@ -31,7 +31,6 @@ public class FinalScoreTest : MonoBehaviour
     public float tweenDuration = 0.5f;
     private bool completedTweenStar = false;
     private bool completedTweenTimer = false;
-    private float musicVolume;
 
     void Start()
     {

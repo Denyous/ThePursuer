@@ -59,9 +59,17 @@ public class PlayerReviveSystem : MonoBehaviour
         AudioManager.instance.FadeInMusic(2f);
     }
 
-    public void ResumeAfterCountdown()
+    public IEnumerator ResumeAfterCountdown()
     {
-        StartCoroutine(ResumeWithCountdown());
+        Debug.Log(">>> Starting ResumeAfterCountdown");
+        yield return StartCoroutine(ResumeWithCountdown());
+        Debug.Log(">>> Countdown finished, reviving player...");
+        RevivePlayer();
+    }
+
+    public void ResumeGame()
+    {
+        StartCoroutine(ResumeAfterCountdown());
     }
 
     public IEnumerator ResumeWithCountdown()
@@ -73,9 +81,9 @@ public class PlayerReviveSystem : MonoBehaviour
         {
             countdownText.text = i.ToString();
             AudioManager.instance.SFXPlayOneShot(AudioManager.instance.clockTickSFX);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSecondsRealtime(0.5f);
             AudioManager.instance.SFXPlayOneShot(AudioManager.instance.clockTockSFX);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSecondsRealtime(0.5f);
         }
 
         countdownText.gameObject.SetActive(false);
