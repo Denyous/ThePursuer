@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
     {
         if (player != null)
         {
-            rb.velocity = speed * Time.fixedDeltaTime * 15f * transform.up;
+            rb.linearVelocity = speed * Time.fixedDeltaTime * 15f * transform.up;
             Vector2 direction = (player.transform.position - transform.position).normalized;
             float rotationSteer = Vector3.Cross(transform.up, direction).z;
             rb.angularVelocity = rotationSteer * steer * 10f;

@@ -40,7 +40,7 @@ public class BlackHoleFunctionality : MonoBehaviour
 
             Vector2 force = normalizedDirection * pullStrength + tangent * orbitStrength;
 
-            enemyRb.velocity = force;
+            enemyRb.linearVelocity = force;
         }
 
         foreach (var enemy in enemiesToRemove)

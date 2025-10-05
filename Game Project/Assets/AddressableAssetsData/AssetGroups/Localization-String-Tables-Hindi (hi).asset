@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Localization-String-Tables-Hindi (hi)
   m_EditorClassIdentifier: 
   m_GroupName: Localization-String-Tables-Hindi (hi)
-  m_Data:
-    m_SerializedData: []
   m_GUID: a569f1043bb044f489b003e1001ad7c0
   m_SerializeEntries:
   - m_GUID: 0026e042b90d91b4d875e95b55f37052

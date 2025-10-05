@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Localization-String-Tables-Polish (pl)
   m_EditorClassIdentifier: 
   m_GroupName: Localization-String-Tables-Polish (pl)
-  m_Data:
-    m_SerializedData: []
   m_GUID: c85f1afcd8fab1d47a17e55c5808f8c5
   m_SerializeEntries:
   - m_GUID: 248e24f55a848c043bb3ac5e545c988f

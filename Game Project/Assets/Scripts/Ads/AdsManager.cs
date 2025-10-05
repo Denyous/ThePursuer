@@ -15,9 +15,9 @@ public class AdsManager : MonoBehaviour
 
 #if UNITY_ANDROID
     //private string bannerAdUnitId = "ca-app-pub-3940256099942544/6300978111";
-    //private string interestitialAdUnitId = "ca-app-pub-4834092355268168/4277082895\r\n";
+    private string interestitialAdUnitId = "ca-app-pub-4834092355268168/4277082895";
     private string testInterestitialAdUnitId = "ca-app-pub-3940256099942544/1033173712";
-    //private string rewardedAdUnitId = "ca-app-pub-4834092355268168/1004052292\r\n";
+    private string rewardedAdUnitId = "ca-app-pub-4834092355268168/1004052292";
     private string testRewardedAdUnitId = "ca-app-pub-3940256099942544/5224354917";
     //private string nativeAdUnitId = "ca-app-pub-3940256099942544/2247696110";
 #elif UNITY_IPHONE
@@ -113,6 +113,11 @@ public class AdsManager : MonoBehaviour
             PlayerReviveSystem.instance.ResumeGame();
             _showRewardedAd = false;
         }
+        else if (_showRewardedAd && !adsEnabled)
+        {
+            PlayerReviveSystem.instance.ResumeGame();
+            _showRewardedAd = false;
+        }
     }
 
     private void LoadInterstitialAd()
@@ -152,7 +157,7 @@ public class AdsManager : MonoBehaviour
 
     public void ShowInterstitialAd()
     {
-        if (interstitialAd != null && interstitialAd.CanShowAd())
+        if (interstitialAd != null && interstitialAd.CanShowAd() && adsEnabled)
         {
             interstitialAd.Show();
         }
@@ -173,6 +178,10 @@ public class AdsManager : MonoBehaviour
         }
         else
         {
+            if (!adsEnabled)
+            {
+                _showRewardedAd = true;
+            }
             Debug.Log("Rewarded ad not ready");
         }
     }
@@ -181,11 +190,5 @@ public class AdsManager : MonoBehaviour
     {
         interstitialAd?.Destroy();
         rewardedAd?.Destroy();
-    }
-
-    public void LoadAds()
-    {
-        //interstitialAd.LoadAd();
-        //rewardedVideoAd.LoadAd();
     }
 }
