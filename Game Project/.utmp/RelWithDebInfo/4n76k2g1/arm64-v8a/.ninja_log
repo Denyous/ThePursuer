@@ -1,5 +1,5 @@
 # ninja log v5
-7	134	7813735128647625	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	86a676a42dfa475c
-134	235	7813735129567095	C:/Users/oguzs/Desktop/Projects/Games/GameProject/Game Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4n76k2g1/obj/arm64-v8a/libswappywrapper.so	9bf6c8205eba9f84
-1	121	7813746815018507	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	86a676a42dfa475c
-122	240	7813746816071363	C:/Users/oguzs/Desktop/Projects/Games/GameProject/Game Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4n76k2g1/obj/arm64-v8a/libswappywrapper.so	9bf6c8205eba9f84
+1	444	7813789983558235	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	86a676a42dfa475c
+444	658	7813789985369733	C:/Users/oguzs/Desktop/Projects/Games/GameProject/Game Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4n76k2g1/obj/arm64-v8a/libswappywrapper.so	9bf6c8205eba9f84
+1	120	7813792052160146	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	86a676a42dfa475c
+121	229	7813792053144988	C:/Users/oguzs/Desktop/Projects/Games/GameProject/Game Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4n76k2g1/obj/arm64-v8a/libswappywrapper.so	9bf6c8205eba9f84

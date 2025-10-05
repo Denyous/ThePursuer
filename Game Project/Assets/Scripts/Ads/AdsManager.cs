@@ -81,7 +81,7 @@ public class AdsManager : MonoBehaviour
         }
 
         // Load a new rewarded ad
-        RewardedAd.Load(testRewardedAdUnitId, new AdRequest(), (RewardedAd ad, LoadAdError error) =>
+        RewardedAd.Load(rewardedAdUnitId, new AdRequest(), (RewardedAd ad, LoadAdError error) =>
         {
             if (error != null || ad == null)
             {
@@ -130,7 +130,7 @@ public class AdsManager : MonoBehaviour
         }
 
         // Load a new interstitial ad
-        InterstitialAd.Load(testInterestitialAdUnitId, new AdRequest(), (InterstitialAd ad, LoadAdError error) => {
+        InterstitialAd.Load(interestitialAdUnitId, new AdRequest(), (InterstitialAd ad, LoadAdError error) => {
 
             if (error != null || ad == null)
             {
