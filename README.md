@@ -9,5 +9,5 @@ Project Information
 - Platform: Android
 - Engine: Unity
 - Programming Language: C#
-- Project Type: Team Development
+- Project Type: Team Development (Oğuz Sevsel, Görkem Özbudak, Deniz Ölçe)
 - Status: Published
